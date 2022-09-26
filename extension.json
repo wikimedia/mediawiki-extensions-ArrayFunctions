@@ -1,0 +1,44 @@
+{
+	"name": "ArrayFunctions",
+	"type": "parserhook",
+	"version": "0.1.0",
+	"author": [
+		"Marijn van Wezel"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:ArrayFunctions",
+	"descriptionmsg": "af-desc",
+	"license-name": "GPL-2.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.35.6",
+		"platform": {
+			"php": ">= 7.4"
+		}
+	},
+	"MessagesDirs": {
+		"ArrayFunctions": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"ArrayFunctions\\": "src/"
+	},
+	"ExtensionMessagesFiles": {
+		"ArrayFunctionsMagic": "i18n/ArrayFunctions.i18n.php"
+	},
+	"HookHandlers": {
+		"ParserInit": {
+			"class": "\\ArrayFunctions\\ParserInitHookHandler",
+		  	"services": [
+			    "ArrayFunctions.ArrayFunctionRegistry"
+			]
+		}
+	},
+	"Hooks": {
+	  	"ParserFirstCallInit": "ParserInit",
+	  	"ScribuntoExternalLibraries": "LegacyHookHandler::onScribuntoExternalLibraries"
+	},
+	"ServiceWiringFiles": [
+	  "src/ArrayFunctions.ServiceWiring.php"
+	],
+	"manifest_version": 2
+}
