@@ -11,9 +11,19 @@ class ArrayFunctionsLuaLibrary extends Scribunto_LuaLibraryBase {
 	 */
 	public function register(): void {
 		$interfaceFuncs = [
-			'export' => [ Utils::class, 'export' ]
+			'export' => [ $this, 'export' ]
 		];
 
 		$this->getEngine()->registerInterface( __DIR__ . '/' . 'mw.af.lua', $interfaceFuncs, [] );
+	}
+
+	/**
+	 * Exports the given table as base64 encoded JSON.
+	 *
+	 * @param array $table
+	 * @return array
+	 */
+	public function export( array $table ): array {
+		return [Utils::export( $table )];
 	}
 }

@@ -24,8 +24,8 @@ class AFForeach implements ArrayFunction {
 			return [Utils::error( 'af_foreach', 'af-error-incorrect-argument-count-exact', ['4', count( $args )] ), 'noparse' => false];
 		}
 
-		$valueName = Utils::expandNode( $args[1], $frame, PPFrame::RECOVER_ORIG );
-		$keyName = Utils::expandNode( $args[2], $frame, PPFrame::RECOVER_ORIG );
+		$keyName = Utils::expandNode( $args[1], $frame, PPFrame::RECOVER_ORIG );
+		$valueName = Utils::expandNode( $args[2], $frame, PPFrame::RECOVER_ORIG );
 		$bodyNode = $args[3];
 
 		$result = '';
@@ -37,6 +37,6 @@ class AFForeach implements ArrayFunction {
 			$result .= trim( $childFrame->expand( $bodyNode ) );
 		}
 
-		return $result;
+		return [$result];
 	}
 }
