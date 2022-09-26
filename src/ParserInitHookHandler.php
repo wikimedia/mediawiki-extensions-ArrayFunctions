@@ -22,7 +22,7 @@ class ParserInitHookHandler implements ParserFirstCallInitHook {
 	 */
 	public function onParserFirstCallInit( $parser ): void {
 		foreach ( $this->registry->getFunctions() as $name => $instance ) {
-			$parser->setFunctionHook( $name, [$instance, "execute"], Parser::SFH_OBJECT_ARGS );
+			$parser->setFunctionHook( $name, [ $instance, "execute" ], Parser::SFH_OBJECT_ARGS );
 		}
 	}
 }

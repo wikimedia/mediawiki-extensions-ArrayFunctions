@@ -17,11 +17,11 @@ class AFForeach implements ArrayFunction {
 		$array = Utils::import( Utils::expandNode( $args[0], $frame ) );
 
 		if ( !is_array( $array ) ) {
-			return [Utils::error( 'af_foreach', 'af-error-incorrect-type-expected-array', ['1', gettype( $array )] ), 'noparse' => false];
+			return [ Utils::error( 'af_foreach', 'af-error-incorrect-type-expected-array', [ '1', gettype( $array ) ] ), 'noparse' => false ];
 		}
 
 		if ( count( $args ) !== 4 ) {
-			return [Utils::error( 'af_foreach', 'af-error-incorrect-argument-count-exact', ['4', count( $args )] ), 'noparse' => false];
+			return [ Utils::error( 'af_foreach', 'af-error-incorrect-argument-count-exact', [ '4', count( $args ) ] ), 'noparse' => false ];
 		}
 
 		$keyName = Utils::expandNode( $args[1], $frame, PPFrame::RECOVER_ORIG );
@@ -31,12 +31,12 @@ class AFForeach implements ArrayFunction {
 		$result = '';
 
 		foreach ( $array as $key => $value ) {
-			$childArgs = array_merge( $frame->getArguments(), [$keyName => $key, $valueName => Utils::export( $value )] );
+			$childArgs = array_merge( $frame->getArguments(), [ $keyName => $key, $valueName => Utils::export( $value ) ] );
 			$childFrame = $frame->newChild( $parser->getPreprocessor()->newPartNodeArray( $childArgs ), $frame->getTitle() );
 
 			$result .= trim( $childFrame->expand( $bodyNode ) );
 		}
 
-		return [$result];
+		return [ $result ];
 	}
 }

@@ -62,7 +62,7 @@ class Utils {
 	 * @return string The expanded node
 	 */
 	public static function expandNode( $node, PPFrame $frame, int $flags = 0 ): string {
-		return trim($frame->expand($node, $flags));
+		return trim( $frame->expand( $node, $flags ) );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Utils {
 	public static function error( string $function, string $message, array $args = [] ): string {
 		return Xml::element(
 			'strong',
-			['class' => 'error'],
+			[ 'class' => 'error' ],
 			wfMessage( 'af-error', $function, wfMessage( $message, ...$args ) )->parse()
 		);
 	}

@@ -20,12 +20,12 @@ class AFGet implements ArrayFunction {
 			$key = Utils::expandNode( $key, $frame );
 
 			if ( !is_array( $value ) || !isset( $value[$key] ) ) {
-				return [''];
+				return [ '' ];
 			}
 
 			$value = $value[$key];
 		}
 
-		return [Utils::export( $value )];
+		return [ Utils::export( $value ) ];
 	}
 }

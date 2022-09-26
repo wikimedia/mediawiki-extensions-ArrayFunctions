@@ -32,7 +32,16 @@
 	"scripts": {
 		"lint": "parallel-lint . --exclude vendor --exclude node_modules --exclude .git",
 		"phpcs": "phpcs -p -s",
-		"minusx": "minus-x check ."
+		"minusx": "minus-x check .",
+		"test": [
+			"@lint",
+			"@phpcs",
+			"@minusx"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		]
 	},
 	"config": {
 		"process-timeout": 600

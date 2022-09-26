@@ -23,7 +23,7 @@ class AFPrint implements ArrayFunction {
 			$result = $this->armourWikitext( $value );
 		}
 
-		return [$result, 'noparse' => false];
+		return [ $result, 'noparse' => false ];
 	}
 
 	/**

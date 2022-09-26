@@ -29,4 +29,3 @@ $magicWords['en'] = [
 	'af_print' => [ 0, 'af_print' ],
 	'af_push' => [ 0, 'af_push' ]
 ];
-

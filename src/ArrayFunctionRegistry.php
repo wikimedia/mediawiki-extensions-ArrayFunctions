@@ -2,12 +2,12 @@
 
 namespace ArrayFunctions;
 
-use ArrayFunctions\ArrayFunctions\AFPrint;
-use ArrayFunctions\ArrayFunctions\AFPush;
-use ArrayFunctions\ArrayFunctions\ArrayFunction;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
 use ArrayFunctions\ArrayFunctions\AFIsarray;
+use ArrayFunctions\ArrayFunctions\AFPrint;
+use ArrayFunctions\ArrayFunctions\AFPush;
+use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
 	/**

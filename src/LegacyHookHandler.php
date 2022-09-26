@@ -14,7 +14,7 @@ class LegacyHookHandler {
 	 * @link https://www.mediawiki.org/wiki/Extension:Scribunto/Hooks/ScribuntoExternalLibraries
 	 *
 	 * @param string $engine
-	 * @param array $extraLibraries
+	 * @param array &$extraLibraries
 	 * @return bool
 	 */
 	public static function onScribuntoExternalLibraries( string $engine, array &$extraLibraries ): bool {

@@ -24,6 +24,6 @@ class ArrayFunctionsLuaLibrary extends Scribunto_LuaLibraryBase {
 	 * @return array
 	 */
 	public function export( array $table ): array {
-		return [Utils::export( $table )];
+		return [ Utils::export( $table ) ];
 	}
 }

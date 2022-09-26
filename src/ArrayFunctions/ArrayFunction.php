@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use Message;
 use Parser;
 use PPFrame;
 
