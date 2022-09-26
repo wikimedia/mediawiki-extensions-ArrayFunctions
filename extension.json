@@ -35,7 +35,7 @@
 	},
 	"Hooks": {
 	  	"ParserFirstCallInit": "ParserInit",
-	  	"ScribuntoExternalLibraries": "LegacyHookHandler::onScribuntoExternalLibraries"
+	  	"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
 	},
 	"ServiceWiringFiles": [
 	  "src/ArrayFunctions.ServiceWiring.php"
