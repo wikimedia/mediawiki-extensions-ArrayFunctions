@@ -4,5 +4,6 @@
 			"Marijn van Wezel"
 		]
 	},
-	"af-desc": "{{desc|name=ArrayFunctions|url=https://www.mediawiki.org/wiki/Extension:ArrayFunctions}}"
+	"af-desc": "{{desc|name=Array Functions|url=https://www.mediawiki.org/wiki/Extension:ArrayFunctions}}",
+    "af-extensionname": "{{name}}"
 }
