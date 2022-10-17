@@ -15,11 +15,11 @@ class AFIsarray implements ArrayFunction {
 	 */
 	public function execute( Parser $parser, PPFrame $frame, array $args ): array {
 		if ( count( $args ) < 2 ) {
-			return [ Utils::error( 'af_print', 'af-error-incorrect-argument-count-at-least', [ '2', count( $args ) ] ) ];
+			return [ Utils::error( 'af_isarray', 'af-error-incorrect-argument-count-at-least', [ '2', count( $args ) ] ) ];
 		}
 
 		if ( count( $args ) > 3 ) {
-			return [ Utils::error( 'af_print', 'af-error-incorrect-argument-count-at-least', [ '3', count( $args ) ] ) ];
+			return [ Utils::error( 'af_isarray', 'af-error-incorrect-argument-count-at-least', [ '3', count( $args ) ] ) ];
 		}
 
 		$value = Utils::import( Utils::expandNode( $args[0], $frame ) );
