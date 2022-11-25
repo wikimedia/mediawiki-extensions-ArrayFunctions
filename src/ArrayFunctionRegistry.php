@@ -47,6 +47,7 @@ class ArrayFunctionRegistry {
 		return [
 			'af_foreach' => new AFForeach(),
 			'af_isarray' => new AFIsarray(),
+			'af_join' => new AFJoin(),
 			'af_get' => new AFGet(),
 			'af_print' => new AFPrint(),
 			'af_push' => new AFPush()

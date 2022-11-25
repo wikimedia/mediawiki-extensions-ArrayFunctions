@@ -7,16 +7,9 @@ use PPFrame;
 
 /**
  * Interface implemented by all array parser functions.
+ *
+ * @method execute(...$args) Function with dynamic parameters that must be implemented by all array functions. Argument validation is done
+ *                           automatically through the ArgumentsPreprocessor class using reflection.
  */
 interface ArrayFunction {
-	/**
-	 * Executes this array parser function.
-	 *
-	 * @param Parser $parser The parser instance to which this function was registered
-	 * @param PPFrame $frame The current parser frame
-	 * @param array $args The arguments passed to the function call
-	 *
-	 * @return array The result of the parser function
-	 */
-	public function execute( Parser $parser, PPFrame $frame, array $args ): array;
 }
