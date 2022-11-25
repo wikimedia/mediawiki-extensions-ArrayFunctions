@@ -10,5 +10,6 @@
   "af-error-incorrect-type-expected-array": "Expected parameter $1 to be an array, $2 given",
   "af-error-incorrect-argument-count-exact": "Expected exactly $1 {{PLURAL:$1|parameter|parameters}}, $2 given",
   "af-error-incorrect-argument-count-at-least": "Expected at least $1 parameter(s), $2 given",
-  "af-error-incorrect-argument-count-at-most": "Expected at most $1 {{PLURAL:$1|parameter|parameters}}, $2 given"
+  "af-error-incorrect-argument-count-at-most": "Expected at most $1 {{PLURAL:$1|parameter|parameters}}, $2 given",
+  "af-error-invalid-input": "The given input could not be understood."
 }

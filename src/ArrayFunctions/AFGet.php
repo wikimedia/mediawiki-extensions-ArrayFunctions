@@ -2,7 +2,9 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Exceptions\ImportException;
 use ArrayFunctions\Utils;
+use MWException;
 use Parser;
 use PPFrame;
 
@@ -12,9 +14,14 @@ use PPFrame;
 class AFGet implements ArrayFunction {
 	/**
 	 * @inheritDoc
+	 * @throws MWException
 	 */
 	public function execute( Parser $parser, PPFrame $frame, array $args ): array {
-		$value = Utils::import( Utils::expandNode( $args[0], $frame ) );
+		try {
+			$value = Utils::import( Utils::expandNode( $args[0], $frame ) );
+		} catch ( ImportException $exception ) {
+			return $exception->getWikitextError( 'af_get', [ '1' ] );
+		}
 
 		foreach ( array_slice( $args, 1 ) as $key ) {
 			$key = Utils::expandNode( $key, $frame );

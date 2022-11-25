@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Exceptions\ImportException;
 use ArrayFunctions\Utils;
 use Parser;
 use PPFrame;
@@ -14,7 +15,11 @@ class AFForeach implements ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( Parser $parser, PPFrame $frame, array $args ): array {
-		$array = Utils::import( Utils::expandNode( $args[0], $frame ) );
+		try {
+			$array = Utils::import( Utils::expandNode( $args[0], $frame ) );
+		} catch ( ImportException $exception ) {
+			return $exception->getWikitextError( 'af_foreach', [ '1' ] );
+		}
 
 		if ( !is_array( $array ) ) {
 			return [ Utils::error( 'af_foreach', 'af-error-incorrect-type-expected-array', [ '1', gettype( $array ) ] ), 'noparse' => false ];
