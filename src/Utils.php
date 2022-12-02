@@ -23,7 +23,7 @@ class Utils {
 	 *  <input> ::= <type> <type separator> <value>
 	 *  <value> ::= <any character> | <value> <any character>
 	 *  <type> ::= "float" | "integer" | "string" | "array"
-	 *  <type separator> = "__-__"
+	 *  <type separator> = "__^__"
 	 *
 	 * @param string $input The value to import
 	 * @return array|int|string The parsed value
@@ -36,7 +36,8 @@ class Utils {
 		$inputParts = explode( self::TYPE_SEPARATOR, $input, 2 );
 
 		if ( count( $inputParts ) < 2 ) {
-			throw new ImportException( "Missing required type annotation" );
+			// No type annotation is given, thus we interpret it as a string
+			return $input;
 		}
 
 		list( $type, $input ) = $inputParts;
@@ -72,8 +73,6 @@ class Utils {
 				}
 
 				break;
-			case "string":
-				return $input;
 			default:
 				throw new ImportException( "The type annotation \"$type\" is not valid" );
 		}
@@ -92,6 +91,11 @@ class Utils {
 	 * @see Utils::import() for the inverse of this method
 	 */
 	public static function export( $value ): string {
+		if ( is_string( $value ) ) {
+			// Strings are the default type
+			return $value;
+		}
+
 		$type = gettype( $value );
 
 		if ( $type === "double" ) {

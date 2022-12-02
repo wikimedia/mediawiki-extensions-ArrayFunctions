@@ -11,7 +11,7 @@ use PPFrame;
 /**
  * Implements the #af_push parser function.
  */
-class AFPush implements ArrayFunction {
+class AFPush extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 * @throws MWException

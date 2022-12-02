@@ -2,44 +2,24 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Exceptions\ImportException;
 use ArrayFunctions\Utils;
-use Parser;
-use PPFrame;
+use PPNode;
 
 /**
  * Implements the #af_foreach parser function.
  */
-class AFForeach implements ArrayFunction {
+class AFForeach extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( Parser $parser, PPFrame $frame, array $args ): array {
-		try {
-			$array = Utils::import( Utils::expandNode( $args[0], $frame ) );
-		} catch ( ImportException $exception ) {
-			return $exception->getWikitextError( 'af_foreach', [ '1' ] );
-		}
-
-		if ( !is_array( $array ) ) {
-			return [ Utils::error( 'af_foreach', 'af-error-incorrect-type-expected-array', [ '1', gettype( $array ) ] ), 'noparse' => false ];
-		}
-
-		if ( count( $args ) !== 4 ) {
-			return [ Utils::error( 'af_foreach', 'af-error-incorrect-argument-count-exact', [ '4', count( $args ) ] ), 'noparse' => false ];
-		}
-
-		$keyName = Utils::expandNode( $args[1], $frame, PPFrame::RECOVER_ORIG );
-		$valueName = Utils::expandNode( $args[2], $frame, PPFrame::RECOVER_ORIG );
-		$bodyNode = $args[3];
-
+	public function execute( array $array, string $keyName, string $valueName, PPNode $body ): array {
 		$result = '';
 
 		foreach ( $array as $key => $value ) {
-			$childArgs = array_merge( $frame->getArguments(), [ $keyName => $key, $valueName => Utils::export( $value ) ] );
-			$childFrame = $frame->newChild( $parser->getPreprocessor()->newPartNodeArray( $childArgs ), $frame->getTitle() );
+			$childArgs = array_merge( $this->getFrame()->getArguments(), [ $keyName => $key, $valueName => Utils::export( $value ) ] );
+			$childFrame = $this->getFrame()->newChild( $this->getParser()->getPreprocessor()->newPartNodeArray( $childArgs ), $this->getFrame()->getTitle() );
 
-			$result .= trim( $childFrame->expand( $bodyNode ) );
+			$result .= trim( $childFrame->expand( $body ) );
 		}
 
 		return [ $result ];

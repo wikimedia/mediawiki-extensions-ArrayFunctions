@@ -10,7 +10,7 @@ use PPFrame;
 /**
  * Implements the #af_isarray parser function.
  */
-class AFIsarray implements ArrayFunction {
+class AFIsarray extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */

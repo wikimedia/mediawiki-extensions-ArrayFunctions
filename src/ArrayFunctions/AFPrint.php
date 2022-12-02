@@ -11,7 +11,7 @@ use Xml;
 /**
  * Implements the #af_print parser function.
  */
-class AFPrint implements ArrayFunction {
+class AFPrint extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */

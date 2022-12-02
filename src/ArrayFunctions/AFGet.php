@@ -11,7 +11,7 @@ use PPFrame;
 /**
  * Implements the #af_get parser function.
  */
-class AFGet implements ArrayFunction {
+class AFGet extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 * @throws MWException

@@ -11,7 +11,7 @@ use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
 	/**
-	 * @var array Dictionary from parser function names to instances of ArrayFunction
+	 * @var array Dictionary from parser function names to class names
 	 */
 	private array $functions;
 
@@ -32,9 +32,9 @@ class ArrayFunctionRegistry {
 	 * Define or override an array function.
 	 *
 	 * @param string $name The name of the array function
-	 * @param ArrayFunction $function The class implementing the array function
+	 * @param class-string<ArrayFunction> $function The class implementing the array function
 	 */
-	public function setFunction( string $name, ArrayFunction $function ): void {
+	public function setFunction( string $name, string $function ): void {
 		$this->functions[$name] = $function;
 	}
 
@@ -45,12 +45,11 @@ class ArrayFunctionRegistry {
 	 */
 	private static function getDefaults(): array {
 		return [
-			'af_foreach' => new AFForeach(),
-			'af_isarray' => new AFIsarray(),
-			'af_join' => new AFJoin(),
-			'af_get' => new AFGet(),
-			'af_print' => new AFPrint(),
-			'af_push' => new AFPush()
+			'af_foreach' => AFForeach::class,
+			'af_isarray' => AFIsarray::class,
+			'af_get' => AFGet::class,
+			'af_print' => AFPrint::class,
+			'af_push' => AFPush::class
 		];
 	}
 }
