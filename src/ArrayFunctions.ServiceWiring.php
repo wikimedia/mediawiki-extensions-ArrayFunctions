@@ -7,6 +7,7 @@
  * @file
  */
 
+use ArrayFunctions\ArgumentPreprocessor;
 use ArrayFunctions\ArrayFunctionRegistry;
 
 return [

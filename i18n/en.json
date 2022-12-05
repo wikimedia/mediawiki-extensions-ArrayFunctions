@@ -6,10 +6,8 @@
   },
   "af-desc": "Array functions without side effects",
   "af-extensionname": "Array Functions",
-  "af-error": "ArrayFunctions (#$1): $2",
-  "af-error-incorrect-type-expected-array": "Expected parameter $1 to be an array, $2 given",
-  "af-error-incorrect-argument-count-exact": "Expected exactly $1 {{PLURAL:$1|parameter|parameters}}, $2 given",
-  "af-error-incorrect-argument-count-at-least": "Expected at least $1 parameter(s), $2 given",
-  "af-error-incorrect-argument-count-at-most": "Expected at most $1 {{PLURAL:$1|parameter|parameters}}, $2 given",
-  "af-error-invalid-input": "The given input could not be understood."
+  "af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+  "af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
+  "af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
+  "af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given."
 }

@@ -19,8 +19,13 @@ class TooFewArgumentsException extends MWException {
 	 */
 	private int $expected;
 
-	public function __construct(int $actual, int $expected, $message = "", $code = 0, Throwable $previous = null) {
-		parent::__construct($message, $code, $previous);
+	/**
+	 * @param int $actual The actual number of parameters passed
+	 * @param int $expected The expected number of parameters
+	 * @param Throwable|null $previous
+	 */
+	public function __construct( int $actual, int $expected, Throwable $previous = null ) {
+		parent::__construct('', 0, $previous);
 
 		$this->actual = $actual;
 		$this->expected = $expected;

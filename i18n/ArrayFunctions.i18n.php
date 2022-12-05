@@ -23,8 +23,11 @@ $magicWords = [];
 
 /** English (English) */
 $magicWords['en'] = [
+	'af_create' => [ 0, 'af_create' ],
 	'af_foreach' => [ 0, 'af_foreach' ],
 	'af_isarray' => [ 0, 'af_isarray' ],
+	'af_join' => [ 0, 'af_join' ],
+	'af_map' => [ 0, 'af_map' ],
 	'af_get' => [ 0, 'af_get' ],
 	'af_print' => [ 0, 'af_print' ],
 	'af_push' => [ 0, 'af_push' ]

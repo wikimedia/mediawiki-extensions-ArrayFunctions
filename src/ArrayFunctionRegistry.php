@@ -2,9 +2,13 @@
 
 namespace ArrayFunctions;
 
+use ArrayFunctions\ArrayFunctions\AFCombine;
+use ArrayFunctions\ArrayFunctions\AFCreate;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
 use ArrayFunctions\ArrayFunctions\AFIsarray;
+use ArrayFunctions\ArrayFunctions\AFJoin;
+use ArrayFunctions\ArrayFunctions\AFMap;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
@@ -29,13 +33,12 @@ class ArrayFunctionRegistry {
 	}
 
 	/**
-	 * Define or override an array function.
+	 * Define an array function.
 	 *
-	 * @param string $name The name of the array function
 	 * @param class-string<ArrayFunction> $function The class implementing the array function
 	 */
-	public function setFunction( string $name, string $function ): void {
-		$this->functions[$name] = $function;
+	public function setFunction( string $function ): void {
+		$this->functions[] = $function;
 	}
 
 	/**
@@ -45,11 +48,14 @@ class ArrayFunctionRegistry {
 	 */
 	private static function getDefaults(): array {
 		return [
-			'af_foreach' => AFForeach::class,
-			'af_isarray' => AFIsarray::class,
-			'af_get' => AFGet::class,
-			'af_print' => AFPrint::class,
-			'af_push' => AFPush::class
+			AFCreate::class,
+			AFForeach::class,
+			AFGet::class,
+			AFIsarray::class,
+			AFJoin::class,
+			AFMap::class,
+			AFPrint::class,
+			AFPush::class
 		];
 	}
 }

@@ -2,10 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Exceptions\ImportException;
-use ArrayFunctions\Utils;
-use Parser;
-use PPFrame;
 use Xml;
 
 /**
@@ -15,13 +11,14 @@ class AFPrint extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( Parser $parser, PPFrame $frame, array $args ): array {
-		try {
-			$value = Utils::import( Utils::expandNode( $args[0], $frame ) );
-		} catch ( ImportException $exception ) {
-			return $exception->getWikitextError( 'af_print', [ '1' ] );
-		}
+	public static function getName(): string {
+		return 'af_print';
+	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function execute( $value ): array {
 		if ( is_array( $value ) ) {
 			$result = $this->prettyPrint( $value );
 		} else {

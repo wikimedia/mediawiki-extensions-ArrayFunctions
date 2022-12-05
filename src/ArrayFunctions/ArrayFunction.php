@@ -9,11 +9,18 @@ use PPFrame;
  * Interface implemented by all array parser functions.
  *
  * @method execute() Function with dynamic parameters that must be implemented by all array functions. Argument validation is done
- *                           automatically by the ArrayFunctionInvoker class.
+ *                   automatically by the ArrayFunctionInvoker class.
  */
 abstract class ArrayFunction {
 	private Parser $parser;
 	private PPFrame $frame;
+
+	/**
+	 * Returns the name of this parser function.
+	 *
+	 * @return string
+	 */
+	abstract public static function getName(): string;
 
 	final public function __construct( Parser $parser, PPFrame $frame ) {
 		$this->parser = $parser;
