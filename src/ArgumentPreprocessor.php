@@ -5,13 +5,11 @@ namespace ArrayFunctions;
 use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
-use FormatJson;
 use PPFrame;
 use PPNode;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
-use TypeError;
 
 /**
  * Class to preprocess arguments using reflection.
@@ -82,44 +80,36 @@ class ArgumentPreprocessor {
 	 * @param ReflectionNamedType|null $type The type of the argument, or NULL for "mixed"
 	 * @param PPFrame $frame The frame used for argument expansion
 	 * @param int $index The parameter index
-	 * @return array|float|int|PPNode|string|null
+	 * @return array|bool|float|int|PPNode|string|null
 	 * @throws TypeMismatchException
 	 */
 	private function preprocessArgument( $argument, ?ReflectionNamedType $type, PPFrame $frame, int $index ) {
-		// Trim the nullable question mark from the left when applicable
-		$expectedType = $type !== null ? $this->normalizeType( $type->getName() ) : null;
+		$typeName = $type !== null ? $type->getName() : null;
 
-		if ( $expectedType === PPNode::class ) {
-			// Return the unexpanded PPNode for more fine-grained control on the function level
-			if ( is_string( $argument ) ) {
-				// The first argument is expanded by default and cannot be a PPNode
-				// Throw a TypeError here, since this is not the user's fault, but rather a fault in the implementation
-				throw new TypeError( 'First argument cannot be a PPNode' );
-			}
-
+		if ( $typeName === PPNode::class ) {
 			return $argument;
 		}
 
-		$argument = trim( $frame->expand( $argument ) );
+		$expandedArg = trim( $frame->expand( $argument ) );
 
-		if ( $argument === '' ) {
-			// Although the parameter was *explicitly* given, it parsed to the empty string
-			if ( !isset( $expectedType ) || $type->allowsNull() ) {
-				// The type is either "mixed" or nullable, so just pass null
-				return null;
+		if ( $expandedArg === '' ) {
+			if ( isset( $type ) && !$type->allowsNull() ) {
+				// The type is not nullable
+				throw new TypeMismatchException( "empty", $typeName, $argument, $index );
 			}
 
-			// The type is not nullable
-			throw new TypeMismatchException( "empty", $expectedType, $argument, $index );
+			return null;
 		}
 
-		$value = $this->import( $argument );
+		$importedArg = Utils::import( $expandedArg );
 
-		if ( !isset( $expectedType ) ) {
-			return $value;
+		if ( !isset( $type ) ) {
+			// No coalescing necessary (or possible) for mixed types
+			return $importedArg;
 		}
 
-		return $this->tryCoalesce( $value, $expectedType, $argument, $index );
+		// Try to coalesce the value to the expected type
+		return $this->tryCoalesce( $importedArg, $type, $expandedArg, $index );
 	}
 
 	/**
@@ -133,6 +123,7 @@ class ArgumentPreprocessor {
 	 * @throws TypeMismatchException If coalescing is not possible
 	 */
 	private function tryCoalesce( $value, string $wantedType, string $raw, int $index ) {
+		$wantedType = $this->normalizeType( $wantedType );
 		$actualType = gettype( $value );
 
 		if ( $actualType === $wantedType ) {
@@ -154,7 +145,7 @@ class ArgumentPreprocessor {
 				}
 
 				break;
-			case 'int':
+			case 'integer':
 				if ( preg_match( '/^-?\d+$/', $value ) ) {
 					return intval( $value );
 				}
@@ -162,6 +153,7 @@ class ArgumentPreprocessor {
 				break;
 			case 'boolean':
 				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+
 				if ( $filtered !== null ) {
 					return $filtered;
 				}
@@ -171,66 +163,6 @@ class ArgumentPreprocessor {
 
 		// Coalescing failed
 		throw new TypeMismatchException( $actualType, $wantedType, $raw, $index );
-	}
-
-	/**
-	 * Imports the given string and converts it to the correct type when appropriate.
-	 *
-	 * @param string $input The value to import
-	 * @return array|int|string|bool|float The parsed value
-	 */
-	private function import( string $input ) {
-		if ( strpos( $input, '__^__' ) === false ) {
-			$type = "string";
-			$value = $input;
-		} else {
-			list( $type, $value ) = explode( '__^__', $input, 2 );
-		}
-
-		// Handle any non-string type
-		switch ( $type ) {
-			case "boolean":
-				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
-
-				if ( $filtered !== null ) {
-					return $filtered;
-				}
-
-				break;
-			case "float":
-				if ( preg_match( '/^-?\d*\.\d+$/', $value ) || preg_match( '/^-?\d+$/', $value ) ) {
-					return floatval( $value );
-				}
-
-				break;
-			case "integer":
-				if ( preg_match( '/^-?\d+$/', $value ) ) {
-					return intval( $value );
-				}
-
-				break;
-			case "array":
-				// Try decoding and parsing to see if it was a base64 encoded JSON string
-				$maybeJson = base64_decode( $value );
-
-				if ( $maybeJson !== false ) {
-					if ( $maybeJson === '{}' ) {
-						// Short-circuit for empty objects, since FormatJson does not handle them correctly
-						return [];
-					}
-
-					$status = FormatJson::parse( $maybeJson, FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS );
-
-					if ( $status->isGood() ) {
-						return $status->getValue();
-					}
-				}
-
-				break;
-		}
-
-		// Default to interpreting the entire input as a string
-		return $input;
 	}
 
 	/**

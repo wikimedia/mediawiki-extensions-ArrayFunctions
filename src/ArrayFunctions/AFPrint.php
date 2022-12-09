@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Utils;
 use Xml;
 
 /**
@@ -20,9 +21,9 @@ class AFPrint extends ArrayFunction {
 	 */
 	public function execute( $value ): array {
 		if ( is_array( $value ) ) {
-			$result = $this->prettyPrint( $value );
+			$result = $this->formatArray( $value );
 		} else {
-			$result = $this->armourWikitext( $value );
+			$result = $this->armourWikitext( Utils::stringify( $value ) );
 		}
 
 		return [ $result, 'noparse' => false ];
@@ -35,7 +36,7 @@ class AFPrint extends ArrayFunction {
 	 * @param int $depth The current depth (used in the recursive call)
 	 * @return string
 	 */
-	private function prettyPrint( array $value, int $depth = 0 ): string {
+	private function formatArray( array $value, int $depth = 0 ): string {
 		$result = '';
 
 		foreach ( $value as $k => $v ) {
@@ -44,14 +45,28 @@ class AFPrint extends ArrayFunction {
 
 			if ( is_array( $v ) ) {
 				// Recursively print the array
-				$result .= "\n" . $this->prettyPrint( $v, $depth + 1 );
+				$result .= "\n" . $this->formatArray( $v, $depth + 1 );
 			} else {
 				// Print the value
-				$result .= ": " . $this->armourWikitext( $v ) . "\n";
+				$result .= ": " . $this->armourWikitext( $this->formatValue( $v ) ) . "\n";
 			}
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Format the given value as a string.
+	 *
+	 * @param mixed $value
+	 * @return string
+	 */
+	private function formatValue( $value ): string {
+		if ( is_bool( $value ) ) {
+			return $value ? "true" : "false";
+		}
+
+		return sprintf( "%s", $value );
 	}
 
 	/**

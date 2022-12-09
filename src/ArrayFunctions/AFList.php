@@ -3,14 +3,14 @@
 namespace ArrayFunctions\ArrayFunctions;
 
 /**
- * Implements the #af_create parser function.
+ * Implements the #af_list parser function.
  */
-class AFCreate extends ArrayFunction {
+class AFList extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
 	public static function getName(): string {
-		return 'af_create';
+		return 'af_list';
 	}
 
 	/**

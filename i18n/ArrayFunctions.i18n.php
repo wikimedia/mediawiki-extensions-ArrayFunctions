@@ -23,12 +23,21 @@ $magicWords = [];
 
 /** English (English) */
 $magicWords['en'] = [
-	'af_create' => [ 0, 'af_create' ],
+	'af_bool' => [ 0, 'af_bool' ],
+	'af_count' => [ 0, 'af_count' ],
+	'af_exists' => [ 0, 'af_exists' ],
+	'af_float' => [ 0, 'af_float' ],
 	'af_foreach' => [ 0, 'af_foreach' ],
+	'af_int' => [ 0, 'af_int' ],
 	'af_isarray' => [ 0, 'af_isarray' ],
 	'af_join' => [ 0, 'af_join' ],
+	'af_keysort' => [ 0, 'af_keysort' ],
+	'af_list' => [ 0, 'af_list' ],
 	'af_map' => [ 0, 'af_map' ],
+	'af_object' => [ 0, 'af_object' ],
 	'af_get' => [ 0, 'af_get' ],
 	'af_print' => [ 0, 'af_print' ],
-	'af_push' => [ 0, 'af_push' ]
+	'af_push' => [ 0, 'af_push' ],
+	'af_sort' => [ 0, 'af_sort' ],
+	'af_string' => [ 0, 'af_string' ]
 ];

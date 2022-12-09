@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Utils;
 use PPNode;
 
 /**

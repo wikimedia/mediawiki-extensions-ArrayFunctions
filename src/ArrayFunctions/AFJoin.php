@@ -2,6 +2,8 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Utils;
+
 /**
  * Implements the #af_join parser function.
  */
@@ -16,7 +18,7 @@ class AFJoin extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( string $glue, array $array ): array {
+	public function execute( ?string $glue, array $array ): array {
 		return [$this->recursiveJoin( $this->unescapeGlue( $glue ), $array )];
 	}
 
@@ -28,16 +30,20 @@ class AFJoin extends ArrayFunction {
 	 * @return string
 	 */
 	private function recursiveJoin( string $glue, array $array ): string {
-		return implode( $glue, array_map( fn ( $value ) => is_array( $value ) ? $this->recursiveJoin( $glue, $value ) : $value, $array ) );
+		return implode( $glue, array_map( fn ( $value ) => is_array( $value ) ? $this->recursiveJoin( $glue, $value ) : Utils::stringify( $value ), $array ) );
 	}
 
 	/**
 	 * Transforms escape sequences in $glue.
 	 *
-	 * @param string $glue
+	 * @param string|null $glue
 	 * @return string
 	 */
-	private function unescapeGlue( string $glue ): string {
+	private function unescapeGlue( ?string $glue ): string {
+		if ( $glue === null ) {
+			return "";
+		}
+
 		return str_replace( ['\s', '\n'], [' ', "\n"], $glue );
 	}
 }
