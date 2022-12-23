@@ -315,6 +315,7 @@ class ArgumentPreprocessor {
 				$positionalArgs[] = $argument;
 			} else {
 				// Keyword argument
+				// TODO: Research and test use of "preprocessToObj" here
 				$keywordArgs[$parts[0]] = $parser->getPreprocessor()->preprocessToObj( $parts[1] );
 			}
 		}
