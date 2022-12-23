@@ -2,9 +2,15 @@
 
 namespace ArrayFunctions;
 
+use ArrayFunctions\ArrayFunctions\ArrayFunction;
+use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
+use ArrayFunctions\Exceptions\PositionalAfterKeywordException;
 use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
+use ArrayFunctions\Exceptions\UnexpectedKeywordArgument;
+use MWException;
+use Parser;
 use PPFrame;
 use PPNode;
 use ReflectionException;
@@ -21,52 +27,139 @@ class ArgumentPreprocessor {
 	private ReflectionMethod $method;
 
 	/**
-	 * @param string|object $objectOrMethod Classname, object (instance of the class) that contains the method or class name and method name
-	 *                                      delimited by ::.
-	 * @param string|null $method Name of the method if the first argument is a classname or an object.
 	 * @throws ReflectionException
 	 */
-	public function __construct( $objectOrMethod, string $method = null ) {
+	public function __construct( $objectOrMethod, ?string $method = null ) {
 		$this->method = new ReflectionMethod( $objectOrMethod, $method );
 	}
 
 	/**
 	 * Preprocesses the given arguments.
 	 *
-	 * @param array $arguments The arguments to preprocess
+	 * @param array $passedArgs The arguments to preprocess
+	 * @param ArrayFunction $instance The array function instance to process the arguments for
 	 * @param PPFrame $frame The current frame
+	 * @param Parser $parser The current parser
 	 *
-	 * @return array The preprocessed arguments
+	 * @return array A tuple of processed positional arguments and keyword arguments
 	 *
 	 * @throws TypeMismatchException
 	 * @throws ReflectionException
 	 * @throws TooFewArgumentsException
 	 * @throws TooManyArgumentsException
+	 * @throws PositionalAfterKeywordException
+	 * @throws MissingRequiredKeywordArgumentException
+	 * @throws UnexpectedKeywordArgument
+	 * @throws MWException
 	 */
-	public function preprocess( array $arguments, PPFrame $frame ): array {
-		$numArguments = count( $arguments );
+	public function preprocess( array $passedArgs, ArrayFunction $instance, PPFrame $frame, Parser $parser ): array {
+		// Split the given arguments into position and keyword arguments
+		list( $passedPositionalArgs, $passedKeywordArgs ) = $this->partitionArgs( $passedArgs, $frame, $parser );
+
+		$passedPositionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
+		$passedKeywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );
+
+		return [$passedPositionalArgs, $passedKeywordArgs];
+	}
+
+	/**
+	 * Preprocess the given positional arguments.
+	 *
+	 * @param array $passedArgs The positional arguments
+	 * @param PPFrame $frame The current frame
+	 *
+	 * @throws TooFewArgumentsException
+	 * @throws TooManyArgumentsException
+	 * @throws ReflectionException
+	 * @throws TypeMismatchException
+	 */
+	private function preprocessPositionalArgs( array $passedArgs, PPFrame $frame ): array {
+		// Keep track of the number of positional arguments that were passed
+		$numArgs = count( $passedArgs );
 		$result = [];
 
-		foreach ( $this->method->getParameters() as $i => $parameter ) {
-			if ( $parameter->isVariadic() ) {
-				while ( !empty( $arguments ) ) {
-					$result[] = $this->preprocessArgument( array_shift( $arguments ), $parameter->getType(), $frame, $i + 1 );
+		foreach ( $this->method->getParameters() as $i => $arg ) {
+			if ( $arg->isVariadic() ) {
+				while ( !empty( $passedArgs ) ) {
+					$type = $arg->getType();
+					$allowsNull = $type === null || $type->allowsNull();
+					$result[] = $this->preprocessArg(
+						array_shift( $passedArgs ),
+						$this->getNormalizedType( $type ),
+						$allowsNull,
+						$frame,
+						$i + 1
+					);
 				}
-			} elseif ( !$parameter->isOptional() && empty( $arguments ) ) {
-				// Required argument without a value
-				throw new TooFewArgumentsException( $numArguments, $this->method->getNumberOfRequiredParameters() );
-			} elseif ( $parameter->isOptional() && empty( $arguments ) ) {
-				// Optional argument without a value
-				$result[] = $parameter->getDefaultValue();
+			} elseif ( !$arg->isOptional() && empty( $passedArgs ) ) {
+				// Required positional argument without a value
+				throw new TooFewArgumentsException( $numArgs, $this->method->getNumberOfRequiredParameters() );
+			} elseif ( $arg->isOptional() && empty( $passedArgs ) ) {
+				// Optional positional argument without a value
+				$result[] = $arg->getDefaultValue();
 			} else {
-				// Non-variadic argument with values
-				$result[] = $this->preprocessArgument( array_shift( $arguments ), $parameter->getType(), $frame, $i + 1 );
+				// Non-variadic positional argument with values
+				$type = $arg->getType();
+				$allowsNull = $type === null || $type->allowsNull();
+				$result[] = $this->preprocessArg(
+					array_shift( $passedArgs ),
+					$this->getNormalizedType( $type ),
+					$allowsNull,
+					$frame,
+					$i + 1
+				);
 			}
 		}
 
-		if ( !empty( $arguments ) ) {
-			// All arguments must have been consumed at this point
-			throw new TooManyArgumentsException( $numArguments, $this->method->getNumberOfParameters() );
+		if ( !empty( $passedArgs ) ) {
+			// All positional arguments must have been consumed at this point
+			throw new TooManyArgumentsException( $numArgs, $this->method->getNumberOfParameters() );
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Preprocess the given keyword arguments.
+	 *
+	 * @param array $passedArgs Dictionary of keyword args
+	 * @param ArrayFunction $instance The array function instance
+	 * @param PPFrame $frame The current frame
+	 *
+	 * @throws TypeMismatchException
+	 * @throws MissingRequiredKeywordArgumentException
+	 * @throws UnexpectedKeywordArgument
+	 */
+	private function preprocessKeywordArgs( array $passedArgs, ArrayFunction $instance, PPFrame $frame ): array {
+		$result = [];
+
+		// Loop over the keyword arguments in the specification, to make sure that we do not forget a required argument
+		foreach ( $instance::getKeywordSpec() as $keyword => $spec ) {
+			$required = $spec["required"] ?? false;
+			$type = $spec["type"] ?? "mixed";
+
+			if ( !isset( $passedArgs[$keyword] ) ) {
+				if ( $required ) {
+					// Missing required keyword argument
+					throw new MissingRequiredKeywordArgumentException( $keyword );
+				}
+
+				// Keyword was not passed
+				continue;
+			}
+
+			$result[$keyword] = $this->preprocessArg( $passedArgs[$keyword], $type, $required, $frame, $keyword );
+			unset( $passedArgs[$keyword] );
+		}
+
+		if ( $instance::allowArbitraryKeywordArgs() ) {
+			// For the remaining arbitrary keyword arguments, preprocess them as "mixed" and optional
+			foreach ( $passedArgs as $keyword => $value ) {
+				$result[$keyword] = $this->preprocessArg( $value, "mixed", false, $frame, $value );
+			}
+		} elseif ( !empty( $passedArgs ) ) {
+			// Some keyword arguments have not been consumed, and arbitrary keyword arguments are not allowed
+			throw new UnexpectedKeywordArgument( array_key_first( $passedArgs ) );
 		}
 
 		return $result;
@@ -77,25 +170,23 @@ class ArgumentPreprocessor {
 	 * possible.
 	 *
 	 * @param PPNode|string $argument The argument to preprocess
-	 * @param ReflectionNamedType|null $type The type of the argument, or NULL for "mixed"
+	 * @param string $type The expected argument type
+	 * @param bool $required Whether the argument is required
 	 * @param PPFrame $frame The frame used for argument expansion
-	 * @param int $index The parameter index
+	 * @param int|string $name The name or index of the argument
 	 * @return array|bool|float|int|PPNode|string|null
 	 * @throws TypeMismatchException
 	 */
-	private function preprocessArgument( $argument, ?ReflectionNamedType $type, PPFrame $frame, int $index ) {
-		$typeName = $type !== null ? $type->getName() : null;
-
-		if ( $typeName === PPNode::class ) {
+	private function preprocessArg( $argument, string $type, bool $required, PPFrame $frame, $name ) {
+		if ( $type === PPNode::class ) {
 			return $argument;
 		}
 
 		$expandedArg = trim( $frame->expand( $argument ) );
 
 		if ( $expandedArg === '' ) {
-			if ( isset( $type ) && !$type->allowsNull() ) {
-				// The type is not nullable
-				throw new TypeMismatchException( "empty", $typeName, $argument, $index );
+			if ( $required ) {
+				throw new TypeMismatchException( "empty", $type, $argument, $name );
 			}
 
 			return null;
@@ -103,13 +194,13 @@ class ArgumentPreprocessor {
 
 		$importedArg = Utils::import( $expandedArg );
 
-		if ( !isset( $type ) ) {
+		if ( $type === "mixed" ) {
 			// No coalescing necessary (or possible) for mixed types
 			return $importedArg;
 		}
 
 		// Try to coalesce the value to the expected type
-		return $this->tryCoalesce( $importedArg, $type, $expandedArg, $index );
+		return $this->tryCoalesce( $importedArg, $type, $expandedArg, $name );
 	}
 
 	/**
@@ -123,7 +214,6 @@ class ArgumentPreprocessor {
 	 * @throws TypeMismatchException If coalescing is not possible
 	 */
 	private function tryCoalesce( $value, string $wantedType, string $raw, int $index ) {
-		$wantedType = $this->normalizeType( $wantedType );
 		$actualType = gettype( $value );
 
 		if ( $actualType === $wantedType ) {
@@ -166,12 +256,21 @@ class ArgumentPreprocessor {
 	}
 
 	/**
-	 * Normalizes the given type name (from ReflectionNamedType) so that it can safely be compared with values returned from "gettype".
+	 * Normalizes the given type so that it can safely be compared with values returned from "gettype".
 	 *
-	 * @param string $type
+	 * TODO: Make this function work for PHP 8 union types.
+	 *
+	 * @param ReflectionNamedType|null $type
 	 * @return string
 	 */
-	private function normalizeType( string $type ): string {
+	private function getNormalizedType( ?ReflectionNamedType $type ): string {
+		if ( $type === null ) {
+			return "mixed";
+		}
+
+		// Get the type name
+		$type = $type->getName();
+
 		// Remove nullable type hint
 		$type = ltrim( $type, '?' );
 
@@ -185,5 +284,41 @@ class ArgumentPreprocessor {
 		}
 
 		return $type;
+	}
+
+	/**
+	 * Partitions arguments into positional arguments and keyword arguments. Throws an exception is a position argument comes before a
+	 * keyword argument.
+	 *
+	 * @param array $arguments
+	 * @param PPFrame $frame The frame to use for expansion
+	 * @param Parser $parser
+	 * @return array Tuple of $positionalArgs and $keywordArgs
+	 * @throws PositionalAfterKeywordException|MWException
+	 */
+	private function partitionArgs( array $arguments, PPFrame $frame, Parser $parser ): array {
+		$positionalArgs = [];
+		$keywordArgs = [];
+
+		foreach ( $arguments as $argument ) {
+			// Recover the original source wikitext
+			$wikitext = trim( $frame->expand( $argument, PPFrame::RECOVER_ORIG ) );
+			$parts = explode( '=', $wikitext, 2 );
+
+			if ( count( $parts ) === 1 || !preg_match( '/^[a-zA-Z ]+$/', $parts[0] ) ) {
+				// Positional argument
+				if ( $keywordArgs !== [] ) {
+					// Positional argument passed after keyword argument
+					throw new PositionalAfterKeywordException();
+				}
+
+				$positionalArgs[] = $argument;
+			} else {
+				// Keyword argument
+				$keywordArgs[$parts[0]] = $parser->getPreprocessor()->preprocessToObj( $parts[1] );
+			}
+		}
+
+		return [$positionalArgs, $keywordArgs];
 	}
 }

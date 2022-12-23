@@ -18,27 +18,15 @@ class AFObject extends ArrayFunction {
 
 	/**
 	 * @inheritDoc
-	 * @throws RuntimeException
 	 */
-	public function execute( ...$values ): array {
-		$buffer = [];
+	public static function allowArbitraryKeywordArgs(): bool {
+		return true;
+	}
 
-		foreach ( $values as $value ) {
-			if ( !is_string( $value ) || strpos( $value, '=' ) === false ) {
-				$buffer[] = $value;
-			} else {
-				list( $key, $value ) = explode( '=', $value, 2 );
-
-				$importedKey = Utils::import( $key );
-
-				if ( !is_string( $importedKey ) && !is_int( $importedKey ) ) {
-					throw new RuntimeException( wfMessage( "af-error-invalid-key", gettype( $importedKey ), $importedKey ) );
-				}
-
-				$buffer[$importedKey] = Utils::import( $value );
-			}
-		}
-
-		return [ $buffer ];
+	/**
+	 * @inheritDoc
+	 */
+	public function execute(): array {
+		return [ $this->getKeywordArgs() ];
 	}
 }

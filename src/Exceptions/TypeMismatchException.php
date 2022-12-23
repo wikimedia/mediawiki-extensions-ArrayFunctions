@@ -21,29 +21,29 @@ class TypeMismatchException extends MWException {
 	private string $expected;
 
 	/**
-	 * @var int The parameter index
+	 * @var int|string The argument name or index
 	 */
-	private int $index;
+	private $name;
 
 	/**
-	 * @var string The parameter value
+	 * @var string The argument value
 	 */
 	private string $value;
 
 	/**
 	 * @param string $actual The actual type
 	 * @param string $expected The expected type
-	 * @param string $value The value of the parameter (un-imported)
-	 * @param int $index The parameter index in which the mismatch occurred
+	 * @param string $value The value of the argument (un-imported)
+	 * @param int|string $name The name or index of the argument in which the mismatch occurred
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $actual, string $expected, string $value, int $index, Throwable $previous = null ) {
+	public function __construct( string $actual, string $expected, string $value, $name, Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->actual = $actual;
 		$this->expected = $expected;
 		$this->value = $value;
-		$this->index = $index;
+		$this->name = $name;
 	}
 
 	/**
@@ -65,7 +65,7 @@ class TypeMismatchException extends MWException {
 	}
 
 	/**
-	 * Returns the parameter value.
+	 * Returns the argument value.
 	 *
 	 * @return string
 	 */
@@ -74,11 +74,11 @@ class TypeMismatchException extends MWException {
 	}
 
 	/**
-	 * Returns the parameter index.
+	 * Returns the argument name or index.
 	 *
-	 * @return int
+	 * @return int|string
 	 */
-	public function getIndex(): int {
-		return $this->index;
+	public function getName() {
+		return $this->name;
 	}
 }

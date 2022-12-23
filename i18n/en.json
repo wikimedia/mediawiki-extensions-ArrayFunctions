@@ -7,8 +7,10 @@
   "af-desc": "Array functions without side effects",
   "af-extensionname": "Array Functions",
   "af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
-  "af-error-invalid-key": "A key must either be a <b>string</b> or an <b>integer</b>, <b>$1</b> given (\"$2\").",
   "af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
-  "af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
-  "af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given."
+  "af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
+  "af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
+  "af-error-positional-after-keyword": "A positional argument must not follow a keyword argument.",
+  "af-error-missing-required-keyword-argument": "Missing required keyword argument <b>$1</b>.",
+  "af-error-unexpected-keyword-argument": "Got an unexpected keyword argument <b>$1</b>."
 }
