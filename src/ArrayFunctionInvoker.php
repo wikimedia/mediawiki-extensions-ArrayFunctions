@@ -42,7 +42,7 @@ class ArrayFunctionInvoker {
 		$preprocessor = new ArgumentPreprocessor( $instance, "execute" );
 
 		try {
-			list($positionalArgs, $keywordArgs) = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
+			list( $positionalArgs, $keywordArgs ) = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
 		} catch ( TooFewArgumentsException $exception ) {
 			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-argument-count-at-least", $exception->getExpected(), $exception->getActual() ) )];
 		} catch ( TooManyArgumentsException $exception ) {

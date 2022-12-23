@@ -53,13 +53,13 @@ class ArgumentPreprocessor {
 	 * @throws MWException
 	 */
 	public function preprocess( array $passedArgs, ArrayFunction $instance, PPFrame $frame, Parser $parser ): array {
-		// Split the given arguments into position and keyword arguments
+		// Split the given arguments into positional and keyword arguments
 		list( $passedPositionalArgs, $passedKeywordArgs ) = $this->partitionArgs( $passedArgs, $frame, $parser );
 
-		$passedPositionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
-		$passedKeywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );
+		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
+		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );
 
-		return [$passedPositionalArgs, $passedKeywordArgs];
+		return [$positionalArgs, $keywordArgs];
 	}
 
 	/**
