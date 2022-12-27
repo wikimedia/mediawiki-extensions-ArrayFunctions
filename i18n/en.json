@@ -12,5 +12,6 @@
   "af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
   "af-error-positional-after-keyword": "A positional argument must not follow a keyword argument.",
   "af-error-missing-required-keyword-argument": "Missing required keyword argument <b>$1</b>.",
-  "af-error-unexpected-keyword-argument": "Got an unexpected keyword argument <b>$1</b>."
+  "af-error-unexpected-keyword-argument": "Got an unexpected keyword argument <b>$1</b>.",
+  "af-error-missing-expected-keyword-argument": "Missing expected keyword argument <b>$1</b>. This may indicate a bug in ArrayFunctions, and is likely not the fault of the user."
 }

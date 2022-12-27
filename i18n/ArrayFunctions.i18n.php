@@ -39,5 +39,5 @@ $magicWords['en'] = [
 	'af_print' => [ 0, 'af_print' ],
 	'af_push' => [ 0, 'af_push' ],
 	'af_sort' => [ 0, 'af_sort' ],
-	'af_string' => [ 0, 'af_string' ]
+	'af_unique' => [ 0, 'af_unique' ]
 ];

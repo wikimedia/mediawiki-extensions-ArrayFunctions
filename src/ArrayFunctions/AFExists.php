@@ -17,6 +17,6 @@ class AFExists extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array, string $key ): array {
-		return [ isset( $array[$key] ) ];
+		return [ array_key_exists( $key, $array ) ];
 	}
 }

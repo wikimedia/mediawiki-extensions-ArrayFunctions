@@ -18,7 +18,7 @@ class AFJoin extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( ?string $glue, array $array ): array {
+	public function execute( array $array, string $glue = "" ): array {
 		return [$this->recursiveJoin( $this->unescapeGlue( $glue ), $array )];
 	}
 
@@ -36,14 +36,43 @@ class AFJoin extends ArrayFunction {
 	/**
 	 * Transforms escape sequences in $glue.
 	 *
-	 * @param string|null $glue
+	 * @param string $glue
 	 * @return string
 	 */
-	private function unescapeGlue( ?string $glue ): string {
-		if ( $glue === null ) {
-			return "";
+	private function unescapeGlue( string $glue ): string {
+		$unescapedGlue = '';
+		$escaped = false;
+
+		foreach ( str_split( $glue ) as $char ) {
+			if ( !$escaped ) {
+				// If the next character is not escaped, we can simply add it
+				if ( $char === '\\' ) {
+					$escaped = true;
+				} else {
+					$unescapedGlue .= $char;
+				}
+			} else {
+				// Otherwise, we replace the escape sequence
+				switch ( $char ) {
+					case 's':
+						$unescapedGlue .= ' ';
+						break;
+					case 'n':
+						$unescapedGlue .= "\n";
+						break;
+					case '\\':
+						$unescapedGlue .= '\\';
+						break;
+					default:
+						# If the escape sequence is not recognized, do not interpret the backslash as an escape and insert it again.
+						$unescapedGlue .= '\\' . $char;
+						break;
+				}
+
+				$escaped = false;
+			}
 		}
 
-		return str_replace( ['\s', '\n'], [' ', "\n"], $glue );
+		return $unescapedGlue;
 	}
 }

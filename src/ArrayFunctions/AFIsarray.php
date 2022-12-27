@@ -2,8 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use PPNode;
-
 /**
  * Implements the #af_isarray parser function.
  */
@@ -18,13 +16,7 @@ class AFIsarray extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( $value, PPNode $consequent, ?PPNode $antecedent = null ): array {
-		if ( is_array( $value ) ) {
-			return [ trim( $this->getFrame()->expand( $consequent ) ) ];
-		} elseif ( isset( $antecedent ) ) {
-			return [ trim( $this->getFrame()->expand( $antecedent ) ) ];
-		} else {
-			return [ '' ];
-		}
+	public function execute( $value ): array {
+		return [ is_array( $value ) ];
 	}
 }

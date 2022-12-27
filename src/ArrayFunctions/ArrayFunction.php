@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Exceptions\RuntimeException;
 use Parser;
 use PPFrame;
 
@@ -39,6 +40,10 @@ abstract class ArrayFunction {
 	 *             "type": "boolean",
 	 *             "default": false,
 	 *             "description": "Whether this keyword argument is required."
+	 *         },
+	 *         "default": {
+	 * 			   "default": null,
+	 *             "description": "A default value to assign to the argument."
 	 *         },
 	 *         "type": {
 	 *              "enum": ["boolean", "double", "integer", "string", "array", "mixed"],
@@ -84,7 +89,22 @@ abstract class ArrayFunction {
 	}
 
 	/**
-	 * Returns the keyword arguments that were passed.
+	 * Returns the keyword argument with the given name, or throws an exception if it does not exist.
+	 *
+	 * @param string $keyword The name of the keyword argument to get
+	 * @return mixed|null
+	 * @throws RuntimeException
+	 */
+	final protected function getKeywordArg( string $keyword ) {
+		if ( !isset( $this->keywordArgs[$keyword] ) ) {
+			throw new RuntimeException( wfMessage( 'af-error-missing-expected-keyword-argument', $keyword ) );
+		}
+
+		return $this->keywordArgs[$keyword];
+	}
+
+	/**
+	 * Returns all passed keyword arguments.
 	 *
 	 * @return array
 	 */

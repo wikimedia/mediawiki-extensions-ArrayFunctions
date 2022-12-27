@@ -18,15 +18,15 @@ class AFMap extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( array $array, string $valueName, PPNode $body ): array {
-		return [array_map( function ( $value ) use ( $valueName, $body ) {
+	public function execute( array $array, string $valueName, PPNode $callback ): array {
+		return [array_map( function ( $value ) use ( $valueName, $callback ) {
 			$args = $this->getFrame()->getArguments();
 			$args[$valueName] = $value;
 
 			$nodeArray = $this->getParser()->getPreprocessor()->newPartNodeArray( $args );
 			$childFrame = $this->getFrame()->newChild( $nodeArray, $this->getFrame()->getTitle() );
 
-			return trim( $childFrame->expand( $body ) );
+			return trim( $childFrame->expand( $callback ) );
 		}, $array )];
 	}
 }

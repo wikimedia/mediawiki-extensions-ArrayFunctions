@@ -63,7 +63,7 @@ class ArrayFunctionInvoker {
 			$result = $instance->execute( ...$positionalArgs );
 			$result[0] = Utils::export( $result[0] );
 		} catch ( RuntimeException $exception ) {
-			return [Utils::error( $instance::getName(), $exception->getRuntimeMessage() ) ];
+			return [ Utils::error( $instance::getName(), $exception->getRuntimeMessage() ) ];
 		}
 
 		return $result;

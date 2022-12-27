@@ -10,66 +10,6 @@ use Message;
  */
 class Utils {
 	/**
-	 * Imports the given string and converts it to the correct type when appropriate.
-	 *
-	 * @param string $input The value to import
-	 * @return array|int|string|bool|float The parsed value
-	 */
-	public static function import( string $input ) {
-		if ( strpos( $input, '__^__' ) === false ) {
-			$type = "string";
-			$value = $input;
-		} else {
-			list( $type, $value ) = explode( '__^__', $input, 2 );
-		}
-
-		// Handle any non-string type
-		switch ( $type ) {
-			case "boolean":
-				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
-
-				if ( $filtered !== null ) {
-					return $filtered;
-				}
-
-				break;
-			case "float":
-				if ( preg_match( '/^-?\d*\.\d+$/', $value ) || preg_match( '/^-?\d+$/', $value ) ) {
-					return floatval( $value );
-				}
-
-				break;
-			case "integer":
-				if ( preg_match( '/^-?\d+$/', $value ) ) {
-					return intval( $value );
-				}
-
-				break;
-			case "array":
-				// Try decoding and parsing to see if it was a base64 encoded JSON string
-				$maybeJson = base64_decode( $value );
-
-				if ( $maybeJson !== false ) {
-					if ( $maybeJson === '{}' ) {
-						// Short-circuit for empty objects, since FormatJson does not handle them correctly
-						return [];
-					}
-
-					$status = FormatJson::parse( $maybeJson, FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS );
-
-					if ( $status->isGood() ) {
-						return $status->getValue();
-					}
-				}
-
-				break;
-		}
-
-		// Default to interpreting the entire input as a string
-		return $input;
-	}
-
-	/**
 	 * Exports the given value.
 	 *
 	 * @param array|int|float|string|bool $value The value to export

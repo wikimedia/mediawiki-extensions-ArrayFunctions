@@ -9,6 +9,7 @@ use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
 use ArrayFunctions\Exceptions\UnexpectedKeywordArgument;
+use FormatJson;
 use MWException;
 use Parser;
 use PPFrame;
@@ -82,11 +83,11 @@ class ArgumentPreprocessor {
 			if ( $arg->isVariadic() ) {
 				while ( !empty( $passedArgs ) ) {
 					$type = $arg->getType();
-					$allowsNull = $type === null || $type->allowsNull();
+					$required = $type !== null && !$type->allowsNull();
 					$result[] = $this->preprocessArg(
 						array_shift( $passedArgs ),
 						$this->getNormalizedType( $type ),
-						$allowsNull,
+						$required,
 						$frame,
 						$i + 1
 					);
@@ -100,11 +101,11 @@ class ArgumentPreprocessor {
 			} else {
 				// Non-variadic positional argument with values
 				$type = $arg->getType();
-				$allowsNull = $type === null || $type->allowsNull();
+				$required = $type !== null && !$type->allowsNull();
 				$result[] = $this->preprocessArg(
 					array_shift( $passedArgs ),
 					$this->getNormalizedType( $type ),
-					$allowsNull,
+					$required,
 					$frame,
 					$i + 1
 				);
@@ -142,6 +143,11 @@ class ArgumentPreprocessor {
 				if ( $required ) {
 					// Missing required keyword argument
 					throw new MissingRequiredKeywordArgumentException( $keyword );
+				}
+
+				if ( isset( $spec["default"] ) ) {
+					// Assign the default if it is available
+					$result[$keyword] = $spec["default"];
 				}
 
 				// Keyword was not passed
@@ -192,7 +198,7 @@ class ArgumentPreprocessor {
 			return null;
 		}
 
-		$importedArg = Utils::import( $expandedArg );
+		$importedArg = $this->import( $expandedArg );
 
 		if ( $type === "mixed" ) {
 			// No coalescing necessary (or possible) for mixed types
@@ -209,11 +215,11 @@ class ArgumentPreprocessor {
 	 * @param array|int|string|bool|float $value The value to coalesce
 	 * @param string $wantedType The type to coalesce the value into
 	 * @param string $raw The un-imported raw value (used for error reporting)
-	 * @param int $index The number of the parameter (used for error reporting)
+	 * @param int|string $name The name or index of the argument
 	 * @return array|int|string|bool|float
 	 * @throws TypeMismatchException If coalescing is not possible
 	 */
-	private function tryCoalesce( $value, string $wantedType, string $raw, int $index ) {
+	private function tryCoalesce( $value, string $wantedType, string $raw, $name ) {
 		$actualType = gettype( $value );
 
 		if ( $actualType === $wantedType ) {
@@ -223,7 +229,7 @@ class ArgumentPreprocessor {
 
 		if ( $actualType !== 'string' ) {
 			// Refusing to coalesce explicitly typed values
-			throw new TypeMismatchException( $actualType, $wantedType, $raw, $index );
+			throw new TypeMismatchException( $actualType, $wantedType, $raw, $name );
 		}
 
 		// At this point, $actualType is a string and $wantedType is not a string
@@ -252,7 +258,7 @@ class ArgumentPreprocessor {
 		}
 
 		// Coalescing failed
-		throw new TypeMismatchException( $actualType, $wantedType, $raw, $index );
+		throw new TypeMismatchException( $actualType, $wantedType, $raw, $name );
 	}
 
 	/**
@@ -321,5 +327,67 @@ class ArgumentPreprocessor {
 		}
 
 		return [$positionalArgs, $keywordArgs];
+	}
+
+	/**
+	 * Imports the given string and converts it to the correct type when appropriate.
+	 *
+	 * @param string $input The value to import
+	 * @return array|int|string|bool|float The parsed value
+	 */
+	private function import( string $input ) {
+		if ( strpos( $input, '__^__' ) === false ) {
+			$type = "string";
+			$value = $input;
+		} else {
+			list( $type, $value ) = explode( '__^__', $input, 2 );
+		}
+
+		// Handle any non-string type
+		switch ( $type ) {
+			case "boolean":
+				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+
+				if ( $filtered !== null ) {
+					return $filtered;
+				}
+
+				break;
+			case "float":
+				if ( preg_match( '/^-?\d*\.\d+$/', $value ) || preg_match( '/^-?\d+$/', $value ) ) {
+					return floatval( $value );
+				}
+
+				break;
+			case "integer":
+				if ( preg_match( '/^-?\d+$/', $value ) ) {
+					return intval( $value );
+				}
+
+				break;
+			case "array":
+				// Try decoding and parsing to see if it was a base64 encoded JSON string
+				$maybeJson = base64_decode( $value );
+
+				if ( $maybeJson !== false ) {
+					if ( $maybeJson === '{}' ) {
+						// Short-circuit for empty objects, since FormatJson does not handle them correctly
+						return [];
+					}
+
+					$status = FormatJson::parse( $maybeJson, FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS );
+
+					if ( $status->isGood() ) {
+						return $status->getValue();
+					}
+				}
+
+				break;
+			case "string":
+				return $value;
+		}
+
+		// Default to interpreting the entire input as a string
+		return $input;
 	}
 }

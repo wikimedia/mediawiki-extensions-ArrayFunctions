@@ -19,6 +19,7 @@ use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFSort;
 use ArrayFunctions\ArrayFunctions\AFString;
+use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
@@ -72,7 +73,7 @@ class ArrayFunctionRegistry {
 			AFPrint::class,
 			AFPush::class,
 			AFSort::class,
-			AFString::class
+			AFUnique::class
 		];
 	}
 }
