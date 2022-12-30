@@ -86,7 +86,7 @@ class ArgumentPreprocessor {
 					$required = $type !== null && !$type->allowsNull();
 					$result[] = $this->preprocessArg(
 						array_shift( $passedArgs ),
-						$this->getNormalizedType( $type ),
+						$type,
 						$required,
 						$frame,
 						$i + 1
@@ -104,7 +104,7 @@ class ArgumentPreprocessor {
 				$required = $type !== null && !$type->allowsNull();
 				$result[] = $this->preprocessArg(
 					array_shift( $passedArgs ),
-					$this->getNormalizedType( $type ),
+					$type,
 					$required,
 					$frame,
 					$i + 1
@@ -169,15 +169,15 @@ class ArgumentPreprocessor {
 	 * possible.
 	 *
 	 * @param PPNode|string $argument The argument to preprocess
-	 * @param string $type The expected argument type
+	 * @param ReflectionNamedType|string|null $type The expected argument type
 	 * @param bool $required Whether the argument is required
 	 * @param PPFrame $frame The frame used for argument expansion
 	 * @param int|string $name The name or index of the argument
 	 * @return array|bool|float|int|PPNode|string|null
 	 * @throws TypeMismatchException
 	 */
-	private function preprocessArg( $argument, string $type, bool $required, PPFrame $frame, $name ) {
-		if ( $type === PPNode::class ) {
+	private function preprocessArg( $argument, $type, bool $required, PPFrame $frame, $name ) {
+		if ( $this->compareTypes( $type, PPNode::class ) ) {
 			return $argument;
 		}
 
@@ -185,7 +185,7 @@ class ArgumentPreprocessor {
 
 		if ( $expandedArg === '' ) {
 			if ( $required ) {
-				throw new TypeMismatchException( "empty", $type, $argument, $name );
+				throw new TypeMismatchException( "empty", $this->normalizeType( $type ), $argument, $name );
 			}
 
 			return null;
@@ -193,96 +193,99 @@ class ArgumentPreprocessor {
 
 		$importedArg = $this->import( $expandedArg );
 
-		if ( $type === "mixed" ) {
+		if ( $this->compareTypes( $type, "mixed" ) ) {
 			// No coalescing necessary (or possible) for mixed types
 			return $importedArg;
 		}
 
 		// Try to coalesce the value to the expected type
-		return $this->tryCoalesce( $importedArg, $type, $expandedArg, $name );
+		return $this->tryCoalesce( $importedArg, $this->normalizeType( $type ), $expandedArg, $name );
 	}
 
 	/**
 	 * Tries to coalesce the given value into the given type.
 	 *
 	 * @param array|int|string|bool|float $value The value to coalesce
-	 * @param string $wantedType The type to coalesce the value into
+	 * @param ReflectionNamedType|string|null $wantedType The type to coalesce the value into
 	 * @param string $raw The un-imported raw value (used for error reporting)
 	 * @param int|string $name The name or index of the argument
 	 * @return array|int|string|bool|float
 	 * @throws TypeMismatchException If coalescing is not possible
 	 */
-	private function tryCoalesce( $value, string $wantedType, string $raw, $name ) {
+	private function tryCoalesce( $value, $wantedType, string $raw, $name ) {
 		$actualType = gettype( $value );
 
-		if ( $actualType === $wantedType ) {
+		if ( $this->compareTypes( $actualType, $wantedType ) ) {
 			// The value is already of the correct form
 			return $value;
 		}
 
-		if ( $actualType !== 'string' ) {
+		if ( !$this->compareTypes( $actualType, 'string' ) ) {
 			// Refusing to coalesce explicitly typed values
 			throw new TypeMismatchException( $actualType, $wantedType, $raw, $name );
 		}
 
-		// At this point, $actualType is a string and $wantedType is not a string
-		switch( $wantedType ) {
-			case 'float':
-			case 'double':
-				if ( preg_match( '/^-?\d*\.\d+$/', $value ) || preg_match( '/^-?\d+$/', $value ) ) {
-					return floatval( $value );
-				}
+		// At this point, $actualType is string and $wantedType is not string
+		if ( $this->compareTypes( $wantedType, 'float' ) ) {
+			$result = filter_var( $value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE );
 
-				break;
-			case 'integer':
-				if ( preg_match( '/^-?\d+$/', $value ) ) {
-					return intval( $value );
-				}
+			if ( $result !== null ) {
+				return $result;
+			}
+		} elseif ( $this->compareTypes( $wantedType, 'integer' ) ) {
+			$result = filter_var( $value, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE );
 
-				break;
-			case 'boolean':
-				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+			if ( $result !== null ) {
+				return $result;
+			}
+		} elseif ( $this->compareTypes( $wantedType, 'boolean' ) ) {
+			$result = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
 
-				if ( $filtered !== null ) {
-					return $filtered;
-				}
-
-				break;
+			if ( $result !== null ) {
+				return $result;
+			}
 		}
 
 		// Coalescing failed
-		throw new TypeMismatchException( $actualType, $wantedType, $raw, $name );
+		throw new TypeMismatchException( $this->normalizeType( $actualType ), $this->normalizeType( $wantedType ), $raw, $name );
 	}
 
 	/**
-	 * Normalizes the given type so that it can safely be compared with values returned from "gettype".
+	 * Compares the given types for equality.
 	 *
 	 * TODO: Make this function work for PHP 8 union types.
 	 *
-	 * @param ReflectionNamedType|null $type
+	 * @param ReflectionNamedType|string|null $left
+	 * @param ReflectionNamedType|string|null $right
+	 * @return bool
+	 */
+	private function compareTypes( $left, $right ): bool {
+		return $this->normalizeType( $right ) === $this->normalizeType( $left );
+	}
+
+	/**
+	 * Normalizes the given type so that it can be compared.
+	 *
+	 * @param ReflectionNamedType|string|null $type
 	 * @return string
 	 */
-	private function getNormalizedType( ?ReflectionNamedType $type ): string {
-		if ( $type === null ) {
-			return "mixed";
+	private function normalizeType( $type ): string {
+		if ( $type instanceof ReflectionNamedType ) {
+			$type = ltrim($type->getName(), '?');
 		}
-
-		// Get the type name
-		$type = $type->getName();
-
-		// Remove nullable type hint
-		$type = ltrim( $type, '?' );
 
 		switch ( $type ) {
+			case null:
+				return 'mixed';
 			case 'bool':
 				return 'boolean';
-			case 'float':
-				return 'double';
+			case 'double':
+				return 'float';
 			case 'int':
 				return 'integer';
+			default:
+				return $type;
 		}
-
-		return $type;
 	}
 
 	/**
@@ -339,22 +342,26 @@ class ArgumentPreprocessor {
 		// Handle any non-string type
 		switch ( $type ) {
 			case "boolean":
-				$filtered = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+				$result = filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
 
-				if ( $filtered !== null ) {
-					return $filtered;
+				if ( $result !== null ) {
+					return $result;
 				}
 
 				break;
 			case "float":
-				if ( preg_match( '/^-?\d*\.\d+$/', $value ) || preg_match( '/^-?\d+$/', $value ) ) {
-					return floatval( $value );
+				$result = filter_var( $value, FILTER_VALIDATE_FLOAT, FILTER_NULL_ON_FAILURE );
+
+				if ( $result !== null ) {
+					return $result;
 				}
 
 				break;
 			case "integer":
-				if ( preg_match( '/^-?\d+$/', $value ) ) {
-					return intval( $value );
+				$result = filter_var( $value, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE );
+
+				if ( $result !== null ) {
+					return $result;
 				}
 
 				break;

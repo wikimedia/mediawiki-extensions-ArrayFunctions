@@ -17,8 +17,6 @@ class AFFloat extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( float $value ): array {
-		if ( $value > PHP_FLOAT_MAX)
-
 		return [ $value ];
 	}
 }

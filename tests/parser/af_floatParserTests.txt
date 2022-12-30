@@ -42,3 +42,94 @@ Test negative float
 </p>
 !! end
 
+!! test
+Test large float
+!! wikitext
+{{#af_float: 100000000000000000000000000000000.0 }}
+!! html
+<p>float__^__1.0E+32
+</p>
+!! end
+
+!! test
+Test large negative float
+!! wikitext
+{{#af_float: -100000000000000000000000000000000.0 }}
+!! html
+<p>float__^__-1.0E+32
+</p>
+!! end
+
+!! test
+Test large float as E notation
+!! wikitext
+{{#af_float: 1.0E+32 }}
+!! html
+<p>float__^__1.0E+32
+</p>
+!! end
+
+!! test
+Test large negative float as E notation
+!! wikitext
+{{#af_float: -1.0E+32 }}
+!! html
+<p>float__^__-1.0E+32
+</p>
+!! end
+
+!! test
+Test small float
+!! wikitext
+{{#af_float: 0.00000000000000000000000000000001 }}
+!! html
+<p>float__^__1.0E-32
+</p>
+!! end
+
+!! test
+Test small negative float
+!! wikitext
+{{#af_float: -0.00000000000000000000000000000001 }}
+!! html
+<p>float__^__-1.0E-32
+</p>
+!! end
+
+!! test
+Test small float as E notation
+!! wikitext
+{{#af_float: 1.0E-32 }}
+!! html
+<p>float__^__1.0E-32
+</p>
+!! end
+
+!! test
+Test small negative float as E notation
+!! wikitext
+{{#af_float: -1.0E-32 }}
+!! html
+<p>float__^__-1.0E-32
+</p>
+!! end
+
+!! test
+Test float is idempotent
+!! wikitext
+{{#af_float: 10.0 }}
+{{#af_float: {{#af_float: 10.0 }} }}
+!! html
+<p>float__^__10
+float__^__10
+</p>
+!! end
+
+!! test
+Test invalid type gives error
+!! wikitext
+{{#af_float: true }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>string</b> for parameter <b>1</b> ("true").</span>
+</p>
+!! end
