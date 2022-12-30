@@ -27,6 +27,9 @@
 		"ArrayFunctionsMagic": "i18n/ArrayFunctions.i18n.php"
 	},
 	"HookHandlers": {
+	  	"Trivial": {
+		  	"class": "\\ArrayFunctions\\TrivialHookHandler"
+		},
 		"ParserInit": {
 			"class": "\\ArrayFunctions\\ParserInitHookHandler",
 		  	"services": [
@@ -36,10 +39,13 @@
 	},
 	"Hooks": {
 	  	"ParserFirstCallInit": "ParserInit",
+	  	"ParserGetVariableValueSwitch": "Trivial",
+	  	"GetMagicVariableIDs": "Trivial",
 	  	"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
 	},
 	"ServiceWiringFiles": [
-	  "src/ArrayFunctions.ServiceWiring.php"
+	  	"src/ArrayFunctions.ServiceWiring.php"
 	],
+  	"callback": "\\ArrayFunctions\\LegacyHookHandler::onExtensionRegistration",
 	"manifest_version": 2
 }

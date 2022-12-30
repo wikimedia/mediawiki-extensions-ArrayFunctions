@@ -23,6 +23,7 @@ $magicWords = [];
 
 /** English (English) */
 $magicWords['en'] = [
+	// Parser functions
 	'af_bool' => [ 0, 'af_bool' ],
 	'af_count' => [ 0, 'af_count' ],
 	'af_exists' => [ 0, 'af_exists' ],
@@ -42,5 +43,7 @@ $magicWords['en'] = [
 	'af_slice' => [ 0, 'af_slice' ],
 	'af_sort' => [ 0, 'af_sort' ],
 	'af_unique' => [ 0, 'af_unique' ],
-	'af_unset' => [ 0, 'af_unset' ]
+	'af_unset' => [ 0, 'af_unset' ],
+	// Magic words
+	MAG_AF_EMPTY => [ 0, 'af_empty' ]
 ];

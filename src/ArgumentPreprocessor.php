@@ -136,8 +136,10 @@ class ArgumentPreprocessor {
 
 		// Loop over the keyword arguments in the specification, to make sure that we do not forget a required argument
 		foreach ( $instance::getKeywordSpec() as $keyword => $spec ) {
+			$required = !array_key_exists( "default", $spec );
+
 			if ( !isset( $passedArgs[$keyword] ) ) {
-				if ( !array_key_exists( "default", $spec ) ) {
+				if ( $required ) {
 					// Missing required keyword argument
 					throw new MissingRequiredKeywordArgumentException( $keyword );
 				}

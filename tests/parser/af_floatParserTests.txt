@@ -1,0 +1,44 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_float
+!! endfunctionhooks
+
+# This file tests the #af_float parser function
+
+!! test
+Test positive integer float
+!! wikitext
+{{#af_float: 10 }}
+!! html
+<p>float__^__10
+</p>
+!! end
+
+!! test
+Test positive float
+!! wikitext
+{{#af_float: 10.12 }}
+!! html
+<p>float__^__10.12
+</p>
+!! end
+
+!! test
+Test negative integer float
+!! wikitext
+{{#af_float: -10 }}
+!! html
+<p>float__^__-10
+</p>
+!! end
+
+!! test
+Test negative float
+!! wikitext
+{{#af_float: -10.12 }}
+!! html
+<p>float__^__-10.12
+</p>
+!! end
+

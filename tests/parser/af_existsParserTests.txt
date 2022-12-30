@@ -1,0 +1,43 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_exists
+!! endfunctionhooks
+
+# This file tests the #af_exists parser function
+
+!! test
+Test string key exists
+!! wikitext
+{{#af_exists: {{#af_object: foobar=foobar | boofar=boofar }} | foobar }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test integer key exists
+!! wikitext
+{{#af_exists: {{#af_list: foobar | boofar }} | 1 }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_exists: {{#af_list: foobar | boofar }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_exists</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_exists: {{#af_list: foobar | boofar }} | 1 | 2 }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_exists</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end

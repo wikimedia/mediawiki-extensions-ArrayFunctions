@@ -1,0 +1,115 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_count
+!! endfunctionhooks
+
+# This file tests the #af_count parser function
+
+!! test
+Test empty list
+!! wikitext
+{{#af_count: {{AF_EMPTY}} }}
+!! html
+<p>integer__^__0
+</p>
+!! end
+
+!! test
+Test singleton list
+!! wikitext
+{{#af_count: {{#af_list: a}} }}
+!! html
+<p>integer__^__1
+</p>
+!! end
+
+!! test
+Test singleton nested list
+!! wikitext
+{{#af_count: {{#af_list: {{AF_EMPTY}} }} }}
+!! html
+<p>integer__^__1
+</p>
+!! end
+
+!! test
+Test multi item one-dimensional list
+!! wikitext
+{{#af_count: {{#af_list: a | b | c }} }}
+!! html
+<p>integer__^__3
+</p>
+!! end
+
+!! test
+Test multi item one-dimensional object
+!! wikitext
+{{#af_count: {{#af_object: a=a | b=b | c=c }} }}
+!! html
+<p>integer__^__3
+</p>
+!! end
+
+!! test
+Test single item multi-dimensional list
+!! wikitext
+{{#af_count: {{#af_list: {{#af_list: a }} }} }}
+!! html
+<p>integer__^__1
+</p>
+!! end
+
+!! test
+Test single item multi-dimensional list, recursive counting
+!! wikitext
+{{#af_count: {{#af_list: {{#af_list: a }} }} | recursive=yes }}
+!! html
+<p>integer__^__2
+</p>
+!! end
+
+!! test
+Test multi item multi-dimensional list, recursive counting
+!! wikitext
+{{#af_count: {{#af_list: {{#af_list: a }} | {{#af_list: b | c }} }} | recursive=yes }}
+!! html
+<p>integer__^__5
+</p>
+!! end
+
+!! test
+Test empty argument gives error
+!! wikitext
+{{#af_count: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_count</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test empty argument gives error, recursive counting
+!! wikitext
+{{#af_count: | recursive=yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_count</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test invalid type gives error
+!! wikitext
+{{#af_count: foobar }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_count</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_count: {{#af_list: a | b }} | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_count</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end

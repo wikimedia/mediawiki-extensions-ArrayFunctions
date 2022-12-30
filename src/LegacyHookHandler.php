@@ -28,4 +28,16 @@ class LegacyHookHandler {
 		return true;
 	}
 
+	/**
+	 * Called after the extension has been registered.
+	 *
+	 * @link https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#callback
+	 *
+	 * @return bool
+	 */
+	public static function onExtensionRegistration(): bool {
+		define( 'MAG_AF_EMPTY', 'MAG_AF_EMPTY' );
+
+		return true;
+	}
 }

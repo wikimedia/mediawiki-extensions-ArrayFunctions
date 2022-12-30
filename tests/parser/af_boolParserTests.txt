@@ -1,0 +1,124 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_bool
+!! endfunctionhooks
+
+# This file tests the #af_bool parser function
+
+!! test
+Test "no" is false
+!! wikitext
+{{#af_bool: no}}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test "false" is false
+!! wikitext
+{{#af_bool: false}}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test "0" is false
+!! wikitext
+{{#af_bool: 0}}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test "off" is false
+!! wikitext
+{{#af_bool: off}}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test false is false
+!! wikitext
+{{#af_bool: {{#af_bool: no }} }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test "1" is true
+!! wikitext
+{{#af_bool: 1}}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test "true" is true
+!! wikitext
+{{#af_bool: true}}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test "on" is true
+!! wikitext
+{{#af_bool: on}}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test "yes" is true
+!! wikitext
+{{#af_bool: yes}}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test true is true
+!! wikitext
+{{#af_bool: {{#af_bool: yes }} }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test random gives error
+!! wikitext
+{{#af_bool: foobar}}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_bool</b>): Could not match expected type <b>boolean</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
+</p>
+!! end
+
+!! test
+Test empty gives error
+!! wikitext
+{{#af_bool: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_bool</b>): Could not match expected type <b>boolean</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_bool: yes | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_bool</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
