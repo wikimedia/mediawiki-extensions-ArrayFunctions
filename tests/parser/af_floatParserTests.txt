@@ -133,3 +133,12 @@ Test invalid type gives error
 <p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>string</b> for parameter <b>1</b> ("true").</span>
 </p>
 !! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_float: 1.0 | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
