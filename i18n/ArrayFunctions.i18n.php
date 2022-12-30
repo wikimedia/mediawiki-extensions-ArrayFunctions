@@ -38,6 +38,9 @@ $magicWords['en'] = [
 	'af_get' => [ 0, 'af_get' ],
 	'af_print' => [ 0, 'af_print' ],
 	'af_push' => [ 0, 'af_push' ],
+	'af_set' => [ 0, 'af_set' ],
+	'af_slice' => [ 0, 'af_slice' ],
 	'af_sort' => [ 0, 'af_sort' ],
-	'af_unique' => [ 0, 'af_unique' ]
+	'af_unique' => [ 0, 'af_unique' ],
+	'af_unset' => [ 0, 'af_unset' ]
 ];

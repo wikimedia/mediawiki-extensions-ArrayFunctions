@@ -136,26 +136,17 @@ class ArgumentPreprocessor {
 
 		// Loop over the keyword arguments in the specification, to make sure that we do not forget a required argument
 		foreach ( $instance::getKeywordSpec() as $keyword => $spec ) {
-			$required = $spec["required"] ?? false;
-			$type = $spec["type"] ?? "mixed";
-
 			if ( !isset( $passedArgs[$keyword] ) ) {
-				if ( $required ) {
+				if ( !array_key_exists( "default", $spec ) ) {
 					// Missing required keyword argument
 					throw new MissingRequiredKeywordArgumentException( $keyword );
 				}
 
-				if ( isset( $spec["default"] ) ) {
-					// Assign the default if it is available
-					$result[$keyword] = $spec["default"];
-				}
-
-				// Keyword was not passed
-				continue;
+				$result[$keyword] = $spec["default"];
+			} else {
+				$result[$keyword] = $this->preprocessArg( $passedArgs[$keyword], $spec["type"] ?? "mixed", $required, $frame, $keyword );
+				unset( $passedArgs[$keyword] );
 			}
-
-			$result[$keyword] = $this->preprocessArg( $passedArgs[$keyword], $type, $required, $frame, $keyword );
-			unset( $passedArgs[$keyword] );
 		}
 
 		if ( $instance::allowArbitraryKeywordArgs() ) {

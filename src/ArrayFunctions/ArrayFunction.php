@@ -36,14 +36,8 @@ abstract class ArrayFunction {
 	 *     "title": "Keyword argument specification",
 	 *     "type": "object",
 	 *     "properties": {
-	 *         "required": {
-	 *             "type": "boolean",
-	 *             "default": false,
-	 *             "description": "Whether this keyword argument is required."
-	 *         },
 	 *         "default": {
-	 * 			   "default": null,
-	 *             "description": "A default value to assign to the argument."
+	 *             "description": "A default value to assign to the argument. If no default is given, the argument will be required."
 	 *         },
 	 *         "type": {
 	 *              "enum": ["boolean", "double", "integer", "string", "array", "mixed"],

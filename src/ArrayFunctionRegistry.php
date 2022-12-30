@@ -17,9 +17,12 @@ use ArrayFunctions\ArrayFunctions\AFMap;
 use ArrayFunctions\ArrayFunctions\AFObject;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
+use ArrayFunctions\ArrayFunctions\AFSet;
+use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
 use ArrayFunctions\ArrayFunctions\AFString;
 use ArrayFunctions\ArrayFunctions\AFUnique;
+use ArrayFunctions\ArrayFunctions\AFUnset;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
@@ -72,8 +75,11 @@ class ArrayFunctionRegistry {
 			AFObject::class,
 			AFPrint::class,
 			AFPush::class,
+			AFSet::class,
+			AFSlice::class,
 			AFSort::class,
-			AFUnique::class
+			AFUnique::class,
+			AFUnset::class
 		];
 	}
 }
