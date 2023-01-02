@@ -6,4 +6,130 @@ af_join
 
 # This file tests the #af_join parser function
 
+!! test
+Test empty list gives the empty string
+!! wikitext
+{{#af_join: {{AF_EMPTY}} }}
+!! html
+!! end
 
+!! test
+Test join one-dimensional list without glue
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} }}
+!! html
+<p>abc
+</p>
+!! end
+
+!! test
+Test join one-dimensional list with simple glue
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | - }}
+!! html
+<p>a-b-c
+</p>
+!! end
+
+!! test
+Test space escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \s }}
+!! html
+<p>a b c
+</p>
+!! end
+
+!! test
+Test newline escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \n }}
+!! html
+<p>a
+b
+c
+</p>
+!! end
+
+!! test
+Test newline backslash sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \\ }}
+!! html
+<p>a\b\c
+</p>
+!! end
+
+!! test
+Test escaped escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \\n }}
+!! html
+<p>a\nb\nc
+</p>
+!! end
+
+!! test
+Test escaped escaped escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \\\n }}
+!! html
+<p>a\
+b\
+c
+</p>
+!! end
+
+!! test
+Test non-existent escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \b }}
+!! html
+<p>a\bb\bc
+</p>
+!! end
+
+!! test
+Test escaped non-existent escape sequence
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \\b }}
+!! html
+<p>a\bb\bc
+</p>
+!! end
+
+!! test
+Test join multi-dimensional list
+!! wikitext
+{{#af_join: {{#af_list: a | b | {{#af_list: c | d }} }} | \s }}
+!! html
+<p>a b c d
+</p>
+!! end
+
+!! test
+Test join deep multi-dimensional list
+!! wikitext
+{{#af_join: {{#af_list: a | b | {{#af_list: c | {{#af_list: d | e | {{#af_list: f }} }} }} }} | \s }}
+!! html
+<p>a b c d e f
+</p>
+!! end
+
+!! test
+Test join boolean
+!! wikitext
+{{#af_join: {{#af_list: {{#af_bool: yes}} | {{#af_bool: no}} }} | \s }}
+!! html
+<p>true false
+</p>
+!! end
+
+!! test
+Test too many parameters
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \s | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_join</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end
