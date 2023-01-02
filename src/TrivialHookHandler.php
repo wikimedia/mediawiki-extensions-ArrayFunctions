@@ -14,7 +14,6 @@ class TrivialHookHandler implements GetMagicVariableIDsHook, ParserGetVariableVa
 	 */
 	public function onGetMagicVariableIDs( &$variableIDs ) {
 		$variableIDs['af_empty'] = MAG_AF_EMPTY;
-		$variableIDs['af_params'] = MAG_AF_PARAMS;
 	}
 
 	/**
@@ -24,9 +23,6 @@ class TrivialHookHandler implements GetMagicVariableIDsHook, ParserGetVariableVa
 		if ( $magicWordId === MAG_AF_EMPTY ) {
 			$ret = Utils::export( [] );
 			$variableCache[$magicWordId] = $ret;
-		} elseif ( $magicWordId === MAG_AF_PARAMS ) {
-			$args = $frame->getArguments();
-			$ret = Utils::export( $args );
 		}
 
 		return true;

@@ -46,6 +46,5 @@ $magicWords['en'] = [
 	'af_unique' => [ 0, 'af_unique' ],
 	'af_unset' => [ 0, 'af_unset' ],
 	// Magic words
-	MAG_AF_EMPTY => [ 0, 'af_empty' ],
-	MAG_AF_PARAMS => [ 0, 'af_params' ]
+	MAG_AF_EMPTY => [ 0, 'af_empty' ]
 ];
