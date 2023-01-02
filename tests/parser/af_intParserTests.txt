@@ -1,0 +1,82 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_int
+!! endfunctionhooks
+
+# This file tests the #af_int parser function
+
+!! test
+Test positive integer
+!! wikitext
+{{#af_int: 10 }}
+!! html
+<p>integer__^__10
+</p>
+!! end
+
+!! test
+Test negative integer
+!! wikitext
+{{#af_int: -10 }}
+!! html
+<p>integer__^__-10
+</p>
+!! end
+
+!! test
+Test zero
+!! wikitext
+{{#af_int: 0 }}
+!! html
+<p>integer__^__0
+</p>
+!! end
+
+!! test
+Test integer is idempotent
+!! wikitext
+{{#af_int: 10 }}
+{{#af_int: {{#af_int: 10 }} }}
+!! html
+<p>integer__^__10
+integer__^__10
+</p>
+!! end
+
+!! test
+Test large number interpreted as string
+!! wikitext
+{{#af_int: 1000000000000000000000000000000000000000000000000000000000000 }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Could not match expected type <b>integer</b> with actual type <b>string</b> for parameter <b>1</b> ("1000000000000000000000000000000000000000000000000000000000000").</span>
+</p>
+!! end
+
+!! test
+Test large negative number interpreted as string
+!! wikitext
+{{#af_int: -1000000000000000000000000000000000000000000000000000000000000 }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Could not match expected type <b>integer</b> with actual type <b>string</b> for parameter <b>1</b> ("-1000000000000000000000000000000000000000000000000000000000000").</span>
+</p>
+!! end
+
+!! test
+Test invalid type gives error
+!! wikitext
+{{#af_int: true }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Could not match expected type <b>integer</b> with actual type <b>string</b> for parameter <b>1</b> ("true").</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_int: 1 | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
+

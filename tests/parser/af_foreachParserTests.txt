@@ -1,0 +1,131 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_foreach
+!! endfunctionhooks
+
+# This file tests the #af_foreach parser function
+
+!! article
+Template:Template loop
+!! text
+{{#af_foreach: {{#af_list: a }} | key | value | {{Template loop}} }}
+!! endarticle
+
+!! test
+Test loop over simple list
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | | value | {{{value}}} }}
+!! html
+<p>abc
+</p>
+!! end
+
+!! test
+Test loop over simple list with key
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value | {{{key}}}={{{value}}} }}
+!! html
+<p>0=a1=b2=c
+</p>
+!! end
+
+!! test
+Test loop over empty list
+!! wikitext
+{{#af_foreach: {{AF_EMPTY}} | key | value | {{{value}}} }}
+!! html
+!! end
+
+!! test
+Test loop without key or value
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | | | a }}
+!! html
+<p>aaa
+</p>
+!! end
+
+!! test
+Test loop over nested list
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | {{#af_list: c | d | e }} }} | | value | {{{value}}} }}
+!! html
+<p>abarray__^__WyJjIiwiZCIsImUiXQ==
+</p>
+!! end
+
+!! test
+Test loop over object
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | | value | {{{value}}} }}
+!! html
+<p>barfar
+</p>
+!! end
+
+!! test
+Test loop over object with key
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | key | value | {{{key}}}={{{value}}} }}
+!! html
+<p>foo=barboo=far
+</p>
+!! end
+
+!! test
+Test loop over object without key or value
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | | | a }}
+!! html
+<p>aa
+</p>
+!! end
+
+!! test
+Test no body
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value }}
+!! html
+!! end
+
+!! test
+Test no value
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key }}
+!! html
+!! end
+
+!! test
+Test no key
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} }}
+!! html
+!! end
+
+!! test
+Test first parameter must be an array
+!! wikitext
+{{#af_foreach: foobar | key | value |  }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value | body | more }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Expected at most <b>4</b> positional parameters, <b>5</b> given.</span>
+</p>
+!! end
+
+!! test
+Test template loop
+!! wikitext
+{{Template loop}}
+!! html
+<p><span class="error">Template loop detected: <a href="/wiki/Template:Template_loop" title="Template:Template loop">Template:Template loop</a></span>
+</p>
+!! end

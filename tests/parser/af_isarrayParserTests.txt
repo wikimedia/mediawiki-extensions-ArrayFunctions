@@ -1,0 +1,89 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_isarray
+!! endfunctionhooks
+
+# This file tests the #af_isarray parser function
+
+!! test
+Test empty list gives true
+!! wikitext
+{{#af_isarray: {{AF_EMPTY}} }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test singleton list gives true
+!! wikitext
+{{#af_isarray: {{#af_list: a }} }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test list gives true
+!! wikitext
+{{#af_isarray: {{#af_list: a | b | c }} }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test object gives true
+!! wikitext
+{{#af_isarray: {{#af_object: foo=bar }} }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test boolean gives false
+!! wikitext
+{{#af_isarray: {{#af_bool: yes }} }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test string gives false
+!! wikitext
+{{#af_isarray: foobar }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test integer gives false
+!! wikitext
+{{#af_isarray: {{#af_int: 10 }} }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test float gives false
+!! wikitext
+{{#af_isarray: {{#af_float: 10.12 }} }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_isarray: {{#af_list: a }} | yes }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_isarray</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
+

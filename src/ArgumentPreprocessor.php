@@ -91,6 +91,8 @@ class ArgumentPreprocessor {
 						$frame,
 						$i + 1
 					);
+
+					$i++;
 				}
 			} elseif ( !$arg->isOptional() && empty( $passedArgs ) ) {
 				// Required positional argument without a value
@@ -304,20 +306,15 @@ class ArgumentPreprocessor {
 
 		foreach ( $arguments as $argument ) {
 			// Recover the original source wikitext
+			// TODO: See if we can use some MediaWiki function to safely split the arguments for us
 			$wikitext = trim( $frame->expand( $argument, PPFrame::RECOVER_ORIG ) );
 			$parts = explode( '=', $wikitext, 2 );
 
-			if ( count( $parts ) === 1 || !preg_match( '/^[a-zA-Z ]+$/', $parts[0] ) ) {
+			if ( count( $parts ) === 1 || !preg_match( '/^[a-zA-Z\d ]+$/', $parts[0] ) ) {
 				// Positional argument
-				if ( $keywordArgs !== [] ) {
-					// Positional argument passed after keyword argument
-					throw new PositionalAfterKeywordException();
-				}
-
 				$positionalArgs[] = $argument;
 			} else {
 				// Keyword argument
-				// TODO: Research and test use of "preprocessToObj" here
 				$keywordArgs[$parts[0]] = $parser->getPreprocessor()->preprocessToObj( $parts[1] );
 			}
 		}

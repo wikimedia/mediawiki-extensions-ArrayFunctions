@@ -1,0 +1,129 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_get
+!! endfunctionhooks
+
+# This file tests the #af_get parser function
+
+!! test
+Test get numeric key
+!! wikitext
+{{#af_get: {{#af_list: a | b | c }} | 0 }}{{#af_get: {{#af_list: a | b | c }} | 1 }}
+!! html
+<p>ab
+</p>
+!! end
+
+!! test
+Test get string key
+!! wikitext
+{{#af_get: {{#af_object: foo=bar | boo=far }} | boo }}
+!! html
+<p>far
+</p>
+!! end
+
+!! test
+Test get boolean
+!! wikitext
+{{#af_get: {{#af_list: {{#af_bool: yes }} }} | 0 }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test get list
+!! wikitext
+{{#af_get: {{#af_list: {{#af_list: a | b | c }} }} | 0 }}
+!! html
+<p>array__^__WyJhIiwiYiIsImMiXQ==
+</p>
+!! end
+
+!! test
+Test get nested value, numeric keys
+!! wikitext
+{{#af_get: {{#af_list: {{#af_list: a | b | c }} }} | 0 | 1 }}
+!! html
+<p>b
+</p>
+!! end
+
+!! test
+Test get nested value, string keys
+!! wikitext
+{{#af_get: {{#af_object: foo={{#af_object: foo=bar | boo=far }} }} | foo | boo }}
+!! html
+<p>far
+</p>
+!! end
+
+!! test
+Test get nested value, mixed keys
+!! wikitext
+{{#af_get: {{#af_list: {{#af_object: foo=bar | boo=far }} }} | 0 | boo }}
+!! html
+<p>far
+</p>
+!! end
+
+!! test
+Test get value, numeric string keys
+!! wikitext
+{{#af_get: {{#af_object: 0=foo | 1=bar }} | 1 }}
+!! html
+<p>bar
+</p>
+!! end
+
+!! test
+Test get non-existent value
+!! wikitext
+{{#af_get: {{#af_object: foo=foo | boo=bar }} | quz }}
+!! html
+!! end
+
+!! test
+Test get non-existent value in subarray
+!! wikitext
+{{#af_get: {{#af_list: a | b | {{#af_list: c | d }} }} | 2 | 2 }}
+!! html
+!! end
+
+!! test
+Test get no keys
+!! wikitext
+{{#af_get: {{#af_object: foo=foo | boo=bar }} }}
+!! html
+<p>array__^__eyJmb28iOiJmb28iLCJib28iOiJiYXIifQ==
+</p>
+!! end
+
+!! test
+Test invalid type for first argument
+!! wikitext
+{{#af_get: foobar }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
+</p>
+!! end
+
+!! test
+Test invalid type for other arguments
+!! wikitext
+{{#af_get: {{#af_object: foo=foo | boo=bar }} | {{#af_object: foo=foo }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>string</b> with actual type <b>array</b> for parameter <b>2</b> ("array__^__eyJmb28iOiJmb28ifQ==").</span>
+</p>
+!! end
+
+!! test
+Test invalid type for other arguments
+!! wikitext
+{{#af_get: {{#af_object: foo=foo | boo=bar }} | foo | {{#af_object: foo=foo }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>string</b> with actual type <b>array</b> for parameter <b>3</b> ("array__^__eyJmb28iOiJmb28ifQ==").</span>
+</p>
+!! end
