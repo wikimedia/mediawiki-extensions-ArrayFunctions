@@ -1,6 +1,6 @@
 !! Version 2
 # Force the test runner to ensure the extension is loaded (we only test for the existence of "af_print", and assume the
-# other parser functions are available if it exists.
+# other parser functions are available if it exists).
 !! functionhooks
 af_print
 !! endfunctionhooks
