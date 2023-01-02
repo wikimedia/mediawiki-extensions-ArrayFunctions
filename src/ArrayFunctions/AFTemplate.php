@@ -75,8 +75,20 @@ class AFTemplate extends ArrayFunction {
 		// Export any non-strings in the given data
 		$exportedData = array_map( fn ( $subData ): string => Utils::export( $subData ), $data );
 
+		// Increment any numeric keys with one, so counting starts at 1
+		$templateArgs = [];
+
+		foreach ( $exportedData as $key => $value ) {
+			if ( is_int( $key ) ) {
+				$key++;
+			}
+
+			$templateArgs[$key] = $value;
+		}
+
+
 		// Build a new frame for the template and the given data
-		$templateArgs = $this->getParser()->getPreprocessor()->newPartNodeArray( $exportedData );
+		$templateArgs = $this->getParser()->getPreprocessor()->newPartNodeArray( $templateArgs );
 		$newFrame = $frame->newChild( $templateArgs, $finalTitle );
 
 		// Expand the frame and return the resulting HTML
