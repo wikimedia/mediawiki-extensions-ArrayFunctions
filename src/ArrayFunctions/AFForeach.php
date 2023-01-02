@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Utils;
 use PPNode;
 
 /**
@@ -33,7 +34,7 @@ class AFForeach extends ArrayFunction {
 			}
 
 			if ( $valueName !== null ) {
-				$args[$valueName] = $value;
+				$args[$valueName] = Utils::export( $value );
 			}
 
 			$nodeArray = $this->getParser()->getPreprocessor()->newPartNodeArray( $args );

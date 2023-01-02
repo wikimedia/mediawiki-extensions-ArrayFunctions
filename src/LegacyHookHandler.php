@@ -37,6 +37,7 @@ class LegacyHookHandler {
 	 */
 	public static function onExtensionRegistration(): bool {
 		define( 'MAG_AF_EMPTY', 'MAG_AF_EMPTY' );
+		define( 'MAG_AF_PARAMS', 'MAG_AF_PARAMS' );
 
 		return true;
 	}
