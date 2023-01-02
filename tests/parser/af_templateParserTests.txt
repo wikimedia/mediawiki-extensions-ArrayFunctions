@@ -1,9 +1,9 @@
 !! Version 2
 # Force the test runner to ensure the extension is loaded
 !! functionhooks
-af_join
+af_template
 !! endfunctionhooks
 
-# This file tests the #af_join parser function
+# This file tests the #af_template parser function
 
 
