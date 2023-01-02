@@ -4,7 +4,6 @@ namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
-use ArrayFunctions\Exceptions\PositionalAfterKeywordException;
 use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
@@ -49,8 +48,6 @@ class ArrayFunctionInvoker {
 			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-argument-count-at-most", $exception->getExpected(), $exception->getActual() ) )];
 		} catch ( TypeMismatchException $exception ) {
 			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-type", $exception->getExpected(), $exception->getActual(), $exception->getName(), $exception->getValue() ) )];
-		} catch ( PositionalAfterKeywordException $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-positional-after-keyword" ) )];
 		} catch ( MissingRequiredKeywordArgumentException $exception ) {
 			return [Utils::error( $instance::getName(), wfMessage( "af-error-missing-required-keyword-argument", $exception->getKeyword() ) )];
 		} catch ( UnexpectedKeywordArgument $exception ) {

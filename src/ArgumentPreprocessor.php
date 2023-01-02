@@ -4,7 +4,6 @@ namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
-use ArrayFunctions\Exceptions\PositionalAfterKeywordException;
 use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
@@ -48,7 +47,6 @@ class ArgumentPreprocessor {
 	 * @throws ReflectionException
 	 * @throws TooFewArgumentsException
 	 * @throws TooManyArgumentsException
-	 * @throws PositionalAfterKeywordException
 	 * @throws MissingRequiredKeywordArgumentException
 	 * @throws UnexpectedKeywordArgument
 	 * @throws MWException
@@ -298,7 +296,7 @@ class ArgumentPreprocessor {
 	 * @param PPFrame $frame The frame to use for expansion
 	 * @param Parser $parser
 	 * @return array Tuple of $positionalArgs and $keywordArgs
-	 * @throws PositionalAfterKeywordException|MWException
+	 * @throws MWException
 	 */
 	private function partitionArgs( array $arguments, PPFrame $frame, Parser $parser ): array {
 		$positionalArgs = [];
