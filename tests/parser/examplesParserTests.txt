@@ -2,7 +2,484 @@
 # Force the test runner to ensure the extension is loaded (we only test for the existence of "af_print", and assume the
 # other parser functions are available if it exists.
 !! functionhooks
-#af_print
+af_print
 !! endfunctionhooks
 
 # This file tests the examples given in the extension's documentation
+
+!! article
+Template:EchoList
+!! text
+{{{1}}}{{{2}}}
+!! endarticle
+
+!! article
+Template:EchoObject
+!! text
+{{{foo}}}{{{boo}}}
+!! endarticle
+
+!! test
+Create an opaque representation of a boolean
+!! wikitext
+{{#af_bool: yes }}, {{#af_bool: no }}, {{#af_bool: true }}
+!! html
+<p>boolean__^__1, boolean__^__0, boolean__^__1
+</p>
+!! end
+
+!! test
+Create an array containing a boolean
+!! wikitext
+{{#af_print: {{#af_list: {{#af_bool: yes}} }} }}
+!! html
+<ul><li>0: true</li></ul>
+!! end
+
+!! test
+Count the number of items in a one-dimensional list
+!! wikitext
+{{#af_print: {{#af_count: {{#af_list: a | b | c }} }} }}
+!! html
+<p>3
+</p>
+!! end
+
+!! test
+Count the number of items in a multi-dimensional list
+!! wikitext
+{{#af_print: {{#af_count: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} }} }}
+!! html
+<p>2
+</p>
+!! end
+
+!! test
+Recursively count the number of items in a multi-dimensional list
+!! wikitext
+{{#af_print: {{#af_count: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} | recursive=true }} }}
+!! html
+<p>6
+</p>
+!! end
+
+!! test
+Check if a key exists
+!! wikitext
+{{#af_print: {{#af_exists: {{#af_object: hello=world }} | hello }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Check if an index exists
+!! wikitext
+{{#af_print: {{#af_exists: {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Check if a nested key exists
+!! wikitext
+{{#af_print: {{#af_exists: {{#af_get: {{#af_list: a | {{#af_list: b | c }} }} | 1 }} | 2 }} }}
+!! html
+<p>false
+</p>
+!! end
+
+!! test
+Create an opaque representation of a float
+!! wikitext
+{{#af_float: 1.298 }}, {{#af_float: 0 }}
+!! html
+<p>float__^__1.298, float__^__0
+</p>
+!! end
+
+!! test
+Create an array containing a float
+!! wikitext
+{{#af_print: {{#af_list: {{#af_float: 1.298 }} }} }}
+!! html
+<ul><li>0: 1.298</li></ul>
+!! end
+
+!! test
+Iterate over a list
+!! wikitext
+{{#af_foreach: {{#af_list: John | Steve | Harry }} | | name | Hello, {{{name}}}!<br/> }}
+!! html
+<p>Hello, John!<br />Hello, Steve!<br />Hello, Harry!<br />
+</p>
+!! end
+
+!! test
+Iterate over an object
+!! wikitext
+{{#af_foreach: {{#af_object: Hello=John | Hi=Steve | Welcome=Harry }} | greeting | name | {{{greeting}}}, {{{name}}}!<br/> }}
+!! html
+<p>Hello, John!<br />Hi, Steve!<br />Welcome, Harry!<br />
+</p>
+!! end
+
+!! test
+Get a top-level element
+!! wikitext
+{{#af_get: {{#af_list: a | b | c }} | 1 }}
+!! html
+<p>b
+</p>
+!! end
+
+!! test
+Get a subarray
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | {{#af_list: b | c }} }} | 1 }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: c</li></ul>
+!! end
+
+!! test
+Get a nested element
+!! wikitext
+{{#af_get: {{#af_list: a | {{#af_object: hello=world }} }} | 1 | hello }}
+!! html
+<p>world
+</p>
+!! end
+
+!! test
+Create an opaque representation of an integer
+!! wikitext
+{{#af_int: 42 }}, {{#af_int: -12 }}
+!! html
+<p>integer__^__42, integer__^__-12
+</p>
+!! end
+
+!! test
+Create an array containing an integer
+!! wikitext
+{{#af_print: {{#af_list: {{#af_int: -129}} }} }}
+!! html
+<ul><li>0: -129</li></ul>
+!! end
+
+!! test
+Check if an array is an array
+!! wikitext
+{{#af_print: {{#af_isarray: {{#af_list: a | b | c }} }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Check if a string is an array
+!! wikitext
+{{#af_print: {{#af_isarray: Hello, World! }} }}
+!! html
+<p>false
+</p>
+!! end
+
+!! test
+Join a one-dimensional array
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} }}
+!! html
+<p>abc
+</p>
+!! end
+
+!! test
+Join a one-dimensional array using a separator
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \s-\s }}
+!! html
+<p>a - b - c
+</p>
+!! end
+
+!! test
+Join a multi-dimensional array using a separator
+!! wikitext
+{{#af_join: {{#af_list: a | b | {{#af_list: c | d }} }} | \s-\s }}
+!! html
+<p>a - b - c - d
+</p>
+!! end
+
+!! test
+Sort based on age
+!! wikitext
+{{#af_print: {{#af_keysort: {{#af_list:
+    {{#af_object: name=John | age=56 }} |
+    {{#af_object: name=Harry | age=12 }} |
+    {{#af_object: name=Bob | age=24 }}
+}} | age }} }}
+!! html
+<ul><li>0
+<ul><li>name: Harry</li>
+<li>age: 12</li></ul></li>
+<li>1
+<ul><li>name: Bob</li>
+<li>age: 24</li></ul></li>
+<li>2
+<ul><li>name: John</li>
+<li>age: 56</li></ul></li></ul>
+!! end
+
+!! test
+Sort based on age, in descending order
+!! wikitext
+{{#af_print: {{#af_keysort: {{#af_list:
+    {{#af_object: name=John | age=56 }} |
+    {{#af_object: name=Harry | age=12 }} |
+    {{#af_object: name=Bob | age=24 }}
+}} | age | descending=true }} }}
+!! html
+<ul><li>0
+<ul><li>name: John</li>
+<li>age: 56</li></ul></li>
+<li>1
+<ul><li>name: Bob</li>
+<li>age: 24</li></ul></li>
+<li>2
+<ul><li>name: Harry</li>
+<li>age: 12</li></ul></li></ul>
+!! end
+
+!! test
+Create a simple one-dimensional list
+!! wikitext
+{{#af_print: {{#af_list: a | b | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Create a multi-dimensional list
+!! wikitext
+{{#af_print: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li>
+<li>1
+<ul><li>0: c</li>
+<li>1: d</li></ul></li></ul>
+!! end
+
+!! test
+Create a list of objects
+!! wikitext
+{{#af_print: {{#af_list:
+    {{#af_object: name=Harry | age=22 }} |
+    {{#af_object: name=Bobby | age=29 }}
+}} }}
+!! html
+<ul><li>0
+<ul><li>name: Harry</li>
+<li>age: 22</li></ul></li>
+<li>1
+<ul><li>name: Bobby</li>
+<li>age: 29</li></ul></li></ul>
+!! end
+
+!! test
+Appending a string to each element
+!! wikitext
+{{#af_print: {{#af_map: {{#af_list: a | b | c }} | v | {{{v}}}-appended }} }}
+!! html
+<ul><li>0: a-appended</li>
+<li>1: b-appended</li>
+<li>2: c-appended</li></ul>
+!! end
+
+!! test
+Create a simple one-dimensional object
+!! wikitext
+{{#af_print: {{#af_object: a=b | b=c | c=d }} }}
+!! html
+<ul><li>a: b</li>
+<li>b: c</li>
+<li>c: d</li></ul>
+!! end
+
+!! test
+Create a multi-dimensional object
+!! wikitext
+{{#af_print: {{#af_object: head={{#af_object: title=MediaWiki | meta={{#af_list: {{#af_object: charset=UTF-8 }} }} }} }} }}
+!! html
+<ul><li>head
+<ul><li>title: MediaWiki</li>
+<li>meta
+<ul><li>0
+<ul><li>charset: UTF-8</li></ul></li></ul></li></ul></li></ul>
+!! end
+
+!! test
+Print a boolean
+!! wikitext
+{{#af_print: {{#af_bool: yes }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Print a list
+!! wikitext
+{{#af_print: {{#af_list: a | b | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Push a value
+!! wikitext
+{{#af_print: {{#af_push: {{#af_list: a | b }} | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Replace an existing value
+!! wikitext
+{{#af_print: {{#af_set: d | {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: d</li></ul>
+!! end
+
+!! test
+Create a new index
+!! wikitext
+{{#af_print: {{#af_set: far | {{#af_object: foo=bar }} | boo }} }}
+!! html
+<ul><li>foo: bar</li>
+<li>boo: far</li></ul>
+!! end
+
+!! test
+Create a new subarray
+!! wikitext
+{{#af_print: {{#af_set: far | {{#af_object: foo=bar }} | boo | far }} }}
+!! html
+<ul><li>foo: bar</li>
+<li>boo
+<ul><li>far: far</li></ul></li></ul>
+!! end
+
+!! test
+Get the first two elements
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | 0 | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Get the last element
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | -1 }} }}
+!! html
+<ul><li>0: c</li></ul>
+!! end
+
+!! test
+Sort a list in ascending order
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: b | c | a }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Sort a list in descending order
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: b | c | a }} | descending=true }} }}
+!! html
+<ul><li>0: c</li>
+<li>1: b</li>
+<li>2: a</li></ul>
+!! end
+
+!! test
+Invoking a template with a list
+!! wikitext
+{{#af_print: {{#af_template: EchoList | {{#af_list: a | b }} }} }}
+!! html
+<p>ab
+</p>
+!! end
+
+!! test
+Invoking a template with an object
+!! wikitext
+{{#af_print: {{#af_template: EchoObject | {{#af_object: foo=bar | boo=far }} }} }}
+!! html
+<p>barfar
+</p>
+!! end
+
+!! test
+Remove duplicates from an array
+!! wikitext
+{{#af_print: {{#af_unique: {{#af_list: a | a | b | c | b }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>2: b</li>
+<li>3: c</li></ul>
+!! end
+
+!! test
+Remove a top-level index
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Remove a top-level index
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Remove a top-level index, keys not reset
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Remove a nested index
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_object: foo={{#af_object: bar=quz | far=buz }} }} | foo | bar }} }}
+!! html
+<ul><li>foo
+<ul><li>far: buz</li></ul></li></ul>
+!! end
