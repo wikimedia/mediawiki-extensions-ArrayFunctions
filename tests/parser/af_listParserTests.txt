@@ -6,4 +6,85 @@ af_list
 
 # This file tests the #af_list parser function
 
+!! test
+Test list with empty string
+!! wikitext
+{{#af_print: {{#af_list: }} }}
+!! html
+<ul><li>0: </li></ul>
+!! end
 
+!! test
+Test singleton list
+!! wikitext
+{{#af_print: {{#af_list: a }} }}
+!! html
+<ul><li>0: a</li></ul>
+!! end
+
+!! test
+Test list of strings
+!! wikitext
+{{#af_print: {{#af_list: a | b | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test list remembers order
+!! wikitext
+{{#af_print: {{#af_list: b | c | a | e | d }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: c</li>
+<li>2: a</li>
+<li>3: e</li>
+<li>4: d</li></ul>
+!! end
+
+!! test
+Test list of integers
+!! wikitext
+{{#af_list: {{#af_int: 1}} | {{#af_int: 2 }} | {{#af_int: 3 }} }}
+!! html
+<p>array__^__WzEsMiwzXQ==
+</p>
+!! end
+
+!! test
+Test list of booleans
+!! wikitext
+{{#af_list: {{#af_bool: yes}} | {{#af_bool: no}} }}
+!! html
+<p>array__^__W3RydWUsZmFsc2Vd
+</p>
+!! end
+
+!! test
+Test list of lists
+!! wikitext
+{{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }}
+!! html
+<p>array__^__W1siYSIsImIiLCJjIl0sWyJkIiwiZSIsImYiXV0=
+</p>
+!! end
+
+!! test
+Test list of objects
+!! wikitext
+{{#af_list: {{#af_object: a=a | b=b | c=c }} | {{#af_object: d=d | e=e | f=f }} }}
+!! html
+<p>array__^__W3siYSI6ImEiLCJiIjoiYiIsImMiOiJjIn0seyJkIjoiZCIsImUiOiJlIiwiZiI6ImYifV0=
+</p>
+!! end
+
+!! test
+Test very long list
+!! wikitext
+{{#af_list: a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a }}
+!! html
+<p>array__^__WyJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiLCJhIiwiYSIsImEiXQ==
+</p>
+!! end

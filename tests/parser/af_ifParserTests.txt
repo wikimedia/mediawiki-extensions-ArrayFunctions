@@ -1,0 +1,8 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_if
+!! endfunctionhooks
+
+# This file tests the #af_if parser function
+

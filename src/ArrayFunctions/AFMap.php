@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Utils;
 use PPNode;
 
 /**
@@ -21,12 +22,12 @@ class AFMap extends ArrayFunction {
 	public function execute( array $array, string $valueName, PPNode $callback ): array {
 		return [array_map( function ( $value ) use ( $valueName, $callback ) {
 			$args = $this->getFrame()->getArguments();
-			$args[$valueName] = $value;
+			$args[$valueName] = Utils::export( $value );
 
 			$nodeArray = $this->getParser()->getPreprocessor()->newPartNodeArray( $args );
 			$childFrame = $this->getFrame()->newChild( $nodeArray, $this->getFrame()->getTitle() );
 
-			return trim( $childFrame->expand( $callback ) );
+			return Utils::import( trim( $childFrame->expand( $callback ) ) );
 		}, $array )];
 	}
 }

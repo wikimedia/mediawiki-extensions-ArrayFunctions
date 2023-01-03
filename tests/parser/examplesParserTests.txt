@@ -14,6 +14,12 @@ Template:EchoList
 !! endarticle
 
 !! article
+Template:PushIfArray
+!! text
+{{#af_if: {{#af_isarray: {{{1}}} }} | {{#af_push: {{{1}}} | {{{2}}} }} }}
+!! endarticle
+
+!! article
 Template:EchoObject
 !! text
 {{{foo}}}{{{boo}}}
@@ -149,6 +155,29 @@ Get a nested element
 {{#af_get: {{#af_list: a | {{#af_object: hello=world }} }} | 1 | hello }}
 !! html
 <p>world
+</p>
+!! end
+
+!! test
+Check if a value is an array
+!! wikitext
+{{#af_if: {{#af_isarray: not an array }} | A beautiful array! | Not an array! }}
+!! html
+<p>Not an array!
+</p>
+!! end
+
+!! test
+Conditionally pushing to an array
+!! wikitext
+{{#af_print: {{PushIfArray| {{#af_list: a | b | c }} | d }} }}
+{{#af_print: {{PushIfArray| foobar | d }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+<p class="mw-empty-elt">
 </p>
 !! end
 
@@ -301,6 +330,19 @@ Appending a string to each element
 <ul><li>0: a-appended</li>
 <li>1: b-appended</li>
 <li>2: c-appended</li></ul>
+!! end
+
+!! test
+Altering list elements
+!! wikitext
+{{#af_print: {{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: b }} }} | v | {{#af_push: {{{v}}} | c }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: c</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: c</li></ul></li></ul>
 !! end
 
 !! test

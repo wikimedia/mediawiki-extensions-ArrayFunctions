@@ -3,6 +3,7 @@
 namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\AFExists;
+use ArrayFunctions\ArrayFunctions\AFIf;
 use ArrayFunctions\ArrayFunctions\AFKeysort;
 use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFBool;
@@ -68,6 +69,7 @@ class ArrayFunctionRegistry {
 			AFFloat::class,
 			AFForeach::class,
 			AFGet::class,
+			AFIf::class,
 			AFInt::class,
 			AFIsarray::class,
 			AFJoin::class,
