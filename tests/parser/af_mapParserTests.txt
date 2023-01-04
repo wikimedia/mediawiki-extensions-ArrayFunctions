@@ -41,3 +41,30 @@ Test list of mixed unchanged
 <p>array__^__W1siYSJdLCJmb28iXQ==
 </p>
 !! end
+
+!! test
+Test list of lists boolean
+!! wikitext
+{{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: a }} | {{#af_list: a }} | b }} | v | {{#af_isarray: {{{v}}} }} }}
+!! html
+<p>array__^__W3RydWUsdHJ1ZSx0cnVlLGZhbHNlXQ==
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_map</b>): Expected at least <b>3</b> positional parameters, <b>2</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v | {{{v}}} | d }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_map</b>): Expected at most <b>3</b> positional parameters, <b>4</b> given.</span>
+</p>
+!! end

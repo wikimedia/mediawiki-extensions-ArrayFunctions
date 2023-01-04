@@ -16,7 +16,9 @@ class AFSet extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( $value, array $array, string ...$keys ): array {
+	public function execute( $value, array $array, string $key, string ...$keys ): array {
+		array_unshift( $keys, $key );
+
 		$pointer = &$array;
 
 		foreach ( $keys as $key ) {

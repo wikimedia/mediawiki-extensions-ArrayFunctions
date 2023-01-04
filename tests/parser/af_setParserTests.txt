@@ -6,4 +6,74 @@ af_set
 
 # This file tests the #af_set parser function
 
+!! test
+Test overwrite key
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_object: a=a }} | a }} }}
+!! html
+<ul><li>a: b</li></ul>
+!! end
 
+!! test
+Test add new key
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_object: a=a }} | b }} }}
+!! html
+<ul><li>a: a</li>
+<li>b: b</li></ul>
+!! end
+
+!! test
+Test set on list
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_list: a }} | b }} }}
+!! html
+<ul><li>0: a</li>
+<li>b: b</li></ul>
+!! end
+
+!! test
+Test numeric key on object
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_object: a=a }} | 0 }} }}
+!! html
+<ul><li>a: a</li>
+<li>0: b</li></ul>
+!! end
+
+!! test
+Test non-existent numeric key on list
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_list: a }} | 1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test numeric key on list
+!! wikitext
+{{#af_print: {{#af_set: b | {{#af_list: a }} | 0 }} }}
+!! html
+<ul><li>0: b</li></ul>
+!! end
+
+!! test
+Test nested set
+!! wikitext
+{{#af_print: {{#af_set: d | {{#af_object: a={{#af_object: b={{#af_object: c=c | d=d }} }} }} | a | b | c }} }}
+!! html
+<ul><li>a
+<ul><li>b
+<ul><li>c: d</li>
+<li>d: d</li></ul></li></ul></li></ul>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_set: a | {{#af_list: b }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_set</b>): Expected at least <b>3</b> positional parameters, <b>2</b> given.</span>
+</p>
+!! end

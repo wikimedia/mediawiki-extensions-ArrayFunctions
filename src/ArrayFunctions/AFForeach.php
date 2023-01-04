@@ -19,9 +19,14 @@ class AFForeach extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( array $array, ?string $keyName = null, ?string $valueName = null, ?PPNode $body = null ): array {
+	public function execute(
+		array $array,
+		?string $keyName = null,
+		?string $valueName = null,
+		?PPNode $body = null
+	): array {
 		if ( $body === null ) {
-			return [''];
+			return [ '' ];
 		}
 
 		$result = '';
@@ -43,6 +48,6 @@ class AFForeach extends ArrayFunction {
 			$result .= trim( $childFrame->expand( $body ) );
 		}
 
-		return [$result];
+		return [ $result ];
 	}
 }

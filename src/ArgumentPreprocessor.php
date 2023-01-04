@@ -4,11 +4,10 @@ namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
-use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
+use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\UnexpectedKeywordArgument;
-use FormatJson;
 use MWException;
 use Parser;
 use PPFrame;
@@ -27,6 +26,8 @@ class ArgumentPreprocessor {
 	private ReflectionMethod $method;
 
 	/**
+	 * @param mixed $objectOrMethod An object instance or a method name
+	 * @param string|null $method The name of the method if $objectOrMethod is an object
 	 * @throws ReflectionException
 	 */
 	public function __construct( $objectOrMethod, ?string $method = null ) {
@@ -58,7 +59,7 @@ class ArgumentPreprocessor {
 		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
 		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );
 
-		return [$positionalArgs, $keywordArgs];
+		return [ $positionalArgs, $keywordArgs ];
 	}
 
 	/**
@@ -66,6 +67,8 @@ class ArgumentPreprocessor {
 	 *
 	 * @param array $passedArgs The positional arguments
 	 * @param PPFrame $frame The current frame
+	 *
+	 * @return array
 	 *
 	 * @throws TooFewArgumentsException
 	 * @throws TooManyArgumentsException
@@ -127,6 +130,8 @@ class ArgumentPreprocessor {
 	 * @param ArrayFunction $instance The array function instance
 	 * @param PPFrame $frame The current frame
 	 *
+	 * @return array
+	 *
 	 * @throws TypeMismatchException
 	 * @throws MissingRequiredKeywordArgumentException
 	 * @throws UnexpectedKeywordArgument
@@ -146,7 +151,14 @@ class ArgumentPreprocessor {
 
 				$result[$keyword] = $spec["default"];
 			} else {
-				$result[$keyword] = $this->preprocessArg( $passedArgs[$keyword], $spec["type"] ?? "mixed", $required, $frame, $keyword );
+				$result[$keyword] = $this->preprocessArg(
+					$passedArgs[$keyword],
+					$spec["type"] ?? "mixed",
+					$required,
+					$frame,
+					$keyword
+				);
+
 				unset( $passedArgs[$keyword] );
 			}
 		}
@@ -165,8 +177,8 @@ class ArgumentPreprocessor {
 	}
 
 	/**
-	 * Tries to preprocess the given argument into the given type and returns the result, or throws an IncorrectTypeException if this is not
-	 * possible.
+	 * Tries to preprocess the given argument into the given type and returns the result, or
+	 * throws an IncorrectTypeException if this is not possible.
 	 *
 	 * @param PPNode|string $argument The argument to preprocess
 	 * @param ReflectionNamedType|string|null $type The expected argument type
@@ -247,13 +259,16 @@ class ArgumentPreprocessor {
 		}
 
 		// Coalescing failed
-		throw new TypeMismatchException( $this->normalizeType( $actualType ), $this->normalizeType( $wantedType ), $raw, $name );
+		throw new TypeMismatchException(
+			$this->normalizeType( $actualType ),
+			$this->normalizeType( $wantedType ),
+			$raw,
+			$name
+		);
 	}
 
 	/**
 	 * Compares the given types for equality.
-	 *
-	 * TODO: Make this function work for PHP 8 union types.
 	 *
 	 * @param ReflectionNamedType|string|null $left
 	 * @param ReflectionNamedType|string|null $right
@@ -271,7 +286,7 @@ class ArgumentPreprocessor {
 	 */
 	private function normalizeType( $type ): string {
 		if ( $type instanceof ReflectionNamedType ) {
-			$type = ltrim($type->getName(), '?');
+			$type = ltrim( $type->getName(), '?' );
 		}
 
 		switch ( $type ) {
@@ -289,8 +304,8 @@ class ArgumentPreprocessor {
 	}
 
 	/**
-	 * Partitions arguments into positional arguments and keyword arguments. Throws an exception is a position argument comes before a
-	 * keyword argument.
+	 * Partitions arguments into positional arguments and keyword arguments. Throws an
+	 * exception is a position argument comes before a keyword argument.
 	 *
 	 * @param array $arguments
 	 * @param PPFrame $frame The frame to use for expansion
@@ -317,6 +332,6 @@ class ArgumentPreprocessor {
 			}
 		}
 
-		return [$positionalArgs, $keywordArgs];
+		return [ $positionalArgs, $keywordArgs ];
 	}
 }

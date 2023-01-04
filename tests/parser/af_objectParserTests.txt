@@ -6,4 +6,62 @@ af_object
 
 # This file tests the #af_object parser function
 
+!! test
+Test object with empty value
+!! wikitext
+{{#af_print: {{#af_object: a= }} }}
+!! html
+<ul><li>a: </li></ul>
+!! end
 
+!! test
+Test object with duplicate keys
+!! wikitext
+{{#af_print: {{#af_object: a=a | a=b }} }}
+!! html
+<ul><li>a: b</li></ul>
+!! end
+
+!! test
+Test object without keys
+!! wikitext
+{{#af_object: a | b | c }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_object</b>): Expected at most <b>0</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end
+
+!! test
+Test object of booleans
+!! wikitext
+{{#af_print: {{#af_object: a={{#af_bool: yes}} | b={{#af_bool: no }} }} }}
+!! html
+<ul><li>a: true</li>
+<li>b: false</li></ul>
+!! end
+
+!! test
+Test object of objects
+!! wikitext
+{{#af_print: {{#af_object: a={{#af_object: a={{#af_object: a=b }} }} }} }}
+!! html
+<ul><li>a
+<ul><li>a
+<ul><li>a: b</li></ul></li></ul></li></ul>
+!! end
+
+!! test
+Test key with space
+!! wikitext
+{{#af_print: {{#af_object: foo bar=boofar }} }}
+!! html
+<ul><li>foo bar: boofar</li></ul>
+!! end
+
+!! test
+Test numeric keys
+!! wikitext
+{{#af_print: {{#af_object: 12=boofar }} }}
+!! html
+<ul><li>12: boofar</li></ul>
+!! end

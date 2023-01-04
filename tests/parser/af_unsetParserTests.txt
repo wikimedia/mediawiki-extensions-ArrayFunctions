@@ -6,4 +6,38 @@ af_unset
 
 # This file tests the #af_unset parser function
 
+!! test
+Test remove a top-level index
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
 
+!! test
+Test remove a top-level index, keys not reset
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test remove a nested index
+!! wikitext
+{{#af_print: {{#af_unset: {{#af_object: foo={{#af_object: bar=quz | far=buz }} }} | foo | bar }} }}
+!! html
+<ul><li>foo
+<ul><li>far: buz</li></ul></li></ul>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_unset: {{#af_list: a | b | c }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_unset</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end

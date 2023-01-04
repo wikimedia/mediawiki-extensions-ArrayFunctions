@@ -3,7 +3,6 @@
 namespace ArrayFunctions\Exceptions;
 
 use MWException;
-use PPNode;
 use Throwable;
 
 /**

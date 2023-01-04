@@ -10,8 +10,14 @@ use Parser;
  * Hook handler for the ParserFirstCallInit hook. Responsible for registering the array functions with the parser.
  */
 class ParserInitHookHandler implements ParserFirstCallInitHook {
+	/**
+	 * @var ArrayFunctionRegistry
+	 */
 	private ArrayFunctionRegistry $registry;
 
+	/**
+	 * @param ArrayFunctionRegistry $registry
+	 */
 	public function __construct( ArrayFunctionRegistry $registry ) {
 		$this->registry = $registry;
 	}
@@ -22,7 +28,11 @@ class ParserInitHookHandler implements ParserFirstCallInitHook {
 	 */
 	public function onParserFirstCallInit( $parser ): void {
 		foreach ( $this->registry->getFunctions() as $class ) {
-			$parser->setFunctionHook( $class::getName(), [ new ArrayFunctionInvoker( $class ), "invoke" ], Parser::SFH_OBJECT_ARGS );
+			$parser->setFunctionHook(
+				$class::getName(),
+				[ new ArrayFunctionInvoker( $class ), "invoke" ],
+				Parser::SFH_OBJECT_ARGS
+			);
 		}
 	}
 }

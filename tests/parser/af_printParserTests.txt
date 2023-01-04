@@ -6,4 +6,131 @@ af_print
 
 # This file tests the #af_print parser function
 
+!! test
+Test print string
+!! wikitext
+{{#af_print: Hello World! }}
+!! html
+<p>Hello World!
+</p>
+!! end
 
+!! test
+Test print wikitext
+!! wikitext
+{{#af_print: {{Hello world}} }}
+!! html
+<p>[[:Template:Hello world]]
+</p>
+!! end
+
+!! test
+Test print float
+!! wikitext
+{{#af_print: {{#af_float: 3.14 }} }}
+!! html
+<p>3.14
+</p>
+!! end
+
+!! test
+Test print large float
+!! wikitext
+{{#af_print: {{#af_float: 100000000000000000000000000000000.0 }} }}
+!! html
+<p>1.0E+32
+</p>
+!! end
+
+!! test
+Test print integer
+!! wikitext
+{{#af_print: {{#af_int: 1337 }} }}
+!! html
+<p>1337
+</p>
+!! end
+
+!! test
+Test print true
+!! wikitext
+{{#af_print: {{#af_bool: yes }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Test print false
+!! wikitext
+{{#af_print: {{#af_bool: no }} }}
+!! html
+<p>false
+</p>
+!! end
+
+!! test
+Test print one-dimensional list
+!! wikitext
+{{#af_print: {{#af_list: a | b | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test print multi-dimensional list
+!! wikitext
+{{#af_print: {{#af_list: a | b | {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul></li></ul>
+!! end
+
+!! test
+Test print invalid lists
+!! wikitext
+{{#af_print: {{#af_list: a }}, {{#af_list: a | b | c }} }}
+!! html
+<p>array__^__WyJhIl0=, array__^__WyJhIiwiYiIsImMiXQ==
+</p>
+!! end
+
+!! test
+Test print multiple values
+!! wikitext
+{{#af_print: {{#af_list: a }} | {{#af_list: a | b | c }} }}
+!! html
+<ul><li>0: a</li>
+<li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test print multiple values different end
+!! wikitext
+{{#af_print: {{#af_list: a }} | {{#af_list: a | b | c }} | end=\n }}
+!! html
+<ul><li>0: a</li></ul>
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+<p><br />
+</p>
+!! end
+
+!! test
+Test print object
+!! wikitext
+{{#af_print: {{#af_object: a=a | b=b | c=c }} }}
+!! html
+<ul><li>a: a</li>
+<li>b: b</li>
+<li>c: c</li></ul>
+!! end

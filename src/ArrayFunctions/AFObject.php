@@ -2,9 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Exceptions\RuntimeException;
-use ArrayFunctions\Utils;
-
 /**
  * Implements the #af_object parser function.
  */

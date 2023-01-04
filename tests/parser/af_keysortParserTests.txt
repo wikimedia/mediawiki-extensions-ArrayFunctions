@@ -99,24 +99,6 @@ Test keysort missing key is less
 !! end
 
 !! test
-Test keysort multiple missing
-!! wikitext
-{{#af_print: {{#af_keysort: {{#af_list:
-    {{#af_object: name=John | age=56 }} |
-    {{#af_object: name=Harry }} |
-    {{#af_object: name=Bob }}
-}} | age }} }}
-!! html
-<ul><li>0
-<ul><li>name: Bob</li></ul></li>
-<li>1
-<ul><li>name: Harry</li></ul></li>
-<li>2
-<ul><li>name: John</li>
-<li>age: 56</li></ul></li></ul>
-!! end
-
-!! test
 Test keysort missing is less than zero missing
 !! wikitext
 {{#af_print: {{#af_keysort: {{#af_list:

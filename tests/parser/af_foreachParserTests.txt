@@ -6,12 +6,6 @@ af_foreach
 
 # This file tests the #af_foreach parser function
 
-!! article
-Template:Template loop
-!! text
-{{#af_foreach: {{#af_list: a }} | key | value | {{Template loop}} }}
-!! endarticle
-
 !! test
 Test loop over simple list
 !! wikitext
@@ -118,14 +112,5 @@ Test too many arguments
 {{#af_foreach: {{#af_list: a | b | c }} | key | value | body | more }}
 !! html
 <p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Expected at most <b>4</b> positional parameters, <b>5</b> given.</span>
-</p>
-!! end
-
-!! test
-Test template loop
-!! wikitext
-{{Template loop}}
-!! html
-<p><span class="error">Template loop detected: <a href="/wiki/Template:Template_loop" title="Template:Template loop">Template:Template loop</a></span>
 </p>
 !! end

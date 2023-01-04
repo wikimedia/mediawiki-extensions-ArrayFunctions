@@ -6,4 +6,22 @@ af_unique
 
 # This file tests the #af_unique parser function
 
+!! test
+Test unique
+!! wikitext
+{{#af_print: {{#af_unique: {{#af_list: a | b | b | b | c | d | d }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>4: c</li>
+<li>5: d</li></ul>
+!! end
 
+!! test
+Test too many arguments
+!! wikitext
+{{#af_unique: {{#af_list: a | b | c }} | d }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_unique</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end

@@ -500,15 +500,6 @@ Remove a top-level index
 !! end
 
 !! test
-Remove a top-level index
-!! wikitext
-{{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 2 }} }}
-!! html
-<ul><li>0: a</li>
-<li>1: b</li></ul>
-!! end
-
-!! test
 Remove a top-level index, keys not reset
 !! wikitext
 {{#af_print: {{#af_unset: {{#af_list: a | b | c }} | 1 }} }}

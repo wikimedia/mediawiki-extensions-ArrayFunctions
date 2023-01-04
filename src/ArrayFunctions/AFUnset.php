@@ -16,14 +16,11 @@ class AFUnset extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( array $array, string ...$keys ): array {
-		if ( count( $keys ) === 0 ) {
-			// Unset the entire array if no specific keys are given
-			return [ [] ];
-		}
+	public function execute( array $array, string $key, string ...$keys ): array {
+		array_unshift( $keys, $key );
 
 		$pointer = &$array;
-		$end = array_pop($keys);
+		$end = array_pop( $keys );
 
 		foreach ( $keys as $key ) {
 			if ( !isset( $pointer[$key] ) ) {

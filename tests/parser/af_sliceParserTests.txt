@@ -6,4 +6,53 @@ af_slice
 
 # This file tests the #af_slice parser function
 
+!! test
+Test remove first element
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | 1 }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: c</li></ul>
+!! end
 
+!! test
+Test remove first two elements
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | 2 }} }}
+!! html
+<ul><li>0: c</li></ul>
+!! end
+
+!! test
+Test get last element
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | -1 }} }}
+!! html
+<ul><li>0: c</li></ul>
+!! end
+
+!! test
+Test get first element
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | 0 | 1 }} }}
+!! html
+<ul><li>0: a</li></ul>
+!! end
+
+!! test
+Test get first two element elements
+!! wikitext
+{{#af_print: {{#af_slice: {{#af_list: a | b | c }} | 0 | -1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_slice: {{#af_list: a | b | c }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_slice</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end

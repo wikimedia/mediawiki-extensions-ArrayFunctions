@@ -6,3 +6,54 @@ af_if
 
 # This file tests the #af_if parser function
 
+!! test
+Test true no alternative
+!! wikitext
+{{#af_if: true | OK }}
+!! html
+<p>OK
+</p>
+!! end
+
+!! test
+Test true with alternative
+!! wikitext
+{{#af_if: true | OK | Fail }}
+!! html
+<p>OK
+</p>
+!! end
+
+!! test
+Test false no alternative
+!! wikitext
+{{#af_if: false | OK }}
+!! html
+!! end
+
+!! test
+Test false with alternative
+!! wikitext
+{{#af_if: false | OK | Fail }}
+!! html
+<p>Fail
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_if: false }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_if</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_if: false }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_if</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end

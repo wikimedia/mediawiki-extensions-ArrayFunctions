@@ -88,7 +88,10 @@ class Utils {
 						return [];
 					}
 
-					$status = FormatJson::parse( $maybeJson, FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS );
+					$status = FormatJson::parse(
+						$maybeJson,
+						FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS
+					);
 
 					if ( $status->isGood() ) {
 						return $status->getValue();
@@ -116,6 +119,50 @@ class Utils {
 		}
 
 		return sprintf( "%s", $value );
+	}
+
+	/**
+	 * Transforms escape sequences in the given string.
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	public static function unescape( string $string ): string {
+		$unescapedString = '';
+		$escaped = false;
+
+		foreach ( str_split( $string ) as $char ) {
+			if ( !$escaped ) {
+				// If the next character is not escaped, we can simply add it
+				if ( $char === '\\' ) {
+					$escaped = true;
+				} else {
+					$unescapedString .= $char;
+				}
+			} else {
+				// Otherwise, we replace the escape sequence
+				switch ( $char ) {
+					case 's':
+						$unescapedString .= ' ';
+						break;
+					case 'n':
+						$unescapedString .= "\n";
+						break;
+					case '\\':
+						$unescapedString .= '\\';
+						break;
+					default:
+						# If the escape sequence is not recognized, do not interpret the backslash as
+						# an escape and insert it again.
+						$unescapedString .= '\\' . $char;
+						break;
+				}
+
+				$escaped = false;
+			}
+		}
+
+		return $unescapedString;
 	}
 
 	/**

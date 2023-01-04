@@ -30,8 +30,9 @@ class AFTemplate extends ArrayFunction {
 	}
 
 	/**
-	 * Expands the given template with the given arguments. This function does not build wikitext, because that is prone to wikitext
-	 * injection attacks. It instead uses the parser to expand the template with the given arguments directly.
+	 * Expands the given template with the given arguments. This function does not build wikitext, because that
+	 * is prone to wikitext injection attacks. It instead uses the parser to expand the template with the given
+	 * arguments directly.
 	 *
 	 * @param string $templateName The template to expand
 	 * @param array $data The data to pass to the template
@@ -85,7 +86,6 @@ class AFTemplate extends ArrayFunction {
 
 			$templateArgs[$key] = $value;
 		}
-
 
 		// Build a new frame for the template and the given data
 		$templateArgs = $this->getParser()->getPreprocessor()->newPartNodeArray( $templateArgs );

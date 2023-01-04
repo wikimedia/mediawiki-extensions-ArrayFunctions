@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
 use Xml;
 
@@ -9,6 +10,8 @@ use Xml;
  * Implements the #af_print parser function.
  */
 class AFPrint extends ArrayFunction {
+	private const KWARG_END = 'end';
+
 	/**
 	 * @inheritDoc
 	 */
@@ -19,11 +22,30 @@ class AFPrint extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( $value ): array {
-		if ( is_array( $value ) ) {
-			$result = $this->formatArray( $value );
-		} else {
-			$result = $this->armourWikitext( Utils::stringify( $value ) );
+	public static function getKeywordSpec(): array {
+		return [
+			self::KWARG_END => [
+				'default' => '',
+				'type' => 'string',
+				'description' => 'String to append to the end of each printed value.'
+			]
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 * @throws RuntimeException
+	 */
+	public function execute( ...$values ): array {
+		$result = '';
+		$end = Utils::unescape( $this->getKeywordArg( self::KWARG_END ) );
+
+		foreach ( $values as $value ) {
+			if ( is_array( $value ) ) {
+				$result .= $this->formatArray( $value ) . $end;
+			} else {
+				$result .= $this->armourWikitext( Utils::stringify( $value ) ) . $end;
+			}
 		}
 
 		return [ $result, 'noparse' => false ];

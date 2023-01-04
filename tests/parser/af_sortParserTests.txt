@@ -6,4 +6,38 @@ af_sort
 
 # This file tests the #af_sort parser function
 
+!! test
+Test sort ascending
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: b | a }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
 
+!! test
+Test sort descending
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: a | b }} | descending=true }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: a</li></ul>
+!! end
+
+!! test
+Test sort object
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_object: b=b | a=a }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_sort: {{#af_list: b | a }} | v }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_sort</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end

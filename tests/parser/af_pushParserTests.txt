@@ -6,4 +6,46 @@ af_push
 
 # This file tests the #af_push parser function
 
+!! test
+Test push object to empty array
+!! wikitext
+{{#af_print: {{#af_push: {{AF_EMPTY}} | value }} }}
+!! html
+<ul><li>0: value</li></ul>
+!! end
 
+!! test
+Test push to list
+!! wikitext
+{{#af_print: {{#af_push: {{#af_list: a }} | b }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test push to object
+!! wikitext
+{{#af_print: {{#af_push: {{#af_object: a=a }} | b }} }}
+!! html
+<ul><li>a: a</li>
+<li>0: b</li></ul>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_push: {{#af_list: a }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_push</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_push: {{#af_list: a }} | b | c }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_push</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end

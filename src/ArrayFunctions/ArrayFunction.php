@@ -9,11 +9,18 @@ use PPFrame;
 /**
  * Interface implemented by all array parser functions.
  *
- * @method execute() Function with dynamic parameters that must be implemented by all array functions. Argument validation is done
- *                   automatically by the ArrayFunctionInvoker class.
+ * @method execute() Function with dynamic parameters that must be implemented by all array functions. Argument
+ * 					 validation is done automatically by the ArrayFunctionInvoker class.
  */
 abstract class ArrayFunction {
+	/**
+	 * @var Parser The current parser
+	 */
 	private Parser $parser;
+
+	/**
+	 * @var PPFrame The current frame
+	 */
 	private PPFrame $frame;
 
 	/**
@@ -37,7 +44,7 @@ abstract class ArrayFunction {
 	 *     "type": "object",
 	 *     "properties": {
 	 *         "default": {
-	 *             "description": "A default value to assign to the argument. If no default is given, the argument will be required."
+	 *             "description": "A default value to assign to the argument."
 	 *         },
 	 *         "type": {
 	 *              "enum": ["boolean", "double", "integer", "string", "array", "mixed"],
@@ -67,6 +74,10 @@ abstract class ArrayFunction {
 		return false;
 	}
 
+	/**
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 */
 	final public function __construct( Parser $parser, PPFrame $frame ) {
 		$this->parser = $parser;
 		$this->frame = $frame;

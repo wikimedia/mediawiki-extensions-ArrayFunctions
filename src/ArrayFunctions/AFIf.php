@@ -25,7 +25,6 @@ class AFIf extends ArrayFunction {
 			Utils::import( trim( $this->getFrame()->expand( $consequent ) ) ) :
 			Utils::import( trim( $this->getFrame()->expand( $alternative ) ) );
 
-
 		return [ $result ];
 	}
 }

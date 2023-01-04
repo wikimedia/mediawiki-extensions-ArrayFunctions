@@ -4,10 +4,10 @@ namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
-use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
+use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\UnexpectedKeywordArgument;
 use MWException;
 use Parser;
@@ -33,6 +33,11 @@ class ArrayFunctionInvoker {
 	/**
 	 * Invoke the function.
 	 *
+	 * @param Parser $parser The current parser
+	 * @param PPFrame $frame The current frame
+	 * @param array $arguments The arguments passed to the function
+	 * @return array
+	 *
 	 * @throws ReflectionException|MWException
 	 */
 	public function invoke( Parser $parser, PPFrame $frame, array $arguments ): array {
@@ -43,15 +48,50 @@ class ArrayFunctionInvoker {
 		try {
 			list( $positionalArgs, $keywordArgs ) = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
 		} catch ( TooFewArgumentsException $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-argument-count-at-least", $exception->getExpected(), $exception->getActual() ) )];
+			return [ Utils::error(
+				$instance::getName(),
+				wfMessage(
+					"af-error-incorrect-argument-count-at-least",
+					$exception->getExpected(),
+					$exception->getActual()
+				)
+			) ];
 		} catch ( TooManyArgumentsException $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-argument-count-at-most", $exception->getExpected(), $exception->getActual() ) )];
+			return [ Utils::error(
+				$instance::getName(),
+				wfMessage(
+					"af-error-incorrect-argument-count-at-most",
+					$exception->getExpected(),
+					$exception->getActual()
+				)
+			) ];
 		} catch ( TypeMismatchException $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-incorrect-type", $exception->getExpected(), $exception->getActual(), $exception->getName(), $exception->getValue() ) )];
+			return [ Utils::error(
+				$instance::getName(),
+				wfMessage(
+					"af-error-incorrect-type",
+					$exception->getExpected(),
+					$exception->getActual(),
+					$exception->getName(),
+					$exception->getValue()
+				)
+			) ];
 		} catch ( MissingRequiredKeywordArgumentException $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-missing-required-keyword-argument", $exception->getKeyword() ) )];
+			return [ Utils::error(
+				$instance::getName(),
+				wfMessage(
+					"af-error-missing-required-keyword-argument",
+					$exception->getKeyword()
+				)
+			) ];
 		} catch ( UnexpectedKeywordArgument $exception ) {
-			return [Utils::error( $instance::getName(), wfMessage( "af-error-unexpected-keyword-argument", $exception->getKeyword() ) )];
+			return [ Utils::error(
+				$instance::getName(),
+				wfMessage(
+					"af-error-unexpected-keyword-argument",
+					$exception->getKeyword()
+				)
+			) ];
 		}
 
 		try {

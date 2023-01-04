@@ -6,4 +6,66 @@ af_template
 
 # This file tests the #af_template parser function
 
+!! article
+Template:Hello
+!! text
+Hello, {{{user}}}! Welcome to {{{wiki}}}.
+!! endarticle
 
+!! article
+Template:HelloProxy
+!! text
+{{#af_template: Hello | {{{data}}} }}
+!! endarticle
+
+!! article
+Hello
+!! text
+{{#af_template: Hello | {{{data}}} }}
+!! endarticle
+
+
+!! test
+Test one-dimensional object
+!! wikitext
+{{#af_template: Hello | {{#af_object: user=Marijn | wiki=Wikipedia }} }}
+!! html
+<p>Hello, Marijn! Welcome to Wikipedia.
+</p>
+!! end
+
+!! test
+Test multi-dimensional
+!! wikitext
+{{#af_template: HelloProxy | {{#af_object: data={{#af_object: user=Marijn | wiki=Wikipedia }} }} }}
+!! html
+<p>Hello, Marijn! Welcome to Wikipedia.
+</p>
+!! end
+
+!! test
+Test main namespace
+!! wikitext
+{{#af_template: :Hello | {{#af_object: data={{#af_object: user=Marijn | wiki=Wikipedia }} }} }}
+!! html
+<p>Hello, Marijn! Welcome to Wikipedia.
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_template: HelloProxy }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_template</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_template: HelloProxy | {{#af_object: a=a }} | b }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_template</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end

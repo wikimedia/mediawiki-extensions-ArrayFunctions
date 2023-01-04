@@ -72,7 +72,7 @@ class AFKeysort extends ArrayFunction {
 			}
 
 			// Do a spaceship comparison
-			return $multiplier * ($l <=> $r);
+			return $multiplier * ( $l <=> $r );
 		} );
 
 		return [ $array ];

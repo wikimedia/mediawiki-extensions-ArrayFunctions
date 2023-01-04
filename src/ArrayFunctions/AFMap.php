@@ -20,7 +20,7 @@ class AFMap extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array, string $valueName, PPNode $callback ): array {
-		return [array_map( function ( $value ) use ( $valueName, $callback ) {
+		return [ array_map( function ( $value ) use ( $valueName, $callback ) {
 			$args = $this->getFrame()->getArguments();
 			$args[$valueName] = Utils::export( $value );
 
@@ -28,6 +28,6 @@ class AFMap extends ArrayFunction {
 			$childFrame = $this->getFrame()->newChild( $nodeArray, $this->getFrame()->getTitle() );
 
 			return Utils::import( trim( $childFrame->expand( $callback ) ) );
-		}, $array )];
+		}, $array ) ];
 	}
 }

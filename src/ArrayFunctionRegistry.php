@@ -2,18 +2,18 @@
 
 namespace ArrayFunctions;
 
-use ArrayFunctions\ArrayFunctions\AFExists;
-use ArrayFunctions\ArrayFunctions\AFIf;
-use ArrayFunctions\ArrayFunctions\AFKeysort;
-use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFBool;
 use ArrayFunctions\ArrayFunctions\AFCount;
+use ArrayFunctions\ArrayFunctions\AFExists;
 use ArrayFunctions\ArrayFunctions\AFFloat;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
+use ArrayFunctions\ArrayFunctions\AFIf;
 use ArrayFunctions\ArrayFunctions\AFInt;
 use ArrayFunctions\ArrayFunctions\AFIsarray;
 use ArrayFunctions\ArrayFunctions\AFJoin;
+use ArrayFunctions\ArrayFunctions\AFKeysort;
+use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFMap;
 use ArrayFunctions\ArrayFunctions\AFObject;
 use ArrayFunctions\ArrayFunctions\AFPrint;
@@ -21,7 +21,6 @@ use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFSet;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
-use ArrayFunctions\ArrayFunctions\AFString;
 use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
