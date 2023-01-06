@@ -3,6 +3,7 @@
 namespace ArrayFunctions\ArrayFunctions;
 
 use ArrayFunctions\Exceptions\RuntimeException;
+use MWException;
 use Parser;
 use PPFrame;
 
@@ -98,11 +99,11 @@ abstract class ArrayFunction {
 	 *
 	 * @param string $keyword The name of the keyword argument to get
 	 * @return mixed|null
-	 * @throws RuntimeException
+	 * @throws MWException
 	 */
 	final protected function getKeywordArg( string $keyword ) {
 		if ( !isset( $this->keywordArgs[$keyword] ) ) {
-			throw new RuntimeException( wfMessage( 'af-error-missing-expected-keyword-argument', $keyword ) );
+			throw new MWException( "Missing required keyword argument " . $keyword );
 		}
 
 		return $this->keywordArgs[$keyword];
