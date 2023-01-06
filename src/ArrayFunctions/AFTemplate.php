@@ -54,7 +54,11 @@ class AFTemplate extends ArrayFunction {
 			throw new RuntimeException( wfMessage( 'af-error-max-template-depth-reached' ) );
 		}
 
-		$user = $this->getUserFactory()->newFromUserIdentity( $this->getParser()->getUserIdentity() );
+		if ( method_exists( $this->getParser(), 'getUserIdentity' ) ) {
+			$user = $this->getUserFactory()->newFromUserIdentity( $this->getParser()->getUserIdentity() );
+		} else {
+			$user = $this->getParser()->getUser();
+		}
 
 		if (
 			!$this->getPermissionManager()->userCan( 'read', $user, $title ) ||
