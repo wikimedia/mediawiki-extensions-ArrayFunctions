@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Exceptions\RuntimeException;
 use MWException;
 use Parser;
 use PPFrame;
