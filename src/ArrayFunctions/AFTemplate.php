@@ -6,6 +6,7 @@ use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\User\UserFactory;
 use NamespaceInfo;
 use Title;
 use TitleFactory;
@@ -53,8 +54,10 @@ class AFTemplate extends ArrayFunction {
 			throw new RuntimeException( wfMessage( 'af-error-max-template-depth-reached' ) );
 		}
 
+		$user = $this->getUserFactory()->newFromUserIdentity( $this->getParser()->getUserIdentity() );
+
 		if (
-			!$this->getPermissionManager()->userCan( 'read', $this->getParser()->getUser(), $title ) ||
+			!$this->getPermissionManager()->userCan( 'read', $user, $title ) ||
 			$this->getNamespaceInfo()->isNonincludable( $title->getNamespace() )
 		) {
 			// Template inclusion is denied
@@ -130,5 +133,14 @@ class AFTemplate extends ArrayFunction {
 	 */
 	private function getPermissionManager(): PermissionManager {
 		return MediaWikiServices::getInstance()->getPermissionManager();
+	}
+
+	/**
+	 * Returns the UserFactory singleton.
+	 *
+	 * @return UserFactory
+	 */
+	public function getUserFactory(): UserFactory {
+		return MediaWikiServices::getInstance()->getUserFactory();
 	}
 }
