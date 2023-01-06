@@ -111,7 +111,7 @@ Test invalid type for first argument
 !! end
 
 !! test
-Test invalid type for other arguments
+Test invalid type for other arguments 1
 !! wikitext
 {{#af_get: {{#af_object: foo=foo | boo=bar }} | {{#af_object: foo=foo }} }}
 !! html
@@ -120,7 +120,7 @@ Test invalid type for other arguments
 !! end
 
 !! test
-Test invalid type for other arguments
+Test invalid type for other arguments 2
 !! wikitext
 {{#af_get: {{#af_object: foo=foo | boo=bar }} | foo | {{#af_object: foo=foo }} }}
 !! html

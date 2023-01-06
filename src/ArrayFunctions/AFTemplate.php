@@ -54,7 +54,7 @@ class AFTemplate extends ArrayFunction {
 		}
 
 		if (
-			!$this->getPermissionManager()->userCan( 'read', $this->getParser()->getUser(), $title ) ||
+			!$this->getPermissionManager()->userCan( 'read', $this->getParser()->getOptions()->getUser(), $title ) ||
 			$this->getNamespaceInfo()->isNonincludable( $title->getNamespace() )
 		) {
 			// Template inclusion is denied
