@@ -1,7 +1,7 @@
 {
 	"name": "wikibase-solutions/array-functions",
 	"type": "mediawiki-extension",
-	"description": "Adds pure parser functions to work with arrays",
+	"description": "Provides a set of pure parser functions that operate on arrays",
 	"keywords": [
 		"mediawiki"
 	],
