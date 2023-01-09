@@ -15,12 +15,8 @@ function af.setupInterface()
 end
 
 -- export
-function af.export( table )
-	if not type( slotName ) == 'table' then
-		error( 'Invalid parameter type supplied to mw.af.export()' )
-	end
-
-	return php.export( table )
+function af.export( value )
+	return php.export( value )
 end
 
 return af
