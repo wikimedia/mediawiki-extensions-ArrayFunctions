@@ -18,12 +18,12 @@ class ArrayFunctionsLuaLibrary extends Scribunto_LuaLibraryBase {
 	}
 
 	/**
-	 * Exports the given table as base64 encoded JSON.
+	 * Exports the given value.
 	 *
-	 * @param array $table
+	 * @param array|int|float|string|bool $value
 	 * @return array
 	 */
-	public function export( array $table ): array {
-		return [ Utils::export( $table ) ];
+	public function export( $value ): array {
+		return [ Utils::export( $value ) ];
 	}
 }
