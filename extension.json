@@ -23,6 +23,9 @@
 	"AutoloadNamespaces": {
 		"ArrayFunctions\\": "src/"
 	},
+	"TestAutoloadNamespaces": {
+		"ArrayFunctions\\Tests\\": "tests/phpunit/"
+	},
 	"ExtensionMessagesFiles": {
 		"ArrayFunctionsMagic": "i18n/ArrayFunctions.i18n.php"
 	},
