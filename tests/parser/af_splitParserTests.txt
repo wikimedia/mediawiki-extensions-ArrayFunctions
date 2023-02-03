@@ -1,0 +1,62 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_split
+!! endfunctionhooks
+
+# This file tests the #af_split parser function
+
+!! test
+Test comma is default delimiter 1
+!! wikitext
+{{#af_print: {{#af_split: a,b }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test comma is default delimiter 2
+!! wikitext
+{{#af_print: {{#af_split: a,b |}} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test alternative delimiter
+!! wikitext
+{{#af_print: {{#af_split: a;b |;}} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test space delimiter
+!! wikitext
+{{#af_print: {{#af_split: a b |\s}} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test newline delimiter
+!! wikitext
+{{#af_print: {{#af_split: a
+b |\n}} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_split: a,b,c | , | v }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_split</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end
