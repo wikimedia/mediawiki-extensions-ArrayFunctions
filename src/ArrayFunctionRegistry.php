@@ -21,6 +21,7 @@ use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFSet;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
+use ArrayFunctions\ArrayFunctions\AFSplit;
 use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
@@ -80,6 +81,7 @@ class ArrayFunctionRegistry {
 			AFSet::class,
 			AFSlice::class,
 			AFSort::class,
+			AFSplit::class,
 			AFTemplate::class,
 			AFUnique::class,
 			AFUnset::class
