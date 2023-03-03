@@ -1,0 +1,60 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_reduce
+!! endfunctionhooks
+
+# This file tests the #af_reduce parser function
+
+!! test
+Test no callable
+!! wikitext
+{{#af_reduce: {{#af_list: a | b | c }} | c | i }}
+!! html
+!! end
+
+!! test
+Test concatenation
+!! wikitext
+{{#af_reduce: {{#af_list: a | b | c }} | c | i | {{{c}}}{{{i}}} }}
+!! html
+<p>abc
+</p>
+!! end
+
+!! test
+Building an equation
+!! wikitext
+{{#af_reduce: {{#af_list: 2 | 3 | 5 | 7 | 11 }} | c | i | {{{c}}} + {{{i}}} | 0 }}
+!! html
+<p>0 + 2 + 3 + 5 + 7 + 11
+</p>
+!! end
+
+!! test
+Inverse concatenation
+!! wikitext
+{{#af_reduce: {{#af_list: a | b | c | d | e }} | c | i | {{{i}}}{{{c}}} }}
+!! html
+<p>edcba
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_reduce: {{#af_list: a | b | c }} | c | i | 0 | 0 | foo }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_reduce</b>): Expected at most <b>5</b> positional parameters, <b>6</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_reduce: {{#af_list: a | b | c }} | c }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_reduce</b>): Expected at least <b>3</b> positional parameters, <b>2</b> given.</span>
+</p>
+!! end
+

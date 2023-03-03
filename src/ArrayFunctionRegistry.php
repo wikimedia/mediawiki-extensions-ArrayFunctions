@@ -10,14 +10,17 @@ use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
 use ArrayFunctions\ArrayFunctions\AFIf;
 use ArrayFunctions\ArrayFunctions\AFInt;
+use ArrayFunctions\ArrayFunctions\AFIntersect;
 use ArrayFunctions\ArrayFunctions\AFIsarray;
 use ArrayFunctions\ArrayFunctions\AFJoin;
 use ArrayFunctions\ArrayFunctions\AFKeysort;
 use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFMap;
+use ArrayFunctions\ArrayFunctions\AFMerge;
 use ArrayFunctions\ArrayFunctions\AFObject;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
+use ArrayFunctions\ArrayFunctions\AFReduce;
 use ArrayFunctions\ArrayFunctions\AFSet;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
@@ -71,13 +74,16 @@ class ArrayFunctionRegistry {
 			AFGet::class,
 			AFIf::class,
 			AFInt::class,
+			AFIntersect::class,
 			AFIsarray::class,
 			AFJoin::class,
 			AFKeysort::class,
 			AFMap::class,
+			AFMerge::class,
 			AFObject::class,
 			AFPrint::class,
 			AFPush::class,
+			AFReduce::class,
 			AFSet::class,
 			AFSlice::class,
 			AFSort::class,

@@ -1,0 +1,46 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_merge
+!! endfunctionhooks
+
+# This file tests the #af_merge parser function
+
+!! test
+Test single array
+!! wikitext
+{{#af_print: {{#af_merge: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test two arrays
+!! wikitext
+{{#af_print: {{#af_merge: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li></ul>
+!! end
+
+!! test
+Test three arrays
+!! wikitext
+{{#af_print: {{#af_merge: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} | {{#af_list: g | h | i }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li>
+<li>6: g</li>
+<li>7: h</li>
+<li>8: i</li></ul>
+!! end
