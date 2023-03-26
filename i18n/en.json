@@ -1,20 +1,20 @@
 {
-  "@metadata": {
-	"authors": [
-	  "Marijn van Wezel"
-	]
-  },
-  "af-desc": "Provides a set of pure parser functions that operate on arrays",
-  "af-extensionname": "ArrayFunctions",
-  "af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
-  "af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
-  "af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
-  "af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
-  "af-error-missing-required-keyword-argument": "Missing required keyword argument <b>$1</b>.",
-  "af-error-unexpected-keyword-argument": "Got an unexpected keyword argument <b>$1</b>.",
-  "af-error-invalid-template-name": "The given title <b>$1</b> is invalid.",
-  "af-error-template-does-not-exist": "The given title <b>$1</b> does not exist.",
-  "af-error-template-loop-detected": "Expansion of <b>$1</b> would cause a template loop.",
-  "af-error-max-template-depth-reached": "Template depth limit reached",
-  "af-error-template-inclusion-denied": "Template inclusion denied"
+	"@metadata": {
+		"authors": [
+			"Marijn van Wezel"
+		]
+	},
+	"af-desc": "Provides a set of pure parser functions that operate on arrays",
+	"af-extensionname": "ArrayFunctions",
+	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
+	"af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
+	"af-error-incorrect-argument-count-at-most": "Expected at most <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",
+	"af-error-missing-required-keyword-argument": "Missing required keyword argument <b>$1</b>.",
+	"af-error-unexpected-keyword-argument": "Got an unexpected keyword argument <b>$1</b>.",
+	"af-error-invalid-template-name": "The given title <b>$1</b> is invalid.",
+	"af-error-template-does-not-exist": "The given title <b>$1</b> does not exist.",
+	"af-error-template-loop-detected": "Expansion of <b>$1</b> would cause a template loop.",
+	"af-error-max-template-depth-reached": "Template depth limit reached",
+	"af-error-template-inclusion-denied": "Template inclusion denied"
 }

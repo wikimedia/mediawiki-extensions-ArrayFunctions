@@ -7,7 +7,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:ArrayFunctions",
 	"descriptionmsg": "af-desc",
-    "namemsg": "af-extensionname",
+	"namemsg": "af-extensionname",
 	"license-name": "GPL-2.0-or-later",
 	"requires": {
 		"MediaWiki": ">= 1.35.6",
@@ -30,25 +30,25 @@
 		"ArrayFunctionsMagic": "i18n/ArrayFunctions.i18n.php"
 	},
 	"HookHandlers": {
-	  	"Trivial": {
-		  	"class": "\\ArrayFunctions\\TrivialHookHandler"
+		"Trivial": {
+			"class": "\\ArrayFunctions\\TrivialHookHandler"
 		},
 		"ParserInit": {
 			"class": "\\ArrayFunctions\\ParserInitHookHandler",
-		  	"services": [
-			    "ArrayFunctions.ArrayFunctionRegistry"
+			"services": [
+				"ArrayFunctions.ArrayFunctionRegistry"
 			]
 		}
 	},
 	"Hooks": {
-	  	"ParserFirstCallInit": "ParserInit",
-	  	"ParserGetVariableValueSwitch": "Trivial",
-	  	"GetMagicVariableIDs": "Trivial",
-	  	"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
+		"ParserFirstCallInit": "ParserInit",
+		"ParserGetVariableValueSwitch": "Trivial",
+		"GetMagicVariableIDs": "Trivial",
+		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
 	},
 	"ServiceWiringFiles": [
-	  	"src/ArrayFunctions.ServiceWiring.php"
+		"src/ArrayFunctions.ServiceWiring.php"
 	],
-  	"callback": "\\ArrayFunctions\\LegacyHookHandler::onExtensionRegistration",
+	"callback": "\\ArrayFunctions\\LegacyHookHandler::onExtensionRegistration",
 	"manifest_version": 2
 }
