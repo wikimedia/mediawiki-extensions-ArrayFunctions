@@ -516,3 +516,12 @@ Remove a nested index
 <ul><li>foo
 <ul><li>far: buz</li></ul></li></ul>
 !! end
+
+!! test
+Search for a value in an array
+!! wikitext
+{{#af_print: {{#af_search: {{#af_list: a | b | c }} | b }} }}
+!! html
+<p>1
+</p>
+!! end

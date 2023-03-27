@@ -1,0 +1,78 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_search
+!! endfunctionhooks
+
+# This file tests the #af_search parser function
+
+!! test
+Test value not in array returns empty string
+!! wikitext
+{{#af_search: {{#af_list: a | b | c }} | d }}
+!! html
+!! end
+
+!! test
+Test value in list returns integer
+!! wikitext
+{{#af_search: {{#af_list: a | b | c }} | c }}
+!! html
+<p>integer__^__2
+</p>
+!! end
+
+!! test
+Test value in object returns string
+!! wikitext
+{{#af_search: {{#af_object: a=a | b=bb | c=c }} | c }}
+!! html
+<p>c
+</p>
+!! end
+
+!! test
+Test comparison is strict
+!! wikitext
+{{#af_search: {{#af_list: 1 | {{#af_int: 1 }} }} | 1 }} {{#af_search: {{#af_list: 1 | {{#af_int: 1 }} }} | {{#af_int: 1 }} }}
+!! html
+<p>integer__^__0 integer__^__1
+</p>
+!! end
+
+!! test
+Test search subarray
+!! wikitext
+{{#af_search: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | {{#af_list: d | e | f }} }}
+!! html
+<p>integer__^__1
+</p>
+!! end
+
+!! test
+Test multiple occurrences return first key
+!! wikitext
+{{#af_search: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: a | b | c }} }} | {{#af_list: a | b | c }} }}
+!! html
+<p>integer__^__0
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_search: {{#af_list: a | b | c }} | a | b }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_search</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_search: {{#af_list: a | b | c }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_search</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+

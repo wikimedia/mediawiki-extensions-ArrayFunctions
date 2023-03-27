@@ -21,6 +21,7 @@ use ArrayFunctions\ArrayFunctions\AFObject;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFReduce;
+use ArrayFunctions\ArrayFunctions\AFSearch;
 use ArrayFunctions\ArrayFunctions\AFSet;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
@@ -84,6 +85,7 @@ class ArrayFunctionRegistry {
 			AFPrint::class,
 			AFPush::class,
 			AFReduce::class,
+			AFSearch::class,
 			AFSet::class,
 			AFSlice::class,
 			AFSort::class,
