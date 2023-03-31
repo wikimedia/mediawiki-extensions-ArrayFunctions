@@ -6,7 +6,10 @@
  *
  * @file
  */
+
+use ArrayFunctions\ArrayEnvironment;
 use ArrayFunctions\ArrayFunctionRegistry;
+use MediaWiki\MediaWikiServices;
 
 // PHP unit does not understand code coverage for this file
 // as the @covers annotation cannot cover a specific file
@@ -14,6 +17,9 @@ use ArrayFunctions\ArrayFunctionRegistry;
 // @codeCoverageIgnoreStart
 
 return [
+	"ArrayFunctions.ArrayEnvironment" => static function ( MediaWikiServices $services ): ArrayEnvironment {
+		return new ArrayEnvironment( $services->getMainConfig()->get( 'ArrayFunctionsMaxReferenceCount' ) );
+	},
 	"ArrayFunctions.ArrayFunctionRegistry" => static function (): ArrayFunctionRegistry {
 		return new ArrayFunctionRegistry();
 	}

@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions;
 
-use FormatJson;
 use Message;
 
 /**
@@ -28,7 +27,7 @@ class Utils {
 		}
 
 		if ( $type === "array" ) {
-			$value = base64_encode( FormatJson::encode( $value ) );
+			$value = ArrayFunctionsServices::getArrayEnvironment()->store( $value );
 		}
 
 		if ( $type === "boolean" ) {
@@ -79,23 +78,11 @@ class Utils {
 
 				break;
 			case "array":
-				// Try decoding and parsing to see if it was a base64 encoded JSON string
-				$maybeJson = base64_decode( $value );
+				// Try dereferencing the array
+				$maybeArray = ArrayFunctionsServices::getArrayEnvironment()->dereference( $value );
 
-				if ( $maybeJson !== false ) {
-					if ( $maybeJson === '{}' ) {
-						// Short-circuit for empty objects, since FormatJson does not handle them correctly
-						return [];
-					}
-
-					$status = FormatJson::parse(
-						$maybeJson,
-						FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS
-					);
-
-					if ( $status->isGood() ) {
-						return $status->getValue();
-					}
+				if ( $maybeArray !== null ) {
+					return $maybeArray;
 				}
 
 				break;
