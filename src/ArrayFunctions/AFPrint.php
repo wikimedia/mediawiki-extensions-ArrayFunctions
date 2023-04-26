@@ -70,25 +70,11 @@ class AFPrint extends ArrayFunction {
 				$result .= "\n" . $this->formatArray( $v, $depth + 1 );
 			} else {
 				// Print the value
-				$result .= ": " . $this->armourWikitext( $this->formatValue( $v ) ) . "\n";
+				$result .= ": " . $this->armourWikitext( Utils::stringify( $v ) ) . "\n";
 			}
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Format the given value as a string.
-	 *
-	 * @param mixed $value
-	 * @return string
-	 */
-	private function formatValue( $value ): string {
-		if ( is_bool( $value ) ) {
-			return $value ? "true" : "false";
-		}
-
-		return sprintf( "%s", $value );
 	}
 
 	/**

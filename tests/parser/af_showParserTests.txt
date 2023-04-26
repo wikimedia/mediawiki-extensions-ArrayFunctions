@@ -1,0 +1,119 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_show
+!! endfunctionhooks
+
+# This file tests the #af_show parser function
+
+!! test
+Test simple string
+!! wikitext
+{{#af_show: Hello World! }}
+!! html
+<p>Hello World!
+</p>
+!! end
+
+!! test
+Test integer
+!! wikitext
+{{#af_show: {{#af_int: 10 }} }}
+!! html
+<p>10
+</p>
+!! end
+
+!! test
+Test float
+!! wikitext
+{{#af_show: {{#af_float: 10.5 }} }}
+!! html
+<p>10.5
+</p>
+!! end
+
+!! test
+Test true
+!! wikitext
+{{#af_show: {{#af_bool: true }} }}
+!! html
+<p>true
+</p>
+!! end
+
+!! test
+Test false
+!! wikitext
+{{#af_show: {{#af_bool: false }} }}
+!! html
+<p>false
+</p>
+!! end
+
+!! test
+Test string with wikitext
+!! wikitext
+{{#af_show: == Hello World == }}
+!! html
+<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
+!! end
+
+!! test
+Test string with wikitext from array
+!! wikitext
+{{#af_show: {{#af_get: {{#af_map: {{#af_list: Hello World }} | v | == {{{v}}} == }} | 0 }} }}
+!! html
+<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
+!! end
+
+!! test
+Test list gives error
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The value <b>array__^__WyJhIiwiYiIsImMiXQ==</b> cannot be shown.</span>
+</p>
+!! end
+
+!! test
+Test object gives error
+!! wikitext
+{{#af_show: {{#af_object: a=a | b=b | c=c }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The value <b>array__^__eyJhIjoiYSIsImIiOiJiIiwiYyI6ImMifQ==</b> cannot be shown.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_show: a | b }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
+
+!! test
+Test empty string
+!! wikitext
+{{#af_show: }}
+!! html
+!! end
+
+!! test
+Test idempotence
+!! wikitext
+{{#af_show: {{#af_show: == Hello World == }} }}
+!! html
+<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
+!! end
+
+!! test
+Test show print
+!! wikitext
+{{#af_print: {{#af_show: == Hello World == }} }}
+!! html
+<p>== Hello World ==
+</p>
+!! end

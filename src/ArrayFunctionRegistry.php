@@ -23,6 +23,7 @@ use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFReduce;
 use ArrayFunctions\ArrayFunctions\AFSearch;
 use ArrayFunctions\ArrayFunctions\AFSet;
+use ArrayFunctions\ArrayFunctions\AFShow;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
 use ArrayFunctions\ArrayFunctions\AFSplit;
@@ -87,6 +88,7 @@ class ArrayFunctionRegistry {
 			AFReduce::class,
 			AFSearch::class,
 			AFSet::class,
+			AFShow::class,
 			AFSlice::class,
 			AFSort::class,
 			AFSplit::class,

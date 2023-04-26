@@ -15,6 +15,7 @@
 	"af-error-invalid-template-name": "The given title <b>$1</b> is invalid.",
 	"af-error-template-does-not-exist": "The given title <b>$1</b> does not exist.",
 	"af-error-template-loop-detected": "Expansion of <b>$1</b> would cause a template loop.",
-	"af-error-max-template-depth-reached": "Template depth limit reached",
-	"af-error-template-inclusion-denied": "Template inclusion denied"
+	"af-error-max-template-depth-reached": "Template depth limit reached.",
+	"af-error-template-inclusion-denied": "Template inclusion denied.",
+ 	"af-error-value-not-showable": "The value <b>$1</b> cannot be shown."
 }

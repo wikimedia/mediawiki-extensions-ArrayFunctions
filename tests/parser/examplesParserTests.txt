@@ -525,3 +525,12 @@ Search for a value in an array
 <p>1
 </p>
 !! end
+
+!! test
+Show a value
+!! wikitext
+{{#af_show: Hello World! }}
+!! html
+<p>Hello World!
+</p>
+!! end
