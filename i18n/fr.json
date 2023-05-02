@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
+	"af-error": "<span class=\"error\">FonctionsTableau (<b>#$1</b>) : $2</span>",
+	"af-error-incorrect-type": "Impossible de faire correspondre le type attendu <b>$1</b> avec le type réel <b>$2</b> pour le paramètre <b>$3</b> (« $4 »).",
+	"af-error-incorrect-argument-count-at-least": "Au moins <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
+	"af-error-incorrect-argument-count-at-most": "Au plus <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
+	"af-error-missing-required-keyword-argument": "L’argument de mot-clé obligatoire <b>$1</b> est manquant.",
+	"af-error-unexpected-keyword-argument": "Un argument de mot-clé inattendu <b>$1</b> a été obtenu.",
+	"af-error-invalid-template-name": "Le titre donné <b>$1</b> n’est pas valide.",
+	"af-error-template-does-not-exist": "Le titre donné <b>$1</b> n’existe pas.",
+	"af-error-template-loop-detected": "L’expansion de <b>$1</b> provoquerait une boucle de modèle.",
+	"af-error-max-template-depth-reached": "La limite de profondeur de modèle a été atteinte.",
+	"af-error-template-inclusion-denied": "L’inclusion de modèle est refusée.",
+	"af-error-value-not-showable": "La valeur <b>$1</b> ne peut pas être affichée."
+}

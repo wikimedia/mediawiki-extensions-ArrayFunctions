@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"af-desc": "Zagotovi nabor čistih funkcij razčlenjevalnika, ki operirajo na matrikah",
+	"af-error": "<span class=\"error\">MatrikaFunkcij (<b>#$1</b>): $2</span>",
+	"af-error-missing-required-keyword-argument": "Manjka obvezni argument ključne besede <b>$1</b>.",
+	"af-error-unexpected-keyword-argument": "Pridobljen je bil nepričakovan argument ključne besede <b>$1</b>.",
+	"af-error-invalid-template-name": "Predloženi naslov <b>$1</b> je neveljaven.",
+	"af-error-template-does-not-exist": "Predloženi naslov <b>$1</b> ne obstaja.",
+	"af-error-template-loop-detected": "Razširitev <b>$1</b> bi povzročila zanko predloge.",
+	"af-error-max-template-depth-reached": "Dosežena omejitev globine predloge.",
+	"af-error-template-inclusion-denied": "Vključitev predloge zavrnjena.",
+	"af-error-value-not-showable": "Vrednosti <b>$1</b> ni mogoče prikazati."
+}

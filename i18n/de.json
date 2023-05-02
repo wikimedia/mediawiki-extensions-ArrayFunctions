@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"af-desc": "Bietet eine Reihe von reinen Parser-Funktionen, die mit Arrays arbeiten",
+	"af-error": "<span class=\"error\">Array-Funktionen (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Der erwartete Typ <b>$1</b> konnte nicht mit dem tatsächlichen Typ <b>$2</b> für den Parameter <b>$3</b> („$4“) abgeglichen werden.",
+	"af-error-incorrect-argument-count-at-least": "Mindestens <b>$1</b> {{PLURAL:$1|Parameter}} erwartet, <b>$2</b> gegeben.",
+	"af-error-incorrect-argument-count-at-most": "Höchstens <b>$1</b> {{PLURAL:$1|Parameter}} erwartet, <b>$2</b> gegeben.",
+	"af-error-missing-required-keyword-argument": "Das erforderliche Schlüsselwortargument <b>$1</b> fehlt.",
+	"af-error-unexpected-keyword-argument": "Unerwartetes Schlüsselwort-Argument <b>$1</b> erhalten.",
+	"af-error-invalid-template-name": "Der angegebene Titel <b>$1</b> ist ungültig.",
+	"af-error-template-does-not-exist": "Der angegebene Titel <b>$1</b> existiert nicht.",
+	"af-error-template-loop-detected": "Die Erweiterung von <b>$1</b> würde eine Vorlagenschleife verursachen.",
+	"af-error-max-template-depth-reached": "Grenzwert für Vorlagentiefe erreicht.",
+	"af-error-template-inclusion-denied": "Vorlageneinbindung verweigert.",
+	"af-error-value-not-showable": "Der Wert <b>$1</b> kann nicht angezeigt werden."
+}
