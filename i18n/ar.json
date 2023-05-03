@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alshamiri1"
+		]
+	},
+	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
+	"af-error": "<span class=\"error\">ArrayFunctions ( <b># $1</b> ): $2</span>",
+	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
+	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
+	"af-error-incorrect-argument-count-at-most": "متوقع كحد أقصى <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
+	"af-error-missing-required-keyword-argument": "لم يتم إدخال وسيطة الكلمة الأساسية المطلوبة <b>$1</b> .",
+	"af-error-unexpected-keyword-argument": "حصلت على وسيطة غير متوقعة للكلمة الأساسية <b>$1</b> .",
+	"af-error-invalid-template-name": "العنوان المقدم <b>$1</b> غير صالح.",
+	"af-error-template-does-not-exist": "العنوان المقدم <b>$1</b> غير موجود.",
+	"af-error-template-loop-detected": "قد يؤدي التوسيع بمقدار <b>$1</b> إلى حدوث تكرار في القالب.",
+	"af-error-max-template-depth-reached": "تم الوصول إلى الحد الأقصى لعمق القالب.",
+	"af-error-template-inclusion-denied": "تم رفض تضمين القالب.",
+	"af-error-value-not-showable": "لا يمكن عرض القيمة <b>$1</b> ."
+}
