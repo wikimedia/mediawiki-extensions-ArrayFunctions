@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"af-desc": "Forni un insimul de functiones pur del analysator syntactic que opera sur arrays",
+	"af-error": "<span class=\"error\">FunctionesArray (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Non poteva facer corresponder le typo expectate <b>$1</b> con le typo real <b>$2</b> pro le parametro <b>$3</b> (\"$4\").",
+	"af-error-incorrect-argument-count-at-least": "Expectava al minus <b>$1</b> parametro{{PLURAL:$1||s}} positional, <b>$2</b> date.",
+	"af-error-incorrect-argument-count-at-most": "Expectava al plus <b>$1</b> parametro{{PLURAL:$1||s}} positional, <b>$2</b> date.",
+	"af-error-missing-required-keyword-argument": "Le argumento de parola-clave obligatori <b>$1</b> manca.",
+	"af-error-unexpected-keyword-argument": "Incontrava un argumento de parola-clave inexpectate <b>$1</b>.",
+	"af-error-invalid-template-name": "Le titulo fornite <b>$1</b> non es valide.",
+	"af-error-template-does-not-exist": "Le titulo fornite <b>$1</b> non existe.",
+	"af-error-template-loop-detected": "Le expansion de <b>$1</b> causarea un bucla de patronos."
+}
