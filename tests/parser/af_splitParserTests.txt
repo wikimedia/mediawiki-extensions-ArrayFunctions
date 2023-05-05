@@ -53,6 +53,15 @@ b |\n}} }}
 !! end
 
 !! test
+Test empty string
+!! wikitext
+{{#af_print: {{#af_count: {{#af_split: |,}} }} }}
+!! html
+<p>0
+</p>
+!! end
+
+!! test
 Test too many arguments
 !! wikitext
 {{#af_split: a,b,c | , | v }}

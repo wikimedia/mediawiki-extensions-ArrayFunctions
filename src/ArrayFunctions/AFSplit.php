@@ -18,7 +18,11 @@ class AFSplit extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( string $string, ?string $separator = ',' ): array {
+	public function execute( ?string $string, ?string $separator = ',' ): array {
+		if ( $string === null ) {
+			return [ [] ];
+		}
+
 		return [ explode( Utils::unescape( $separator ?? ',' ), $string ) ];
 	}
 }
