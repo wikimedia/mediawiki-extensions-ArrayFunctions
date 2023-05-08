@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Re demz"
+		]
+	},
+	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "O tipo atual <b>$2</b> não corresponde ao tipo esperado <b>$1</b> para o parâmetro <b>$3</b> (\"$4\").",
+	"af-error-invalid-template-name": "O título dado <b>$1</b> é inválido.",
+	"af-error-template-does-not-exist": "O título dado <b>$1</b> não existe."
+}
