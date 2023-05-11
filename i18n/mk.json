@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"af-desc": "Дава збир чисти расчленувачки функции кои работат со строеви",
+	"af-error": "<span class=\"error\">Стројни функции (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Не можев да го совпаднам очекуваниот тип <b>$1</b> со фактички тип <b>$2</b> за параметарот <b>$3</b> („$4“).",
+	"af-error-incorrect-argument-count-at-least": "Се {{PLURAL:$1|очекуваше|очекуваа}} барем <b>$1</b> {{PLURAL:$1|положбен параметар|положбени параметри}}, а {{PLURAL:$1|даден е|дадени се}} <b>$2</b>.",
+	"af-error-incorrect-argument-count-at-most": "Се {{PLURAL:$1|очекуваше|очекуваа}} највеќе <b>$1</b> {{PLURAL:$1|положбен параметар|положбени параметри}}, а {{PLURAL:$1|даден е|дадени се}} <b>$2</b>.",
+	"af-error-missing-required-keyword-argument": "Недостасува задолжителен аргумент <b>$1</b> за клучен збор.",
+	"af-error-unexpected-keyword-argument": "Добив неочекуван аргумент <b>$1</b> за клучен збор.",
+	"af-error-invalid-template-name": "Дадениот наслов <b>$1</b> е неважечки.",
+	"af-error-template-does-not-exist": "Дадениот наслов <b>$1</b> не постои.",
+	"af-error-template-loop-detected": "Проширувањето на <b>$1</b> ќе предизвика јамка во предлошката."
+}

@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Marijn van Wezel"
+			"Marijn van Wezel",
+			"Amire80"
 		]
 	},
 	"af-desc": "{{desc|name=Array Functions|url=https://www.mediawiki.org/wiki/Extension:ArrayFunctions}}",
-    "af-extensionname": "{{name}}",
-  	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
- 	"af-error-incorrect-type": "Error message given a given parameter does not have the expected type. Parameters:\n* $1 - the type that was expected\n* $2 - the type of the value that was given\n* $3 - the name or index of the parameter for which the type mismatch occurred\n* $4 - the value of the parameter",
-  	"af-error-incorrect-argument-count-at-least": "Error message given when not enough arguments are given to a parser function. Parameters:\n* the minimum expected number of parameters\n* the actual number of parameters\nSee also:\n* {{msg-mw|af-error-incorrect-argument-count-at-most}}",
-  	"af-error-incorrect-argument-count-at-most": "Error message given when too many arguments are given to a parser function. Parameters:\n* the maximum expected number of parameters\n* the actual number of parameters\nSee also:\n* {{msg-mw|af-error-incorrect-argument-count-at-least}}",
-  	"af-error-missing-required-keyword-argument": "Error message given when a required keyword argument is missing. Parameters:\n* $1 - the name of the keyword argument that is missing",
-  	"af-error-unexpected-keyword-argument": "Error message given when an unknown keyword argument is given. Parameters:\n* $1 - the name of the keyword argument that is given",
-  	"af-error-invalid-template-name": "Error message given when passing an invalid title to some parser functions. Parameters:\n* $1 - the title that was passed",
-  	"af-error-template-does-not-exist": "Error message given when passing a title that does not exist to some parser functions. Parameters:\n* $1 - the title that was passed",
-  	"af-error-template-loop-detected": "Error message given when trying to expand a template such that it causes a template loop. Parameters:\n* $1 - the title that would cause the template loop",
-  	"af-error-max-template-depth-reached": "Error message given when trying to expand a template after the maximum template depth has been reached.",
-  	"af-error-template-inclusion-denied": "Error message given when trying to expand a template that the user may not view or that may not be included."
+	"af-extensionname": "{{name}}",
+	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
+	"af-error-incorrect-type": "Error message given a given parameter does not have the expected type. Parameters:\n* $1 - the type that was expected\n* $2 - the type of the value that was given\n* $3 - the name or index of the parameter for which the type mismatch occurred\n* $4 - the value of the parameter",
+	"af-error-incorrect-argument-count-at-least": "Error message given when not enough arguments are given to a parser function. Parameters:\n* $1 - the minimum expected number of parameters\n* $2 - the actual number of parameters\nSee also:\n* {{msg-mw|af-error-incorrect-argument-count-at-most}}",
+	"af-error-incorrect-argument-count-at-most": "Error message given when too many arguments are given to a parser function. Parameters:\n* the maximum expected number of parameters\n* the actual number of parameters\nSee also:\n* {{msg-mw|af-error-incorrect-argument-count-at-least}}",
+	"af-error-missing-required-keyword-argument": "Error message given when a required keyword argument is missing. Parameters:\n* $1 - the name of the keyword argument that is missing",
+	"af-error-unexpected-keyword-argument": "Error message given when an unknown keyword argument is given. Parameters:\n* $1 - the name of the keyword argument that is given",
+	"af-error-invalid-template-name": "Error message given when passing an invalid title to some parser functions. Parameters:\n* $1 - the title that was passed",
+	"af-error-template-does-not-exist": "Error message given when passing a title that does not exist to some parser functions. Parameters:\n* $1 - the title that was passed",
+	"af-error-template-loop-detected": "Error message given when trying to expand a template such that it causes a template loop. Parameters:\n* $1 - the title that would cause the template loop",
+	"af-error-max-template-depth-reached": "Error message given when trying to expand a template after the maximum template depth has been reached.",
+	"af-error-template-inclusion-denied": "Error message given when trying to expand a template that the user may not view or that may not be included."
 }

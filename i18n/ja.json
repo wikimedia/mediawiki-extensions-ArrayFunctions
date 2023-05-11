@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chqaz"
+		]
+	},
+	"af-desc": "配列を操作する一連の純粋なパーサー関数を提供します",
+	"af-error": "<span class=\"error\">配列関数 ( <b># $1</b> ): $2</span>",
+	"af-error-incorrect-type": "パラメータ<b>$3</b> (\" $4 \") の予想される型<b>$1</b>と実際の型<b>$2</b>を一致させることができませんでした。",
+	"af-error-incorrect-argument-count-at-least": "少なくとも<b>$1</b>の位置に{{PLURAL:$1|parameter|parameters}}が必要です。<b>$2</b>が与えられました。",
+	"af-error-missing-required-keyword-argument": "必要なキーワード引数<b>$1</b>がありません。",
+	"af-error-unexpected-keyword-argument": "予期しないキーワード引数<b>$1</b>を取得しました。",
+	"af-error-invalid-template-name": "指定されたタイトル<b>$1</b>は無効です。",
+	"af-error-template-does-not-exist": "指定されたタイトル<b>$1</b>は存在しません。",
+	"af-error-template-loop-detected": "<b>$1</b>を展開すると、テンプレート ループが発生します。"
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"af-error-invalid-template-name": "지정된 <b>$1</b> 제목은 유효하지 않습니다."
+}

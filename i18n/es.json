@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"No se"
+		]
+	},
+	"af-desc": "Proporciona un conjunto de funciones de analizador puras que operan en matrices",
+	"af-error": "<span class=\"error\">Funciones de Matriz (<b>#$1</b>): $2</span>"
+}
