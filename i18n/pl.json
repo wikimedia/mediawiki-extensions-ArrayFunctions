@@ -4,5 +4,16 @@
 			"Rail"
 		]
 	},
-	"af-desc": "Dostarcza zestaw funkcji parsera do operacji z tablicami danych"
+	"af-desc": "Dostarcza zestaw funkcji parsera do operacji z tablicami danych",
+	"af-error-incorrect-type": "Oczekiwany typ <b>$1</b> nie pasuje do rzeczywistego typu <b>$2</b> parametru <b>$3</b> („$4”).",
+	"af-error-incorrect-argument-count-at-least": "Oczekiwano co najmniej <b>$1</b> {{PLURAL:$1|pozycyjnego parametru|pozycyjnych parametrów}}, podano <b>$2</b>.",
+	"af-error-incorrect-argument-count-at-most": "Oczekiwano co najwyżej <b>$1</b> {{PLURAL:$1|pozycyjnego parametru|pozycyjnych parametrów}}, podano <b>$2</b>.",
+	"af-error-missing-required-keyword-argument": "Brak wymaganego argumentu słowa kluczowego <b>$1</b>.",
+	"af-error-unexpected-keyword-argument": "Otrzymano nieoczekiwany argument słowa kluczowego <b>$1</b>.",
+	"af-error-invalid-template-name": "Podany tytuł <b>$1</b> jest nieprawidłowy.",
+	"af-error-template-does-not-exist": "Podany tytuł <b>$1</b> nie istnieje.",
+	"af-error-template-loop-detected": "Rozwinięcie <b>$1</b> spowodowałoby pętlę szablonu.",
+	"af-error-max-template-depth-reached": "Osiągnięto limit głębokości szablonu.",
+	"af-error-template-inclusion-denied": "Odmowa dołączenia szablonu.",
+	"af-error-value-not-showable": "Nie można wyświetlić wartości <b>$1</b>."
 }
