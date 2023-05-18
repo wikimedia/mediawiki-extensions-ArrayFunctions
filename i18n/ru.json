@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"af-error-max-template-depth-reached": "Достигнут предел глубины шаблона."
+}
