@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hanna Tardos"
+		]
+	},
+	"af-error-invalid-template-name": "A megadott cím <b>$1</b> érvénytelen."
+}

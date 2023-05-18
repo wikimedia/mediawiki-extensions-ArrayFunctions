@@ -5,8 +5,9 @@
 		]
 	},
 	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
-	"af-error": "<span class=\"error\">FonctionsTableau (<b>#$1</b>) : $2</span>",
-	"af-error-incorrect-type": "Impossible de faire correspondre le type attendu <b>$1</b> avec le type réel <b>$2</b> pour le paramètre <b>$3</b> (« $4 »).",
+	"af-extensionname": "FonctionsDeTableau",
+	"af-error": "<span class=\"error\">FonctionsDeTableau (<b>#$1</b>) : $2</span>",
+	"af-error-incorrect-type": "Impossible de faire correspondre le type attendu <b>$1</b> avec le type effectif <b>$2</b> pour le paramètre <b>$3</b> (« $4 »).",
 	"af-error-incorrect-argument-count-at-least": "Au moins <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
 	"af-error-incorrect-argument-count-at-most": "Au plus <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
 	"af-error-missing-required-keyword-argument": "L’argument de mot-clé obligatoire <b>$1</b> est manquant.",
