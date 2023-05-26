@@ -4,6 +4,7 @@ namespace ArrayFunctions\ArrayFunctions;
 
 use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserFactory;
@@ -37,7 +38,7 @@ class AFTemplate extends ArrayFunction {
 	 *
 	 * @param string $templateName The template to expand
 	 * @param array $data The data to pass to the template
-	 * @return string The resulting HTML
+	 * @return string The resulting wikitext
 	 * @throws RuntimeException
 	 */
 	private function expandTemplate( string $templateName, array $data ): string {
@@ -72,7 +73,7 @@ class AFTemplate extends ArrayFunction {
 
 		if ( $node === false ) {
 			// Template does not exist
-			throw new RuntimeException( wfMessage( 'af-error-template-does-not-exist', $templateName ) );
+			return sprintf( '[[%s]]', $title->getFullText() );
 		}
 
 		if ( !$this->getFrame()->loopCheck( $finalTitle ) ) {
@@ -98,7 +99,7 @@ class AFTemplate extends ArrayFunction {
 		$templateArgs = $this->getParser()->getPreprocessor()->newPartNodeArray( $templateArgs );
 		$newFrame = $frame->newChild( $templateArgs, $finalTitle );
 
-		// Expand the frame and return the resulting HTML
+		// Expand the frame and return the resulting wikitext
 		return $newFrame->expand( $node );
 	}
 
@@ -144,7 +145,16 @@ class AFTemplate extends ArrayFunction {
 	 *
 	 * @return UserFactory
 	 */
-	public function getUserFactory(): UserFactory {
+	private function getUserFactory(): UserFactory {
 		return MediaWikiServices::getInstance()->getUserFactory();
+	}
+
+	/**
+	 * Returns the LinkRenderer singleton.
+	 *
+	 * @return LinkRenderer
+	 */
+	private function getLinkRenderer(): LinkRenderer {
+		return MediaWikiServices::getInstance()->getLinkRenderer();
 	}
 }
