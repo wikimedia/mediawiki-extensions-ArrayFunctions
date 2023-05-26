@@ -12,7 +12,7 @@ class Utils {
 	/**
 	 * Exports the given value.
 	 *
-	 * @param array|int|float|string|bool $value The value to export
+	 * @param array|int|float|string|bool|null $value The value to export
 	 * @return string The resulting exported string
 	 */
 	public static function export( $value ): string {
@@ -22,6 +22,10 @@ class Utils {
 		}
 
 		$type = gettype( $value );
+
+		if ( $type === "NULL" ) {
+			return "";
+		}
 
 		if ( $type === "double" ) {
 			$type = "float";
