@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pyscowicz"
+		]
+	},
+	"af-error-invalid-template-name": "Annettu otsikko <b>$1</b> on virheellinen.",
+	"af-error-template-does-not-exist": "Annettua otsikkoa <b>$1</b> ei ole olemassa."
+}
