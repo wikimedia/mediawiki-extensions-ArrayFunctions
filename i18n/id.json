@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Agam Riyandana"
+		]
+	},
+	"af-desc": "Menyediakan satu set fungsi parser murni yang beroperasi pada array",
+	"af-error": "<span class=\"error\">LarikFungsi ( <b># $1</b> ): $2</span>",
+	"af-error-incorrect-type": "Tidak dapat mencocokkan tipe yang diharapkan <b>$1</b> dengan tipe aktual <b>$2</b> untuk parameter <b>$3</b> (\" $4 \").",
+	"af-error-incorrect-argument-count-at-least": "Diharapkan setidaknya <b>$1</b> posisi {{PLURAL:$1| parameter|parameter}}, <b>$2</b> diberikan.",
+	"af-error-incorrect-argument-count-at-most": "Diharapkan maksimal <b>$1</b> posisi {{PLURAL:$1| parameter|parameter}}, <b>$2</b> diberikan.",
+	"af-error-missing-required-keyword-argument": "Argumen kata kunci yang diperlukan tidak ada <b>$1</b> .",
+	"af-error-unexpected-keyword-argument": "Mendapat argumen kata kunci tak terduga <b>$1</b> .",
+	"af-error-invalid-template-name": "Judul yang diberikan <b>$1</b> tidak valid.",
+	"af-error-template-does-not-exist": "Judul yang diberikan <b>$1</b> tidak ada.",
+	"af-error-template-loop-detected": "Perluasan <b>$1</b> akan menyebabkan template loop."
+}
