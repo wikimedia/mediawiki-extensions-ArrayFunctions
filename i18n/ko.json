@@ -4,5 +4,8 @@
 			"Ykhwong"
 		]
 	},
-	"af-error-invalid-template-name": "지정된 <b>$1</b> 제목은 유효하지 않습니다."
+	"af-error-invalid-template-name": "지정된 <b>$1</b> 제목은 유효하지 않습니다.",
+	"af-error-max-template-depth-reached": "틀 깊이 제한에 도달했습니다.",
+	"af-error-template-inclusion-denied": "틀 포함이 거부되었습니다.",
+	"af-error-value-not-showable": "<b>$1</b> 값을 표시할 수 없습니다."
 }
