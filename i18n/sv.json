@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"af-desc": "Tillhandahåller en uppsättning rena parserfunktioner som fungerar på arrayer",
+	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Kunde inte matcha förväntad typ <b>$1</b> med faktisk typ <b>$2</b> för parameter <b>$3</b> (\"$4\").",
+	"af-error-incorrect-argument-count-at-least": "Förväntat minst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",
+	"af-error-incorrect-argument-count-at-most": "Förväntat högst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",
+	"af-error-missing-required-keyword-argument": "Det obligatoriska sökordsargumentet <b>$1</b> saknas.",
+	"af-error-unexpected-keyword-argument": "Fick ett oväntat sökordsargument <b>$1></b>.",
+	"af-error-invalid-template-name": "Den angivna titeln <b>$1</b> är ogiltig.",
+	"af-error-template-does-not-exist": "Den angivna titeln <b>$1</b> finns inte.",
+	"af-error-template-loop-detected": "Utökning av <b>$1</b> skulle orsaka en malloop.",
+	"af-error-max-template-depth-reached": "Mallens djupgräns har nåtts.",
+	"af-error-template-inclusion-denied": "Mallinkludering nekad.",
+	"af-error-value-not-showable": "Värdet <b>$1</b> kunde inte visas."
+}
