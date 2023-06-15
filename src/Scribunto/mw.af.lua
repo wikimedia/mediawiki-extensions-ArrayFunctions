@@ -19,4 +19,12 @@ function af.export( value )
 	return php.export( value )
 end
 
+-- import
+function af.import( value )
+	if type( value ) ~= 'string' then
+		return nil
+	end
+	return php.import( value )
+end
+
 return af
