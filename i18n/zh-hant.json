@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"af-desc": "提供在陣列進行操作的純解析函式集",
+	"af-error": "<span class=\"error\">陣列函式（<b>#$1</b>）：$2</span>",
+	"af-error-incorrect-type": "參數<b>$3</b>（「$4」）的實際類型<b>$2</b>與預期類型<b>$1</b>不相配。",
+	"af-error-incorrect-argument-count-at-least": "預計至少 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",
+	"af-error-incorrect-argument-count-at-most": "預計最多 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",
+	"af-error-missing-required-keyword-argument": "缺少必要的關鍵字參數：<b>$1</b>。",
+	"af-error-unexpected-keyword-argument": "取得一個非預期關鍵字參數：<b>$1</b>。",
+	"af-error-invalid-template-name": "指定的標題<b>$1</b>無效。",
+	"af-error-template-does-not-exist": "指定的標題<b>$1</b>不存在。",
+	"af-error-template-loop-detected": "擴展<b>$1</b>會導致模板迴圈。",
+	"af-error-max-template-depth-reached": "已達模板深度限制。",
+	"af-error-template-inclusion-denied": "已拒絕包含模版。",
+	"af-error-value-not-showable": "值<b>$1</b>無法顯示。"
+}
