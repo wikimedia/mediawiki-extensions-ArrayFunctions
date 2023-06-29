@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"af-desc": "Biedt een set pure parserfuncties die op arrays werken",
+	"af-error": "<span class=\"error\">ArrayFuncties (<b>#$1</b>): $2</span>",
+	"af-error-incorrect-type": "Kon het verwachte type <b>$1</b> niet verenigen met het werkelijke type <b>$2</b> van parameter <b>$3</b> (\"$4\").",
+	"af-error-incorrect-argument-count-at-least": "Er word{{PLURAL:$1|t|en}} minimaal <b>$1</b> positionele parameter{{PLURAL:$1||s}} verwacht, <b>$2</b> {{PLURAL:$2|is|zijn}} er gegeven.",
+	"af-error-incorrect-argument-count-at-most": "Er word{{PLURAL:$1|t|en}} maximaal <b>$1</b> positionele parameter{{PLURAL:$1||s}} verwacht, <b>$2</b> {{PLURAL:$2|is|zijn}} er gegeven.",
+	"af-error-missing-required-keyword-argument": "Vereist sleutelwoordargument <b>$1</b> ontbreekt.",
+	"af-error-unexpected-keyword-argument": "Kreeg een onverwacht sleutelwoordargument <b>$1</b>.",
+	"af-error-invalid-template-name": "De opgegeven titel <b>$1</b> is ongeldig.",
+	"af-error-template-does-not-exist": "De opgegeven titel <b>$1</b> bestaat niet.",
+	"af-error-template-loop-detected": "Uitbreiding van <b>$1</b> zou een sjabloonlus veroorzaken."
+}
