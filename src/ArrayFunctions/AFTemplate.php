@@ -55,16 +55,7 @@ class AFTemplate extends ArrayFunction {
 			throw new RuntimeException( wfMessage( 'af-error-max-template-depth-reached' ) );
 		}
 
-		if ( method_exists( $this->getParser(), 'getUserIdentity' ) ) {
-			$user = $this->getUserFactory()->newFromUserIdentity( $this->getParser()->getUserIdentity() );
-		} else {
-			$user = $this->getParser()->getUser();
-		}
-
-		if (
-			!$this->getPermissionManager()->userCan( 'read', $user, $title ) ||
-			$this->getNamespaceInfo()->isNonincludable( $title->getNamespace() )
-		) {
+		if ( $this->getNamespaceInfo()->isNonincludable( $title->getNamespace() ) ) {
 			// Template inclusion is denied
 			throw new RuntimeException( wfMessage( 'af-error-template-inclusion-denied', $templateName ) );
 		}
