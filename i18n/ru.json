@@ -4,5 +4,6 @@
 			"Okras"
 		]
 	},
-	"af-error-max-template-depth-reached": "Достигнут предел глубины шаблона."
+	"af-error-max-template-depth-reached": "Достигнут предел глубины шаблона.",
+	"af-error-value-not-showable": "Значение <b>$1</b> не может быть показано."
 }
