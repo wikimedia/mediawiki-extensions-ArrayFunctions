@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"AnupamM",
 			"No se"
 		]
 	},
 	"af-desc": "Proporciona un conjunto de funciones de analizador puras que operan en matrices",
-	"af-error": "<span class=\"error\">Funciones de Matriz (<b>#$1</b>): $2</span>"
+	"af-error": "<span class=\"error\">Funciones de Matriz (<b>#$1</b>): $2</span>",
+	"af-error-max-template-depth-reached": "Límite de profundidad de plantilla alcanzado.",
+	"af-error-template-inclusion-denied": "Inclusión de plantilla denegada.",
+	"af-error-value-not-showable": "No se puede mostrar el valor <b>$1</b> ."
 }
