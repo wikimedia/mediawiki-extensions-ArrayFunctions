@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Piano1forte2"
-		]
-	},
-	"af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> ('$4')."
-}
