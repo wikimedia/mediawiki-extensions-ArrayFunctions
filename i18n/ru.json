@@ -4,6 +4,9 @@
 			"Okras"
 		]
 	},
+	"af-error-invalid-template-name": "Данный заголовок <b>$1</b> недействителен.",
+	"af-error-template-does-not-exist": "Данный заголовок <b>$1</b> не существует.",
 	"af-error-max-template-depth-reached": "Достигнут предел глубины шаблона.",
+	"af-error-template-inclusion-denied": "Включение шаблона отклонено.",
 	"af-error-value-not-showable": "Значение <b>$1</b> не может быть показано."
 }
