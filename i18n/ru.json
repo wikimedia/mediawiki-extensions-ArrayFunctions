@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"af-error-invalid-template-name": "Данный заголовок <b>$1</b> недействителен.",
+	"af-error-template-does-not-exist": "Данный заголовок <b>$1</b> не существует."
+}
