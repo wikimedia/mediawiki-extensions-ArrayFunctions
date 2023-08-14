@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"CrownedWharf566"
+			"CrownedWharf566",
+			"Vikarna"
 		]
 	},
+	"af-error-incorrect-type": "参数<b>$3</b>（「$4」）的实际类型<b>$2</b>与与其类型<b>$1</b>不匹配。",
 	"af-error-missing-required-keyword-argument": "缺少必要的关键字参数 <b>$1</b>.",
-	"af-error-unexpected-keyword-argument": "收到了一个意料之外的关键字参数 <b>$1</b>."
+	"af-error-unexpected-keyword-argument": "收到了一个意料之外的关键字参数 <b>$1</b>.",
+	"af-error-invalid-template-name": "给定的标题<b>$1</b>无效。",
+	"af-error-template-does-not-exist": "给定的标题<b>$1</b>不存在。",
+	"af-error-max-template-depth-reached": "已达到模板深度限制。",
+	"af-error-template-inclusion-denied": "已拒绝包含模板",
+	"af-error-value-not-showable": "值<b>$1</b>无法显示。"
 }
