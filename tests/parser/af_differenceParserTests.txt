@@ -1,0 +1,70 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_difference
+!! endfunctionhooks
+
+# This file tests the #af_difference parser function
+
+!! test
+Test single array
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test two disjunct arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test two identical arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: a | b | c }} }} }}
+!! html
+!! end
+
+!! test
+Test overlapping arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: c | d | e }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test disjunct multiple arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} | {{#af_list: g | h | i }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test overlapping multiple arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: a | d | e }} | {{#af_list: a | f | g }} }} }}
+!! html
+<ul><li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test overlapping multiple arrays 2
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: b }} | {{#af_list: c }} }} }}
+!! html
+<ul><li>0: a</li></ul>
+!! end

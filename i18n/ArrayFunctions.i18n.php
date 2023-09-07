@@ -26,6 +26,7 @@ $magicWords['en'] = [
 	// Parser functions
 	'af_bool' => [ 0, 'af_bool' ],
 	'af_count' => [ 0, 'af_count' ],
+	'af_difference' => [ 0, 'af_difference' ],
 	'af_exists' => [ 0, 'af_exists' ],
 	'af_float' => [ 0, 'af_float' ],
 	'af_foreach' => [ 0, 'af_foreach' ],

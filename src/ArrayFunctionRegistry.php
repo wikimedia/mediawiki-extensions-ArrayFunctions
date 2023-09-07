@@ -4,6 +4,7 @@ namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\AFBool;
 use ArrayFunctions\ArrayFunctions\AFCount;
+use ArrayFunctions\ArrayFunctions\AFDifference;
 use ArrayFunctions\ArrayFunctions\AFExists;
 use ArrayFunctions\ArrayFunctions\AFFloat;
 use ArrayFunctions\ArrayFunctions\AFForeach;
@@ -69,6 +70,7 @@ class ArrayFunctionRegistry {
 		return [
 			AFBool::class,
 			AFCount::class,
+			AFDifference::class,
 			AFExists::class,
 			AFList::class,
 			AFFloat::class,
