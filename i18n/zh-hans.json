@@ -2,15 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"CrownedWharf566",
-			"Vikarna"
+			"Vikarna",
+			"Westgrass"
 		]
 	},
-	"af-error-incorrect-type": "参数<b>$3</b>（「$4」）的实际类型<b>$2</b>与与其类型<b>$1</b>不匹配。",
-	"af-error-missing-required-keyword-argument": "缺少必要的关键字参数 <b>$1</b>.",
-	"af-error-unexpected-keyword-argument": "收到了一个意料之外的关键字参数 <b>$1</b>.",
+	"af-desc": "提供一组对数组进行操作的纯解析器函数",
+	"af-error": "<span class=\"error\">ArrayFunctions（<b>#$1</b>）：$2</span>",
+	"af-error-incorrect-type": "参数<b>$3</b>（“$4”）的实际类型<b>$2</b>与其预期类型<b>$1</b>不匹配。",
+	"af-error-incorrect-argument-count-at-least": "预期至少有<b>$1</b>个位置参数，实际只给出了<b>$2</b>个。",
+	"af-error-incorrect-argument-count-at-most": "预期最多有<b>$1</b>个位置参数，实际给出了<b>$2</b>个。",
+	"af-error-missing-required-keyword-argument": "缺少必要的关键字参数<b>$1</b>。",
+	"af-error-unexpected-keyword-argument": "收到了意料之外的关键字参数<b>$1</b>。",
 	"af-error-invalid-template-name": "给定的标题<b>$1</b>无效。",
 	"af-error-template-does-not-exist": "给定的标题<b>$1</b>不存在。",
+	"af-error-template-loop-detected": "展开<b>$1</b>会导致模板循环。",
 	"af-error-max-template-depth-reached": "已达到模板深度限制。",
-	"af-error-template-inclusion-denied": "已拒绝包含模板",
+	"af-error-template-inclusion-denied": "已拒绝包含模板。",
 	"af-error-value-not-showable": "值<b>$1</b>无法显示。"
 }
