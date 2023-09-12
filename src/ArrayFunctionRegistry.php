@@ -28,6 +28,7 @@ use ArrayFunctions\ArrayFunctions\AFShow;
 use ArrayFunctions\ArrayFunctions\AFSlice;
 use ArrayFunctions\ArrayFunctions\AFSort;
 use ArrayFunctions\ArrayFunctions\AFSplit;
+use ArrayFunctions\ArrayFunctions\AFStringmap;
 use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
@@ -94,6 +95,7 @@ class ArrayFunctionRegistry {
 			AFSlice::class,
 			AFSort::class,
 			AFSplit::class,
+			AFStringmap::class,
 			AFTemplate::class,
 			AFUnique::class,
 			AFUnset::class

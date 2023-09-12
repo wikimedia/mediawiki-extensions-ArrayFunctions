@@ -50,6 +50,7 @@ $magicWords['en'] = [
 	'af_slice' => [ 0, 'af_slice' ],
 	'af_sort' => [ 0, 'af_sort' ],
 	'af_split' => [ 0, 'af_split' ],
+	'af_stringmap' => [ 0, 'af_stringmap' ],
 	'af_template' => [ 0, 'af_template' ],
 	'af_unique' => [ 0, 'af_unique' ],
 	'af_unset' => [ 0, 'af_unset' ],
