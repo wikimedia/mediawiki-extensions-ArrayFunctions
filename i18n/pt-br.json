@@ -1,11 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Re demz"
+			"Re demz",
+			"TheEduGobi"
 		]
 	},
 	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "O tipo atual <b>$2</b> não corresponde ao tipo esperado <b>$1</b> para o parâmetro <b>$3</b> (\"$4\").",
+	"af-error-incorrect-argument-count-at-least": "É necessário pelo menos <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas somente {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",
+	"af-error-incorrect-argument-count-at-most": "É possível incluir até <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",
+	"af-error-missing-required-keyword-argument": "O argumento <b>$1</b>, relacionado à palavra-chave, é obrigatório e está faltando.",
+	"af-error-unexpected-keyword-argument": "O argumento <b>$1</b>, relacionado à palavra-chave, está inválido.",
 	"af-error-invalid-template-name": "O título dado <b>$1</b> é inválido.",
-	"af-error-template-does-not-exist": "O título dado <b>$1</b> não existe."
+	"af-error-template-does-not-exist": "O título dado <b>$1</b> não existe.",
+	"af-error-template-loop-detected": "A expansão de <b>$1</b> causaria um ''loop'' de predefinições!",
+	"af-error-max-template-depth-reached": "O limite de profundidade para predefinições foi atingido.",
+	"af-error-template-inclusion-denied": "A inclusão da predefinição foi negada.",
+	"af-error-value-not-showable": "Não é possível exibir o valor <b>$1</b>."
 }
