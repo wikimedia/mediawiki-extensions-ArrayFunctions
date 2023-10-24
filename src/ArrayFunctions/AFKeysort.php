@@ -9,6 +9,7 @@ use ArrayFunctions\Exceptions\RuntimeException;
  */
 class AFKeysort extends ArrayFunction {
 	private const KWARG_DESCENDING = 'descending';
+	private const KWARG_CASEINSENSITIVE = 'caseinsensitive';
 
 	/**
 	 * @inheritDoc
@@ -26,6 +27,11 @@ class AFKeysort extends ArrayFunction {
 				'default' => false,
 				'type' => 'boolean',
 				'description' => 'Whether to sort items in a descending order.'
+			],
+			self::KWARG_CASEINSENSITIVE => [
+				'default' => false,
+				'type' => 'boolean',
+				'description' => 'Whether to ignore case when sorting.'
 			]
 		];
 	}
@@ -71,8 +77,14 @@ class AFKeysort extends ArrayFunction {
 				return -$multiplier;
 			}
 
+			$caseInsensitive = $this->getKeywordArg( self::KWARG_CASEINSENSITIVE );
+
 			// Do a spaceship comparison
-			return $multiplier * ( $l <=> $r );
+			if ( $caseInsensitive ) {
+				return $multiplier * ( mb_strtolower( $l ) <=> mb_strtolower( $r ) );
+			} else {
+				return $multiplier * ( $l <=> $r );
+			}
 		} );
 
 		return [ $array ];

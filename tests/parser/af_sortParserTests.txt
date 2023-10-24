@@ -25,6 +25,28 @@ Test sort descending
 !! end
 
 !! test
+Test sort case insensitive
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: a | A | b | B }} | caseinsensitive=true }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: A</li>
+<li>2: b</li>
+<li>3: B</li></ul>
+!! end
+
+!! test
+Test sort case sensitive
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: a | A | b | B }} }} }}
+!! html
+<ul><li>0: A</li>
+<li>1: B</li>
+<li>2: a</li>
+<li>3: b</li></ul>
+!! end
+
+!! test
 Test sort object
 !! wikitext
 {{#af_print: {{#af_sort: {{#af_object: b=b | a=a }} }} }}

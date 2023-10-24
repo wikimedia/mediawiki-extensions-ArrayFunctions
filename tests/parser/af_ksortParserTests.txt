@@ -27,6 +27,17 @@ Test sort descending
 !! end
 
 !! test
+Test sort case insensitive
+!! wikitext
+{{#af_print: {{#af_ksort: {{#af_object: a=apple | A=banana | b=orange | B=lemon }} | caseinsensitive=true }} }}
+!! html
+<ul><li>a: apple</li>
+<li>A: banana</li>
+<li>b: orange</li>
+<li>B: lemon</li></ul>
+!! end
+
+!! test
 Test too many arguments
 !! wikitext
 {{#af_ksort: {{#af_object: c=apple | a=banana | b=orange }} | v }}

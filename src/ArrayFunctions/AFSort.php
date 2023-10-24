@@ -9,6 +9,7 @@ use ArrayFunctions\Exceptions\RuntimeException;
  */
 class AFSort extends ArrayFunction {
 	private const KWARG_DESCENDING = 'descending';
+	private const KWARG_CASEINSENSITIVE = 'caseinsensitive';
 
 	/**
 	 * @inheritDoc
@@ -26,6 +27,11 @@ class AFSort extends ArrayFunction {
 				'default' => false,
 				'type' => 'boolean',
 				'description' => 'Whether to sort items in a descending order.'
+			],
+			self::KWARG_CASEINSENSITIVE => [
+				'default' => false,
+				'type' => 'boolean',
+				'description' => 'Whether to ignore case when sorting.'
 			]
 		];
 	}
@@ -35,10 +41,16 @@ class AFSort extends ArrayFunction {
 	 * @throws RuntimeException
 	 */
 	public function execute( array $array ): array {
+		$flags = SORT_STRING;
+
+		if ( $this->getKeywordArg( self::KWARG_CASEINSENSITIVE ) ) {
+			$flags |= SORT_FLAG_CASE;
+		}
+
 		if ( $this->getKeywordArg( self::KWARG_DESCENDING ) ) {
-			rsort( $array );
+			rsort( $array, $flags );
 		} else {
-			sort( $array );
+			sort( $array, $flags );
 		}
 
 		return [ $array ];

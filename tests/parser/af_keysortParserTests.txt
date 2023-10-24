@@ -138,6 +138,32 @@ Test keysort descending
 !! end
 
 !! test
+Test keysort case insensitive
+!! wikitext
+{{#af_print: {{#af_keysort: {{#af_list:
+    {{#af_object: name=b }} |
+    {{#af_object: name=B }} |
+    {{#af_object: name=b }} |
+    {{#af_object: name=a }} |
+    {{#af_object: name=A }} |
+    {{#af_object: name=C }}
+}} | name | caseinsensitive=true }} }}
+!! html
+<ul><li>0
+<ul><li>name: a</li></ul></li>
+<li>1
+<ul><li>name: A</li></ul></li>
+<li>2
+<ul><li>name: b</li></ul></li>
+<li>3
+<ul><li>name: B</li></ul></li>
+<li>4
+<ul><li>name: b</li></ul></li>
+<li>5
+<ul><li>name: C</li></ul></li></ul>
+!! end
+
+!! test
 Test too few arguments
 !! wikitext
 {{#af_keysort: {{#af_list: a | b | c }} }}
