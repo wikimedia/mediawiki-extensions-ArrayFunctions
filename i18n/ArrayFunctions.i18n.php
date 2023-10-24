@@ -35,6 +35,7 @@ $magicWords['en'] = [
 	'af_isarray' => [ 0, 'af_isarray' ],
 	'af_join' => [ 0, 'af_join' ],
 	'af_keysort' => [ 0, 'af_keysort' ],
+	'af_ksort' => [ 0, 'af_ksort' ],
 	'af_list' => [ 0, 'af_list' ],
 	'af_map' => [ 0, 'af_map' ],
 	'af_merge' => [ 0, 'af_merge' ],

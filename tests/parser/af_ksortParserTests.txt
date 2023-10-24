@@ -1,0 +1,36 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_ksort
+!! endfunctionhooks
+
+# This file tests the #af_ksort parser function
+
+!! test
+Test sort ascending
+!! wikitext
+{{#af_print: {{#af_ksort: {{#af_object: c=apple | a=banana | b=orange }} }} }}
+!! html
+<ul><li>a: banana</li>
+<li>b: orange</li>
+<li>c: apple</li></ul>
+!! end
+
+!! test
+Test sort descending
+!! wikitext
+{{#af_print: {{#af_ksort: {{#af_object: c=apple | a=banana | b=orange }} | descending=true }} }}
+!! html
+<ul><li>c: apple</li>
+<li>b: orange</li>
+<li>a: banana</li></ul>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_ksort: {{#af_object: c=apple | a=banana | b=orange }} | v }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_ksort</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end

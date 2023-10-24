@@ -15,6 +15,7 @@ use ArrayFunctions\ArrayFunctions\AFIntersect;
 use ArrayFunctions\ArrayFunctions\AFIsarray;
 use ArrayFunctions\ArrayFunctions\AFJoin;
 use ArrayFunctions\ArrayFunctions\AFKeysort;
+use ArrayFunctions\ArrayFunctions\AFKsort;
 use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFMap;
 use ArrayFunctions\ArrayFunctions\AFMerge;
@@ -83,6 +84,7 @@ class ArrayFunctionRegistry {
 			AFIsarray::class,
 			AFJoin::class,
 			AFKeysort::class,
+			AFKsort::class,
 			AFMap::class,
 			AFMerge::class,
 			AFObject::class,
