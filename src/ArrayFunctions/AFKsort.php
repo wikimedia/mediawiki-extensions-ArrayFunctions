@@ -2,7 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Exceptions\RuntimeException;
+use MWException;
 
 /**
  * Implements the #af_ksort parser function.
@@ -38,7 +38,7 @@ class AFKsort extends ArrayFunction {
 
 	/**
 	 * @inheritDoc
-	 * @throws RuntimeException
+	 * @throws MWException
 	 */
 	public function execute( array $array ): array {
 		$flags = SORT_STRING;

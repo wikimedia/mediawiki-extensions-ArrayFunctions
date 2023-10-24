@@ -4,10 +4,7 @@ namespace ArrayFunctions\ArrayFunctions;
 
 use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
-use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Permissions\PermissionManager;
-use MediaWiki\User\UserFactory;
 use NamespaceInfo;
 use Title;
 use TitleFactory;
@@ -120,32 +117,5 @@ class AFTemplate extends ArrayFunction {
 	 */
 	private function getNamespaceInfo(): NamespaceInfo {
 		return MediaWikiServices::getInstance()->getNamespaceInfo();
-	}
-
-	/**
-	 * Returns the PermissionManager singleton.
-	 *
-	 * @return PermissionManager
-	 */
-	private function getPermissionManager(): PermissionManager {
-		return MediaWikiServices::getInstance()->getPermissionManager();
-	}
-
-	/**
-	 * Returns the UserFactory singleton.
-	 *
-	 * @return UserFactory
-	 */
-	private function getUserFactory(): UserFactory {
-		return MediaWikiServices::getInstance()->getUserFactory();
-	}
-
-	/**
-	 * Returns the LinkRenderer singleton.
-	 *
-	 * @return LinkRenderer
-	 */
-	private function getLinkRenderer(): LinkRenderer {
-		return MediaWikiServices::getInstance()->getLinkRenderer();
 	}
 }
