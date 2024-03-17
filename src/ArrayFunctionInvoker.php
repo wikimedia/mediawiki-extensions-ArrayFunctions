@@ -46,7 +46,7 @@ class ArrayFunctionInvoker {
 		$preprocessor = new ArgumentPreprocessor( $instance, "execute" );
 
 		try {
-			list( $positionalArgs, $keywordArgs ) = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
+			[ $positionalArgs, $keywordArgs ] = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
 		} catch ( TooFewArgumentsException $exception ) {
 			return [ Utils::error(
 				$instance::getName(),

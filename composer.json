@@ -23,7 +23,7 @@
 		"php": ">=7.4.0"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "41.0.0",
+		"mediawiki/mediawiki-codesniffer": "43.0.0",
 		"mediawiki/mediawiki-phan-config": "0.14.0",
 		"mediawiki/minus-x": "1.1.1",
 		"php-parallel-lint/php-console-highlighter": "1.0.0",
@@ -45,6 +45,9 @@
 		"phan": "phan -d . --long-progress-bar"
 	},
 	"config": {
-		"process-timeout": 600
+		"process-timeout": 600,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

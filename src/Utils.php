@@ -53,7 +53,7 @@ class Utils {
 			$type = "string";
 			$value = $input;
 		} else {
-			list( $type, $value ) = explode( '__^__', $input, 2 );
+			[ $type, $value ] = explode( '__^__', $input, 2 );
 		}
 
 		// Handle any non-string type

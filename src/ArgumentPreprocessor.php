@@ -54,7 +54,7 @@ class ArgumentPreprocessor {
 	 */
 	public function preprocess( array $passedArgs, ArrayFunction $instance, PPFrame $frame, Parser $parser ): array {
 		// Split the given arguments into positional and keyword arguments
-		list( $passedPositionalArgs, $passedKeywordArgs ) = $this->partitionArgs( $passedArgs, $frame, $parser );
+		[ $passedPositionalArgs, $passedKeywordArgs ] = $this->partitionArgs( $passedArgs, $frame, $parser );
 
 		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
 		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );

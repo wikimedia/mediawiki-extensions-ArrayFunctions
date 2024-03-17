@@ -57,7 +57,7 @@ class AFTemplate extends ArrayFunction {
 			throw new RuntimeException( wfMessage( 'af-error-template-inclusion-denied', $templateName ) );
 		}
 
-		list( $node, $finalTitle ) = $this->getParser()->getTemplateDom( $title );
+		[ $node, $finalTitle ] = $this->getParser()->getTemplateDom( $title );
 
 		if ( $node === false ) {
 			// Template does not exist
