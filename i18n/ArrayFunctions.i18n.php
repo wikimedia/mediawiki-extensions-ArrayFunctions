@@ -53,6 +53,7 @@ $magicWords['en'] = [
 	'af_split' => [ 0, 'af_split' ],
 	'af_stringmap' => [ 0, 'af_stringmap' ],
 	'af_template' => [ 0, 'af_template' ],
+	'af_trim' => [ 0, 'af_trim' ],
 	'af_unique' => [ 0, 'af_unique' ],
 	'af_unset' => [ 0, 'af_unset' ],
 	// Magic words

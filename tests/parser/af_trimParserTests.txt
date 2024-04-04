@@ -1,0 +1,51 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_trim
+!! endfunctionhooks
+
+# This file tests the #af_trim parser function
+
+!! test
+Test trim with exclamation mark
+!! wikitext
+{{#af_print: {{#af_map: {{#af_split: !a!, !b!, !c! }} | v | {{#af_trim: {{{v}}} | ! }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test with empty value
+!! wikitext
+{{#af_trim:|!}}
+!! html
+!! end
+
+!! test
+Test characters accepts escape sequence
+!! wikitext
+{{#af_trim: \sa\s | \s }}
+!! html
+<p>\sa\s
+</p>
+!! end
+
+!! test
+Test too few arguments
+!! wikitext
+{{#af_trim: a }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_trim</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_trim: a | \s | v }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_trim</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+</p>
+!! end

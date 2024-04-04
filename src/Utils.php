@@ -98,13 +98,13 @@ class Utils {
 					);
 
 					if ( $status->isGood() ) {
-						return $status->getValue();
+						return self::trimRecursively( $status->getValue() );
 					}
 				}
 
 				break;
 			case "string":
-				return $value;
+				return trim( $value );
 		}
 
 		// Default to interpreting the entire input as a string
@@ -185,5 +185,23 @@ class Utils {
 		$message->params( $args );
 
 		return wfMessage( 'af-error', $function, $message );
+	}
+
+	/**
+	 * Recursively trims the given value.
+	 *
+	 * @param mixed $value
+	 * @return mixed
+	 */
+	private static function trimRecursively( $value ) {
+		if ( is_string( $value ) ) {
+			return trim( $value );
+		}
+
+		if ( !is_array( $value ) ) {
+			return $value;
+		}
+
+		return array_map( [ self::class, "trimRecursively" ], $value );
 	}
 }

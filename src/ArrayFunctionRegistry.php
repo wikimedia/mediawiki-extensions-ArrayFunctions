@@ -31,6 +31,7 @@ use ArrayFunctions\ArrayFunctions\AFSort;
 use ArrayFunctions\ArrayFunctions\AFSplit;
 use ArrayFunctions\ArrayFunctions\AFStringmap;
 use ArrayFunctions\ArrayFunctions\AFTemplate;
+use ArrayFunctions\ArrayFunctions\AFTrim;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
@@ -99,6 +100,7 @@ class ArrayFunctionRegistry {
 			AFSplit::class,
 			AFStringmap::class,
 			AFTemplate::class,
+			AFTrim::class,
 			AFUnique::class,
 			AFUnset::class
 		];

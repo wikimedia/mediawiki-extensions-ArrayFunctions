@@ -31,7 +31,7 @@ class AFReduce extends ArrayFunction {
 		}
 
 		if ( $initial !== null ) {
-			$initial = $this->getFrame()->expand( $initial );
+			$initial = trim( $this->getFrame()->expand( $initial ) );
 		} else {
 			$initial = '';
 		}

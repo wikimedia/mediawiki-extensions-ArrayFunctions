@@ -88,7 +88,7 @@ class AFTemplate extends ArrayFunction {
 		$newFrame = $frame->newChild( $templateArgs, $finalTitle );
 
 		// Expand the frame and return the resulting wikitext
-		return $newFrame->expand( $node );
+		return trim( $newFrame->expand( $node ) );
 	}
 
 	/**
