@@ -9,11 +9,26 @@ use PPNode;
  * Implements the #af_foreach parser function.
  */
 class AFForeach extends ArrayFunction {
+	private const KWARG_DELIMITER = 'delimiter';
+
 	/**
 	 * @inheritDoc
 	 */
 	public static function getName(): string {
 		return 'af_foreach';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getKeywordSpec(): array {
+		return [
+			self::KWARG_DELIMITER => [
+				'default' => '',
+				'type' => 'string',
+				'description' => 'The delimiter to put between each result.'
+			]
+		];
 	}
 
 	/**
@@ -25,11 +40,7 @@ class AFForeach extends ArrayFunction {
 		?string $valueName = null,
 		?PPNode $body = null
 	): array {
-		if ( $body === null ) {
-			return [ '' ];
-		}
-
-		$result = '';
+		$result = [];
 
 		foreach ( $array as $key => $value ) {
 			$args = $this->getFrame()->getArguments();
@@ -45,9 +56,13 @@ class AFForeach extends ArrayFunction {
 			$nodeArray = $this->getParser()->getPreprocessor()->newPartNodeArray( $args );
 			$childFrame = $this->getFrame()->newChild( $nodeArray, $this->getFrame()->getTitle() );
 
-			$result .= trim( $childFrame->expand( $body ) );
+			$result[] = $body !== null ?
+				trim( $childFrame->expand( $body ) ) :
+				'';
 		}
 
-		return [ $result ];
+		$delimiter = Utils::unescape( $this->getKeywordArg( self::KWARG_DELIMITER ) );
+
+		return [ implode( $delimiter, $result ) ];
 	}
 }

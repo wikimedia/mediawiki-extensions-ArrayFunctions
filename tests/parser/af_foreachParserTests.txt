@@ -77,6 +77,34 @@ Test loop over object without key or value
 !! end
 
 !! test
+Test loop over object with simple delimiter
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | key | value | {{{key}}}={{{value}}} | delimiter=! }}
+!! html
+<p>foo=bar!boo=far
+</p>
+!! end
+
+!! test
+Test loop over object with escape sequence
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | key | value | {{{key}}}={{{value}}} | delimiter=\n }}
+!! html
+<p>foo=bar
+boo=far
+</p>
+!! end
+
+!! test
+Test loop over object with escape sequence 2
+!! wikitext
+{{#af_foreach: {{#af_object: foo=bar | boo=far }} | key | value | {{{key}}}={{{value}}} | delimiter=\s }}
+!! html
+<p>foo=bar boo=far
+</p>
+!! end
+
+!! test
 Test no body
 !! wikitext
 {{#af_foreach: {{#af_list: a | b | c }} | key | value }}
