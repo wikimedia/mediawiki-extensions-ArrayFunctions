@@ -104,10 +104,10 @@ class Utils {
 
 				break;
 			case "string":
-				return trim( $value );
+				return self::unescape( trim( $value ) );
 		}
 
-		// Default to interpreting the entire input as a string
+		// Default to interpreting the entire input verbatim
 		return $input;
 	}
 

@@ -2,8 +2,6 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\Utils;
-
 /**
  * Implements the #af_split parser function.
  */
@@ -23,6 +21,6 @@ class AFSplit extends ArrayFunction {
 			return [ [] ];
 		}
 
-		return [ explode( Utils::unescape( $separator ?? ',' ), $string ) ];
+		return [ explode( $separator ?? ',', $string ) ];
 	}
 }

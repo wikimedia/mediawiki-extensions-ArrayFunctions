@@ -28,7 +28,7 @@ Test characters accepts escape sequence
 !! wikitext
 {{#af_trim: \sa\s | \s }}
 !! html
-<p>\sa\s
+<p>a
 </p>
 !! end
 

@@ -19,7 +19,7 @@ class AFJoin extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array, string $glue = "" ): array {
-		return [ $this->recursiveJoin( Utils::unescape( $glue ), $array ) ];
+		return [ $this->recursiveJoin( $glue, $array ) ];
 	}
 
 	/**

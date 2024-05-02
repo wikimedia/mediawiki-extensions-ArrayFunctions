@@ -61,7 +61,7 @@ class AFForeach extends ArrayFunction {
 				'';
 		}
 
-		$delimiter = Utils::unescape( $this->getKeywordArg( self::KWARG_DELIMITER ) );
+		$delimiter = $this->getKeywordArg( self::KWARG_DELIMITER );
 
 		return [ implode( $delimiter, $result ) ];
 	}

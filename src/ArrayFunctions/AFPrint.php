@@ -38,7 +38,7 @@ class AFPrint extends ArrayFunction {
 	 */
 	public function execute( ...$values ): array {
 		$result = '';
-		$end = Utils::unescape( $this->getKeywordArg( self::KWARG_END ) );
+		$end = $this->getKeywordArg( self::KWARG_END );
 
 		foreach ( $values as $value ) {
 			if ( is_array( $value ) ) {

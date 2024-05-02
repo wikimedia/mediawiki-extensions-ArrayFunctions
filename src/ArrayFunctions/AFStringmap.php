@@ -31,7 +31,7 @@ class AFStringmap extends ArrayFunction {
 			return [ '' ];
 		}
 
-		$delimiter = $delimiter ? Utils::unescape( $delimiter ) : ',';
+		$delimiter = $delimiter ?: ',';
 
 		$list = array_filter( explode( $delimiter, $value ), fn ( string $item ): string => !empty( $item ) );
 		$result = array_map( function ( $value ) use ( $valueName, $callback ) {
@@ -46,8 +46,8 @@ class AFStringmap extends ArrayFunction {
 
 		// If no new delimiter is given, the default is ", " (see signature). However, if the new delimiter is
 		// explicitly set to the empty string, NULL gets passed, and we use the empty string.
-		$newDelimiter = $newDelimiter !== null ? Utils::unescape( $newDelimiter ) : '';
-		$conjunction = empty( $conjunction ) ? $newDelimiter : ' ' . Utils::unescape( $conjunction ) . ' ';
+		$newDelimiter = $newDelimiter ?? '';
+		$conjunction = empty( $conjunction ) ? $newDelimiter : ' ' . $conjunction . ' ';
 
 		$last = array_pop( $result );
 
