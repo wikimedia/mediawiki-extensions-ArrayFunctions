@@ -1,0 +1,175 @@
+CHANGELOG
+=========
+
+All notable changes to the ArrayFunctions project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## UNRELEASED
+
+## [v1.9.0] - 2024-05-02
+
+### Added
+
+- Add `delimiter` option to the `#af_foreach` parser function.
+
+### Changed
+
+- All string parameters now support escape sequences.
+
+## [v1.8.0] - 2024-04-04
+
+### Changed
+
+- Whitespace is now trimmed from the beginning and the end of array values to be consistent with the behaviour of other
+  parameters in MediaWiki.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.7.0] - 2023-10-24
+
+### Added
+
+- Add the `#af_ksort` parser function.
+- Add `caseinsensitive` option to the `#af_keysort` parser function.
+- Add `caseinsensitive` option to the `#af_sort` parser function.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.6.0] - 2023-09-12
+
+### Added
+
+- Add the `#af_stringmap` parser function.
+- Add the `mw.af.import` Lua function to import ArrayFunctions arrays into Lua.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.5.0] - 2023-09-07
+
+### Added
+
+- Add the `#af_difference` parser function.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.4.4] - 2023-06-30
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+### Fixed
+
+- Fix `#af_template` parser function to no longer check a user their read permissions explicitly, as regular template
+  transclusion also does not do this. Previously, an error would be outputted.
+
+## [v1.4.3] - 2023-05-26
+
+### Changed
+
+- Exporting a `NULL` value (e.g. through the `mw.af.export` Lua function) will now result in the empty string.
+  Previously, the `NULL` would be returned unaltered.
+
+## [v1.4.2] - 2023-05-26
+
+### Changed
+
+- The `#af_template` parser function now shows non-existent templates as a broken link. Previously, an error would be
+  outputted.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.4.1] - 2023-05-05
+
+### Changed
+
+- The `#af_split` parser function now allows the empty string as its first parameter. Previously, an error would be
+  outputted.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+## [v1.4.0] - 2023-04-26
+
+### Added
+
+- Add the `#af_show` parser function.
+
+## [v1.3.0] - 2023-03-27
+
+### Added
+
+- Add the `#af_search` parser function.
+
+## [v1.2.0] - 2023-03-03
+
+### Added
+
+- Add the `#af_intersect` parser function.
+- Add the `#af_merge` parser function.
+- Add the `#af_reduce` parser function.
+
+## [v1.1.0] - 2023-02-03
+
+### Added
+
+- Add the `#af_split` parser function.
+
+## [v1.0.1] - 2023-01-09
+
+### Changed
+
+- The `mw.af.export` Lua function now supports parameters of all types. Previously, it only supported arrays.
+
+### Fixed
+
+- Fix issue where an exception was thrown when a parameter with an incorrect type was passed to `mw.af.export`.
+
+## [v1.0.0] - 2023-01-07
+
+### Added
+
+- Add the `#af_bool` parser function.
+- Add the `#af_count` parser function.
+- Add the `#af_exists` parser function.
+- Add the `#af_float` parser function.
+- Add the `#af_foreach` parser function.
+- Add the `#af_get` parser function.
+- Add the `#af_if` parser function.
+- Add the `#af_int` parser function.
+- Add the `#af_isarray` parser function.
+- Add the `#af_join` parser function.
+- Add the `#af_keysort` parser function.
+- Add the `#af_list` parser function.
+- Add the `#af_map` parser function.
+- Add the `#af_object` parser function.
+- Add the `#af_print` parser function.
+- Add the `#af_push` parser function.
+- Add the `#af_set` parser function.
+- Add the `#af_slice` parser function.
+- Add the `#af_sort` parser function.
+- Add the `#af_template` parser function.
+- Add the `#af_unique` parser function.
+- Add the `#af_unset` parser function.
+
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.9.0...HEAD
+[v1.9.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.8.0...v1.9.0
+[v1.8.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.7.0...v1.8.0
+[v1.7.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.6.0...v1.7.0
+[v1.6.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.5.0...v1.6.0
+[v1.5.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.4.4...v1.5.0
+[v1.4.4]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.4.3...v1.4.4
+[v1.4.3]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.4.2...v1.4.3
+[v1.4.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.4.1...v1.4.2
+[v1.4.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.4.0...v1.4.1
+[v1.4.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.3.0...v1.4.0
+[v1.3.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.2.0...v1.3.0
+[v1.2.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.1.0...v1.2.0
+[v1.1.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.0.1...v1.1.0
+[v1.0.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.0.0...v1.0.1
+[v1.0.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/releases/tag/v1.0.0
