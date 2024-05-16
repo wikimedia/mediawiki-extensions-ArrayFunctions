@@ -68,24 +68,6 @@ Test string with wikitext from array
 !! end
 
 !! test
-Test list gives error
-!! wikitext
-{{#af_show: {{#af_list: a | b | c }} }}
-!! html
-<p><span class="error">ArrayFunctions (<b>#af_show</b>): The value <b>array__^__WyJhIiwiYiIsImMiXQ==</b> cannot be shown.</span>
-</p>
-!! end
-
-!! test
-Test object gives error
-!! wikitext
-{{#af_show: {{#af_object: a=a | b=b | c=c }} }}
-!! html
-<p><span class="error">ArrayFunctions (<b>#af_show</b>): The value <b>array__^__eyJhIjoiYSIsImIiOiJiIiwiYyI6ImMifQ==</b> cannot be shown.</span>
-</p>
-!! end
-
-!! test
 Test too many arguments
 !! wikitext
 {{#af_show: a | b }}

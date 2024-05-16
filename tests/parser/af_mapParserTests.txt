@@ -9,46 +9,50 @@ af_map
 !! test
 Test empty list
 !! wikitext
-{{#af_map: {{AF_EMPTY}} | v | {{{v}}} }}
+{{#af_print: {{#af_map: {{AF_EMPTY}} | v | {{{v}}} }} }}
 !! html
-<p>array__^__W10=
-</p>
 !! end
 
 !! test
 Test singleton list
 !! wikitext
-{{#af_map: {{#af_list: a }} | v | {{{v}}}-edited }}
+{{#af_print: {{#af_map: {{#af_list: a }} | v | {{{v}}}-edited }} }}
 !! html
-<p>array__^__WyJhLWVkaXRlZCJd
-</p>
+<ul><li>0: a-edited</li></ul>
 !! end
 
 !! test
 Test list of lists
 !! wikitext
-{{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: b }} }} | v | {{#af_push: {{{v}}} | c }} }}
+{{#af_print: {{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: b }} }} | v | {{#af_push: {{{v}}} | c }} }} }}
 !! html
-<p>array__^__W1siYSIsImMiXSxbImIiLCJjIl1d
-</p>
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: c</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: c</li></ul></li></ul>
 !! end
 
 !! test
 Test list of mixed unchanged
 !! wikitext
-{{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v | {{{v}}} }}
+{{#af_print: {{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v | {{{v}}} }} }}
 !! html
-<p>array__^__W1siYSJdLCJmb28iXQ==
-</p>
+<ul><li>0
+<ul><li>0: a</li></ul></li>
+<li>1: foo</li></ul>
 !! end
 
 !! test
 Test list of lists boolean
 !! wikitext
-{{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: a }} | {{#af_list: a }} | b }} | v | {{#af_isarray: {{{v}}} }} }}
+{{#af_print: {{#af_map: {{#af_list: {{#af_list: a }} | {{#af_list: a }} | {{#af_list: a }} | b }} | v | {{#af_isarray: {{{v}}} }} }} }}
 !! html
-<p>array__^__W3RydWUsdHJ1ZSx0cnVlLGZhbHNlXQ==
-</p>
+<ul><li>0: true</li>
+<li>1: true</li>
+<li>2: true</li>
+<li>3: false</li></ul>
 !! end
 
 !! test

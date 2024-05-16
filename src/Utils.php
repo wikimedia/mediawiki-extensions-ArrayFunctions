@@ -32,7 +32,14 @@ class Utils {
 		}
 
 		if ( $type === "array" ) {
-			$value = base64_encode( FormatJson::encode( $value ) );
+			$value = FormatJson::encode( $value );
+
+			if ( self::compressionAvailable() ) {
+				// Compress serialized JSON if possible
+				$value = gzdeflate( $value, 9 );
+			}
+
+			$value = base64_encode( $value );
 		}
 
 		if ( $type === "boolean" ) {
@@ -84,22 +91,36 @@ class Utils {
 				break;
 			case "array":
 				// Try decoding and parsing to see if it was a base64 encoded JSON string
-				$maybeJson = base64_decode( $value );
+				$result = base64_decode( $value );
 
-				if ( $maybeJson !== false ) {
-					if ( $maybeJson === '{}' ) {
-						// Short-circuit for empty objects, since FormatJson does not handle them correctly
-						return [];
-					}
+				if ( $result === false ) {
+					// Fallback to string interpretation
+					break;
+				}
 
-					$status = FormatJson::parse(
-						$maybeJson,
-						FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS
-					);
+				if ( self::compressionAvailable() ) {
+					// Inflate string if necessary
+					// phpcs:ignore
+					$result = @gzinflate( $result );
+				}
 
-					if ( $status->isGood() ) {
-						return self::trimRecursively( $status->getValue() );
-					}
+				if ( $result === false ) {
+					// Fallback to string interpretation
+					break;
+				}
+
+				if ( $result === '{}' ) {
+					// Short-circuit for empty objects, since FormatJson does not handle them correctly
+					return [];
+				}
+
+				$status = FormatJson::parse(
+					$result,
+					FormatJson::FORCE_ASSOC | FormatJson::TRY_FIXING | FormatJson::STRIP_COMMENTS
+				);
+
+				if ( $status->isGood() ) {
+					return self::trimRecursively( $status->getValue() );
 				}
 
 				break;
@@ -203,5 +224,14 @@ class Utils {
 		}
 
 		return array_map( [ self::class, "trimRecursively" ], $value );
+	}
+
+	/**
+	 * Whether compression is available.
+	 *
+	 * @return bool
+	 */
+	private static function compressionAvailable(): bool {
+		return function_exists( 'gzinflate' ) && function_exists( 'gzdeflate' );
 	}
 }

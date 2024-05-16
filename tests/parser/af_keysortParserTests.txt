@@ -9,10 +9,8 @@ af_keysort
 !! test
 Test empty array
 !! wikitext
-{{#af_keysort: {{AF_EMPTY}} | foo }}
+{{#af_print: {{#af_keysort: {{AF_EMPTY}} | foo }} }}
 !! html
-<p>array__^__W10=
-</p>
 !! end
 
 !! test

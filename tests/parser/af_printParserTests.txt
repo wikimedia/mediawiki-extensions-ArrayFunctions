@@ -95,9 +95,18 @@ Test print multi-dimensional list
 !! test
 Test print invalid lists
 !! wikitext
-{{#af_print: {{#af_list: a }}, {{#af_list: a | b | c }} }}
+{{#af_print: array__^__notavalidarray }}
 !! html
-<p>array__^__WyJhIl0=, array__^__WyJhIiwiYiIsImMiXQ==
+<p>array__^__notavalidarray
+</p>
+!! end
+
+!! test
+Test print invalid lists 2
+!! wikitext
+{{#af_print: array__^__bm90YXZhbGlkYXJyYXk= }}
+!! html
+<p>array__^__bm90YXZhbGlkYXJyYXk=
 </p>
 !! end
 

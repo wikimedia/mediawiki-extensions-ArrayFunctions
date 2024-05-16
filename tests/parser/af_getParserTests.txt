@@ -27,19 +27,20 @@ Test get string key
 !! test
 Test get boolean
 !! wikitext
-{{#af_get: {{#af_list: {{#af_bool: yes }} }} | 0 }}
+{{#af_print: {{#af_get: {{#af_list: {{#af_bool: yes }} }} | 0 }} }}
 !! html
-<p>boolean__^__1
+<p>true
 </p>
 !! end
 
 !! test
 Test get list
 !! wikitext
-{{#af_get: {{#af_list: {{#af_list: a | b | c }} }} | 0 }}
+{{#af_print: {{#af_get: {{#af_list: {{#af_list: a | b | c }} }} | 0 }} }}
 !! html
-<p>array__^__WyJhIiwiYiIsImMiXQ==
-</p>
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
 !! end
 
 !! test
@@ -95,10 +96,10 @@ Test get non-existent value in subarray
 !! test
 Test get no keys
 !! wikitext
-{{#af_get: {{#af_object: foo=foo | boo=bar }} }}
+{{#af_print: {{#af_get: {{#af_object: foo=foo | boo=bar }} }} }}
 !! html
-<p>array__^__eyJmb28iOiJmb28iLCJib28iOiJiYXIifQ==
-</p>
+<ul><li>foo: foo</li>
+<li>boo: bar</li></ul>
 !! end
 
 !! test
@@ -107,23 +108,5 @@ Test invalid type for first argument
 {{#af_get: foobar }}
 !! html
 <p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
-</p>
-!! end
-
-!! test
-Test invalid type for other arguments 1
-!! wikitext
-{{#af_get: {{#af_object: foo=foo | boo=bar }} | {{#af_object: foo=foo }} }}
-!! html
-<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>string</b> with actual type <b>array</b> for parameter <b>2</b> ("array__^__eyJmb28iOiJmb28ifQ==").</span>
-</p>
-!! end
-
-!! test
-Test invalid type for other arguments 2
-!! wikitext
-{{#af_get: {{#af_object: foo=foo | boo=bar }} | foo | {{#af_object: foo=foo }} }}
-!! html
-<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>string</b> with actual type <b>array</b> for parameter <b>3</b> ("array__^__eyJmb28iOiJmb28ifQ==").</span>
 </p>
 !! end

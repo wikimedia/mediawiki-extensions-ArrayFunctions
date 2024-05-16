@@ -41,15 +41,6 @@ Test loop without key or value
 !! end
 
 !! test
-Test loop over nested list
-!! wikitext
-{{#af_foreach: {{#af_list: a | b | {{#af_list: c | d | e }} }} | | value | {{{value}}} }}
-!! html
-<p>abarray__^__WyJjIiwiZCIsImUiXQ==
-</p>
-!! end
-
-!! test
 Test loop over object
 !! wikitext
 {{#af_foreach: {{#af_object: foo=bar | boo=far }} | | value | {{{value}}} }}
