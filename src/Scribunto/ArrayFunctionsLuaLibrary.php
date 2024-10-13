@@ -3,9 +3,9 @@
 namespace ArrayFunctions\Scribunto;
 
 use ArrayFunctions\Utils;
-use Scribunto_LuaLibraryBase;
+use MediaWiki\Extension\Scribunto\Engines\LuaCommon\LibraryBase;
 
-class ArrayFunctionsLuaLibrary extends Scribunto_LuaLibraryBase {
+class ArrayFunctionsLuaLibrary extends LibraryBase {
 	/**
 	 * @inheritDoc
 	 */
