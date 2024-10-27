@@ -38,13 +38,16 @@
 			"services": [
 				"ArrayFunctions.ArrayFunctionRegistry"
 			]
+		},
+		"Scribunto": {
+			"class": "\\ArrayFunctions\\ScribuntoHookHandler"
 		}
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "ParserInit",
 		"ParserGetVariableValueSwitch": "Trivial",
 		"GetMagicVariableIDs": "Trivial",
-		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
+		"ScribuntoExternalLibraries": "Scribunto"
 	},
 	"ServiceWiringFiles": [
 		"src/ArrayFunctions.ServiceWiring.php"
