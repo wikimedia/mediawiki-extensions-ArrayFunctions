@@ -24,7 +24,7 @@ class TooManyArgumentsException extends MWException {
 	 * @param int $expected The expected number of parameters
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( int $actual, int $expected, Throwable $previous = null ) {
+	public function __construct( int $actual, int $expected, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->actual = $actual;
