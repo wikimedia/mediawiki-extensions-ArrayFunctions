@@ -18,7 +18,7 @@ class UnexpectedKeywordArgument extends MWException {
 	 * @param string $keyword The name of the unexpected keyword argument
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( string $keyword, Throwable $previous = null ) {
+	public function __construct( string $keyword, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->keyword = $keyword;

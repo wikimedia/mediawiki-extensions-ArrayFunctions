@@ -19,7 +19,7 @@ class RuntimeException extends MWException {
 	 * @param Message $runtimeMessage A descriptive message of the runtime error.
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( Message $runtimeMessage, Throwable $previous = null ) {
+	public function __construct( Message $runtimeMessage, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->runtimeMessage = $runtimeMessage;

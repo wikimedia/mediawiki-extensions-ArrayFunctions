@@ -36,7 +36,7 @@ class TypeMismatchException extends MWException {
 	 * @param int|string $name The name or index of the argument in which the mismatch occurred
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( string $actual, string $expected, string $value, $name, Throwable $previous = null ) {
+	public function __construct( string $actual, string $expected, string $value, $name, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->actual = $actual;
