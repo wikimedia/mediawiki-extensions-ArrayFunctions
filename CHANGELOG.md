@@ -9,11 +9,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Add the `#af_flatten` parser function.
+- Add the `#af_wildcard` parser function.
+
 ## [v1.10.0] - 2024-11-26
 
 ### Added
 
 - Add ZLIB compression using `gzdeflate` and `gzinflate`.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ## [v1.9.0] - 2024-05-02
 

@@ -1,0 +1,160 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_flatten
+!! endfunctionhooks
+
+# This file tests the #af_flatten parser function
+
+!! test
+Test flat array no depth 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test flat array no depth 2
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} | }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test flat array depth of 0
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} | 0 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test flat array depth of -1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} | -1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test flat array depth of 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} | 1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test flat array depth of 999
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | b | c }} | 999 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test two-dimensional array no depth 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li></ul>
+!! end
+
+!! test
+Test two-dimensional array no depth 2
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li></ul>
+!! end
+
+!! test
+Test two-dimensional array depth of 0
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | 0 }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul></li>
+<li>1
+<ul><li>0: d</li>
+<li>1: e</li>
+<li>2: f</li></ul></li></ul>
+!! end
+
+!! test
+Test two-dimensional array depth of -1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | -1 }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul></li>
+<li>1
+<ul><li>0: d</li>
+<li>1: e</li>
+<li>2: f</li></ul></li></ul>
+!! end
+
+!! test
+Test two-dimensional array depth of 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | 1 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li></ul>
+!! end
+
+!! test
+Test two-dimensional array depth of 999
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} | 999 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li>
+<li>4: e</li>
+<li>5: f</li></ul>
+!! end
+
+!! test
+Test mixed array
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | {{#af_list: b | c | d }} }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+!! end

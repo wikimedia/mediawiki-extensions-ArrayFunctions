@@ -28,6 +28,7 @@ $magicWords['en'] = [
 	'af_count' => [ 0, 'af_count' ],
 	'af_difference' => [ 0, 'af_difference' ],
 	'af_exists' => [ 0, 'af_exists' ],
+	'af_flatten' => [ 0, 'af_flatten' ],
 	'af_float' => [ 0, 'af_float' ],
 	'af_foreach' => [ 0, 'af_foreach' ],
 	'af_int' => [ 0, 'af_int' ],
@@ -56,6 +57,7 @@ $magicWords['en'] = [
 	'af_trim' => [ 0, 'af_trim' ],
 	'af_unique' => [ 0, 'af_unique' ],
 	'af_unset' => [ 0, 'af_unset' ],
+	'af_wildcard' => [ 0, 'af_wildcard' ],
 	// Magic words
 	MAG_AF_EMPTY => [ 0, 'af_empty' ]
 ];

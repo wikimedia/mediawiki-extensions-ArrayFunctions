@@ -1,0 +1,159 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_wildcard
+!! endfunctionhooks
+
+# This file tests the #af_wildcard parser function
+
+!! test
+Test simple list
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_list: a | b | c }} }} }}
+!! html
+!! end
+
+!! test
+Test simple two-dimensional list
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} | {{#af_list: g | h | i }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li>
+<li>2
+<ul><li>0: c</li>
+<li>1: f</li>
+<li>2: i</li></ul></li></ul>
+!! end
+
+!! test
+Test simple object
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_list: a | b | c }} | b={{#af_list: d | e | f }} | c={{#af_list: g | h | i }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li>
+<li>2
+<ul><li>0: c</li>
+<li>1: f</li>
+<li>2: i</li></ul></li></ul>
+!! end
+
+!! test
+Test nested object
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_object: a=a | b=b | c=c }} | b={{#af_object: a=d | b=e | c=f }} | c={{#af_object: a=g | b=h | c=i }} }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>b
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li>
+<li>c
+<ul><li>0: c</li>
+<li>1: f</li>
+<li>2: i</li></ul></li></ul>
+!! end
+
+!! test
+Test mixed types object
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_object: a=a | b=b | c=c }} | b={{#af_object: a=d | b=e | c=f }} | c={{#af_object: a=g | b=h | c=i }} | d=foobar }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>b
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li>
+<li>c
+<ul><li>0: c</li>
+<li>1: f</li>
+<li>2: i</li></ul></li></ul>
+!! end
+
+!! test
+Test list with null value
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_list: }} }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test object with null value
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a= }} }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test empty array
+!! wikitext
+{{#af_print: {{#af_wildcard: {{AF_EMPTY}} }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test list with a single element
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_list: a }} }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test object with a single element
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_list: a }} }} }} }}
+!! html
+<ul><li>0: a</li></ul>
+!! end
+
+!! test
+Test single-dimensional list with null value
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_list: a | b | null }} }} }}
+!! html
+!! end
+
+!! test
+Test multiple empty arrays in object
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_list: }} | b={{#af_list: }} | c={{#af_list: }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: </li>
+<li>1: </li>
+<li>2: </li></ul></li></ul>
+!! end
+
+!! test
+Test nested empty objects
+!! wikitext
+{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_object:}} | b={{#af_object:}} }} }} }}
+!! html
+!! end

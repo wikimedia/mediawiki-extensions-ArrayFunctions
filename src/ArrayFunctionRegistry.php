@@ -6,6 +6,7 @@ use ArrayFunctions\ArrayFunctions\AFBool;
 use ArrayFunctions\ArrayFunctions\AFCount;
 use ArrayFunctions\ArrayFunctions\AFDifference;
 use ArrayFunctions\ArrayFunctions\AFExists;
+use ArrayFunctions\ArrayFunctions\AFFlatten;
 use ArrayFunctions\ArrayFunctions\AFFloat;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
@@ -34,6 +35,7 @@ use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFTrim;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
+use ArrayFunctions\ArrayFunctions\AFWildcard;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
@@ -76,6 +78,7 @@ class ArrayFunctionRegistry {
 			AFDifference::class,
 			AFExists::class,
 			AFList::class,
+			AFFlatten::class,
 			AFFloat::class,
 			AFForeach::class,
 			AFGet::class,
@@ -102,7 +105,8 @@ class ArrayFunctionRegistry {
 			AFTemplate::class,
 			AFTrim::class,
 			AFUnique::class,
-			AFUnset::class
+			AFUnset::class,
+			AFWildcard::class,
 		];
 	}
 }
