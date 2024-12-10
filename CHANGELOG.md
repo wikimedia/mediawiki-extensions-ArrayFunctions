@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_reverse` parser function.
 - Overload `#af_get` with special indices to perform certain operations on the array instead of retrieving a key.
 
+### Changed
+
+- The `#af_unique` parser function now compares items normally instead of as strings.
+
 ## [v1.10.0] - 2024-11-26
 
 ### Added

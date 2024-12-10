@@ -17,6 +17,6 @@ class AFUnique extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array ): array {
-		return [ array_unique( $array ) ];
+		return [ array_unique( $array, SORT_REGULAR ) ];
 	}
 }
