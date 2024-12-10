@@ -24,7 +24,7 @@ class AFGet extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $value, string ...$indices ): array {
-		return [ $this->index( $value, $indices ) ?? '' ];
+		return [ $this->indexList( $value, $indices ) ?? '' ];
 	}
 
 	/**
@@ -34,50 +34,46 @@ class AFGet extends ArrayFunction {
 	 * @param array $indices
 	 * @return array|null
 	 */
-	private function index( array $value, array $indices ) {
+	private function indexList( array $value, array $indices ) {
 		foreach ( $indices as $index ) {
 			if ( !is_array( $value ) ) {
 				// Not indexable
 				return null;
 			}
 
-			$handler = $this->indexHandler( $index );
-			$value = $handler( $value );
+			$value = $this->index( $value, $index );
 		}
 
 		return $value;
 	}
 
 	/**
-	 * Return a callable that handles the given index.
+	 * Index the given array with the given index.
 	 *
-	 * @param mixed $index
-	 * @return callable
+	 * @param array $array
+	 * @param string $index
+	 * @return mixed
 	 */
-	private function indexHandler( $index ): callable {
-		if ( $index === self::IDX_WILDCARD ) {
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFWildcard( $this->getParser(), $this->getFrame() ) )->execute( $value )[0] ?? null;
+	private function index( array $array, string $index ) {
+		if ( isset( $array[ $index ] ) ) {
+			return $array[ $index ];
+		} elseif ( $index === self::IDX_WILDCARD ) {
+			return ( new AFWildcard( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_REVERSE ) {
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFReverse( $this->getParser(), $this->getFrame() ) )->execute( $value )[0] ?? null;
+			return ( new AFReverse( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_FLATTEN ) {
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $value, 1 )[0] ?? null;
+			return ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $array, 1 )[0] ?? null;
 		} elseif ( $index === self::IDX_FLATTEN_RECURSIVE ) {
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $value, null )[0] ?? null;
+			return ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $array, null )[0] ?? null;
 		} elseif ( $index === self::IDX_UNIQUE ) {
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFUnique( $this->getParser(), $this->getFrame() ) )->execute( $value )[0] ?? null;
+			return ( new AFUnique( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
 		} elseif ( preg_match( self::IDX_SLICE_REGEX, $index, $matches, PREG_UNMATCHED_AS_NULL ) === 1 ) {
 			$offset = intval( $matches[1] ?? 0 );
 			$length = !empty( $matches[2] ) ? intval( $matches[2] ) - $offset : null;
-			// phpcs:ignore
-			return fn ( $value ) => ( new AFSlice( $this->getParser(), $this->getFrame() ) )->execute( $value, $offset, $length )[0] ?? null;
+			return ( new AFSlice( $this->getParser(), $this->getFrame() ) )->execute( $array, $offset, $length )[0] ??
+				null;
 		} else {
-			// phpcs:ignore
-			return fn ( $value ) => $value[$index] ?? null;
+			return null;
 		}
 	}
 }
