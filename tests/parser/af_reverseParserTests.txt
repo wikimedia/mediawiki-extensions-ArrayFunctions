@@ -1,0 +1,46 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_reverse
+!! endfunctionhooks
+
+# This file tests the #af_reverse parser function
+
+!! test
+Test simple list
+!! wikitext
+{{#af_print: {{#af_reverse: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: c</li>
+<li>1: b</li>
+<li>2: a</li></ul>
+!! end
+
+!! test
+Test simple object
+!! wikitext
+{{#af_print: {{#af_reverse: {{#af_object: a=a | b=b | c=c }} }} }}
+!! html
+<ul><li>c: c</li>
+<li>b: b</li>
+<li>a: a</li></ul>
+!! end
+
+!! test
+Test too many arguments
+!! wikitext
+{{#af_reverse: {{#af_list: a | b | c }} | foo }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_reverse</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end
+
+!! test
+Test invalid type
+!! wikitext
+{{#af_reduce: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_reduce</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+

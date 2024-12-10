@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Add the `#af_flatten` parser function.
 - Add the `#af_wildcard` parser function.
+- Add the `#af_reverse` parser function.
+- Overload `#af_get` with special indices to perform certain operations on the array instead of retrieving a key.
 
 ## [v1.10.0] - 2024-11-26
 

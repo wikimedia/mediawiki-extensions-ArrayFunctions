@@ -103,6 +103,105 @@ Test get no keys
 !! end
 
 !! test
+Test get wildcard
+!! wikitext
+{{#af_print: {{#af_get: {{#af_object: a={{#af_object: a=a | b=b | c=c }} | b={{#af_object: a=d | b=e | c=f }} | c={{#af_object: a=g | b=h | c=i }} }} | * | a | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get reverse
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | <- | 0 }} }}
+!! html
+<p>c
+</p>
+!! end
+
+!! test
+Test double reverse
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | <- | <- | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get flatten once already flat
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | >< | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get flatten once
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: a | b | c }} | {{#af_list: a | b | c }} }} | >< | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get flatten recursive already flat
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | >><< | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get flatten recursive
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: a | b | c }} | {{#af_list: a | b | c }} }} }} | >><< | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get unique
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | a | b | c }} | # | 1 }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test get slice simple
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c | d | e }} | 1..3 }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: c</li></ul>
+!! end
+
+!! test
+Test get slice no upper bound
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c | d | e }} | 1.. }} }}
+!! html
+<ul><li>0: b</li>
+<li>1: c</li>
+<li>2: d</li>
+<li>3: e</li></ul>
+!! end
+
+!! test
+Test get slice lower upper bound
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c | d | e }} | 3..1 }} }}
+!! html
+!! end
+
+!! test
 Test invalid type for first argument
 !! wikitext
 {{#af_get: foobar }}
