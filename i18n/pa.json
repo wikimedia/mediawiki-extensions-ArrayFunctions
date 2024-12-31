@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cabal"
+		]
+	},
+	"af-error-template-loop-detected": "<b>$1</b> ਦਾ ਵਿਸਤਾਰ ਇੱਕ ਫਰਮੇ ਦੇ ਘੇਰੇ ਦਾ ਕਾਰਨ ਬਣੇਗਾ।"
+}
