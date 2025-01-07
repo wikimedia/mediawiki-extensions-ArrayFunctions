@@ -58,7 +58,7 @@ class AFGet extends ArrayFunction {
 		if ( isset( $array[ $index ] ) ) {
 			return $array[ $index ];
 		} elseif ( $index === self::IDX_WILDCARD ) {
-			return ( new AFWildcard( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
+			return ( new AFGroup( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_REVERSE ) {
 			return ( new AFReverse( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_FLATTEN ) {

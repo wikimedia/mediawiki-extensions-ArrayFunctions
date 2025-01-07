@@ -31,6 +31,7 @@ $magicWords['en'] = [
 	'af_flatten' => [ 0, 'af_flatten' ],
 	'af_float' => [ 0, 'af_float' ],
 	'af_foreach' => [ 0, 'af_foreach' ],
+	'af_group' => [ 0, 'af_group' ],
 	'af_int' => [ 0, 'af_int' ],
 	'af_intersect' => [ 0, 'af_intersect' ],
 	'af_isarray' => [ 0, 'af_isarray' ],

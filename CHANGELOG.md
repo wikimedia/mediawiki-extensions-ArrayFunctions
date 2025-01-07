@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Changed
+
+- Rename the `#af_wildcard` parser function to `#af_group`, and add an alias for `#af_wildcard`.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
 ## [v1.11.0] - 2024-12-10
 
 ### Added

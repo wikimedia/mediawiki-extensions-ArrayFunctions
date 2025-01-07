@@ -36,6 +36,15 @@ abstract class ArrayFunction {
 	abstract public static function getName(): string;
 
 	/**
+	 * Returns the aliases of this parser function.
+	 *
+	 * @return array
+	 */
+	public static function getAliases(): array {
+		return [];
+	}
+
+	/**
 	 * Returns a dictionary of keyword names to specification. The specification should follow the following schema:
 	 *
 	 * {

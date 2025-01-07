@@ -3,32 +3,35 @@
 namespace ArrayFunctions\ArrayFunctions;
 
 /**
- * Implements the #af_wildcard parser function.
+ * Implements the #af_group parser function.
  */
-class AFWildcard extends ArrayFunction {
+class AFGroup extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
 	public static function getName(): string {
-		return 'af_wildcard';
+		return 'af_group';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getAliases(): array {
+		return [ 'af_wildcard' ];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute( array $array ): array {
-		return [ $this->createWildcardArray( $array ) ?? '' ];
+		return [ $this->group( $array ) ?? '' ];
 	}
 
 	/**
-	 * Create an array that, when indexed with `k`, will return the list of values that you would
-	 * get if you were to loop over the original given array, index all sub-arrays with `k` and
-	 * collect the results.
-	 *
 	 * @param array $array
 	 * @return mixed
 	 */
-	private function createWildcardArray( array $array ) {
+	private function group( array $array ) {
 		if ( empty( $array ) ) {
 			return null;
 		}

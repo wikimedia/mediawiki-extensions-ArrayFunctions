@@ -33,6 +33,14 @@ class ParserInitHookHandler implements ParserFirstCallInitHook {
 				[ new ArrayFunctionInvoker( $class ), "invoke" ],
 				Parser::SFH_OBJECT_ARGS
 			);
+
+			foreach ( $class::getAliases() as $alias ) {
+				$parser->setFunctionHook(
+					$alias,
+					[ new ArrayFunctionInvoker( $class ), "invoke" ],
+					Parser::SFH_OBJECT_ARGS
+				);
+			}
 		}
 	}
 }

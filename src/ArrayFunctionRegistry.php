@@ -10,6 +10,7 @@ use ArrayFunctions\ArrayFunctions\AFFlatten;
 use ArrayFunctions\ArrayFunctions\AFFloat;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFGet;
+use ArrayFunctions\ArrayFunctions\AFGroup;
 use ArrayFunctions\ArrayFunctions\AFIf;
 use ArrayFunctions\ArrayFunctions\AFInt;
 use ArrayFunctions\ArrayFunctions\AFIntersect;
@@ -36,7 +37,6 @@ use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFTrim;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
-use ArrayFunctions\ArrayFunctions\AFWildcard;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
@@ -108,7 +108,7 @@ class ArrayFunctionRegistry {
 			AFTrim::class,
 			AFUnique::class,
 			AFUnset::class,
-			AFWildcard::class,
+			AFGroup::class,
 		];
 	}
 }
