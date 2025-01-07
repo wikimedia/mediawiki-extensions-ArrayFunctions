@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Add the `#af_range` parser function.
+
 ### Changed
 
 - Rename the `#af_wildcard` parser function to `#af_group`, and add an alias for `#af_wildcard`.

@@ -18,5 +18,6 @@
 	"af-error-template-loop-detected": "Error message given when trying to expand a template such that it causes a template loop. Parameters:\n* $1 - the title that would cause the template loop",
 	"af-error-max-template-depth-reached": "Error message given when trying to expand a template after the maximum template depth has been reached.",
 	"af-error-template-inclusion-denied": "Error message given when trying to expand a template that the user may not view or that may not be included.",
-	"af-error-value-not-showable": "Error message given when trying to show a value that is not showable."
+	"af-error-value-not-showable": "Error message given when trying to show a value that is not showable.",
+	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range."
 }

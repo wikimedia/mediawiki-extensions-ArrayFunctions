@@ -1,0 +1,338 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_range
+!! endfunctionhooks
+
+# This file tests the #af_range parser function
+
+!! test
+Test only start
+!! wikitext
+{{#af_print: {{#af_range: 3 }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 1</li>
+<li>2: 2</li></ul>
+!! end
+
+!! test
+Test only start zero
+!! wikitext
+{{#af_print: {{#af_range: 0 }} }}
+!! html
+!! end
+
+!! test
+Test only start one
+!! wikitext
+{{#af_print: {{#af_range: 1 }} }}
+!! html
+<ul><li>0: 0</li></ul>
+!! end
+
+!! test
+Test only start minus one
+!! wikitext
+{{#af_print: {{#af_range: -1 }} }}
+!! html
+!! end
+
+!! test
+Test start and stop
+!! wikitext
+{{#af_print: {{#af_range: 5 | 8 }} }}
+!! html
+<ul><li>0: 5</li>
+<li>1: 6</li>
+<li>2: 7</li></ul>
+!! end
+
+!! test
+Test start equal to stop
+!! wikitext
+{{#af_print: {{#af_range: 5 | 5 }} }}
+!! html
+!! end
+
+!! test
+Test start greater than stop
+!! wikitext
+{{#af_print: {{#af_range: 5 | 2 }} }}
+!! html
+!! end
+
+!! test
+Test start greater than stop, negative step
+!! wikitext
+{{#af_print: {{#af_range: 5 | 2 | -1 }} }}
+!! html
+<ul><li>0: 5</li>
+<li>1: 4</li>
+<li>2: 3</li></ul>
+!! end
+
+!! test
+Test start and step
+!! wikitext
+{{#af_print: {{#af_range: 10 | | 5 }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 5</li></ul>
+!! end
+
+!! test
+Test zero step
+!! wikitext
+{{#af_range: 0 | 10 | 0 }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_range</b>): The step size cannot be 0.</span>
+</p>
+!! end
+
+!! test
+Test step larger than range both positive
+!! wikitext
+{{#af_print: {{#af_range: 0 | 5 | 10 }} }}
+!! html
+<ul><li>0: 0</li></ul>
+!! end
+
+!! test
+Test step larger than range both negative
+!! wikitext
+{{#af_print: {{#af_range: 0 | -5 | -10 }} }}
+!! html
+<ul><li>0: 0</li></ul>
+!! end
+
+!! test
+Test step larger than range positive range negative step
+!! wikitext
+{{#af_print: {{#af_range: 0 | 5 | -10 }} }}
+!! html
+!! end
+
+!! test
+Test step larger than range negative range positive step
+!! wikitext
+{{#af_print: {{#af_range: 0 | -5 | 10 }} }}
+!! html
+!! end
+
+!! test
+Test custom step with start and stop
+!! wikitext
+{{#af_print: {{#af_range: 1 | 10 | 2 }} }}
+!! html
+<ul><li>0: 1</li>
+<li>1: 3</li>
+<li>2: 5</li>
+<li>3: 7</li>
+<li>4: 9</li></ul>
+!! end
+
+!! test
+Start equal to stop, positive step
+!! wikitext
+{{#af_print: {{#af_range: 0 | 0 | 1 }} }}
+!! html
+!! end
+
+!! test
+Start equal to stop, negative step
+!! wikitext
+{{#af_print: {{#af_range: 0 | 0 | -1 }} }}
+!! html
+!! end
+
+!! test
+Test negative start and negative stop
+!! wikitext
+{{#af_print: {{#af_range: -5 | -2 }} }}
+!! html
+<ul><li>0: -5</li>
+<li>1: -4</li>
+<li>2: -3</li></ul>
+!! end
+
+!! test
+Test negative start, negative stop, and negative step
+!! wikitext
+{{#af_print: {{#af_range: -1 | -5 | -1 }} }}
+!! html
+<ul><li>0: -1</li>
+<li>1: -2</li>
+<li>2: -3</li>
+<li>3: -4</li></ul>
+!! end
+
+!! test
+Test negative start, positive stop
+!! wikitext
+{{#af_print: {{#af_range: -3 | 3 }} }}
+!! html
+<ul><li>0: -3</li>
+<li>1: -2</li>
+<li>2: -1</li>
+<li>3: 0</li>
+<li>4: 1</li>
+<li>5: 2</li></ul>
+!! end
+
+!! test
+Test negative start, positive stop, and step of 2
+!! wikitext
+{{#af_print: {{#af_range: -4 | 4 | 2 }} }}
+!! html
+<ul><li>0: -4</li>
+<li>1: -2</li>
+<li>2: 0</li>
+<li>3: 2</li></ul>
+!! end
+
+!! test
+Test stop greater than start with negative step
+!! wikitext
+{{#af_print: {{#af_range: 2 | 5 | -1 }} }}
+!! html
+!! end
+
+!! test
+Test large range
+!! wikitext
+{{#af_print: {{#af_range: 0 | 20 | 5 }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 5</li>
+<li>2: 10</li>
+<li>3: 15</li></ul>
+!! end
+
+!! test
+Test range with step of 1 (default)
+!! wikitext
+{{#af_print: {{#af_range: 2 | 5 }} }}
+!! html
+<ul><li>0: 2</li>
+<li>1: 3</li>
+<li>2: 4</li></ul>
+!! end
+
+!! test
+Test range with single value input as stop
+!! wikitext
+{{#af_print: {{#af_range: 4 }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 1</li>
+<li>2: 2</li>
+<li>3: 3</li></ul>
+!! end
+
+!! test
+Test start and stop both negative with positive step
+!! wikitext
+{{#af_print: {{#af_range: -7 | -3 | 2 }} }}
+!! html
+<ul><li>0: -7</li>
+<li>1: -5</li></ul>
+!! end
+
+!! test
+Test empty range with invalid step direction
+!! wikitext
+{{#af_print: {{#af_range: 5 | 10 | -1 }} }}
+!! html
+!! end
+
+!! test
+Test large negative range with positive step
+!! wikitext
+{{#af_print: {{#af_range: -20 | -10 | 3 }} }}
+!! html
+<ul><li>0: -20</li>
+<li>1: -17</li>
+<li>2: -14</li>
+<li>3: -11</li></ul>
+!! end
+
+!! test
+Test large negative range with negative step
+!! wikitext
+{{#af_print: {{#af_range: -10 | -20 | -2 }} }}
+!! html
+<ul><li>0: -10</li>
+<li>1: -12</li>
+<li>2: -14</li>
+<li>3: -16</li>
+<li>4: -18</li></ul>
+!! end
+
+!! test
+Test zero as both start and stop
+!! wikitext
+{{#af_print: {{#af_range: 0 | 0 }} }}
+!! html
+!! end
+
+!! test
+Test range with single negative number as stop
+!! wikitext
+{{#af_print: {{#af_range: -3 }} }}
+!! html
+!! end
+
+!! test
+Test negative start and positive stop with negative step
+!! wikitext
+{{#af_print: {{#af_range: -5 | 5 | -2 }} }}
+!! html
+!! end
+
+!! test
+Test step larger than range for mixed signs
+!! wikitext
+{{#af_print: {{#af_range: -2 | 3 | 10 }} }}
+!! html
+<ul><li>0: -2</li></ul>
+!! end
+
+!! test
+Test range with no step specified (default step = 1)
+!! wikitext
+{{#af_print: {{#af_range: 7 | 10 }} }}
+!! html
+<ul><li>0: 7</li>
+<li>1: 8</li>
+<li>2: 9</li></ul>
+!! end
+
+!! test
+Test single value input as stop with step of 2
+!! wikitext
+{{#af_print: {{#af_range: 6 | | 2 }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 2</li>
+<li>2: 4</li></ul>
+!! end
+
+!! test
+Test large positive range
+!! wikitext
+{{#af_print: {{#af_range: 100 | 110 | 2 }} }}
+!! html
+<ul><li>0: 100</li>
+<li>1: 102</li>
+<li>2: 104</li>
+<li>3: 106</li>
+<li>4: 108</li></ul>
+!! end
+
+!! test
+Test invalid range where step is negative and start < stop
+!! wikitext
+{{#af_print: {{#af_range: 1 | 5 | -1 }} }}
+!! html
+!! end
