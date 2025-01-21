@@ -52,8 +52,8 @@ Test too few arguments
 !! test
 Test too many arguments
 !! wikitext
-{{#af_if: false }}
+{{#af_if: false | true | true | true }}
 !! html
-<p><span class="error">ArrayFunctions (<b>#af_if</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+<p><span class="error">ArrayFunctions (<b>#af_if</b>): Expected at most <b>3</b> positional parameters, <b>4</b> given.</span>
 </p>
 !! end

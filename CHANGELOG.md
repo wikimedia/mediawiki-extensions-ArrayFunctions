@@ -16,9 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Rename the `#af_wildcard` parser function to `#af_group`, and add an alias for `#af_wildcard`.
-- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 - The `#af_difference` parser function now compares items normally instead of as strings.
 - The `#af_exists` parser function now accepts multiple keys to check if a nested key exists.
+- The `#af_instersect` parser function now compares items normally instead of as strings.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ## [v1.11.0] - 2024-12-10
 

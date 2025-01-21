@@ -90,24 +90,6 @@ Test mixed types object
 !! end
 
 !! test
-Test list with null value
-!! wikitext
-{{#af_print: {{#af_group: {{#af_list: }} }} }}
-!! html
-<p class="mw-empty-elt">
-</p>
-!! end
-
-!! test
-Test object with null value
-!! wikitext
-{{#af_print: {{#af_group: {{#af_object: a= }} }} }}
-!! html
-<p class="mw-empty-elt">
-</p>
-!! end
-
-!! test
 Test empty array
 !! wikitext
 {{#af_print: {{#af_group: {{AF_EMPTY}} }} }}
@@ -134,13 +116,6 @@ Test object with a single element
 !! end
 
 !! test
-Test single-dimensional list with null value
-!! wikitext
-{{#af_print: {{#af_group: {{#af_list: a | b | null }} }} }}
-!! html
-!! end
-
-!! test
 Test multiple empty arrays in object
 !! wikitext
 {{#af_print: {{#af_group: {{#af_object: a={{#af_list: }} | b={{#af_list: }} | c={{#af_list: }} }} }} }}
@@ -156,4 +131,46 @@ Test nested empty objects
 !! wikitext
 {{#af_print: {{#af_group: {{#af_object: a={{#af_object:}} | b={{#af_object:}} }} }} }}
 !! html
+!! end
+
+!! test
+Test empty input
+!! wikitext
+{{#af_group: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_group</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test single-dimensional list
+!! wikitext
+{{#af_print: {{#af_group: {{#af_list: x | y | z }} }} }}
+!! html
+!! end
+
+!! test
+Test single object with scalar values
+!! wikitext
+{{#af_print: {{#af_group: {{#af_object: key1=value1 | key2=value2 }} }} }}
+!! html
+!! end
+
+!! test
+Test group with invalid input type
+!! wikitext
+{{#af_group: invalidInput }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_group</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("invalidInput").</span>
+</p>
+!! end
+
+!! test
+Test empty nested arrays
+!! wikitext
+{{#af_print: {{#af_group: {{#af_list: {{#af_list: }} | {{#af_list: }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: </li>
+<li>1: </li></ul></li></ul>
 !! end

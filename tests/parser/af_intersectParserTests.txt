@@ -55,3 +55,54 @@ Test overlapping multiple arrays
 !! html
 <ul><li>0: a</li></ul>
 !! end
+
+!! test
+Test empty arrays
+!! wikitext
+{{#af_print: {{#af_intersect: {{AF_EMPTY}} | {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test single empty array
+!! wikitext
+{{#af_print: {{#af_intersect: {{#af_list: a | b | c }} | {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test mixed types
+!! wikitext
+{{#af_print: {{#af_intersect: {{#af_list: a | 1 | true | b }} | {{#af_list: b | 1 | false | c }} }} }}
+!! html
+<ul><li>1: 1</li>
+<li>3: b</li></ul>
+!! end
+
+!! test
+Test nested arrays
+!! wikitext
+{{#af_print: {{#af_intersect: {{#af_list: {{#af_list: a | b }} | c }} | {{#af_list: {{#af_list: a | b }} | d }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li></ul>
+!! end
+
+!! test
+Test objects as arrays
+!! wikitext
+{{#af_print: {{#af_intersect: {{#af_object: key1=a | key2=b }} | {{#af_object: key2=b | key3=c }} }} }}
+!! html
+<ul><li>key2: b</li></ul>
+!! end
+
+!! test
+Test duplicate values in single array
+!! wikitext
+{{#af_print: {{#af_intersect: {{#af_list: a | b | b | c }} | {{#af_list: b | c }} }} }}
+!! html
+<ul><li>1: b</li>
+<li>2: b</li>
+<li>3: c</li></ul>
+!! end

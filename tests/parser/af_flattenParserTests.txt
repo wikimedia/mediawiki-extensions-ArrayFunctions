@@ -158,3 +158,131 @@ Test mixed array
 <li>2: c</li>
 <li>3: d</li></ul>
 !! end
+
+!! test
+Test empty array
+!! wikitext
+{{#af_print: {{#af_flatten: {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test one-dimensional array with booleans
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: boolean__^__1 | boolean__^__0 | boolean__^__1 }} }} }}
+!! html
+<ul><li>0: true</li>
+<li>1: false</li>
+<li>2: true</li></ul>
+!! end
+
+!! test
+Test two-dimensional array with integers
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: integer__^__1 | integer__^__2 }} | {{#af_list: integer__^__3 | integer__^__4 }} }} }} }}
+!! html
+<ul><li>0: 1</li>
+<li>1: 2</li>
+<li>2: 3</li>
+<li>3: 4</li></ul>
+!! end
+
+!! test
+Test three-dimensional array
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: {{#af_list: a | b }} | c }} | d }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+!! end
+
+!! test
+Test three-dimensional array with depth of 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: {{#af_list: a | b }} | c }} | d }} | 1 }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li>
+<li>1: c</li>
+<li>2: d</li></ul>
+!! end
+
+!! test
+Test three-dimensional array with depth of 2
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: {{#af_list: a | b }} | c }} | d }} | 2 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+!! end
+
+!! test
+Test three-dimensional array with depth of 0
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: {{#af_list: a | b }} | c }} | d }} | 0 }} }}
+!! html
+<ul><li>0
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li>
+<li>1: c</li></ul></li>
+<li>1: d</li></ul>
+!! end
+
+!! test
+Test deeply nested arrays with integers and booleans
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: {{#af_list: integer__^__1 | boolean__^__1 }} | boolean__^__0 }} | integer__^__2 }} }} }}
+!! html
+<ul><li>0: 1</li>
+<li>1: true</li>
+<li>2: false</li>
+<li>3: 2</li></ul>
+!! end
+
+!! test
+Test array with mixed nesting levels
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | {{#af_list: b | {{#af_list: c | d }} }} }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+!! end
+
+!! test
+Test array with booleans and depth of 1
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: boolean__^__1 | {{#af_list: boolean__^__0 | boolean__^__1 }} }} | 1 }} }}
+!! html
+<ul><li>0: true</li>
+<li>1: false</li>
+<li>2: true</li></ul>
+!! end
+
+!! test
+Test unevenly nested arrays
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: a | {{#af_list: b | {{#af_list: c | {{#af_list: d }} }} }} }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li>
+<li>3: d</li></ul>
+!! end
+
+!! test
+Test array with depth greater than nesting level
+!! wikitext
+{{#af_print: {{#af_flatten: {{#af_list: {{#af_list: a | b }} | c }} | 5 }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end

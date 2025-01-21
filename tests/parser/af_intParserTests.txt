@@ -80,3 +80,47 @@ Test too many arguments
 </p>
 !! end
 
+!! test
+Test empty input
+!! wikitext
+{{#af_int: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Could not match expected type <b>integer</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test string
+!! wikitext
+{{#af_int: hello }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_int</b>): Could not match expected type <b>integer</b> with actual type <b>string</b> for parameter <b>1</b> ("hello").</span>
+</p>
+!! end
+
+!! test
+Test large positive integer within valid range
+!! wikitext
+{{#af_int: 9223372036854775807 }}
+!! html
+<p>integer__^__9223372036854775807
+</p>
+!! end
+
+!! test
+Test large negative integer within valid range
+!! wikitext
+{{#af_int: -9223372036854775808 }}
+!! html
+<p>integer__^__-9223372036854775808
+</p>
+!! end
+
+!! test
+Test integer with plus sign
+!! wikitext
+{{#af_int: +10 }}
+!! html
+<p>integer__^__10
+</p>
+!! end

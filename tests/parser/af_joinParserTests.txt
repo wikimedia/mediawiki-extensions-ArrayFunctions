@@ -133,3 +133,50 @@ Test too many parameters
 <p><span class="error">ArrayFunctions (<b>#af_join</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
 </p>
 !! end
+
+!! test
+Test join deeply nested list with custom glue
+!! wikitext
+{{#af_join: {{#af_list: a | {{#af_list: b | c }} }} | \n }}
+!! html
+<p>a
+b
+c
+</p>
+!! end
+
+!! test
+Test join single element list with glue
+!! wikitext
+{{#af_join: {{#af_list: a }} | - }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test join multi-dimensional list with mixed types
+!! wikitext
+{{#af_join: {{#af_list: a | {{#af_list: b | 1 }} }} | , }}
+!! html
+<p>a,b,1
+</p>
+!! end
+
+!! test
+Test join non-array input
+!! wikitext
+{{#af_join: 12345 | - }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_join</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("12345").</span>
+</p>
+!! end
+
+!! test
+Test join with non-existent escape sequence inside glue
+!! wikitext
+{{#af_join: {{#af_list: a | b | c }} | \x }}
+!! html
+<p>a\xb\xc
+</p>
+!! end

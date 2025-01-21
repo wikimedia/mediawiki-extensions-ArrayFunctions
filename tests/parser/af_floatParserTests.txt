@@ -142,3 +142,156 @@ Test too many arguments
 <p><span class="error">ArrayFunctions (<b>#af_float</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
 </p>
 !! end
+
+!! test
+Test zero as float
+!! wikitext
+{{#af_float: 0 }}
+!! html
+<p>float__^__0
+</p>
+!! end
+
+!! test
+Test whitespace-only input gives error
+!! wikitext
+{{#af_float:    }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end
+
+!! test
+Test invalid string gives error
+!! wikitext
+{{#af_float: abc }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>string</b> for parameter <b>1</b> ("abc").</span>
+</p>
+!! end
+
+!! test
+Test boolean true gives error
+!! wikitext
+{{#af_float: true }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>string</b> for parameter <b>1</b> ("true").</span>
+</p>
+!! end
+
+!! test
+Test boolean false gives error
+!! wikitext
+{{#af_float: false }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Could not match expected type <b>float</b> with actual type <b>string</b> for parameter <b>1</b> ("false").</span>
+</p>
+!! end
+
+!! test
+Test float representation of a large integer
+!! wikitext
+{{#af_float: 1000000000 }}
+!! html
+<p>float__^__1000000000
+</p>
+!! end
+
+!! test
+Test float representation of a small integer
+!! wikitext
+{{#af_float: 1 }}
+!! html
+<p>float__^__1
+</p>
+!! end
+
+!! test
+Test float representation of a negative integer
+!! wikitext
+{{#af_float: -42 }}
+!! html
+<p>float__^__-42
+</p>
+!! end
+
+!! test
+Test float representation of a positive number with trailing zeros
+!! wikitext
+{{#af_float: 100.0000 }}
+!! html
+<p>float__^__100
+</p>
+!! end
+
+!! test
+Test float representation of a negative number with trailing zeros
+!! wikitext
+{{#af_float: -100.0000 }}
+!! html
+<p>float__^__-100
+</p>
+!! end
+
+!! test
+Test float with many decimal places
+!! wikitext
+{{#af_float: 3.14159265358979323846 }}
+!! html
+<p>float__^__3.1415926535898
+</p>
+!! end
+
+!! test
+Test large positive float in scientific notation
+!! wikitext
+{{#af_float: 1.23E+10 }}
+!! html
+<p>float__^__12300000000
+</p>
+!! end
+
+!! test
+Test large negative float in scientific notation
+!! wikitext
+{{#af_float: -1.23E+10 }}
+!! html
+<p>float__^__-12300000000
+</p>
+!! end
+
+!! test
+Test very small positive float in scientific notation
+!! wikitext
+{{#af_float: 1.23E-10 }}
+!! html
+<p>float__^__1.23E-10
+</p>
+!! end
+
+!! test
+Test very small negative float in scientific notation
+!! wikitext
+{{#af_float: -1.23E-10 }}
+!! html
+<p>float__^__-1.23E-10
+</p>
+!! end
+
+!! test
+Test input with leading zeros
+!! wikitext
+{{#af_float: 0000123.45 }}
+!! html
+<p>float__^__123.45
+</p>
+!! end
+
+!! test
+Test input with invalid extra arguments
+!! wikitext
+{{#af_float: 3.14 | extra }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_float</b>): Expected at most <b>1</b> positional parameter, <b>2</b> given.</span>
+</p>
+!! end

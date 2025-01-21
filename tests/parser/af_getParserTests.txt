@@ -209,3 +209,157 @@ Test invalid type for first argument
 <p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("foobar").</span>
 </p>
 !! end
+
+!! test
+Test get first value
+!! wikitext
+{{#af_get: {{#af_list: x | y | z }} | 0 }}
+!! html
+<p>x
+</p>
+!! end
+
+!! test
+Test get last value
+!! wikitext
+{{#af_get: {{#af_list: a | b | c }} | <- | 0 }}
+!! html
+<p>c
+</p>
+!! end
+
+!! test
+Test get value by numeric string key
+!! wikitext
+{{#af_get: {{#af_object: 1=one | 2=two }} | 2 }}
+!! html
+<p>two
+</p>
+!! end
+
+!! test
+Test get from nested object
+!! wikitext
+{{#af_get: {{#af_object: outer={{#af_object: inner=value }} }} | outer | inner }}
+!! html
+<p>value
+</p>
+!! end
+
+!! test
+Test get deeply nested list
+!! wikitext
+{{#af_get: {{#af_list: {{#af_list: {{#af_list: a | b }} }} }} | 0 | 0 | 1 }}
+!! html
+<p>b
+</p>
+!! end
+
+!! test
+Test get from mixed array and object
+!! wikitext
+{{#af_get: {{#af_list: {{#af_object: key=value }} | element }} | 0 | key }}
+!! html
+<p>value
+</p>
+!! end
+
+!! test
+Test get with invalid key type
+!! wikitext
+{{#af_get: {{#af_list: a | b | c }} | invalidKey }}
+!! html
+!! end
+
+!! test
+Test get with invalid nested key
+!! wikitext
+{{#af_get: {{#af_list: {{#af_list: a | b | c }} }} | 0 | invalidKey }}
+!! html
+!! end
+
+!! test
+Test get wildcard key on flat object
+!! wikitext
+{{#af_print: {{#af_get: {{#af_object: foo=bar | boo=far }} | * }} }}
+!! html
+!! end
+
+!! test
+Test get wildcard key on nested object
+!! wikitext
+{{#af_print: {{#af_get: {{#af_object: a={{#af_object: b=1 | c=2 }} | d={{#af_object: e=3 | f=4 }} }} | * | b }} }}
+!! html
+<p>1
+</p>
+!! end
+
+!! test
+Test get with flatten operator once
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: {{#af_list: a | b }} | c }} | >< | 2 }} }}
+!! html
+<p>c
+</p>
+!! end
+
+!! test
+Test get with flatten operator recursively
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: {{#af_list: {{#af_list: a | b }} }} }} | >><< | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test get unique from list
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: x | x | y | z | z }} | # }} }}
+!! html
+<ul><li>0: x</li>
+<li>2: y</li>
+<li>3: z</li></ul>
+!! end
+
+!! test
+Test get reverse slice
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c | d | e }} | 3..1 }} }}
+!! html
+!! end
+
+!! test
+Test get invalid argument type
+!! wikitext
+{{#af_get: notAnArray }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_get</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("notAnArray").</span>
+</p>
+!! end
+
+!! test
+Test get empty list
+!! wikitext
+{{#af_get: {{AF_EMPTY}} | 0 }}
+!! html
+!! end
+
+!! test
+Test get multiple wildcards
+!! wikitext
+{{#af_print: {{#af_get: {{#af_object: a={{#af_object: x=1 | y=2 }} | b={{#af_object: x=3 | y=4 }} }} | * | x }} }}
+!! html
+<ul><li>0: 1</li>
+<li>1: 3</li></ul>
+!! end
+
+!! test
+Test get with no keys returns entire array
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: 1 | 2 | 3 }} }} }}
+!! html
+<ul><li>0: 1</li>
+<li>1: 2</li>
+<li>2: 3</li></ul>
+!! end

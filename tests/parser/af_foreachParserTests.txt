@@ -133,3 +133,128 @@ Test too many arguments
 <p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Expected at most <b>4</b> positional parameters, <b>5</b> given.</span>
 </p>
 !! end
+
+!! test
+Test loop over array with single value
+!! wikitext
+{{#af_foreach: {{#af_list: single }} | key | value | {{{key}}}={{{value}}} }}
+!! html
+<p>0=single
+</p>
+!! end
+
+!! test
+Test loop over empty array
+!! wikitext
+{{#af_foreach: {{AF_EMPTY}} | key | value | {{{key}}}={{{value}}} }}
+!! html
+!! end
+
+!! test
+Test loop over array with delimiter
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value | {{{value}}} | delimiter=, }}
+!! html
+<p>a,b,c
+</p>
+!! end
+
+!! test
+Test loop over array with no key or value and delimiter
+!! wikitext
+{{#af_foreach: {{#af_list: x | y | z }} | | | z | delimiter=; }}
+!! html
+<p>z;z;z
+</p>
+!! end
+
+!! test
+Test loop over object with complex body
+!! wikitext
+{{#af_foreach: {{#af_object: name=John | age=30 }} | key | value | <b>{{{key}}}</b>: <i>{{{value}}}</i> }}
+!! html
+<p><b>name</b>: <i>John</i><b>age</b>: <i>30</i>
+</p>
+!! end
+
+!! test
+Test loop over array with escaped delimiter
+!! wikitext
+{{#af_foreach: {{#af_list: 1 | 2 | 3 }} | key | value | {{{value}}} | delimiter=\n }}
+!! html
+<p>1
+2
+3
+</p>
+!! end
+
+!! test
+Test empty array with delimiter
+!! wikitext
+{{#af_foreach: {{AF_EMPTY}} | key | value | {{{key}}}={{{value}}} | delimiter=, }}
+!! html
+!! end
+
+!! test
+Test object with duplicate keys
+!! wikitext
+{{#af_foreach: {{#af_object: key=value1 | key=value2 }} | key | value | {{{key}}}={{{value}}} }}
+!! html
+<p>key=value2
+</p>
+!! end
+
+!! test
+Test nested foreach loops
+!! wikitext
+{{#af_foreach: {{#af_list: 1 | 2 }} | outerKey | outerValue |
+  {{#af_foreach: {{#af_list: a | b }} | innerKey | innerValue | {{{outerValue}}}:{{{innerValue}}} }}
+}}
+!! html
+<p>1:a1:b2:a2:b
+</p>
+!! end
+
+!! test
+Test invalid array parameter
+!! wikitext
+{{#af_foreach: notAnArray | key | value | {{{key}}}={{{value}}} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Could not match expected type <b>array</b> with actual type <b>string</b> for parameter <b>1</b> ("notAnArray").</span>
+</p>
+!! end
+
+!! test
+Test missing body with valid array
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value }}
+!! html
+!! end
+
+!! test
+Test array with special characters
+!! wikitext
+{{#af_foreach: {{#af_list: @ | # | $ }} | key | value | {{{value}}} }}
+!! html
+<p>@#$
+</p>
+!! end
+
+!! test
+Test nested loop with delimiter
+!! wikitext
+{{#af_foreach: {{#af_list: x | y }} | outerKey | outerValue |
+  {{#af_foreach: {{#af_list: 1 | 2 }} | innerKey | innerValue | {{{outerValue}}}-{{{innerValue}}} | delimiter=; }} | delimiter=, }}
+!! html
+<p>x-1;x-2,y-1;y-2
+</p>
+!! end
+
+!! test
+Test too many arguments in foreach
+!! wikitext
+{{#af_foreach: {{#af_list: a | b | c }} | key | value | body | extra }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_foreach</b>): Expected at most <b>4</b> positional parameters, <b>5</b> given.</span>
+</p>
+!! end
