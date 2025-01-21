@@ -68,3 +68,75 @@ Test overlapping multiple arrays 2
 !! html
 <ul><li>0: a</li></ul>
 !! end
+
+!! test
+Test empty array as the first input
+!! wikitext
+{{#af_print: {{#af_difference: {{AF_EMPTY}} | {{#af_list: a | b | c }} }} }}
+!! html
+!! end
+
+!! test
+Test empty array as the second input
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{AF_EMPTY}} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test both arrays empty
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: }} | {{#af_list: }} }} }}
+!! html
+!! end
+
+!! test
+Test case sensitivity
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | B | c }} | {{#af_list: A | b | C }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: B</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test duplicate elements in the first array
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | a | b | c }} | {{#af_list: c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: a</li>
+<li>2: b</li></ul>
+!! end
+
+!! test
+Test duplicate elements in the second array
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a | b | c }} | {{#af_list: c | c | d }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test complex nested arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: {{#af_list: a | b }} | c }} | {{#af_list: b | c }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li></ul>
+!! end
+
+!! test
+Test large arrays
+!! wikitext
+{{#af_print: {{#af_difference: {{#af_list: a1 | a2 | a3 | a4 | a5 }} | {{#af_list: a3 | a4 | a5 | a6 | a7 }} }} }}
+!! html
+<ul><li>0: a1</li>
+<li>1: a2</li></ul>
+!! end

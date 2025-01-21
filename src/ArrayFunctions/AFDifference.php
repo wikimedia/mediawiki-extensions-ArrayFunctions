@@ -19,9 +19,12 @@ class AFDifference extends ArrayFunction {
 	public function execute( array $array, array ...$arrays ): array {
 		if ( empty( $arrays ) ) {
 			// PHP <= 7.4 requires two parameters
-			$result = array_diff( $array, [] );
+			$result = array_udiff( $array, [], fn ( $a, $b ): int => $a <=> $b );
 		} else {
-			$result = array_diff( $array, ...$arrays );
+			// We use `call_user_func_array` instead of calling `array_udiff` directly to avoid
+			// the error "Cannot use positional argument after argument unpacking".
+			$args = [ $array, ...$arrays, fn ( $a, $b ): int => $a <=> $b ];
+			$result = call_user_func_array( 'array_udiff', $args );
 		}
 
 		return [ $result ];
