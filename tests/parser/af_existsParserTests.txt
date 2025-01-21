@@ -25,19 +25,64 @@ Test integer key exists
 !! end
 
 !! test
-Test too few arguments
+Test string key does not exist
 !! wikitext
-{{#af_exists: {{#af_list: foobar | boofar }} }}
+{{#af_exists: {{#af_object: foobar=foobar | boofar=boofar }} | notakey }}
 !! html
-<p><span class="error">ArrayFunctions (<b>#af_exists</b>): Expected at least <b>2</b> positional parameters, <b>1</b> given.</span>
+<p>boolean__^__0
 </p>
 !! end
 
 !! test
-Test too many arguments
+Test integer key does not exist
 !! wikitext
-{{#af_exists: {{#af_list: foobar | boofar }} | 1 | 2 }}
+{{#af_exists: {{#af_list: foobar | boofar }} | 5 }}
 !! html
-<p><span class="error">ArrayFunctions (<b>#af_exists</b>): Expected at most <b>2</b> positional parameters, <b>3</b> given.</span>
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test key exists in nested object
+!! wikitext
+{{#af_exists: {{#af_object: key1={{#af_object: key2=value2 }} }} | key1 | key2 }}
+!! html
+<p>boolean__^__1
+</p>
+!! end
+
+!! test
+Test key does not exists in nested object 1
+!! wikitext
+{{#af_exists: {{#af_object: key2={{#af_object: key1=value2 }} }} | key1 | key2 }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test key does not exist in nested object 2
+!! wikitext
+{{#af_exists: {{#af_object: key1={{#af_object: key2=value2 }} }} | key1 | key3 }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test empty object
+!! wikitext
+{{#af_exists: {{AF_EMPTY}} | foobar }}
+!! html
+<p>boolean__^__0
+</p>
+!! end
+
+!! test
+Test empty list
+!! wikitext
+{{#af_exists: {{AF_EMPTY}} | 0 }}
+!! html
+<p>boolean__^__0
 </p>
 !! end
