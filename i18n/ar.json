@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alshamiri1"
+			"Alshamiri1",
+			"Meno25"
 		]
 	},
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
@@ -16,5 +17,6 @@
 	"af-error-template-loop-detected": "قد يؤدي التوسيع بمقدار <b>$1</b> إلى حدوث تكرار في القالب.",
 	"af-error-max-template-depth-reached": "تم الوصول إلى الحد الأقصى لعمق القالب.",
 	"af-error-template-inclusion-denied": "تم رفض تضمين القالب.",
-	"af-error-value-not-showable": "لا يمكن عرض القيمة <b>$1</b> ."
+	"af-error-value-not-showable": "لا يمكن عرض القيمة <b>$1</b> .",
+	"af-error-range-zero-step": "لا يمكن أن يكون حجم الخطوة 0."
 }

@@ -14,5 +14,6 @@
 	"af-error-template-loop-detected": "Die Erweiterung von <b>$1</b> würde eine Vorlagenschleife verursachen.",
 	"af-error-max-template-depth-reached": "Grenzwert für Vorlagentiefe erreicht.",
 	"af-error-template-inclusion-denied": "Vorlageneinbindung verweigert.",
-	"af-error-value-not-showable": "Der Wert <b>$1</b> kann nicht angezeigt werden."
+	"af-error-value-not-showable": "Der Wert <b>$1</b> kann nicht angezeigt werden.",
+	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein."
 }
