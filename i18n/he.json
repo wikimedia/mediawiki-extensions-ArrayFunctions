@@ -16,5 +16,6 @@
 	"af-error-template-loop-detected": "הרחבה של <b>$1</b> תגרום ללולאת תבנית.",
 	"af-error-max-template-depth-reached": "הגעת למגבלת העומק של התבנית.",
 	"af-error-template-inclusion-denied": "הכללת התבנית נדחתה.",
-	"af-error-value-not-showable": "לא ניתן להציג את הערך <b>$1</b>."
+	"af-error-value-not-showable": "לא ניתן להציג את הערך <b>$1</b>.",
+	"af-error-range-zero-step": "גודל הצעד לא יכול להיות 0."
 }

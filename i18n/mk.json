@@ -16,5 +16,6 @@
 	"af-error-template-loop-detected": "Проширувањето на <b>$1</b> ќе предизвика јамка во предлошката.",
 	"af-error-max-template-depth-reached": "Достигната е границата на продорност на предлошката.",
 	"af-error-template-inclusion-denied": "Одбиено е вклучувањето на предлошката.",
-	"af-error-value-not-showable": "Вредноста <b>$1</b> не може да се прикаже."
+	"af-error-value-not-showable": "Вредноста <b>$1</b> не може да се прикаже.",
+	"af-error-range-zero-step": "Големината на чекорот не може да биде 0."
 }
