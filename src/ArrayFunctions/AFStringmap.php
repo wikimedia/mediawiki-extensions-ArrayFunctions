@@ -33,7 +33,7 @@ class AFStringmap extends ArrayFunction {
 
 		$delimiter = $delimiter ?: ',';
 
-		$list = array_filter( explode( $delimiter, $value ), fn ( string $item ): string => !empty( $item ) );
+		$list = array_filter( explode( $delimiter, $value ), static fn ( string $item ): string => !empty( $item ) );
 		$result = array_map( function ( $value ) use ( $valueName, $callback ) {
 			$args = $this->getFrame()->getArguments();
 			$args[$valueName] = Utils::export( $value );

@@ -19,9 +19,9 @@ class AFIntersect extends ArrayFunction {
 	public function execute( array $array, array ...$arrays ): array {
 		if ( empty( $arrays ) ) {
 			// PHP <= 7.4 requires two parameters
-			$result = array_uintersect( $array, $array, fn ( $a, $b ) => $a <=> $b );
+			$result = array_uintersect( $array, $array, static fn ( $a, $b ) => $a <=> $b );
 		} else {
-			$args = [ $array, ...$arrays, fn ( $a, $b ) => $a <=> $b ];
+			$args = [ $array, ...$arrays, static fn ( $a, $b ) => $a <=> $b ];
 			$result = call_user_func_array( 'array_uintersect', $args );
 		}
 

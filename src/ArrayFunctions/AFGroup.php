@@ -49,7 +49,7 @@ class AFGroup extends ArrayFunction {
 
 		$prefix = '__array_functions_';
 		$array = $this->prefixKeys( $array, $prefix );
-		$array = array_filter( $array, fn ( $value ) => is_array( $value ) );
+		$array = array_filter( $array, static fn ( $value ) => is_array( $value ) );
 		$array = array_values( $array );
 		$array = array_merge_recursive( ...$array );
 

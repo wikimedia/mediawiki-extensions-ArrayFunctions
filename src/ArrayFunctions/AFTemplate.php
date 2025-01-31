@@ -70,7 +70,7 @@ class AFTemplate extends ArrayFunction {
 		}
 
 		// Export any non-strings in the given data
-		$exportedData = array_map( fn ( $subData ): string => Utils::export( $subData ), $data );
+		$exportedData = array_map( static fn ( $subData ): string => Utils::export( $subData ), $data );
 
 		// Increment any numeric keys with one, so counting starts at 1
 		$templateArgs = [];
