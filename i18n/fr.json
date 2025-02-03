@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
@@ -17,5 +18,6 @@
 	"af-error-template-loop-detected": "L’expansion de <b>$1</b> provoquerait une boucle de modèle.",
 	"af-error-max-template-depth-reached": "La limite de profondeur d’expansion des modèles a été atteinte.",
 	"af-error-template-inclusion-denied": "L’inclusion de modèle est refusée.",
-	"af-error-value-not-showable": "La valeur <b>$1</b> ne peut pas être affichée."
+	"af-error-value-not-showable": "La valeur <b>$1</b> ne peut pas être affichée.",
+	"af-error-range-zero-step": "La taille du pas ne peut pas être 0."
 }
