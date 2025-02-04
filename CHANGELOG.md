@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.12.0] - 2025-02-04
+
 ### Added
 
 - Add the `#af_range` parser function.
@@ -192,7 +194,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.11.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.12.0...HEAD
+[v1.12.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.11.0...v1.12.0
 [v1.11.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.10.0...v1.11.0
 [v1.10.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.9.0...v1.10.0
 [v1.9.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.8.0...v1.9.0
