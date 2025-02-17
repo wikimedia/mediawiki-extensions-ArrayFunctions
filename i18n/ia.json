@@ -16,5 +16,6 @@
 	"af-error-template-loop-detected": "Le expansion de <b>$1</b> causarea un bucla de patronos.",
 	"af-error-max-template-depth-reached": "Le limite de profunditate de patronos ha essite attingite.",
 	"af-error-template-inclusion-denied": "Le inclusion del patrono es refusate.",
-	"af-error-value-not-showable": "Le valor <b>$1</b> non pote esser monstrate."
+	"af-error-value-not-showable": "Le valor <b>$1</b> non pote esser monstrate.",
+	"af-error-range-zero-step": "Le grandor del passo non pote esser 0."
 }
