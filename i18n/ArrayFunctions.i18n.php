@@ -46,6 +46,7 @@ $magicWords['en'] = [
 	'af_if' => [ 0, 'af_if' ],
 	'af_print' => [ 0, 'af_print' ],
 	'af_push' => [ 0, 'af_push' ],
+	'af_put' => [ 0, 'af_put' ],
 	'af_range' => [ 0, 'af_range' ],
 	'af_reduce' => [ 0, 'af_reduce' ],
 	'af_reverse' => [ 0, 'af_reverse' ],

@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Changed
+
+- Replace the `#af_set` parser function with `#af_put` that has a more sane parameter order. The `#af_set` parser
+  function remains available for backwards compatibility.
+
 ## [v1.12.0] - 2025-02-04
 
 ### Added

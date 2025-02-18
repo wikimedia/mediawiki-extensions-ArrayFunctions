@@ -24,6 +24,7 @@ use ArrayFunctions\ArrayFunctions\AFMerge;
 use ArrayFunctions\ArrayFunctions\AFObject;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
+use ArrayFunctions\ArrayFunctions\AFPut;
 use ArrayFunctions\ArrayFunctions\AFRange;
 use ArrayFunctions\ArrayFunctions\AFReduce;
 use ArrayFunctions\ArrayFunctions\AFReverse;
@@ -97,6 +98,7 @@ class ArrayFunctionRegistry {
 			AFObject::class,
 			AFPrint::class,
 			AFPush::class,
+			AFPut::class,
 			AFRange::class,
 			AFReduce::class,
 			AFReverse::class,
