@@ -16,5 +16,6 @@
 	"af-error-template-loop-detected": "A expansión de <b>$1</b> causaría un bucle de modelo.",
 	"af-error-max-template-depth-reached": "Alcanzouse o límite de profundidade de modelo.",
 	"af-error-template-inclusion-denied": "Inclusión de modelo rexeitada.",
-	"af-error-value-not-showable": "Non se pode amosar o valor <b>$1</b>."
+	"af-error-value-not-showable": "Non se pode amosar o valor <b>$1</b>.",
+	"af-error-range-zero-step": "O tamaño do paso non pode ser 0."
 }
