@@ -13,7 +13,7 @@ class TrivialHookHandler implements GetMagicVariableIDsHook, ParserGetVariableVa
 	 * @inheritDoc
 	 */
 	public function onGetMagicVariableIDs( &$variableIDs ) {
-		$variableIDs['af_empty'] = MAG_AF_EMPTY;
+		$variableIDs[] = MAG_AF_EMPTY;
 	}
 
 	/**
