@@ -9,10 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.13.0] - 2025-03-04
+
 ### Changed
 
 - Replace the `#af_set` parser function with `#af_put` that has a more sane parameter order. The `#af_set` parser
   function remains available for backwards compatibility.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+### Fixed
+
+- The magic variable IDs array is now no longer treated as associative, which would previously break CodeMirror syntax
+  highlighting. (by alex4401)
 
 ## [v1.12.0] - 2025-02-04
 
@@ -199,7 +207,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.12.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.13.0...HEAD
+[v1.13.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.12.0...v1.13.0
 [v1.12.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.11.0...v1.12.0
 [v1.11.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.10.0...v1.11.0
 [v1.10.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.9.0...v1.10.0
