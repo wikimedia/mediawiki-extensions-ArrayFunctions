@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Add the `arrayfunctions` Semantic MediaWiki result format.
+
+### Fixed
+
+- Fix exception when using `#af_template` on MediaWiki 1.44.
+
 ## [v1.13.0] - 2025-03-04
 
 ### Changed

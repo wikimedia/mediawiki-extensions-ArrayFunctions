@@ -18,5 +18,6 @@
 	"af-error-max-template-depth-reached": "Template depth limit reached.",
 	"af-error-template-inclusion-denied": "Template inclusion denied.",
  	"af-error-value-not-showable": "The value <b>$1</b> cannot be shown.",
-	"af-error-range-zero-step": "The step size cannot be 0."
+	"af-error-range-zero-step": "The step size cannot be 0.",
+	"af-smw-result-printer-name": "ArrayFunctions"
 }

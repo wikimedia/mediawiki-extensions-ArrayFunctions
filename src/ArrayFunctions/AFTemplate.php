@@ -95,9 +95,9 @@ class AFTemplate extends ArrayFunction {
 	 * Returns the title for the given template name.
 	 *
 	 * @param string $templateName
-	 * @return Title|null
+	 * @return \MediaWiki\Title\Title|Title|null
 	 */
-	private function getTitleForTemplateName( string $templateName ): ?Title {
+	private function getTitleForTemplateName( string $templateName ) {
 		return $this->getTitleFactory()->newFromText( $templateName, NS_TEMPLATE );
 	}
 

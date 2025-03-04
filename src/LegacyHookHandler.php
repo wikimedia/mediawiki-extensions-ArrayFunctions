@@ -3,6 +3,7 @@
 namespace ArrayFunctions;
 
 use ArrayFunctions\Scribunto\ArrayFunctionsLuaLibrary;
+use ArrayFunctions\SemanticMediaWiki\ArrayFunctionsResultPrinter;
 
 /**
  * Responsible for handling legacy hooks that do not yet implement a hook interface.
@@ -38,6 +39,23 @@ class LegacyHookHandler {
 	public static function onExtensionRegistration(): bool {
 		define( 'MAG_AF_EMPTY', 'MAG_AF_EMPTY' );
 
+		self::registerArrayFunctionsResultPrinter();
+
 		return true;
+	}
+
+	/**
+	 * Registers the `arrayfunctions` Semantic MediaWiki result printer.
+	 *
+	 * @return void
+	 */
+	private static function registerArrayFunctionsResultPrinter() {
+		$formatClasses = [
+			'arrayfunctions' => ArrayFunctionsResultPrinter::class
+		];
+
+		foreach ( $formatClasses as $format => $className ) {
+			$GLOBALS['smwgResultFormats'][$format] = $className;
+		}
 	}
 }

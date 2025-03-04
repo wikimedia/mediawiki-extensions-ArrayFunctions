@@ -19,5 +19,6 @@
 	"af-error-max-template-depth-reached": "Error message given when trying to expand a template after the maximum template depth has been reached.",
 	"af-error-template-inclusion-denied": "Error message given when trying to expand a template that the user may not view or that may not be included.",
 	"af-error-value-not-showable": "Error message given when trying to show a value that is not showable.",
-	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range."
+	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range.",
+	"af-smw-result-printer-name": "The name of the 'arrayfunctions' result format."
 }
