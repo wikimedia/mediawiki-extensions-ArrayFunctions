@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"JLTRY",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -19,5 +20,6 @@
 	"af-error-max-template-depth-reached": "La limite de profondeur d’expansion des modèles a été atteinte.",
 	"af-error-template-inclusion-denied": "L’inclusion de modèle est refusée.",
 	"af-error-value-not-showable": "La valeur <b>$1</b> ne peut pas être affichée.",
-	"af-error-range-zero-step": "La taille du pas ne peut pas être 0."
+	"af-error-range-zero-step": "La taille du pas ne peut pas être 0.",
+	"af-smw-result-printer-name": "ArrayFonctions"
 }

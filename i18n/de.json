@@ -15,5 +15,6 @@
 	"af-error-max-template-depth-reached": "Grenzwert für Vorlagentiefe erreicht.",
 	"af-error-template-inclusion-denied": "Vorlageneinbindung verweigert.",
 	"af-error-value-not-showable": "Der Wert <b>$1</b> kann nicht angezeigt werden.",
-	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein."
+	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein.",
+	"af-smw-result-printer-name": "ArrayFunctions"
 }
