@@ -17,5 +17,6 @@
 	"af-error-max-template-depth-reached": "De sjabloondieptegrens is bereikt.",
 	"af-error-template-inclusion-denied": "Sjabloon-opname geweigerd.",
 	"af-error-value-not-showable": "De waarde <b>$1</b> kan niet worden weergegeven.",
-	"af-error-range-zero-step": "De stapgrootte mag niet 0 zijn."
+	"af-error-range-zero-step": "De stapgrootte mag niet 0 zijn.",
+	"af-smw-result-printer-name": "Arrayfuncties"
 }
