@@ -6,6 +6,7 @@
 		]
 	},
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
+	"af-extensionname": "وظائف المصفوفة",
 	"af-error": "<span class=\"error\">ArrayFunctions ( <b># $1</b> ): $2</span>",
 	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
 	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
@@ -18,5 +19,6 @@
 	"af-error-max-template-depth-reached": "تم الوصول إلى الحد الأقصى لعمق القالب.",
 	"af-error-template-inclusion-denied": "تم رفض تضمين القالب.",
 	"af-error-value-not-showable": "لا يمكن عرض القيمة <b>$1</b> .",
-	"af-error-range-zero-step": "لا يمكن أن يكون حجم الخطوة 0."
+	"af-error-range-zero-step": "لا يمكن أن يكون حجم الخطوة 0.",
+	"af-smw-result-printer-name": "وظائف المصفوفة"
 }
