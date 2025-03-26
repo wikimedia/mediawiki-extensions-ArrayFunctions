@@ -10,7 +10,7 @@
 	"namemsg": "af-extensionname",
 	"license-name": "GPL-2.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.35.6",
+		"MediaWiki": ">= 1.39.4",
 		"platform": {
 			"php": ">= 7.4"
 		}

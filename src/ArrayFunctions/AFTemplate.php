@@ -5,8 +5,8 @@ namespace ArrayFunctions\ArrayFunctions;
 use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use NamespaceInfo;
-use Title;
 use TitleFactory;
 
 /**
