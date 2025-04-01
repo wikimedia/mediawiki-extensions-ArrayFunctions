@@ -9,10 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.14.0] - 2025-04-01
+
 ### Added
 
 - Add the `arrayfunctions` Semantic MediaWiki result format.
 - Add the `#af_pipeline` parser function.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ### Fixed
 
@@ -216,7 +219,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.13.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.0...HEAD
+[v1.14.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.12.0...v1.13.0
 [v1.12.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.11.0...v1.12.0
 [v1.11.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.10.0...v1.11.0
