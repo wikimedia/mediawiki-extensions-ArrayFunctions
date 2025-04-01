@@ -42,6 +42,7 @@ $magicWords['en'] = [
 	'af_map' => [ 0, 'af_map' ],
 	'af_merge' => [ 0, 'af_merge' ],
 	'af_object' => [ 0, 'af_object' ],
+	'af_pipeline' => [ 0, 'af_pipeline' ],
 	'af_get' => [ 0, 'af_get' ],
 	'af_if' => [ 0, 'af_if' ],
 	'af_print' => [ 0, 'af_print' ],

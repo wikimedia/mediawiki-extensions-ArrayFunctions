@@ -1,0 +1,167 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_pipeline
+!! endfunctionhooks
+
+# This file tests the #af_pipeline parser function
+
+!! test
+Test empty pipeline
+!! wikitext
+{{#af_pipeline: }}
+!! html
+!! end
+
+!! test
+Test only initial value string
+!! wikitext
+{{#af_pipeline: foobar }}
+!! html
+<p>foobar
+</p>
+!! end
+
+!! test
+Test only initial value array
+!! wikitext
+{{#af_print: {{#af_pipeline: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test only initial value string then print
+!! wikitext
+{{#af_pipeline: foobar
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p>foobar
+</p>
+!! end
+
+!! test
+Test only initial value array then print
+!! wikitext
+{{#af_pipeline: {{#af_list: a | b | c }}
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>2: c</li></ul>
+!! end
+
+!! test
+Test only initial value object then print
+!! wikitext
+{{#af_pipeline: {{#af_object: a=a | b=b | c=c }}
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<ul><li>a: a</li>
+<li>b: b</li>
+<li>c: c</li></ul>
+!! end
+
+!! test
+Test pipeline 1
+!! wikitext
+{{#af_pipeline: {{#af_list: a | a | b | c }}
+| {{#af_reverse: {{{prev}}} }}
+| {{#af_unique: {{{prev}}} }}
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<ul><li>0: c</li>
+<li>1: b</li>
+<li>2: a</li></ul>
+!! end
+
+!! test
+Test pipeline 2
+!! wikitext
+{{#af_pipeline: a,b,c,d
+| {{#af_stringmap: {{{prev}}} | , | x | "{{{x}}}" }}
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p>"a", "b", "c", "d"
+</p>
+!! end
+
+!! test
+Test pipeline with different parameter name
+!! wikitext
+{{#af_pipeline: a,b,c,d
+| {{#af_stringmap: {{{previous}}} | , | x | "{{{x}}}" }}
+| {{#af_print: {{{previous}}} }}
+| parameter=previous
+}}
+!! html
+<p>"a", "b", "c", "d"
+</p>
+!! end
+
+!! test
+Test nested pipeline shadow
+!! wikitext
+{{#af_pipeline: {{#af_list: a | b | c }}
+| {{#af_merge: {{{prev}}} |{{#af_pipeline: d,e,f | {{#af_split: {{{prev}}} | , }} }} }}
+| {{#af_join: {{{prev}}} | , }}
+| {{#af_show: {{{prev}}} }}
+}}
+!! html
+<p>a,b,c,d,e,f
+</p>
+!! end
+
+!! test
+Test nested pipeline no shadow
+!! wikitext
+{{#af_pipeline: {{#af_list: a | b | c }}
+| {{#af_pipeline: {{{outer}}} | {{#af_join: {{{prev}}} | , }} }}
+| {{#af_show: {{{outer}}} }}
+| parameter=outer
+}}
+!! html
+<p>a,b,c
+</p>
+!! end
+
+!! test
+Test empty initial value with a step
+!! wikitext
+{{#af_pipeline:
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test single string value with one step
+!! wikitext
+{{#af_pipeline: hello
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p>hello
+</p>
+!! end
+
+!! test
+Test non-existent parameter name
+!! wikitext
+{{#af_pipeline: a,b,c,d
+| {{#af_stringmap: {{{nonexistent}}} | , | x | "{{{x}}}" }}
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p>"{{{nonexistent}}}"
+</p>
+!! end

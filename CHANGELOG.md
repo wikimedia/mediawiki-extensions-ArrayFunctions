@@ -12,10 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add the `arrayfunctions` Semantic MediaWiki result format.
+- Add the `#af_pipeline` parser function.
 
 ### Fixed
 
-- Fix exception when using `#af_template` on MediaWiki 1.44.
+- Fix exception when using `#af_template` on MediaWiki 1.44 or later.
 
 ## [v1.13.0] - 2025-03-04
 

@@ -22,6 +22,7 @@ use ArrayFunctions\ArrayFunctions\AFList;
 use ArrayFunctions\ArrayFunctions\AFMap;
 use ArrayFunctions\ArrayFunctions\AFMerge;
 use ArrayFunctions\ArrayFunctions\AFObject;
+use ArrayFunctions\ArrayFunctions\AFPipeline;
 use ArrayFunctions\ArrayFunctions\AFPrint;
 use ArrayFunctions\ArrayFunctions\AFPush;
 use ArrayFunctions\ArrayFunctions\AFPut;
@@ -96,6 +97,7 @@ class ArrayFunctionRegistry {
 			AFMap::class,
 			AFMerge::class,
 			AFObject::class,
+			AFPipeline::class,
 			AFPrint::class,
 			AFPush::class,
 			AFPut::class,
