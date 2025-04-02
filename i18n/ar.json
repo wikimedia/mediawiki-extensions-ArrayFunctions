@@ -6,6 +6,7 @@
 		]
 	},
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
+	"af-extensionname": "وظائف المصفوفة",
 	"af-error": "<span class=\"error\">ArrayFunctions ( <b># $1</b> ): $2</span>",
 	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
 	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
