@@ -5,6 +5,7 @@
 		]
 	},
 	"af-desc": "Дава збир чисти расчленувачки функции кои работат со строеви",
+	"af-extensionname": "СтроевиФункции",
 	"af-error": "<span class=\"error\">Стројни функции (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Не можев да го совпаднам очекуваниот тип <b>$1</b> со фактички тип <b>$2</b> за параметарот <b>$3</b> („$4“).",
 	"af-error-incorrect-argument-count-at-least": "Се {{PLURAL:$1|очекуваше|очекуваа}} барем <b>$1</b> {{PLURAL:$1|положбен параметар|положбени параметри}}, а {{PLURAL:$1|даден е|дадени се}} <b>$2</b>.",
@@ -17,5 +18,6 @@
 	"af-error-max-template-depth-reached": "Достигната е границата на продорност на предлошката.",
 	"af-error-template-inclusion-denied": "Одбиено е вклучувањето на предлошката.",
 	"af-error-value-not-showable": "Вредноста <b>$1</b> не може да се прикаже.",
-	"af-error-range-zero-step": "Големината на чекорот не може да биде 0."
+	"af-error-range-zero-step": "Големината на чекорот не може да биде 0.",
+	"af-smw-result-printer-name": "СтроевиФункции"
 }
