@@ -4,9 +4,9 @@ namespace ArrayFunctions\SemanticMediaWiki;
 
 use ArrayFunctions\Utils;
 use SMW\Query\PrintRequest;
+use SMW\Query\QueryResult;
 use SMW\Query\Result\ResultArray;
 use SMW\Query\ResultPrinters\ResultPrinter;
-use SMWQueryResult as QueryResult;
 
 /**
  * Defines a result format for ArrayFunctions for Semantic MediaWiki.
@@ -41,9 +41,9 @@ class ArrayFunctionsResultPrinter extends ResultPrinter {
 	/**
 	 * @inheritDoc
 	 *
-	 * @param \SMW\Query\QueryResult $res
+	 * @param QueryResult $res
 	 */
-	protected function getResultText( QueryResult $res, $outputMode ) {
+	protected function getResultText( $res, $outputMode ) {
 		$result = [];
 
 		// phpcs:ignore
