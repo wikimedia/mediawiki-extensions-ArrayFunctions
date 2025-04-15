@@ -44,7 +44,8 @@
 		"ParserFirstCallInit": "ParserInit",
 		"ParserGetVariableValueSwitch": "Trivial",
 		"GetMagicVariableIDs": "Trivial",
-		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries"
+		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries",
+		"CargoSetFormatClasses": "\\ArrayFunctions\\LegacyHookHandler::onCargoSetFormatClasses"
 	},
 	"ServiceWiringFiles": [
 		"src/ArrayFunctions.ServiceWiring.php"

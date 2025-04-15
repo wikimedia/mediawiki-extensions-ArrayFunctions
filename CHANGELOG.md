@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Add the `arrayfunctions` Cargo display format.
+
 ## [v1.14.2] - 2025-04-15
 
 ### Fixed

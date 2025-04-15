@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions;
 
+use ArrayFunctions\Cargo\ArrayFunctionsFormat;
 use ArrayFunctions\Scribunto\ArrayFunctionsLuaLibrary;
 use ArrayFunctions\SemanticMediaWiki\ArrayFunctionsResultPrinter;
 
@@ -30,6 +31,20 @@ class LegacyHookHandler {
 	}
 
 	/**
+	 * Allow extensions to add Cargo result formats.
+	 *
+	 * @link https://www.mediawiki.org/wiki/Extension:Cargo/Hooks/CargoSetFormatClasses
+	 *
+	 * @param array &$formatClasses
+	 * @return bool
+	 */
+	public static function onCargoSetFormatClasses( array &$formatClasses ): bool {
+		$formatClasses['arrayfunctions'] = ArrayFunctionsFormat::class;
+
+		return true;
+	}
+
+	/**
 	 * Called after the extension has been registered.
 	 *
 	 * @link https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#callback
@@ -50,12 +65,6 @@ class LegacyHookHandler {
 	 * @return void
 	 */
 	private static function registerArrayFunctionsResultPrinter() {
-		$formatClasses = [
-			'arrayfunctions' => ArrayFunctionsResultPrinter::class
-		];
-
-		foreach ( $formatClasses as $format => $className ) {
-			$GLOBALS['smwgResultFormats'][$format] = $className;
-		}
+		$GLOBALS['smwgResultFormats']['arrayfunctions'] = ArrayFunctionsResultPrinter::class;
 	}
 }
