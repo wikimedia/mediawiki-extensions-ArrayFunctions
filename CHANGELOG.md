@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+### Fixed
+
+- Fix compatibility with Semantic MediaWiki 5.0.0.
+
 ## [v1.14.0] - 2025-04-01
 
 ### Added
