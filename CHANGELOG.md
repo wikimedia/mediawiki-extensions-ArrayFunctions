@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Fixed
+
+- Remove properties without a value from the result when using the `arrayfunctions` result format with Semantic
+  MediaWiki.
+
 ## [v1.14.1] - 2025-04-15
 
 ### Added

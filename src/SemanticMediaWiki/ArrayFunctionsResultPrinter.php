@@ -68,6 +68,10 @@ class ArrayFunctionsResultPrinter extends ResultPrinter {
 			$key = $this->getKeyFromResultArray( $resultArray, $index );
 			$data = $this->getDataFromResultArray( $resultArray );
 
+			if ( $data === [] ) {
+				continue;
+			}
+
 			$result[$key] = $data;
 		}
 
