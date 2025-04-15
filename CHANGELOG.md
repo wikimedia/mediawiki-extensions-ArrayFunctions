@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.14.2] - 2025-04-15
+
 ### Fixed
 
 - Remove properties without a value from the result when using the `arrayfunctions` result format with Semantic
@@ -239,7 +241,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.1...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.2...HEAD
+[v1.14.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.1...v1.14.2
 [v1.14.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.0...v1.14.1
 [v1.14.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.13.0...v1.14.0
 [v1.13.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.12.0...v1.13.0
