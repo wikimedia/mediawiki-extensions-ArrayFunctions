@@ -3,7 +3,8 @@
 		"authors": [
 			"Felipe L. Ewald",
 			"Re demz",
-			"TheEduGobi"
+			"TheEduGobi",
+			"EGobi"
 		]
 	},
 	"af-desc": "Fornece um conjunto de funções puras de analisador que operam em arrays",
