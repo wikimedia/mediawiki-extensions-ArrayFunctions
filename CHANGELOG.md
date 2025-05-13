@@ -9,9 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.15.0] - 2025-05-13
+
 ### Added
 
 - Add the `arrayfunctions` Cargo display format.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ## [v1.14.2] - 2025-04-15
 
@@ -37,11 +43,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Add the `arrayfunctions` Semantic MediaWiki result format.
 - Add the `#af_pipeline` parser function.
-- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ### Changed
 
 - Drop compatibility with MediaWiki 1.35.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ### Fixed
 
@@ -245,7 +251,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.2...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.15.0...HEAD
+[v1.15.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.2...v1.15.0
 [v1.14.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.1...v1.14.2
 [v1.14.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.0...v1.14.1
 [v1.14.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.13.0...v1.14.0
