@@ -1,0 +1,7 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"af-error-template-does-not-exist": "Navedeni naslov <b>$1</b> ne postoji.",
+	"af-error-value-not-showable": "Vrednost <b>$1</b> ne može biti prikazana."
+}
