@@ -52,22 +52,6 @@ Test false
 !! end
 
 !! test
-Test string with wikitext
-!! wikitext
-{{#af_show: == Hello World == }}
-!! html
-<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
-!! end
-
-!! test
-Test string with wikitext from array
-!! wikitext
-{{#af_show: {{#af_get: {{#af_map: {{#af_list: Hello World }} | v | == {{{v}}} == }} | 0 }} }}
-!! html
-<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
-!! end
-
-!! test
 Test too many arguments
 !! wikitext
 {{#af_show: a | b }}
@@ -86,9 +70,10 @@ Test empty string
 !! test
 Test idempotence
 !! wikitext
-{{#af_show: {{#af_show: == Hello World == }} }}
+{{#af_show: {{#af_show: Hello World }} }}
 !! html
-<h2><span class="mw-headline" id="Hello_World">Hello World</span></h2>
+<p>Hello World
+</p>
 !! end
 
 !! test

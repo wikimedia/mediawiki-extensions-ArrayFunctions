@@ -1,0 +1,275 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_zip
+!! endfunctionhooks
+
+# This file tests the #af_zip parser function
+
+!! test
+Test single array
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li></ul></li>
+<li>1
+<ul><li>0: b</li></ul></li>
+<li>2
+<ul><li>0: c</li></ul></li></ul>
+!! end
+
+!! test
+Test two arrays same length
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li></ul></li>
+<li>2
+<ul><li>0: c</li>
+<li>1: f</li></ul></li></ul>
+!! end
+
+!! test
+Test three arrays same length
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} | {{#af_list: g | h | i }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li>
+<li>2
+<ul><li>0: c</li>
+<li>1: f</li>
+<li>2: i</li></ul></li></ul>
+!! end
+
+!! test
+Test empty array
+!! wikitext
+{{#af_print: {{#af_zip: {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test two empty arrays
+!! wikitext
+{{#af_print: {{#af_zip: {{AF_EMPTY}} | {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test empty array and non-empty array
+!! wikitext
+{{#af_print: {{#af_zip: {{AF_EMPTY}} | {{#af_list: a | b | c }} }} }}
+!! html
+!! end
+
+!! test
+Test non-empty array and empty array
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test two arrays different length 1
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{#af_list: d | e }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li></ul></li></ul>
+!! end
+
+!! test
+Test two arrays different length 2
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b }} | {{#af_list: c | d | e }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: c</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: d</li></ul></li></ul>
+!! end
+
+!! test
+Test three arrays different length 1
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{#af_list: d | e | f }} | {{#af_list: g | h }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: g</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: h</li></ul></li></ul>
+!! end
+
+!! test
+Test three arrays different length 2
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b | c }} | {{#af_list: d | e }} | {{#af_list: f | g | h }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li>
+<li>2: f</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li>
+<li>2: g</li></ul></li></ul>
+!! end
+
+!! test
+Test three arrays different length 3
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: a | b }} | {{#af_list: c | d | e }} | {{#af_list: f | g | h }} }} }}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: c</li>
+<li>2: f</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: d</li>
+<li>2: g</li></ul></li></ul>
+!! end
+
+!! test
+Test object
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b | c=c }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li></ul></li>
+<li>b
+<ul><li>0: b</li></ul></li>
+<li>c
+<ul><li>0: c</li></ul></li></ul>
+!! end
+
+!! test
+Test two objects, without shared keys
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b | c=c }} | {{#af_object: d=d | e=e | f=f }} }} }}
+!! html
+!! end
+
+!! test
+Test two objects, without shared keys, different lengths 1
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b | c=c }} | {{#af_object: d=d | e=e }} }} }}
+!! html
+!! end
+
+!! test
+Test two objects, without shared keys, different lengths 2
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b }} | {{#af_object: c=c | d=d | e=e }} }} }}
+!! html
+!! end
+
+!! test
+Test two objects, with shared keys
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b | c=c }} | {{#af_object: a=d | b=e | c=f }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li>
+<li>1: d</li></ul></li>
+<li>b
+<ul><li>0: b</li>
+<li>1: e</li></ul></li>
+<li>c
+<ul><li>0: c</li>
+<li>1: f</li></ul></li></ul>
+!! end
+
+!! test
+Test two objects, with shared keys, different lengths 1
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b | c=c }} | {{#af_object: a=d | b=e }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li>
+<li>1: d</li></ul></li>
+<li>b
+<ul><li>0: b</li>
+<li>1: e</li></ul></li></ul>
+!! end
+
+!! test
+Test two objects, with shared keys, different lengths 2
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_object: a=a | b=b }} | {{#af_object: a=c | b=d | c=e }} }} }}
+!! html
+<ul><li>a
+<ul><li>0: a</li>
+<li>1: c</li></ul></li>
+<li>b
+<ul><li>0: b</li>
+<li>1: d</li></ul></li></ul>
+!! end
+
+!! test
+Test nested list
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li></ul></li>
+<li>1
+<ul><li>0
+<ul><li>0: c</li>
+<li>1: d</li></ul></li></ul></li></ul>
+!! end
+
+!! test
+Test nested lists
+!! wikitext
+{{#af_print: {{#af_zip: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} | {{#af_list: {{#af_list: e | f }} | {{#af_list: g | h }} }} }} }}
+!! html
+<ul><li>0
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: b</li></ul></li>
+<li>1
+<ul><li>0: e</li>
+<li>1: f</li></ul></li></ul></li>
+<li>1
+<ul><li>0
+<ul><li>0: c</li>
+<li>1: d</li></ul></li>
+<li>1
+<ul><li>0: g</li>
+<li>1: h</li></ul></li></ul></li></ul>
+!! end
+
+!! test
+Test empty input
+!! wikitext
+{{#af_zip: }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_zip</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
+</p>
+!! end

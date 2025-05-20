@@ -40,6 +40,7 @@ use ArrayFunctions\ArrayFunctions\AFTemplate;
 use ArrayFunctions\ArrayFunctions\AFTrim;
 use ArrayFunctions\ArrayFunctions\AFUnique;
 use ArrayFunctions\ArrayFunctions\AFUnset;
+use ArrayFunctions\ArrayFunctions\AFZip;
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
 
 class ArrayFunctionRegistry {
@@ -115,6 +116,7 @@ class ArrayFunctionRegistry {
 			AFTrim::class,
 			AFUnique::class,
 			AFUnset::class,
+			AFZip::class,
 		];
 	}
 }
