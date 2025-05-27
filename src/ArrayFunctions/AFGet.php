@@ -2,6 +2,9 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\ArrayFunctionFactory;
+use MediaWiki\MediaWikiServices;
+
 /**
  * Implements the #af_get parser function.
  */
@@ -55,23 +58,38 @@ class AFGet extends ArrayFunction {
 	 * @return mixed
 	 */
 	private function index( array $array, string $index ) {
+		// FIXME (2025-05-27): Implement proper DI for ArrayFunctions.
+		/** @var ArrayFunctionFactory $factory */
+		$factory = MediaWikiServices::getInstance()->get( 'ArrayFunctions.ArrayFunctionFactory' );
+
 		if ( isset( $array[ $index ] ) ) {
 			return $array[ $index ];
 		} elseif ( $index === self::IDX_WILDCARD ) {
-			return ( new AFGroup( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
+			return $factory
+				->createArrayFunction( AFGroup::class, $this->getParser(), $this->getFrame() )
+				->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_REVERSE ) {
-			return ( new AFReverse( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
+			return $factory
+				->createArrayFunction( AFReverse::class, $this->getParser(), $this->getFrame() )
+				->execute( $array )[0] ?? null;
 		} elseif ( $index === self::IDX_FLATTEN ) {
-			return ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $array, 1 )[0] ?? null;
+			return $factory
+				->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
+				->execute( $array, 1 )[0] ?? null;
 		} elseif ( $index === self::IDX_FLATTEN_RECURSIVE ) {
-			return ( new AFFlatten( $this->getParser(), $this->getFrame() ) )->execute( $array, null )[0] ?? null;
+			return $factory
+				->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
+				->execute( $array, null )[0] ?? null;
 		} elseif ( $index === self::IDX_UNIQUE ) {
-			return ( new AFUnique( $this->getParser(), $this->getFrame() ) )->execute( $array )[0] ?? null;
+			return $factory
+				->createArrayFunction( AFUnique::class, $this->getParser(), $this->getFrame() )
+				->execute( $array )[0] ?? null;
 		} elseif ( preg_match( self::IDX_SLICE_REGEX, $index, $matches, PREG_UNMATCHED_AS_NULL ) === 1 ) {
 			$offset = intval( $matches[1] ?? 0 );
 			$length = !empty( $matches[2] ) ? intval( $matches[2] ) - $offset : null;
-			return ( new AFSlice( $this->getParser(), $this->getFrame() ) )->execute( $array, $offset, $length )[0] ??
-				null;
+			return $factory
+				->createArrayFunction( AFSlice::class, $this->getParser(), $this->getFrame() )
+				->execute( $array, $offset, $length )[0] ?? null;
 		} else {
 			return null;
 		}

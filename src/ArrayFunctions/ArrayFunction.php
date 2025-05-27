@@ -24,6 +24,11 @@ abstract class ArrayFunction {
 	private PPFrame $frame;
 
 	/**
+	 * @var array<string, mixed> The values of configuration variables specified by self::getRequiredConfigVariables()
+	 */
+	private array $config;
+
+	/**
 	 * @var array The list of passed keyword arguments
 	 */
 	private array $keywordArgs;
@@ -75,6 +80,15 @@ abstract class ArrayFunction {
 	}
 
 	/**
+	 * Returns a list of configuration variable names that should be available.
+	 *
+	 * @return array
+	 */
+	public static function getRequiredConfigVariables(): array {
+		return [];
+	}
+
+	/**
 	 * Whether to allow arbitrary keyword arguments, or only those specified in $this->getKeywordSpec().
 	 *
 	 * @return bool
@@ -86,10 +100,12 @@ abstract class ArrayFunction {
 	/**
 	 * @param Parser $parser
 	 * @param PPFrame $frame
+	 * @param array $config
 	 */
-	final public function __construct( Parser $parser, PPFrame $frame ) {
+	final public function __construct( Parser $parser, PPFrame $frame, array $config ) {
 		$this->parser = $parser;
 		$this->frame = $frame;
+		$this->config = $config;
 	}
 
 	/**
@@ -106,7 +122,7 @@ abstract class ArrayFunction {
 	 * Returns the keyword argument with the given name, or throws an exception if it does not exist.
 	 *
 	 * @param string $keyword The name of the keyword argument to get
-	 * @return mixed|null
+	 * @return mixed
 	 * @throws MWException
 	 */
 	final protected function getKeywordArg( string $keyword ) {
@@ -142,5 +158,30 @@ abstract class ArrayFunction {
 	 */
 	final protected function getFrame(): PPFrame {
 		return $this->frame;
+	}
+
+	/**
+	 * Returns the injected config.
+	 *
+	 * @return array
+	 */
+	final protected function getConfig(): array {
+		return $this->config;
+	}
+
+	/**
+	 * Returns the value of the configuration variable with the given name, or throws an exception if it
+	 * does not exist (e.g. is not listed in self::getRequiredConfigVariables()).
+	 *
+	 * @param string $keyword The name of the configuration variable to get the value for
+	 * @return mixed
+	 * @throws MWException
+	 */
+	final protected function getConfigValue( string $keyword ) {
+		if ( !isset( $this->config[ $keyword ] ) ) {
+			throw new MWException( "Missing required configuration " . $keyword );
+		}
+
+		return $this->config[$keyword];
 	}
 }

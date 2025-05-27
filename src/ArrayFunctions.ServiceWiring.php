@@ -6,7 +6,10 @@
  *
  * @file
  */
+
+use ArrayFunctions\ArrayFunctionFactory;
 use ArrayFunctions\ArrayFunctionRegistry;
+use MediaWiki\MediaWikiServices;
 
 // PHP unit does not understand code coverage for this file
 // as the @covers annotation cannot cover a specific file
@@ -14,9 +17,12 @@ use ArrayFunctions\ArrayFunctionRegistry;
 // @codeCoverageIgnoreStart
 
 return [
+	"ArrayFunctions.ArrayFunctionFactory" => static function ( MediaWikiServices $services ): ArrayFunctionFactory {
+		return new ArrayFunctionFactory( $services->getMainConfig() );
+	},
 	"ArrayFunctions.ArrayFunctionRegistry" => static function (): ArrayFunctionRegistry {
 		return new ArrayFunctionRegistry();
-	}
+	},
 ];
 
 // @codeCoverageIgnoreEnd

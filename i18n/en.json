@@ -5,6 +5,8 @@
 		]
 	},
 	"af-desc": "Provides a set of pure parser functions that operate on arrays",
+	"af-config-foreach-iteration-limit": "The maximum total number of iterations that can be performed by #af_foreach.",
+	"af-config-max-range-size": "The maximum number of elements that an array constructed using #af_range may contain.",
 	"af-extensionname": "ArrayFunctions",
 	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
@@ -19,5 +21,7 @@
 	"af-error-template-inclusion-denied": "Template inclusion denied.",
  	"af-error-value-not-showable": "The value <b>$1</b> cannot be shown.",
 	"af-error-range-zero-step": "The step size cannot be 0.",
+	"af-error-max-range-size-exceeded": "The maximum range size has been exceeded.",
+	"af-error-foreach-iteration-limit-reached": "The maximum number of iterations has been reached.",
 	"af-smw-result-printer-name": "ArrayFunctions"
 }

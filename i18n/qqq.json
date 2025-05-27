@@ -6,6 +6,8 @@
 		]
 	},
 	"af-desc": "{{desc|name=Array Functions|url=https://www.mediawiki.org/wiki/Extension:ArrayFunctions}}",
+	"af-config-foreach-iteration-limit": "Description for the '$wgArrayFunctionsForeachIterationLimit' configuration variable.",
+	"af-config-max-range-size": "Description for the '$wgArrayFunctionsMaxRangeSize' configuration variable.",
 	"af-extensionname": "{{name}}",
 	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
 	"af-error-incorrect-type": "Error message given a given parameter does not have the expected type. Parameters:\n* $1 - the type that was expected\n* $2 - the type of the value that was given\n* $3 - the name or index of the parameter for which the type mismatch occurred\n* $4 - the value of the parameter",
@@ -20,5 +22,7 @@
 	"af-error-template-inclusion-denied": "Error message given when trying to expand a template that the user may not view or that may not be included.",
 	"af-error-value-not-showable": "Error message given when trying to show a value that is not showable.",
 	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range.",
+	"af-error-max-range-size-exceeded": "Error message given when trying to construct a range larger than $wgArrayFunctionsMaxRangeSize.",
+	"af-error-foreach-iteration-limit-reached": "Error message given when the maximum number of iterations specified by $wgArrayFunctionsForeachIterationLimit is reached.",
 	"af-smw-result-printer-name": "{{optional}}\nThe name of the 'arrayfunctions' result format."
 }
