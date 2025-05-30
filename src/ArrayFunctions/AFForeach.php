@@ -2,6 +2,7 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\Exceptions\RuntimeException;
 use ArrayFunctions\Utils;
 use PPNode;
 
@@ -10,12 +11,18 @@ use PPNode;
  */
 class AFForeach extends ArrayFunction {
 	private const KWARG_DELIMITER = 'delimiter';
+	private const CONFIG_FOREACH_ITERATION_LIMIT = 'ArrayFunctionsForeachIterationLimit';
+	private const STATE_FOREACH_ITERATIONS = 'ArrayFunctionsIterations';
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function getName(): string {
 		return 'af_foreach';
+	}
+
+	public static function getRequiredConfigVariables(): array {
+		return [ self::CONFIG_FOREACH_ITERATION_LIMIT ];
 	}
 
 	/**
@@ -42,7 +49,23 @@ class AFForeach extends ArrayFunction {
 	): array {
 		$result = [];
 
+		$maxIterationCount = $this->getConfigValue( self::CONFIG_FOREACH_ITERATION_LIMIT );
+
 		foreach ( $array as $key => $value ) {
+			if ( $maxIterationCount >= 0 ) {
+				$iterations = $this->getParser()->getOutput()->getExtensionData( self::STATE_FOREACH_ITERATIONS ) ?? [];
+				$iterationCount = count( $iterations );
+
+				if ( $iterationCount >= $maxIterationCount ) {
+					throw new RuntimeException( wfMessage( 'af-error-foreach-iteration-limit-reached' ) );
+				}
+
+				$this->getParser()->getOutput()->appendExtensionData(
+					self::STATE_FOREACH_ITERATIONS,
+					$this->computeIterationKey()
+				);
+			}
+
 			$args = $this->getFrame()->getArguments();
 
 			if ( $keyName !== null ) {
@@ -64,5 +87,24 @@ class AFForeach extends ArrayFunction {
 		$delimiter = $this->getKeywordArg( self::KWARG_DELIMITER );
 
 		return [ implode( $delimiter, $result ) ];
+	}
+
+	/**
+	 * Compute a unique iteration key.
+	 *
+	 * @return string
+	 */
+	private function computeIterationKey(): string {
+		$length = 12;
+		$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$charactersLength = strlen( $characters );
+		$randomKey = '';
+
+		for ( $i = 0; $i < $length; $i++ ) {
+			$index = mt_rand( 0, $charactersLength - 1 );
+			$randomKey .= $characters[$index];
+		}
+
+		return 'ArrayFunctions_iter_' . $randomKey;
 	}
 }

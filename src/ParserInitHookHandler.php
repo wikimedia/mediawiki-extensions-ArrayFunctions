@@ -11,14 +11,21 @@ use Parser;
  */
 class ParserInitHookHandler implements ParserFirstCallInitHook {
 	/**
+	 * @var ArrayFunctionFactory
+	 */
+	private ArrayFunctionFactory $factory;
+
+	/**
 	 * @var ArrayFunctionRegistry
 	 */
 	private ArrayFunctionRegistry $registry;
 
 	/**
+	 * @param ArrayFunctionFactory $factory
 	 * @param ArrayFunctionRegistry $registry
 	 */
-	public function __construct( ArrayFunctionRegistry $registry ) {
+	public function __construct( ArrayFunctionFactory $factory, ArrayFunctionRegistry $registry ) {
+		$this->factory = $factory;
 		$this->registry = $registry;
 	}
 
@@ -30,14 +37,14 @@ class ParserInitHookHandler implements ParserFirstCallInitHook {
 		foreach ( $this->registry->getFunctions() as $class ) {
 			$parser->setFunctionHook(
 				$class::getName(),
-				[ new ArrayFunctionInvoker( $class ), "invoke" ],
+				[ new ArrayFunctionInvoker( $class, $this->factory ), "invoke" ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
 			foreach ( $class::getAliases() as $alias ) {
 				$parser->setFunctionHook(
 					$alias,
-					[ new ArrayFunctionInvoker( $class ), "invoke" ],
+					[ new ArrayFunctionInvoker( $class, $this->factory ), "invoke" ],
 					Parser::SFH_OBJECT_ARGS
 				);
 			}

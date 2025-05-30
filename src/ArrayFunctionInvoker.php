@@ -24,10 +24,17 @@ class ArrayFunctionInvoker {
 	private string $function;
 
 	/**
-	 * @param class-string<ArrayFunction> $function The class string of an ArrayFunction class
+	 * @var ArrayFunctionFactory The ArrayFunctionFactory singleton
 	 */
-	public function __construct( string $function ) {
+	private ArrayFunctionFactory $factory;
+
+	/**
+	 * @param class-string<ArrayFunction> $function The class string of an ArrayFunction class
+	 * @param ArrayFunctionFactory $factory The ArrayFunctionFactory singleton
+	 */
+	public function __construct( string $function, ArrayFunctionFactory $factory ) {
 		$this->function = $function;
+		$this->factory = $factory;
 	}
 
 	/**
@@ -41,8 +48,7 @@ class ArrayFunctionInvoker {
 	 * @throws ReflectionException|MWException
 	 */
 	public function invoke( Parser $parser, PPFrame $frame, array $arguments ): array {
-		/** @var ArrayFunction $instance */
-		$instance = new $this->function( $parser, $frame );
+		$instance = $this->factory->createArrayFunction( $this->function, $parser, $frame );
 		$preprocessor = new ArgumentPreprocessor( $instance, "execute" );
 
 		try {
@@ -105,4 +111,5 @@ class ArrayFunctionInvoker {
 
 		return $result;
 	}
+
 }

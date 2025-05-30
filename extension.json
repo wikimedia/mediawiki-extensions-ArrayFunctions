@@ -15,6 +15,20 @@
 			"php": ">= 7.4"
 		}
 	},
+	"config": {
+		"ArrayFunctionsForeachIterationLimit": {
+			"value": -1,
+			"description": "The maximum total number of iterations that can be performed by #af_foreach.",
+			"descriptionmsg": "af-config-foreach-iteration-limit",
+			"public": true
+		},
+		"ArrayFunctionsMaxRangeSize": {
+			"value": -1,
+			"description": "The maximum number of elements that an array constructed using #af_range may contain.",
+			"descriptionmsg": "af-config-max-range-size",
+			"public": true
+		}
+	},
 	"MessagesDirs": {
 		"ArrayFunctions": [
 			"i18n"
@@ -36,6 +50,7 @@
 		"ParserInit": {
 			"class": "\\ArrayFunctions\\ParserInitHookHandler",
 			"services": [
+				"ArrayFunctions.ArrayFunctionFactory",
 				"ArrayFunctions.ArrayFunctionRegistry"
 			]
 		}
