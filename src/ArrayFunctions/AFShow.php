@@ -17,6 +17,24 @@ class AFShow extends ArrayFunction {
 	}
 
 	/**
+	 * Returns true if and only if the value is showable.
+	 *
+	 * @param mixed $value
+	 * @return bool
+	 */
+	public static function isShowable( $value ): bool {
+		switch ( true ) {
+			case is_string( $value ):
+			case is_int( $value ):
+			case is_float( $value ):
+			case is_bool( $value ):
+				return true;
+			default:
+				return false;
+		}
+	}
+
+	/**
 	 * @inheritDoc
 	 * @throws RuntimeException
 	 */
@@ -30,23 +48,5 @@ class AFShow extends ArrayFunction {
 		}
 
 		return [ Utils::stringify( $value ) ];
-	}
-
-	/**
-	 * Returns true if and only if the value is showable.
-	 *
-	 * @param mixed $value
-	 * @return bool
-	 */
-	private function isShowable( $value ): bool {
-		switch ( true ) {
-			case is_string( $value ):
-			case is_int( $value ):
-			case is_float( $value ):
-			case is_bool( $value ):
-				return true;
-			default:
-				return false;
-		}
 	}
 }

@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `$wgArrayFunctionsMaxRangeSize` configuration variable to limit the maximum number of elements that an array
   constructed using `#af_range` can contain.
 - Add the `#af_zip` parser function.
+- Add the `!` overloaded index to show a value.
 
 ## [v1.15.0] - 2025-05-13
 

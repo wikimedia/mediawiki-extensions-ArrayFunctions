@@ -2,18 +2,18 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
-use ArrayFunctions\ArrayFunctionFactory;
 use MediaWiki\MediaWikiServices;
 
 /**
  * Implements the #af_get parser function.
  */
 class AFGet extends ArrayFunction {
-	private const IDX_WILDCARD = '*';
+	private const IDX_GROUP = '*';
 	private const IDX_REVERSE = '<-';
 	private const IDX_FLATTEN = '><';
 	private const IDX_FLATTEN_RECURSIVE = '>><<';
 	private const IDX_UNIQUE = '#';
+	private const IDX_SHOW = '!';
 	private const IDX_SLICE_REGEX = '/^(\d+)\.\.(\d*)$/';
 
 	/**
@@ -39,11 +39,6 @@ class AFGet extends ArrayFunction {
 	 */
 	private function indexList( array $value, array $indices ) {
 		foreach ( $indices as $index ) {
-			if ( !is_array( $value ) ) {
-				// Not indexable
-				return null;
-			}
-
 			$value = $this->index( $value, $index );
 		}
 
@@ -51,47 +46,157 @@ class AFGet extends ArrayFunction {
 	}
 
 	/**
-	 * Index the given array with the given index.
+	 * Index the given value with the given index.
 	 *
-	 * @param array $array
+	 * @param mixed $value
 	 * @param string $index
 	 * @return mixed
 	 */
-	private function index( array $array, string $index ) {
-		// FIXME (2025-05-27): Implement proper DI for ArrayFunctions.
-		/** @var ArrayFunctionFactory $factory */
-		$factory = MediaWikiServices::getInstance()->get( 'ArrayFunctions.ArrayFunctionFactory' );
+	private function index( $value, string $index ) {
+		if ( is_array( $value ) && isset( $value[ $index ] ) ) {
+			// If the given index is a *real* index, it always takes precedence.
+			return $value[ $index ];
+		}
 
-		if ( isset( $array[ $index ] ) ) {
-			return $array[ $index ];
-		} elseif ( $index === self::IDX_WILDCARD ) {
-			return $factory
-				->createArrayFunction( AFGroup::class, $this->getParser(), $this->getFrame() )
-				->execute( $array )[0] ?? null;
+		if ( $index === self::IDX_GROUP ) {
+			return $this->indexGroup( $value );
 		} elseif ( $index === self::IDX_REVERSE ) {
-			return $factory
-				->createArrayFunction( AFReverse::class, $this->getParser(), $this->getFrame() )
-				->execute( $array )[0] ?? null;
+			return $this->indexReverse( $value );
 		} elseif ( $index === self::IDX_FLATTEN ) {
-			return $factory
-				->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
-				->execute( $array, 1 )[0] ?? null;
+			return $this->indexFlatten( $value );
 		} elseif ( $index === self::IDX_FLATTEN_RECURSIVE ) {
-			return $factory
-				->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
-				->execute( $array, null )[0] ?? null;
+			return $this->indexFlattenRecursive( $value );
 		} elseif ( $index === self::IDX_UNIQUE ) {
-			return $factory
-				->createArrayFunction( AFUnique::class, $this->getParser(), $this->getFrame() )
-				->execute( $array )[0] ?? null;
+			return $this->indexUnique( $value );
 		} elseif ( preg_match( self::IDX_SLICE_REGEX, $index, $matches, PREG_UNMATCHED_AS_NULL ) === 1 ) {
 			$offset = intval( $matches[1] ?? 0 );
 			$length = !empty( $matches[2] ) ? intval( $matches[2] ) - $offset : null;
-			return $factory
-				->createArrayFunction( AFSlice::class, $this->getParser(), $this->getFrame() )
-				->execute( $array, $offset, $length )[0] ?? null;
+			return $this->indexSlice( $value, $offset, $length );
+		} elseif ( $index === self::IDX_SHOW ) {
+			return $this->indexShow( $value );
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * Apply #af_group on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexGroup( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFGroup::class, $this->getParser(), $this->getFrame() )
+			->execute( $value )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_reverse on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexReverse( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFReverse::class, $this->getParser(), $this->getFrame() )
+			->execute( $value )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_flatten on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexFlatten( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
+			->execute( $value, 1 )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_flatten recursively on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexFlattenRecursive( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFFlatten::class, $this->getParser(), $this->getFrame() )
+			->execute( $value, null )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_unique on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexUnique( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFUnique::class, $this->getParser(), $this->getFrame() )
+			->execute( $value )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_slice on the given value.
+	 *
+	 * @param mixed $value
+	 * @param int $offset
+	 * @param int|null $length
+	 * @return array|null
+	 */
+	private function indexSlice( $value, int $offset, ?int $length ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFSlice::class, $this->getParser(), $this->getFrame() )
+			->execute( $value, $offset, $length )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_show on the given value.
+	 *
+	 * @param mixed $value
+	 * @return string|null
+	 */
+	private function indexShow( $value ): ?string {
+		if ( !AFShow::isShowable( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFShow::class, $this->getParser(), $this->getFrame() )
+			->execute( $value )[0] ?? null;
 	}
 }

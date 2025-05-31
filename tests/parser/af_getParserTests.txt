@@ -363,3 +363,84 @@ Test get with no keys returns entire array
 <li>1: 2</li>
 <li>2: 3</li></ul>
 !! end
+
+!! test
+Test conflicting overloaded and regular index
+!! wikitext
+{{#af_print: {{#af_get: {{#af_put: {{AF_EMPTY}} | hello | * }} | * }} }}
+!! html
+<p>hello
+</p>
+!! end
+
+!! test
+Test index group value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | * }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index reverse value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | <- }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index flatten value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | >< }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index flatten recursive value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | >><< }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index unique value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | # }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index slice value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | 0..10 }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index show value
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | ! }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
+Test index show list
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | c }} | ! }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
