@@ -26,9 +26,10 @@
 	"af-error-range-zero-step": "The step size cannot be 0.",
 	"af-error-max-range-size-exceeded": "The maximum range size has been exceeded.",
 	"af-error-foreach-iteration-limit-reached": "The maximum number of iterations has been reached.",
-	"af-smw-result-printer-name": "ArrayFunctions",
 	"limitreport-afforeachiterations": "Number of #af_foreach iterations",
 	"limitreport-afforeachiterations-value": "$1/$2 iterations",
 	"limitreport-afrangesize": "Size of largest #af_range",
-	"limitreport-afrangesize-value": "$1/$2"
+	"limitreport-afrangesize-value": "$1/$2",
+	"af-error-unknown-format": "The format <b>$1</b> does not exist.",
+	"af-smw-result-printer-name": "ArrayFunctions"
 }

@@ -430,7 +430,7 @@ Test index slice value
 !! test
 Test index show value
 !! wikitext
-{{#af_print: {{#af_get: {{#af_list: a | b | c }} | 0 | ! }} }}
+{{#af_get: {{#af_list: a | b | c }} | 0 | ! }}
 !! html
 <p>a
 </p>
@@ -439,8 +439,7 @@ Test index show value
 !! test
 Test index show list
 !! wikitext
-{{#af_print: {{#af_get: {{#af_list: a | b | c }} | ! }} }}
+{{#af_get: {{#af_list: a | b | c }} | ! }}
 !! html
-<p class="mw-empty-elt">
-</p>
+<table class="wikitable"><tbody><tr><td>a</td><td>b</td><td>c</td></tr></tbody></table>
 !! end

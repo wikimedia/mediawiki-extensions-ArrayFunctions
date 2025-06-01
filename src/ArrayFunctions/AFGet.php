@@ -190,13 +190,12 @@ class AFGet extends ArrayFunction {
 	 * @return string|null
 	 */
 	private function indexShow( $value ): ?string {
-		if ( !AFShow::isShowable( $value ) ) {
-			return null;
-		}
-
-		return MediaWikiServices::getInstance()
+		$show = MediaWikiServices::getInstance()
 			->get( 'ArrayFunctions.ArrayFunctionFactory' )
-			->createArrayFunction( AFShow::class, $this->getParser(), $this->getFrame() )
-			->execute( $value )[0] ?? null;
+			->createArrayFunction( AFShow::class, $this->getParser(), $this->getFrame() );
+
+		$show->setKeywordArgs( [ 'format' => 'table, simple' ] );
+
+		return $show->execute( $value )[0] ?? null;
 	}
 }

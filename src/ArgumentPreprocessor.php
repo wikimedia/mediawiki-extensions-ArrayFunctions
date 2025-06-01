@@ -151,13 +151,24 @@ class ArgumentPreprocessor {
 
 				$result[$keyword] = $spec["default"];
 			} else {
-				$result[$keyword] = $this->preprocessArg(
+				$arg = $this->preprocessArg(
 					$passedArgs[$keyword],
 					$spec["type"] ?? "mixed",
 					$required,
 					$frame,
 					$keyword
 				);
+
+				if ( $arg === null ) {
+					if ( $required ) {
+						// Missing required keyword argument
+						throw new MissingRequiredKeywordArgumentException( $keyword );
+					}
+
+					$arg = $spec["default"];
+				}
+
+				$result[$keyword] = $arg;
 
 				unset( $passedArgs[$keyword] );
 			}

@@ -9,6 +9,7 @@
 
 use ArrayFunctions\ArrayFunctionFactory;
 use ArrayFunctions\ArrayFunctionRegistry;
+use ArrayFunctions\FormatterFactory;
 use MediaWiki\MediaWikiServices;
 
 // PHP unit does not understand code coverage for this file
@@ -22,6 +23,9 @@ return [
 	},
 	"ArrayFunctions.ArrayFunctionRegistry" => static function (): ArrayFunctionRegistry {
 		return new ArrayFunctionRegistry();
+	},
+	"ArrayFunctions.FormatterFactory" => static function (): FormatterFactory {
+		return new FormatterFactory();
 	},
 ];
 

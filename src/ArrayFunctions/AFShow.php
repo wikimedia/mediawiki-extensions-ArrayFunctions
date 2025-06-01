@@ -2,13 +2,18 @@
 
 namespace ArrayFunctions\ArrayFunctions;
 
+use ArrayFunctions\ArrayFunctions\Formatters\Formatter;
 use ArrayFunctions\Exceptions\RuntimeException;
+use ArrayFunctions\FormatterFactory;
 use ArrayFunctions\Utils;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Implements the #af_show parser function.
  */
 class AFShow extends ArrayFunction {
+	private const KWARG_FORMAT = 'format';
+
 	/**
 	 * @inheritDoc
 	 */
@@ -17,21 +22,16 @@ class AFShow extends ArrayFunction {
 	}
 
 	/**
-	 * Returns true if and only if the value is showable.
-	 *
-	 * @param mixed $value
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public static function isShowable( $value ): bool {
-		switch ( true ) {
-			case is_string( $value ):
-			case is_int( $value ):
-			case is_float( $value ):
-			case is_bool( $value ):
-				return true;
-			default:
-				return false;
-		}
+	public static function getKeywordSpec(): array {
+		return [
+			self::KWARG_FORMAT => [
+				'default' => 'simple',
+				'type' => 'string',
+				'description' => 'The format to use for display.'
+			]
+		];
 	}
 
 	/**
@@ -43,10 +43,48 @@ class AFShow extends ArrayFunction {
 			$value = '';
 		}
 
-		if ( !$this->isShowable( $value ) ) {
-			throw new RuntimeException( wfMessage( 'af-error-value-not-showable', Utils::export( $value ) ) );
+		$formatters = $this->getFormatters();
+
+		foreach ( $formatters as $formatter ) {
+			$result = $formatter->format( $value );
+
+			if ( $result !== null ) {
+				return [ $result ];
+			}
 		}
 
-		return [ Utils::stringify( $value ) ];
+		throw new RuntimeException( wfMessage( 'af-error-value-not-showable', Utils::export( $value ) ) );
+	}
+
+	/**
+	 * Returns the formatters to use.
+	 *
+	 * @return Formatter[]
+	 */
+	private function getFormatters(): array {
+		$formatterNames = $this->getKeywordArg( 'format' );
+		$formatterNames = explode( ',', $formatterNames );
+		$formatterNames = array_map( 'trim', $formatterNames );
+		$formatterNames = array_filter( $formatterNames );
+
+		/** @var FormatterFactory $formatterFactory */
+		$formatterFactory = MediaWikiServices::getInstance()->get( 'ArrayFunctions.FormatterFactory' );
+
+		$formatters = [];
+
+		foreach ( $formatterNames as $formatterName ) {
+			$formatter = $formatterFactory->newFormatter( $formatterName );
+
+			if ( $formatter === null ) {
+				throw new RuntimeException( wfMessage( 'af-error-unknown-format', $formatterName ) );
+			}
+
+			$formatters[] = $formatter;
+		}
+
+		// Always add 'simple' as the fallback formatter
+		$formatters[] = $formatterFactory->newFormatter( 'simple' );
+
+		return $formatters;
 	}
 }

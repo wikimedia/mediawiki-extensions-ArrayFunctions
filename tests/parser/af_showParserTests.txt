@@ -84,3 +84,204 @@ Test show print
 <p>== Hello World ==
 </p>
 !! end
+
+!! test
+Test show simple
+!! wikitext
+{{#af_show: {{#af_float: 1.0 }} | format=simple }}
+!! html
+<p>1
+</p>
+!! end
+
+!! test
+Test show table simple, simple value
+!! wikitext
+{{#af_show: {{#af_float: 1.0 }} | format=table, simple }}
+!! html
+<p>1
+</p>
+!! end
+
+!! test
+Test show simple table, simple value
+!! wikitext
+{{#af_show: {{#af_float: 1.0 }} | format=simple, table }}
+!! html
+<p>1
+</p>
+!! end
+
+!! test
+Test show table, simple value
+!! wikitext
+{{#af_show: {{#af_float: 1.0 }} | format=table }}
+!! html
+<p>1
+</p>
+!! end
+
+!! test
+Test show table, list of strings
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><td>a</td><td>b</td><td>c</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of mixed
+!! wikitext
+{{#af_show: {{#af_list: a | {{#af_list: a | b | {{#af_float: 1.0 }} }} | {{#af_float: 1.0 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><td>a</td><td><table class="wikitable"><tbody><tr><td>a</td><td>b</td><td>1</td></tr></tbody></table></td><td>1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of lists, same length
+!! wikitext
+{{#af_show: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of lists, different lengths 1
+!! wikitext
+{{#af_show: {{#af_list: {{#af_list: a | b | c }} | {{#af_list: d | e }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><td>a</td><td>b</td><td>c</td></tr><tr><td>d</td><td>e</td><td></td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of lists, different lengths 2
+!! wikitext
+{{#af_show: {{#af_list: {{#af_list: a | b }} | {{#af_list: c | d | e }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><td>a</td><td>b</td><td></td></tr><tr><td>c</td><td>d</td><td>e</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of objects, same keys
+!! wikitext
+{{#af_show: {{#af_list: {{#af_object: a=a1 | b=b1 }} | {{#af_object: a=a2 | b=b2 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th></tr><tr><td>a1</td><td>b1</td></tr><tr><td>a2</td><td>b2</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of objects, partially same keys 1
+!! wikitext
+{{#af_show: {{#af_list: {{#af_object: a=a1 | b=b1 }} | {{#af_object: a=a2 | b=b2 | c=c1 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th><th>c</th></tr><tr><td>a1</td><td>b1</td><td></td></tr><tr><td>a2</td><td>b2</td><td>c1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of objects, partially same keys 2
+!! wikitext
+{{#af_show: {{#af_list: {{#af_object: a=a1 | b=b1 }} | {{#af_object: a=a2 | c=c1 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th><th>c</th></tr><tr><td>a1</td><td>b1</td><td></td></tr><tr><td>a2</td><td></td><td>c1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, list of objects, disjunct keys
+!! wikitext
+{{#af_show: {{#af_list: {{#af_object: a=a1 | b=b1 }} | {{#af_object: c=c1 | d=d1 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th><th>c</th><th>d</th></tr><tr><td>a1</td><td>b1</td><td></td><td></td></tr><tr><td></td><td></td><td>c1</td><td>d1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of strings
+!! wikitext
+{{#af_show: {{#af_object: a=a1 | b=b1 | c=c1 }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th><th>c</th></tr><tr><td>a1</td><td>b1</td><td>c1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of mixed
+!! wikitext
+{{#af_show: {{#af_object: a=a1 | b={{#af_list: a | b | c }} | c={{#af_float: 1.0 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th>a</th><th>b</th><th>c</th></tr><tr><td>a1</td><td><table class="wikitable"><tbody><tr><td>a</td><td>b</td><td>c</td></tr></tbody></table></td><td>1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of lists, same length
+!! wikitext
+{{#af_show: {{#af_object: a={{#af_list: a1 | a2 }} | b={{#af_list: b1 | b2 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th scope="col">a</th><td>a1</td><td>a2</td></tr><tr><th scope="col">b</th><td>b1</td><td>b2</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of lists, different lengths
+!! wikitext
+{{#af_show: {{#af_object: a={{#af_list: a1 }} | b={{#af_list: b1 | b2 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th scope="col">a</th><td>a1</td><td></td></tr><tr><th scope="col">b</th><td>b1</td><td>b2</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of objects, shared keys
+!! wikitext
+{{#af_show: {{#af_object: a={{#af_object: c=c1 | d=d1 }} | b={{#af_object: c=c2 | d=d2 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th></th><th>c</th><th>d</th></tr><tr><th scope="col">a</th><td>c1</td><td>d1</td></tr><tr><th scope="col">b</th><td>c2</td><td>d2</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of objects, partially shared keys
+!! wikitext
+{{#af_show: {{#af_object: a={{#af_object: c=c1 | d=d1 }} | b={{#af_object: c=c2 | e=e1 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th></th><th>c</th><th>d</th><th>e</th></tr><tr><th scope="col">a</th><td>c1</td><td>d1</td><td></td></tr><tr><th scope="col">b</th><td>c2</td><td></td><td>e1</td></tr></tbody></table>
+!! end
+
+!! test
+Test show table, object of objects, disjunct keys
+!! wikitext
+{{#af_show: {{#af_object: a={{#af_object: c=c1 | d=d1 }} | b={{#af_object: e=e1 | f=f1 }} }} | format=table }}
+!! html
+<table class="wikitable"><tbody><tr><th></th><th>c</th><th>d</th><th>e</th><th>f</th></tr><tr><th scope="col">a</th><td>c1</td><td>d1</td><td></td><td></td></tr><tr><th scope="col">b</th><td></td><td></td><td>e1</td><td>f1</td></tr></tbody></table>
+!! end
+
+!! test
+Test invalid format
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} | format=invalid }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The format <b>invalid</b> does not exist.</span>
+</p>
+!! end
+
+!! test
+Test invalid formats
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} | format=invalid, again-invalid }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The format <b>invalid</b> does not exist.</span>
+</p>
+!! end
+
+!! test
+Test valid and invalid formats 1
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} | format=table, invalid }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The format <b>invalid</b> does not exist.</span>
+</p>
+!! end
+
+!! test
+Test valid and invalid formats 2
+!! wikitext
+{{#af_show: {{#af_list: a | b | c }} | format=invalid, table }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_show</b>): The format <b>invalid</b> does not exist.</span>
+</p>
+!! end
+
