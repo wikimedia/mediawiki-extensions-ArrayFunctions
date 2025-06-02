@@ -9,6 +9,8 @@
 	"af-config-foreach-iteration-limit": "Description for the '$wgArrayFunctionsForeachIterationLimit' configuration variable.",
 	"af-config-max-range-size": "Description for the '$wgArrayFunctionsMaxRangeSize' configuration variable.",
 	"af-extensionname": "{{name}}",
+	"af-error-category": "{{tracking category name}}\nTracking category for pages with errors from ArrayFunctions parser functions",
+	"af-error-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|af-error-category}} tracking category.",
 	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
 	"af-error-incorrect-type": "Error message given a given parameter does not have the expected type. Parameters:\n* $1 - the type that was expected\n* $2 - the type of the value that was given\n* $3 - the name or index of the parameter for which the type mismatch occurred\n* $4 - the value of the parameter",
 	"af-error-incorrect-argument-count-at-least": "Error message given when not enough arguments are given to a parser function. Parameters:\n* $1 - the minimum expected number of parameters\n* $2 - the actual number of parameters\nSee also:\n* {{msg-mw|af-error-incorrect-argument-count-at-most}}",

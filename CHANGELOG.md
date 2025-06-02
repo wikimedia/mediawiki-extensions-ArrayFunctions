@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   constructed using `#af_range` can contain.
 - Add the `#af_zip` parser function.
 - Add the `!` overloaded index to show a value.
+- Add the `Pages with ArrayFunctions errors` (`af-error-category`) tracking category.
 
 ## [v1.15.0] - 2025-05-13
 

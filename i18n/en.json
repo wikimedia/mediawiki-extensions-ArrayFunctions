@@ -8,6 +8,8 @@
 	"af-config-foreach-iteration-limit": "The maximum total number of iterations that can be performed by #af_foreach.",
 	"af-config-max-range-size": "The maximum number of elements that an array constructed using #af_range may contain.",
 	"af-extensionname": "ArrayFunctions",
+	"af-error-category": "Pages with ArrayFunctions errors",
+	"af-error-category-desc": "There was an error processing the ArrayFunctions parser functions on the page.",
 	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Expected at least <b>$1</b> positional {{PLURAL:$1|parameter|parameters}}, <b>$2</b> given.",

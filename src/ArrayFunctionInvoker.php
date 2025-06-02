@@ -9,6 +9,7 @@ use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
 use ArrayFunctions\Exceptions\TypeMismatchException;
 use ArrayFunctions\Exceptions\UnexpectedKeywordArgument;
+use Message;
 use MWException;
 use Parser;
 use PPFrame;
@@ -54,7 +55,8 @@ class ArrayFunctionInvoker {
 		try {
 			[ $positionalArgs, $keywordArgs ] = $preprocessor->preprocess( $arguments, $instance, $frame, $parser );
 		} catch ( TooFewArgumentsException $exception ) {
-			return [ Utils::error(
+			return [ $this->handleError(
+				$parser,
 				$instance::getName(),
 				wfMessage(
 					"af-error-incorrect-argument-count-at-least",
@@ -63,7 +65,8 @@ class ArrayFunctionInvoker {
 				)
 			) ];
 		} catch ( TooManyArgumentsException $exception ) {
-			return [ Utils::error(
+			return [ $this->handleError(
+				$parser,
 				$instance::getName(),
 				wfMessage(
 					"af-error-incorrect-argument-count-at-most",
@@ -72,7 +75,8 @@ class ArrayFunctionInvoker {
 				)
 			) ];
 		} catch ( TypeMismatchException $exception ) {
-			return [ Utils::error(
+			return [ $this->handleError(
+				$parser,
 				$instance::getName(),
 				wfMessage(
 					"af-error-incorrect-type",
@@ -83,7 +87,8 @@ class ArrayFunctionInvoker {
 				)
 			) ];
 		} catch ( MissingRequiredKeywordArgumentException $exception ) {
-			return [ Utils::error(
+			return [ $this->handleError(
+				$parser,
 				$instance::getName(),
 				wfMessage(
 					"af-error-missing-required-keyword-argument",
@@ -91,7 +96,8 @@ class ArrayFunctionInvoker {
 				)
 			) ];
 		} catch ( UnexpectedKeywordArgument $exception ) {
-			return [ Utils::error(
+			return [ $this->handleError(
+				$parser,
 				$instance::getName(),
 				wfMessage(
 					"af-error-unexpected-keyword-argument",
@@ -106,10 +112,21 @@ class ArrayFunctionInvoker {
 			$result = $instance->execute( ...$positionalArgs );
 			$result[0] = Utils::export( $result[0] );
 		} catch ( RuntimeException $exception ) {
-			return [ Utils::error( $instance::getName(), $exception->getRuntimeMessage() ) ];
+			return [ $this->handleError( $parser, $instance::getName(), $exception->getRuntimeMessage() ) ];
 		}
 
 		return $result;
 	}
 
+	/**
+	 * @param Parser $parser
+	 * @param string $function
+	 * @param string|Message $message A message key
+	 * @return string
+	 */
+	private function handleError( Parser $parser, string $function, $message ): string {
+		$parser->addTrackingCategory( 'af-error-category' );
+
+		return Utils::error( $function, $message );
+	}
 }
