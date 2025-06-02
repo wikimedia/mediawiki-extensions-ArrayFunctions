@@ -3,6 +3,8 @@
 		"authors": []
 	},
 	"af-desc": "Bietet eine Reihe von reinen Parser-Funktionen, die mit Arrays arbeiten",
+	"af-config-foreach-iteration-limit": "Die maximale Gesamtzahl der Iterationen, die von #af_foreach durchgeführt werden können.",
+	"af-config-max-range-size": "Die maximale Anzahl von Elementen, die ein mit #af_range erstelltes Array enthalten darf.",
 	"af-error": "<span class=\"error\">Array-Funktionen (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Der erwartete Typ <b>$1</b> konnte nicht mit dem tatsächlichen Typ <b>$2</b> für den Parameter <b>$3</b> („$4“) abgeglichen werden.",
 	"af-error-incorrect-argument-count-at-least": "Mindestens <b>$1</b> {{PLURAL:$1|Parameter}} erwartet, <b>$2</b> gegeben.",
@@ -16,5 +18,7 @@
 	"af-error-template-inclusion-denied": "Vorlageneinbindung verweigert.",
 	"af-error-value-not-showable": "Der Wert <b>$1</b> kann nicht angezeigt werden.",
 	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein.",
+	"af-error-max-range-size-exceeded": "Die maximale Bereichsgröße wurde überschritten.",
+	"af-error-foreach-iteration-limit-reached": "Die maximale Anzahl an Iterationen wurde erreicht.",
 	"af-smw-result-printer-name": "ArrayFunctions"
 }

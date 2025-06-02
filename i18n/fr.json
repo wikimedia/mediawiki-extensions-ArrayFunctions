@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Derugon",
 			"JLTRY",
 			"Verdy p",
 			"Wladek92"
 		]
 	},
 	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
+	"af-config-foreach-iteration-limit": "Le nombre total maximal d’itérations pouvant être réalisées par #af_foreach.",
+	"af-config-max-range-size": "Le nombre maximal d’éléments qu’un tableau construit à l’aide de #af_range peut contenir.",
 	"af-extensionname": "FonctionsDeTableau",
 	"af-error": "<span class=\"error\">FonctionsDeTableau (<b>#$1</b>) : $2</span>",
 	"af-error-incorrect-type": "Impossible de faire correspondre le type attendu <b>$1</b> avec le type effectif <b>$2</b> pour le paramètre <b>$3</b> (« $4 »).",
@@ -21,5 +24,7 @@
 	"af-error-template-inclusion-denied": "L’inclusion de modèle est refusée.",
 	"af-error-value-not-showable": "La valeur <b>$1</b> ne peut pas être affichée.",
 	"af-error-range-zero-step": "La taille du pas ne peut pas être 0.",
+	"af-error-max-range-size-exceeded": "La taille maximale de la plage a été atteinte.",
+	"af-error-foreach-iteration-limit-reached": "Le nombre maximal d’itérations a été atteint.",
 	"af-smw-result-printer-name": "ArrayFonctions"
 }
