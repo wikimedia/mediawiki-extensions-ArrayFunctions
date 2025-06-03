@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"af-config-foreach-iteration-limit": "#af_foreach эталлыкъ литерацияланы максимум саны.",
+	"af-config-max-range-size": "#af_range хайырланыб этилген тизими болургъа болгъан элементлени максимум саны.",
+	"af-error-max-range-size-exceeded": "Диапазонну максимум ёлчемиинден аслам болду.",
+	"af-error-foreach-iteration-limit-reached": "Итерацияларыны максимум санына джетгенди."
+}

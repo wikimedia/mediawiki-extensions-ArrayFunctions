@@ -5,6 +5,8 @@
 	"af-desc": "Bietet eine Reihe von reinen Parser-Funktionen, die mit Arrays arbeiten",
 	"af-config-foreach-iteration-limit": "Die maximale Gesamtzahl der Iterationen, die von #af_foreach durchgeführt werden können.",
 	"af-config-max-range-size": "Die maximale Anzahl von Elementen, die ein mit #af_range erstelltes Array enthalten darf.",
+	"af-error-category": "Seiten mit ArrayFunctions-Fehlern",
+	"af-error-category-desc": "Beim Verarbeiten der ArrayFunctions-Parserfunktionen auf der Seite ist ein Fehler aufgetreten.",
 	"af-error": "<span class=\"error\">Array-Funktionen (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Der erwartete Typ <b>$1</b> konnte nicht mit dem tatsächlichen Typ <b>$2</b> für den Parameter <b>$3</b> („$4“) abgeglichen werden.",
 	"af-error-incorrect-argument-count-at-least": "Mindestens <b>$1</b> {{PLURAL:$1|Parameter}} erwartet, <b>$2</b> gegeben.",
