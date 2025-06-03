@@ -9,6 +9,7 @@
 	"af-config-foreach-iteration-limit": "Description for the '$wgArrayFunctionsForeachIterationLimit' configuration variable.",
 	"af-config-max-range-size": "Description for the '$wgArrayFunctionsMaxRangeSize' configuration variable.",
 	"af-extensionname": "{{name}}",
+	"af-limitreport-unlimited-upper-bound": "{{optional}}\nThe upper bound shown in the parser limit report if no upper bound is configured.\nSee also:\n* {{msg-mw|limitreport-afforeachiterations-value}}\n* {{msg-mw|limitreport-afrangesize-value}}",
 	"af-error-category": "{{tracking category name}}\nTracking category for pages with errors from ArrayFunctions parser functions",
 	"af-error-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|af-error-category}} tracking category.",
 	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
@@ -26,5 +27,9 @@
 	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range.",
 	"af-error-max-range-size-exceeded": "Error message given when trying to construct a range larger than $wgArrayFunctionsMaxRangeSize.",
 	"af-error-foreach-iteration-limit-reached": "Error message given when the maximum number of iterations specified by $wgArrayFunctionsForeachIterationLimit is reached.",
-	"af-smw-result-printer-name": "{{optional}}\nThe name of the 'arrayfunctions' result format."
+	"af-smw-result-printer-name": "{{optional}}\nThe name of the 'arrayfunctions' result format.",
+	"limitreport-afforeachiterations": "Label shown in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.",
+	"limitreport-afforeachiterations-value": "{{optional}}\\nValue in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.\\n\\nParameters:\\n* $1 - Number of #af_foreach iterations performed\\n* $2 - Number of #af_foreach iterations that can be performed.",
+	"limitreport-afrangesize": "Label shown in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.",
+	"limitreport-afrangesize-value": "{{optional}}\\nValue in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.\\n\\nParameters:\\n* $1 - The largest #af_range constructed\\n* $2 - The maximum size of #af_range that can be constructed."
 }

@@ -53,12 +53,19 @@
 				"ArrayFunctions.ArrayFunctionFactory",
 				"ArrayFunctions.ArrayFunctionRegistry"
 			]
+		},
+		"ParserLimitReport": {
+			"class": "\\ArrayFunctions\\ParserLimitReportHookHandler",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "ParserInit",
 		"ParserGetVariableValueSwitch": "Trivial",
 		"GetMagicVariableIDs": "Trivial",
+		"ParserLimitReportPrepare": "ParserLimitReport",
 		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries",
 		"CargoSetFormatClasses": "\\ArrayFunctions\\LegacyHookHandler::onCargoSetFormatClasses"
 	},
