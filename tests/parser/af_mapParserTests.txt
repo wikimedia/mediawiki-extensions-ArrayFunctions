@@ -57,6 +57,8 @@ Test list of lists boolean
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v }}
 !! html
@@ -66,6 +68,8 @@ Test too few arguments
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_map: {{#af_list: {{#af_list: a }} | foo }} | v | {{{v}}} | d }}
 !! html

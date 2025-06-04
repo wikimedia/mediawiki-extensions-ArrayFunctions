@@ -6,7 +6,7 @@
 		]
 	},
 	"af-desc": "配列を操作する一連の純粋なパーサー関数を提供します",
-	"af-error": "<span class=\"error\">配列関数 ( <b># $1</b> ): $2</span>",
+	"af-error": "配列関数 ( <b># $1</b> ): $2",
 	"af-error-incorrect-type": "パラメータ<b>$3</b> (\" $4 \") の予想される型<b>$1</b>と実際の型<b>$2</b>を一致させることができませんでした。",
 	"af-error-incorrect-argument-count-at-least": "少なくとも<b>$1</b>の位置に{{PLURAL:$1|parameter|parameters}}が必要です。<b>$2</b>が与えられました。",
 	"af-error-incorrect-argument-count-at-most": "使用できる位置{{PLURAL:$1|パラメーター}}は最大<b>$1</b>個ですが、<b>$2</b>個使用されています。",

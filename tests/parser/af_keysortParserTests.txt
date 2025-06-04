@@ -163,6 +163,8 @@ Test keysort case insensitive
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_keysort: {{#af_list: a | b | c }} }}
 !! html
@@ -172,6 +174,8 @@ Test too few arguments
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_keysort: {{#af_list: a | b | c }} | a | b }}
 !! html
@@ -181,6 +185,8 @@ Test too many arguments
 
 !! test
 Test first argument must be array
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_keysort: foobar | a }}
 !! html

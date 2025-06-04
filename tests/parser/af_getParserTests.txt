@@ -203,6 +203,8 @@ Test get slice lower upper bound
 
 !! test
 Test invalid type for first argument
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_get: foobar }}
 !! html
@@ -331,6 +333,8 @@ Test get reverse slice
 
 !! test
 Test get invalid argument type
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_get: notAnArray }}
 !! html

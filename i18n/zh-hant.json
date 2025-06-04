@@ -5,7 +5,7 @@
 		]
 	},
 	"af-desc": "提供在陣列進行操作的純解析函式集",
-	"af-error": "<span class=\"error\">陣列函式（<b>#$1</b>）：$2</span>",
+	"af-error": "陣列函式（<b>#$1</b>）：$2",
 	"af-error-incorrect-type": "參數<b>$3</b>（「$4」）的實際類型<b>$2</b>與預期類型<b>$1</b>不相配。",
 	"af-error-incorrect-argument-count-at-least": "預計至少 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",
 	"af-error-incorrect-argument-count-at-most": "預計最多 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",

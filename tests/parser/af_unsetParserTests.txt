@@ -35,6 +35,8 @@ Test remove a nested index
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_unset: {{#af_list: a | b | c }} }}
 !! html

@@ -191,8 +191,25 @@ class Utils {
 	}
 
 	/**
+	 * Returns an error.
+	 *
+	 * @param string $function The name of the parser function that caused the error
+	 * @param string|Message $message A message key
+	 * @return Message
+	 */
+	public static function error( string $function, $message ): Message {
+		if ( !$message instanceof Message ) {
+			$message = wfMessage( $message );
+		}
+
+		return wfMessage( 'af-error', $function, $message );
+	}
+
+	/**
 	 * Compute a new random ID.
 	 *
+	 * @param int $length
+	 * @param string $prefix
 	 * @return string
 	 */
 	public static function newRandomID( int $length = 18, string $prefix = 'af_' ): string {
@@ -206,24 +223,6 @@ class Utils {
 		}
 
 		return $randomID;
-	}
-
-	/**
-	 * Returns an error.
-	 *
-	 * @param string $function The name of the parser function that caused the error
-	 * @param string|Message $message A message key
-	 * @param array $args The arguments to pass to the message
-	 * @return Message
-	 */
-	public static function error( string $function, $message, array $args = [] ): Message {
-		if ( !$message instanceof Message ) {
-			$message = wfMessage( $message );
-		}
-
-		$message->params( $args );
-
-		return wfMessage( 'af-error', $function, $message );
 	}
 
 	/**

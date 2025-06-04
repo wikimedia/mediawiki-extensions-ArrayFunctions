@@ -5,7 +5,7 @@
 		]
 	},
 	"af-desc": "Ofrece un conxunto de funcións puras do analizador que operan con matrices",
-	"af-error": "<span class=\"error\">Funcións de matriz (<b>#$1</b>): $2</span>",
+	"af-error": "Funcións de matriz (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "Non se puido facer coincidir o tipo esperado <b>$1</b> co tipo real <b>$2</b> para o parámetro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "{{PLURAL:$1|Esperábase|Esperábanse}} polo menos <b>$1</b> {{PLURAL:$1|parámetro posicional|parámetros posicionais}}, e recibíronse <b>$2</b>.",
 	"af-error-incorrect-argument-count-at-most": "{{PLURAL:$1|Espérase|Esperábanse}} como máximo <b>$1</b> {{PLURAL:$1|parámetro posicional|parámetros posicionais}}, e recibíronse <b>$2</b>.",

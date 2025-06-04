@@ -9,7 +9,7 @@
 	"af-config-max-range-size": "Le numero total maxime de elementos que un array construite usante #af_range pote continer.",
 	"af-error-category": "Paginas con errores de ArrayFunctions",
 	"af-error-category-desc": "Un error ha occurrite durante le processamento del functiones del analysator syntactic de ArrayFunctions sur le pagina.",
-	"af-error": "<span class=\"error\">FunctionesArray (<b>#$1</b>): $2</span>",
+	"af-error": "FunctionesArray (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "Non poteva facer corresponder le typo expectate <b>$1</b> con le typo real <b>$2</b> pro le parametro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Expectava al minus <b>$1</b> parametro{{PLURAL:$1||s}} positional, <b>$2</b> date.",
 	"af-error-incorrect-argument-count-at-most": "Expectava al plus <b>$1</b> parametro{{PLURAL:$1||s}} positional, <b>$2</b> date.",

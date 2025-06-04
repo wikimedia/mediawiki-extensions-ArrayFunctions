@@ -98,6 +98,8 @@ Test true is true
 
 !! test
 Test random gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_bool: foobar}}
 !! html
@@ -107,6 +109,8 @@ Test random gives error
 
 !! test
 Test empty gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_bool: }}
 !! html
@@ -116,6 +120,8 @@ Test empty gives error
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_bool: yes | yes }}
 !! html

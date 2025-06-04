@@ -3,6 +3,7 @@
 namespace ArrayFunctions;
 
 use ArrayFunctions\ArrayFunctions\ArrayFunction;
+use ArrayFunctions\Exceptions\ArgumentPropagateException;
 use ArrayFunctions\Exceptions\MissingRequiredKeywordArgumentException;
 use ArrayFunctions\Exceptions\TooFewArgumentsException;
 use ArrayFunctions\Exceptions\TooManyArgumentsException;
@@ -39,8 +40,8 @@ class ArgumentPreprocessor {
 	 *
 	 * @param array $passedArgs The arguments to preprocess
 	 * @param ArrayFunction $instance The array function instance to process the arguments for
-	 * @param PPFrame $frame The current frame
 	 * @param Parser $parser The current parser
+	 * @param PPFrame $frame The current frame
 	 *
 	 * @return array A tuple of processed positional arguments and keyword arguments
 	 *
@@ -52,12 +53,12 @@ class ArgumentPreprocessor {
 	 * @throws UnexpectedKeywordArgument
 	 * @throws MWException
 	 */
-	public function preprocess( array $passedArgs, ArrayFunction $instance, PPFrame $frame, Parser $parser ): array {
+	public function preprocess( array $passedArgs, ArrayFunction $instance, Parser $parser, PPFrame $frame ): array {
 		// Split the given arguments into positional and keyword arguments
-		[ $passedPositionalArgs, $passedKeywordArgs ] = $this->partitionArgs( $passedArgs, $frame, $parser );
+		[ $passedPositionalArgs, $passedKeywordArgs ] = $this->partitionArgs( $passedArgs, $parser, $frame );
 
-		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $frame );
-		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $frame );
+		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $parser, $frame );
+		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $parser, $frame );
 
 		return [ $positionalArgs, $keywordArgs ];
 	}
@@ -66,6 +67,7 @@ class ArgumentPreprocessor {
 	 * Preprocess the given positional arguments.
 	 *
 	 * @param array $passedArgs The positional arguments
+	 * @param Parser $parser The current parser
 	 * @param PPFrame $frame The current frame
 	 *
 	 * @return array
@@ -74,8 +76,9 @@ class ArgumentPreprocessor {
 	 * @throws TooManyArgumentsException
 	 * @throws ReflectionException
 	 * @throws TypeMismatchException
+	 * @throws ArgumentPropagateException
 	 */
-	private function preprocessPositionalArgs( array $passedArgs, PPFrame $frame ): array {
+	private function preprocessPositionalArgs( array $passedArgs, Parser $parser, PPFrame $frame ): array {
 		// Keep track of the number of positional arguments that were passed
 		$numArgs = count( $passedArgs );
 		$result = [];
@@ -89,6 +92,7 @@ class ArgumentPreprocessor {
 						array_shift( $passedArgs ),
 						$type,
 						$required,
+						$parser,
 						$frame,
 						$i + 1
 					);
@@ -109,6 +113,7 @@ class ArgumentPreprocessor {
 					array_shift( $passedArgs ),
 					$type,
 					$required,
+					$parser,
 					$frame,
 					$i + 1
 				);
@@ -128,15 +133,21 @@ class ArgumentPreprocessor {
 	 *
 	 * @param array $passedArgs Dictionary of keyword args
 	 * @param ArrayFunction $instance The array function instance
+	 * @param Parser $parser The current parser
 	 * @param PPFrame $frame The current frame
-	 *
 	 * @return array
 	 *
-	 * @throws TypeMismatchException
+	 * @throws ArgumentPropagateException
 	 * @throws MissingRequiredKeywordArgumentException
+	 * @throws TypeMismatchException
 	 * @throws UnexpectedKeywordArgument
 	 */
-	private function preprocessKeywordArgs( array $passedArgs, ArrayFunction $instance, PPFrame $frame ): array {
+	private function preprocessKeywordArgs(
+		array $passedArgs,
+		ArrayFunction $instance,
+		Parser $parser,
+		PPFrame $frame
+	): array {
 		$result = [];
 
 		// Loop over the keyword arguments in the specification, to make sure that we do not forget a required argument
@@ -155,6 +166,7 @@ class ArgumentPreprocessor {
 					$passedArgs[$keyword],
 					$spec["type"] ?? "mixed",
 					$required,
+					$parser,
 					$frame,
 					$keyword
 				);
@@ -177,7 +189,7 @@ class ArgumentPreprocessor {
 		if ( $instance::allowArbitraryKeywordArgs() ) {
 			// For the remaining arbitrary keyword arguments, preprocess them as "mixed" and optional
 			foreach ( $passedArgs as $keyword => $value ) {
-				$result[$keyword] = $this->preprocessArg( $value, "mixed", false, $frame, $value );
+				$result[$keyword] = $this->preprocessArg( $value, "mixed", false, $parser, $frame, $keyword );
 			}
 		} elseif ( !empty( $passedArgs ) ) {
 			// Some keyword arguments have not been consumed, and arbitrary keyword arguments are not allowed
@@ -194,12 +206,13 @@ class ArgumentPreprocessor {
 	 * @param PPNode|string $argument The argument to preprocess
 	 * @param ReflectionNamedType|string|null $type The expected argument type
 	 * @param bool $required Whether the argument is required
+	 * @param Parser $parser The current parser
 	 * @param PPFrame $frame The frame used for argument expansion
 	 * @param int|string $name The name or index of the argument
 	 * @return array|bool|float|int|PPNode|string|null
-	 * @throws TypeMismatchException
+	 * @throws TypeMismatchException|ArgumentPropagateException
 	 */
-	private function preprocessArg( $argument, $type, bool $required, PPFrame $frame, $name ) {
+	private function preprocessArg( $argument, $type, bool $required, Parser $parser, PPFrame $frame, $name ) {
 		if ( $this->compareTypes( $type, PPNode::class ) ) {
 			return $argument;
 		}
@@ -212,6 +225,12 @@ class ArgumentPreprocessor {
 			}
 
 			return null;
+		}
+
+		$errorArg = $this->detectErrorArg( $expandedArg, $parser );
+
+		if ( $errorArg ) {
+			throw new ArgumentPropagateException( $name, $errorArg['errorId'], $errorArg['errorMessage'] );
 		}
 
 		$importedArg = Utils::import( $expandedArg );
@@ -319,12 +338,12 @@ class ArgumentPreprocessor {
 	 * exception is a position argument comes before a keyword argument.
 	 *
 	 * @param array $arguments
+	 * @param Parser $parser The current parser
 	 * @param PPFrame $frame The frame to use for expansion
-	 * @param Parser $parser
 	 * @return array Tuple of $positionalArgs and $keywordArgs
 	 * @throws MWException
 	 */
-	private function partitionArgs( array $arguments, PPFrame $frame, Parser $parser ): array {
+	private function partitionArgs( array $arguments, Parser $parser, PPFrame $frame ): array {
 		$positionalArgs = [];
 		$keywordArgs = [];
 
@@ -344,5 +363,33 @@ class ArgumentPreprocessor {
 		}
 
 		return [ $positionalArgs, $keywordArgs ];
+	}
+
+	/**
+	 * Detect an error (strings of the form <span class="af-error-xxx">...</span>) in the given value.
+	 *
+	 * @param string $value
+	 * @param Parser $parser
+	 * @return array{errorMessage: Message, errorId: string}|null
+	 */
+	private function detectErrorArg( string $value, Parser $parser ): ?array {
+		// This regex finds "span" tags with the format <span class="af-error-xxx">...</span>
+		$regex = '/<span\s(?:[^\s>]*\s+)*?class="(?:[^"\s>]*\s+)*?af-error-([^\s">]+)(?:\s[^">]*)?"/';
+
+		$matches = [];
+		if ( preg_match( $regex, $value, $matches ) && isset( $matches[1] ) ) {
+			$errorId = $matches[1];
+			$errorMessage = $parser
+				->getOutput()
+				->getExtensionData(
+					ArrayFunctionInvoker::DATA_KEY_PREFIX_ERROR . $errorId
+				);
+
+			if ( $errorMessage !== null ) {
+				return [ 'errorMessage' => $errorMessage, 'errorId' => $errorId ];
+			}
+		}
+
+		return null;
 	}
 }

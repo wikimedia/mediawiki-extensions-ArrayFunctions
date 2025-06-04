@@ -63,6 +63,8 @@ Test empty string
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_split: a,b,c | , | v }}
 !! html

@@ -5,7 +5,7 @@
 		]
 	},
 	"af-desc": "Tilbyr et sett av rene parserfunksjoner som fungerer på matriser",
-	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "Kunne ikke matche forventet type <b>$1</b> med faktisk type <b>$2</b> for parameteren <b>$3</b> («$4»).",
 	"af-error-incorrect-argument-count-at-least": "Forventet minst <b>$1</b> {{PLURAL:$1|posisjonell parameter|posisjonelle parametre}}, <b>$2</b> gitt.",
 	"af-error-incorrect-argument-count-at-most": "Forventet maksimalt <b>$1</b> {{PLURAL:$1|posisjonell parameter|posisjonelle parametre}}, <b>$2</b> gitt.",

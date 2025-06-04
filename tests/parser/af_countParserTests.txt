@@ -80,6 +80,8 @@ Test multi item multi-dimensional list, recursive counting
 
 !! test
 Test empty argument gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_count: }}
 !! html
@@ -89,6 +91,8 @@ Test empty argument gives error
 
 !! test
 Test empty argument gives error, recursive counting
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_count: | recursive=yes }}
 !! html
@@ -98,6 +102,8 @@ Test empty argument gives error, recursive counting
 
 !! test
 Test invalid type gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_count: foobar }}
 !! html
@@ -107,6 +113,8 @@ Test invalid type gives error
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_count: {{#af_list: a | b }} | yes }}
 !! html

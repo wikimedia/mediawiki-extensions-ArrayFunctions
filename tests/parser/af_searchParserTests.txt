@@ -60,6 +60,8 @@ Test multiple occurrences return first key
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_search: {{#af_list: a | b | c }} | a | b }}
 !! html
@@ -69,6 +71,8 @@ Test too many arguments
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_search: {{#af_list: a | b | c }} }}
 !! html

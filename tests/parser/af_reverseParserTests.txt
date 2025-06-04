@@ -28,6 +28,8 @@ Test simple object
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_reverse: {{#af_list: a | b | c }} | foo }}
 !! html
@@ -37,6 +39,8 @@ Test too many arguments
 
 !! test
 Test invalid type
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_reduce: }}
 !! html

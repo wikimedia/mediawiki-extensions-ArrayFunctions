@@ -127,6 +127,8 @@ float__^__10
 
 !! test
 Test invalid type gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: true }}
 !! html
@@ -136,6 +138,8 @@ Test invalid type gives error
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: 1.0 | yes }}
 !! html
@@ -154,6 +158,8 @@ Test zero as float
 
 !! test
 Test whitespace-only input gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float:    }}
 !! html
@@ -163,6 +169,8 @@ Test whitespace-only input gives error
 
 !! test
 Test invalid string gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: abc }}
 !! html
@@ -172,6 +180,8 @@ Test invalid string gives error
 
 !! test
 Test boolean true gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: true }}
 !! html
@@ -181,6 +191,8 @@ Test boolean true gives error
 
 !! test
 Test boolean false gives error
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: false }}
 !! html
@@ -289,6 +301,8 @@ Test input with leading zeros
 
 !! test
 Test input with invalid extra arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_float: 3.14 | extra }}
 !! html

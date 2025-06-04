@@ -5,7 +5,7 @@
 			"Samoasambia"
 		]
 	},
-	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
 	"af-error-invalid-template-name": "Annettu otsikko <b>$1</b> on virheellinen.",
 	"af-error-template-does-not-exist": "Annettua otsikkoa <b>$1</b> ei ole olemassa.",
 	"af-error-max-template-depth-reached": "Mallineiden syvyysraja saavutettu.",

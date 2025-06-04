@@ -27,6 +27,12 @@
 			"description": "The maximum number of elements that an array constructed using #af_range may contain.",
 			"descriptionmsg": "af-config-max-range-size",
 			"public": true
+		},
+		"ArrayFunctionsEnableErrorTracking": {
+			"value": true,
+			"description": "Whether to track and propagate errors to parent ArrayFunction parser function invocations.",
+			"descriptionmsg": "af-config-enable-error-tracking",
+			"public": true
 		}
 	},
 	"MessagesDirs": {
@@ -54,7 +60,8 @@
 			"class": "\\ArrayFunctions\\ParserInitHookHandler",
 			"services": [
 				"ArrayFunctions.ArrayFunctionFactory",
-				"ArrayFunctions.ArrayFunctionRegistry"
+				"ArrayFunctions.ArrayFunctionRegistry",
+				"MainConfig"
 			]
 		},
 		"ParserLimitReport": {

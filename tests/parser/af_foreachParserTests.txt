@@ -118,6 +118,8 @@ Test no key
 
 !! test
 Test first parameter must be an array
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_foreach: foobar | key | value |  }}
 !! html
@@ -127,6 +129,8 @@ Test first parameter must be an array
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_foreach: {{#af_list: a | b | c }} | key | value | body | more }}
 !! html
@@ -217,6 +221,8 @@ Test nested foreach loops
 
 !! test
 Test invalid array parameter
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_foreach: notAnArray | key | value | {{{key}}}={{{value}}} }}
 !! html
@@ -252,6 +258,8 @@ Test nested loop with delimiter
 
 !! test
 Test too many arguments in foreach
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_foreach: {{#af_list: a | b | c }} | key | value | body | extra }}
 !! html

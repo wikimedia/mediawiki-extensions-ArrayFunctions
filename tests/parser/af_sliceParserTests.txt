@@ -50,6 +50,8 @@ Test get first two element elements
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_slice: {{#af_list: a | b | c }} }}
 !! html

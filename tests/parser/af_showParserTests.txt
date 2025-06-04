@@ -53,6 +53,8 @@ Test false
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_show: a | b }}
 !! html
@@ -251,6 +253,8 @@ Test show table, object of objects, disjunct keys
 
 !! test
 Test invalid format
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_show: {{#af_list: a | b | c }} | format=invalid }}
 !! html
@@ -260,6 +264,8 @@ Test invalid format
 
 !! test
 Test invalid formats
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_show: {{#af_list: a | b | c }} | format=invalid, again-invalid }}
 !! html
@@ -269,6 +275,8 @@ Test invalid formats
 
 !! test
 Test valid and invalid formats 1
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_show: {{#af_list: a | b | c }} | format=table, invalid }}
 !! html
@@ -278,6 +286,8 @@ Test valid and invalid formats 1
 
 !! test
 Test valid and invalid formats 2
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_show: {{#af_list: a | b | c }} | format=invalid, table }}
 !! html

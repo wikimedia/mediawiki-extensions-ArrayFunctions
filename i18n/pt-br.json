@@ -9,7 +9,7 @@
 		]
 	},
 	"af-desc": "Fornece um conjunto de funções puras de analisador que operam em arrays",
-	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "O tipo atual <b>$2</b> não corresponde ao tipo esperado <b>$1</b> para o parâmetro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "É necessário pelo menos <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas somente {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",
 	"af-error-incorrect-argument-count-at-most": "É possível incluir até <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",

@@ -8,7 +8,7 @@
 	"af-desc": "Dostarcza zestaw funkcji parsera do operacji z tablicami danych",
 	"af-error-category": "Strony z błędami ArrayFunctions",
 	"af-error-category-desc": "Na stronie wystąpił błąd przy przetwarzaniu funkcji parsera ArrayFunctions.",
-	"af-error": "<span class=\"error\">ArrayFunctions (<b># $1</b>): $2</span>",
+	"af-error": "ArrayFunctions (<b># $1</b>): $2",
 	"af-error-incorrect-type": "Oczekiwany typ <b>$1</b> nie pasuje do rzeczywistego typu <b>$2</b> parametru <b>$3</b> („$4”).",
 	"af-error-incorrect-argument-count-at-least": "Oczekiwano co najmniej <b>$1</b> {{PLURAL:$1|pozycyjnego parametru|pozycyjnych parametrów}}, podano <b>$2</b>.",
 	"af-error-incorrect-argument-count-at-most": "Oczekiwano co najwyżej <b>$1</b> {{PLURAL:$1|pozycyjnego parametru|pozycyjnych parametrów}}, podano <b>$2</b>.",

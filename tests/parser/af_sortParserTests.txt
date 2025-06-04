@@ -66,6 +66,8 @@ Test sort object
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_sort: {{#af_list: b | a }} | v }}
 !! html

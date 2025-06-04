@@ -34,6 +34,8 @@ Test unique multidimensional
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_unique: {{#af_list: a | b | c }} | d }}
 !! html

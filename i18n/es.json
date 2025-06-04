@@ -7,7 +7,7 @@
 		]
 	},
 	"af-desc": "Proporciona un conjunto de funciones de analizador puras que operan en matrices",
-	"af-error": "<span class=\"error\">Funciones de Matriz (<b>#$1</b>): $2</span>",
+	"af-error": "Funciones de Matriz (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "No pudo igualar el tipo esperado <b>$1</b> con el tipo real <b>$2</b> para el parámetro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Esperado por lo menos <b>$1</b> posicional {{PLURAL:$1|parámetro|parámetros}}, <b>$2</b> dado.",
 	"af-error-incorrect-argument-count-at-most": "Esperado como máximo <b>$1</b> posicional {{PLURAL:$1|parámetro|parámetros}}, <b>$2</b> dado.",

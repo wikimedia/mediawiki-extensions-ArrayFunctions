@@ -42,6 +42,8 @@ Test false with alternative
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_if: false }}
 !! html
@@ -51,6 +53,8 @@ Test too few arguments
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_if: false | true | true | true }}
 !! html

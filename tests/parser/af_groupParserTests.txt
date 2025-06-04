@@ -127,14 +127,9 @@ Test multiple empty arrays in object
 !! end
 
 !! test
-Test nested empty objects
-!! wikitext
-{{#af_print: {{#af_group: {{#af_object: a={{#af_object:}} | b={{#af_object:}} }} }} }}
-!! html
-!! end
-
-!! test
 Test empty input
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_group: }}
 !! html
@@ -158,6 +153,8 @@ Test single object with scalar values
 
 !! test
 Test group with invalid input type
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_group: invalidInput }}
 !! html

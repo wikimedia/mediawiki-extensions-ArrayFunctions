@@ -5,7 +5,7 @@
 		]
 	},
 	"af-desc": "Tillhandahåller en uppsättning rena parserfunktioner som fungerar på arrayer",
-	"af-error": "<span class=\"error\">ArrayFunctions (<b>#$1</b>): $2</span>",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "Kunde inte matcha förväntad typ <b>$1</b> med faktisk typ <b>$2</b> för parameter <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Förväntat minst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",
 	"af-error-incorrect-argument-count-at-most": "Förväntat högst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",

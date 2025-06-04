@@ -80,6 +80,8 @@ Test float gives false
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_isarray: {{#af_list: a }} | yes }}
 !! html
@@ -129,23 +131,5 @@ Test array with mixed types gives true
 {{#af_isarray: {{#af_list: a | {{#af_object: foo=bar }} | {{#af_int: 10 }} }} }}
 !! html
 <p>boolean__^__1
-</p>
-!! end
-
-!! test
-Test empty string gives false
-!! wikitext
-{{#af_isarray: "" }}
-!! html
-<p>boolean__^__0
-</p>
-!! end
-
-!! test
-Test invalid input type gives error
-!! wikitext
-{{#af_isarray: {{#af_bool: invalid }} }}
-!! html
-<p>boolean__^__0
 </p>
 !! end

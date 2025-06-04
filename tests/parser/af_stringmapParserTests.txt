@@ -24,6 +24,8 @@ Test empty delimiter
 
 !! test
 Test empty variable
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_stringmap:a,b,c|,||"{{{x}}}"|,|and}}
 !! html
@@ -132,6 +134,8 @@ Test escape sequence conjunction
 
 !! test
 Test too few parameters
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_stringmap:a, b, c||x}}
 !! html
@@ -141,6 +145,8 @@ Test too few parameters
 
 !! test
 Test too many parameters
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_stringmap:a, b, c||x|"x"|,\s|and|or}}
 !! html

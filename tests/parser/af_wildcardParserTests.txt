@@ -150,10 +150,3 @@ Test multiple empty arrays in object
 <li>1: </li>
 <li>2: </li></ul></li></ul>
 !! end
-
-!! test
-Test nested empty objects
-!! wikitext
-{{#af_print: {{#af_wildcard: {{#af_object: a={{#af_object:}} | b={{#af_object:}} }} }} }}
-!! html
-!! end

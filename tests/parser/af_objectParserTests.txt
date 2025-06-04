@@ -24,6 +24,8 @@ Test object with duplicate keys
 
 !! test
 Test object without keys
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_object: a | b | c }}
 !! html

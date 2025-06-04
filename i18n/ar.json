@@ -12,7 +12,7 @@
 	"af-extensionname": "وظائف المصفوفة",
 	"af-error-category": "صفحات تحوي أخطاء ArrayFunctions",
 	"af-error-category-desc": "حدث خطأ أثناء معالجة وظائف محلل ArrayFunctions على الصفحة.",
-	"af-error": "<span class=\"error\">ArrayFunctions ( <b># $1</b> ): $2</span>",
+	"af-error": "ArrayFunctions ( <b># $1</b> ): $2",
 	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
 	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
 	"af-error-incorrect-argument-count-at-most": "متوقع كحد أقصى <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",

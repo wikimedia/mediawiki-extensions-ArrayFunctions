@@ -5,7 +5,7 @@
 		]
 	},
 	"af-desc": "Biedt een set pure parserfuncties die op arrays werken",
-	"af-error": "<span class=\"error\">ArrayFuncties (<b>#$1</b>): $2</span>",
+	"af-error": "ArrayFuncties (<b>#$1</b>): $2",
 	"af-error-incorrect-type": "Kon het verwachte type <b>$1</b> niet verenigen met het werkelijke type <b>$2</b> van parameter <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Er word{{PLURAL:$1|t|en}} minimaal <b>$1</b> positionele parameter{{PLURAL:$1||s}} verwacht, <b>$2</b> {{PLURAL:$2|is|zijn}} er gegeven.",
 	"af-error-incorrect-argument-count-at-most": "Er word{{PLURAL:$1|t|en}} maximaal <b>$1</b> positionele parameter{{PLURAL:$1||s}} verwacht, <b>$2</b> {{PLURAL:$2|is|zijn}} er gegeven.",

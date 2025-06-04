@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `simple` format.
 - Add the `table` format.
 - Add the `Pages with ArrayFunctions errors` (`af-error-category`) tracking category.
+- Add error tracking and propagation.
+- Add the `$wgArrayFunctionEnableErrorTracking` to enable or disable error tracking. The default value is `true`.
 
 ### Changed
 

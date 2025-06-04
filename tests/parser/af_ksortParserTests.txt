@@ -39,6 +39,8 @@ Test sort case insensitive
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_ksort: {{#af_object: c=apple | a=banana | b=orange }} | v }}
 !! html

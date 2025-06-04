@@ -42,6 +42,8 @@ Inverse concatenation
 
 !! test
 Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_reduce: {{#af_list: a | b | c }} | c | i | 0 | 0 | foo }}
 !! html
@@ -51,6 +53,8 @@ Test too many arguments
 
 !! test
 Test too few arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_reduce: {{#af_list: a | b | c }} | c }}
 !! html

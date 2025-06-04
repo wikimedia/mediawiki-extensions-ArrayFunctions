@@ -267,6 +267,8 @@ Test nested lists
 
 !! test
 Test empty input
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_zip: }}
 !! html

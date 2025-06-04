@@ -127,6 +127,8 @@ Test join boolean
 
 !! test
 Test too many parameters
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_join: {{#af_list: a | b | c }} | \s | yes }}
 !! html
@@ -165,6 +167,8 @@ Test join multi-dimensional list with mixed types
 
 !! test
 Test join non-array input
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_join: 12345 | - }}
 !! html
