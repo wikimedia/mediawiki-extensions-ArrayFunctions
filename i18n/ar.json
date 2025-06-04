@@ -2,11 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Alshamiri1",
-			"Meno25"
+			"Meno25",
+			"Mohammed Qays"
 		]
 	},
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
+	"af-config-foreach-iteration-limit": "الحد الأقصى الإجمالي لعدد التكرارات التي يمكن إجراؤها بواسطة #af_foreach.",
+	"af-config-max-range-size": "الحد الأقصى لعدد العناصر التي يمكن أن تحويها المصفوفة التي أنشأت باستخدام #af_range.",
 	"af-extensionname": "وظائف المصفوفة",
+	"af-error-category": "صفحات تحوي أخطاء ArrayFunctions",
+	"af-error-category-desc": "حدث خطأ أثناء معالجة وظائف محلل ArrayFunctions على الصفحة.",
 	"af-error": "<span class=\"error\">ArrayFunctions ( <b># $1</b> ): $2</span>",
 	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
 	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
@@ -20,5 +25,7 @@
 	"af-error-template-inclusion-denied": "تم رفض تضمين القالب.",
 	"af-error-value-not-showable": "لا يمكن عرض القيمة <b>$1</b> .",
 	"af-error-range-zero-step": "لا يمكن أن يكون حجم الخطوة 0.",
+	"af-error-max-range-size-exceeded": "لقد تم تجاوز الحد الأقصى لحجم النطاق.",
+	"af-error-foreach-iteration-limit-reached": "وصل إلى الحد الأقصى لعدد التكرارات.",
 	"af-smw-result-printer-name": "وظائف المصفوفة"
 }

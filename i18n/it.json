@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"af-error-category": "Pagine con errori di ArrayFunctions",
+	"af-error-category-desc": "Si è verificato un errore durante l'elaborazione delle funzioni del parser ArrayFunctions nella pagina."
+}
