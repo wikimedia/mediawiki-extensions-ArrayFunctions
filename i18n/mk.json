@@ -5,7 +5,11 @@
 		]
 	},
 	"af-desc": "Дава збир чисти расчленувачки функции кои работат со строеви",
+	"af-config-foreach-iteration-limit": "Максималниот број на итерации што може да се извршат со #af_foreach.",
+	"af-config-max-range-size": "Максималниот број на елементи што може да ги содржи строј изграден со #af_range.",
 	"af-extensionname": "СтроевиФункции",
+	"af-error-category": "Страници со грешки во Стројни функции",
+	"af-error-category-desc": "Се појави грешка при обработката на расчленувачките функции на Стројни функции на страницата.",
 	"af-error": "<span class=\"error\">Стројни функции (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Не можев да го совпаднам очекуваниот тип <b>$1</b> со фактички тип <b>$2</b> за параметарот <b>$3</b> („$4“).",
 	"af-error-incorrect-argument-count-at-least": "Се {{PLURAL:$1|очекуваше|очекуваа}} барем <b>$1</b> {{PLURAL:$1|положбен параметар|положбени параметри}}, а {{PLURAL:$1|даден е|дадени се}} <b>$2</b>.",
@@ -19,5 +23,7 @@
 	"af-error-template-inclusion-denied": "Одбиено е вклучувањето на предлошката.",
 	"af-error-value-not-showable": "Вредноста <b>$1</b> не може да се прикаже.",
 	"af-error-range-zero-step": "Големината на чекорот не може да биде 0.",
+	"af-error-max-range-size-exceeded": "Надмината е максималната големина на опсегот.",
+	"af-error-foreach-iteration-limit-reached": "Достигнат е максималниот број на итерации.",
 	"af-smw-result-printer-name": "СтроевиФункции"
 }
