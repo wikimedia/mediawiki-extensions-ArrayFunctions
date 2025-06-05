@@ -191,6 +191,24 @@ class Utils {
 	}
 
 	/**
+	 * Compute a new random ID.
+	 *
+	 * @return string
+	 */
+	public static function newRandomID( int $length = 18, string $prefix = 'af_' ): string {
+		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$charactersLength = strlen( $alphabet );
+		$randomID = $prefix;
+
+		for ( $i = 0; $i < $length; $i++ ) {
+			$index = mt_rand( 0, $charactersLength - 1 );
+			$randomID .= $alphabet[$index];
+		}
+
+		return $randomID;
+	}
+
+	/**
 	 * Returns an error.
 	 *
 	 * @param string $function The name of the parser function that caused the error

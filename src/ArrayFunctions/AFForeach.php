@@ -10,9 +10,10 @@ use PPNode;
  * Implements the #af_foreach parser function.
  */
 class AFForeach extends ArrayFunction {
+	public const DATA_KEY_ITERATIONS = 'ArrayFunctions__af_foreach_iterations';
+	public const CONFIG_FOREACH_ITERATION_LIMIT = 'ArrayFunctionsForeachIterationLimit';
+
 	private const KWARG_DELIMITER = 'delimiter';
-	private const CONFIG_FOREACH_ITERATION_LIMIT = 'ArrayFunctionsForeachIterationLimit';
-	private const STATE_FOREACH_ITERATIONS = 'ArrayFunctionsIterations';
 
 	/**
 	 * @inheritDoc
@@ -52,18 +53,21 @@ class AFForeach extends ArrayFunction {
 		$maxIterationCount = $this->getConfigValue( self::CONFIG_FOREACH_ITERATION_LIMIT );
 
 		foreach ( $array as $key => $value ) {
-			if ( $maxIterationCount >= 0 ) {
-				$iterations = $this->getParser()->getOutput()->getExtensionData( self::STATE_FOREACH_ITERATIONS ) ?? [];
-				$iterationCount = count( $iterations );
+			$iterations = $this->getParser()->getOutput()->getExtensionData( self::DATA_KEY_ITERATIONS ) ?? [];
+			if ( $maxIterationCount >= 0 && count( $iterations ) >= $maxIterationCount ) {
+				throw new RuntimeException( wfMessage( 'af-error-foreach-iteration-limit-reached' ) );
+			}
 
-				if ( $iterationCount >= $maxIterationCount ) {
-					throw new RuntimeException( wfMessage( 'af-error-foreach-iteration-limit-reached' ) );
-				}
+			$parserOutput = $this->getParser()->getOutput();
+			$randomID = Utils::newRandomID();
 
-				$this->getParser()->getOutput()->appendExtensionData(
-					self::STATE_FOREACH_ITERATIONS,
-					$this->computeIterationKey()
-				);
+			if ( method_exists( $parserOutput, 'appendExtensionData' ) ) {
+				// MediaWiki >= 1.38
+				$parserOutput->appendExtensionData( self::DATA_KEY_ITERATIONS, $randomID );
+			} else {
+				$iterations = $parserOutput->getExtensionData( self::DATA_KEY_ITERATIONS ) ?? [];
+				$iterations[$randomID] = true;
+				$parserOutput->setExtensionData( self::DATA_KEY_ITERATIONS, $iterations );
 			}
 
 			$args = $this->getFrame()->getArguments();
@@ -87,24 +91,5 @@ class AFForeach extends ArrayFunction {
 		$delimiter = $this->getKeywordArg( self::KWARG_DELIMITER );
 
 		return [ implode( $delimiter, $result ) ];
-	}
-
-	/**
-	 * Compute a unique iteration key.
-	 *
-	 * @return string
-	 */
-	private function computeIterationKey(): string {
-		$length = 12;
-		$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-		$charactersLength = strlen( $characters );
-		$randomKey = '';
-
-		for ( $i = 0; $i < $length; $i++ ) {
-			$index = mt_rand( 0, $charactersLength - 1 );
-			$randomKey .= $characters[$index];
-		}
-
-		return 'ArrayFunctions_iter_' . $randomKey;
 	}
 }

@@ -3,12 +3,15 @@
 namespace ArrayFunctions\ArrayFunctions;
 
 use ArrayFunctions\Exceptions\RuntimeException;
+use ArrayFunctions\Utils;
 
 /**
  * Implements the #af_range parser function.
  */
 class AFRange extends ArrayFunction {
-	private const CONFIG_MAX_RANGE_SIZE = 'ArrayFunctionsMaxRangeSize';
+	public const DATA_KEY_SIZES = 'ArrayFunctions__af_range_sizes';
+	public const DATA_KEY_PREFIX_SIZE = 'ArrayFunctions__af_range_size_';
+	public const CONFIG_MAX_RANGE_SIZE = 'ArrayFunctionsMaxRangeSize';
 
 	/**
 	 * @inheritDoc
@@ -38,10 +41,24 @@ class AFRange extends ArrayFunction {
 			$start = 0;
 		}
 
+		$actualRangeSize = $this->computeRangeSize( $start, $stop, $step );
+		$randomID = Utils::newRandomID( 18, self::DATA_KEY_PREFIX_SIZE );
 		$maxRangeSize = $this->getConfigValue( self::CONFIG_MAX_RANGE_SIZE );
 
-		if ( $maxRangeSize >= 0 && $this->computeRangeSize( $start, $stop, $step ) > $maxRangeSize ) {
+		if ( $maxRangeSize >= 0 && $actualRangeSize > $maxRangeSize ) {
 			throw new RuntimeException( wfMessage( 'af-error-max-range-size-exceeded' ) );
+		}
+
+		$parserOutput = $this->getParser()->getOutput();
+		$parserOutput->setExtensionData( $randomID, $actualRangeSize );
+
+		if ( method_exists( $parserOutput, 'appendExtensionData' ) ) {
+			// MediaWiki >= 1.38
+			$parserOutput->appendExtensionData( self::DATA_KEY_SIZES, $randomID );
+		} else {
+			$sizes = $parserOutput->getExtensionData( self::DATA_KEY_SIZES ) ?? [];
+			$sizes[$randomID] = true;
+			$parserOutput->setExtensionData( self::DATA_KEY_SIZES, $sizes );
 		}
 
 		if ( ( $start < $stop && $step < 0 ) || ( $start > $stop && $step > 0 ) || $start === $stop ) {
