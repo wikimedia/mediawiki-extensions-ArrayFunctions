@@ -22,5 +22,8 @@
 	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein.",
 	"af-error-max-range-size-exceeded": "Die maximale Bereichsgröße wurde überschritten.",
 	"af-error-foreach-iteration-limit-reached": "Die maximale Anzahl an Iterationen wurde erreicht.",
-	"af-smw-result-printer-name": "ArrayFunctions"
+	"af-smw-result-printer-name": "ArrayFunctions",
+	"limitreport-afforeachiterations": "Anzahl der #af_foreach-Iterationen",
+	"limitreport-afforeachiterations-value": "$1/$2 Iterationen",
+	"limitreport-afrangesize": "Größe der größten #af_range"
 }
