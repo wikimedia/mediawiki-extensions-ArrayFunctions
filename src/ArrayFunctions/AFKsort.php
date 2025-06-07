@@ -38,21 +38,34 @@ class AFKsort extends ArrayFunction {
 
 	/**
 	 * @inheritDoc
-	 * @throws MWException
 	 */
 	public function execute( array $array ): array {
-		$flags = SORT_STRING;
-
-		if ( $this->getKeywordArg( self::KWARG_CASEINSENSITIVE ) ) {
-			$flags |= SORT_FLAG_CASE;
-		}
-
-		if ( $this->getKeywordArg( self::KWARG_DESCENDING ) ) {
-			krsort( $array, $flags );
-		} else {
-			ksort( $array, $flags );
-		}
+		uksort( $array, [ $this, 'compare' ] );
 
 		return [ $array ];
+	}
+
+	/**
+	 * Compare two values.
+	 *
+	 * @param mixed $a
+	 * @param mixed $b
+	 * @return int
+	 * @throws MWException
+	 */
+	private function compare( $a, $b ): int {
+		if ( $this->getKeywordArg( self::KWARG_DESCENDING ) ) {
+			$temp = $a;
+			$a = $b;
+			$b = $temp;
+		}
+
+		if ( is_string( $a ) && is_string( $b ) ) {
+			return $this->getKeywordArg( self::KWARG_CASEINSENSITIVE ) ?
+				strcasecmp( $a, $b ) :
+				strcmp( $a, $b );
+		}
+
+		return $a <=> $b;
 	}
 }

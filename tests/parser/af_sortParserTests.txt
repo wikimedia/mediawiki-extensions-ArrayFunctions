@@ -47,6 +47,15 @@ Test sort case sensitive
 !! end
 
 !! test
+Test sort numerically
+!! wikitext
+{{#af_print: {{#af_sort: {{#af_list: {{#af_int: 12}} | {{#af_int: 2}} }} }} }}
+!! html
+<ul><li>0: 2</li>
+<li>1: 12</li></ul>
+!! end
+
+!! test
 Test sort object
 !! wikitext
 {{#af_print: {{#af_sort: {{#af_object: b=b | a=a }} }} }}
