@@ -34,6 +34,9 @@
 			"i18n"
 		]
 	},
+	"TrackingCategories": [
+		"af-error-category"
+	],
 	"AutoloadNamespaces": {
 		"ArrayFunctions\\": "src/"
 	},
