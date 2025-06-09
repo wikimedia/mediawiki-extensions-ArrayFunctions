@@ -25,5 +25,8 @@
 	"af-error-range-zero-step": "Големината на чекорот не може да биде 0.",
 	"af-error-max-range-size-exceeded": "Надмината е максималната големина на опсегот.",
 	"af-error-foreach-iteration-limit-reached": "Достигнат е максималниот број на итерации.",
-	"af-smw-result-printer-name": "СтроевиФункции"
+	"af-smw-result-printer-name": "СтроевиФункции",
+	"limitreport-afforeachiterations": "Број на итерации #af_foreach",
+	"limitreport-afforeachiterations-value": "$1/$2 итерации",
+	"limitreport-afrangesize": "Големина на најголемиот #af_range"
 }
