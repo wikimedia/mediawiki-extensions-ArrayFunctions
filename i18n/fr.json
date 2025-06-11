@@ -28,8 +28,8 @@
 	"af-error-range-zero-step": "La taille du pas ne peut pas être 0.",
 	"af-error-max-range-size-exceeded": "La taille maximale de la plage a été atteinte.",
 	"af-error-foreach-iteration-limit-reached": "Le nombre maximal d’itérations a été atteint.",
-	"af-smw-result-printer-name": "ArrayFonctions",
 	"limitreport-afforeachiterations": "Nombre d'itérations #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 itérations",
-	"limitreport-afrangesize": "Taille du plus grand #af_range"
+	"limitreport-afrangesize": "Taille du plus grand #af_range",
+	"af-smw-result-printer-name": "ArrayFonctions"
 }
