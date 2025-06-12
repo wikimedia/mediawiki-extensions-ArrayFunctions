@@ -6,5 +6,7 @@
 	},
 	"af-error-category": "Säite mat ArrayFunctions-Feeeler",
 	"af-error-category-desc": "Beim Verschaffe vun den ArrayFunctions-Parserfunktioune op dëser Säit ass e Feeler geschitt.",
-	"limitreport-afforeachiterations-value": "$1/$2 Iteratiounen"
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;… am Parameter <b>$2</b> vun <b>#$3</b>",
+	"limitreport-afforeachiterations-value": "$1/$2 Iteratiounen",
+	"af-error-unknown-format": "D'Format <b>$1</b> gëtt et net."
 }

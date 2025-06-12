@@ -10,10 +10,12 @@
 	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
 	"af-config-foreach-iteration-limit": "Le nombre total maximal d’itérations pouvant être réalisées par #af_foreach.",
 	"af-config-max-range-size": "Le nombre maximal d’éléments qu’un tableau construit à l’aide de #af_range peut contenir.",
+	"af-config-enable-error-tracking": "S’il faut suivre et propager les erreurs aux invocations parentes d’une fonction d’analyse ArrayFunction.",
 	"af-extensionname": "FonctionsDeTableau",
 	"af-error-category": "Pages avec des erreurs ArrayFunctions",
 	"af-error-category-desc": "Une erreur s'est produite lors du traitement des fonctions d'analyse ArrayFunctions sur la page.",
 	"af-error": "FonctionsDeTableau (<b>#$1</b>) : $2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;… dans le paramètre <b>$2</b> de <b>#$3</b>",
 	"af-error-incorrect-type": "Impossible de faire correspondre le type attendu <b>$1</b> avec le type effectif <b>$2</b> pour le paramètre <b>$3</b> (« $4 »).",
 	"af-error-incorrect-argument-count-at-least": "Au moins <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
 	"af-error-incorrect-argument-count-at-most": "Au plus <b>$1</b> paramètre{{PLURAL:$1||s}} positionel{{PLURAL:$1||s}} étaient attendu{{PLURAL:$1||s}}, <b>$2</b> ont été donné{{PLURAL:$2||s}}.",
@@ -31,5 +33,6 @@
 	"limitreport-afforeachiterations": "Nombre d'itérations #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 itérations",
 	"limitreport-afrangesize": "Taille du plus grand #af_range",
+	"af-error-unknown-format": "Le format <b>$1</b> n’existe pas.",
 	"af-smw-result-printer-name": "ArrayFonctions"
 }
