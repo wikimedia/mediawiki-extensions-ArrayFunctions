@@ -9,10 +9,12 @@
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
 	"af-config-foreach-iteration-limit": "الحد الأقصى الإجمالي لعدد التكرارات التي يمكن إجراؤها بواسطة #af_foreach.",
 	"af-config-max-range-size": "الحد الأقصى لعدد العناصر التي يمكن أن تحويها المصفوفة التي أنشأت باستخدام #af_range.",
+	"af-config-enable-error-tracking": "ما إذا كان سيتم تتبع الأخطاء ونشرها إلى استدعاءات وظيفة المحلل ArrayFunction الأصلية.",
 	"af-extensionname": "وظائف المصفوفة",
 	"af-error-category": "صفحات تحوي أخطاء ArrayFunctions",
 	"af-error-category-desc": "حدث خطأ أثناء معالجة وظائف محلل ArrayFunctions على الصفحة.",
 	"af-error": "ArrayFunctions ( <b># $1</b> ): $2",
+	"af-nested-error": "$1<br/> ... في المعلمة <b>$2</b> من <b># $3</b>",
 	"af-error-incorrect-type": "لا يمكن مطابقة النوع المتوقع <b>$1</b> مع النوع الفعلي <b>$2</b> للمعلمة <b>$3</b> (\" $4 \").",
 	"af-error-incorrect-argument-count-at-least": "متوقع على الأقل <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
 	"af-error-incorrect-argument-count-at-most": "متوقع كحد أقصى <b>$1</b> موضعي {{PLURAL:$1| المعلمة | المعلمات}} ، معطى <b>$2</b> .",
@@ -30,5 +32,6 @@
 	"limitreport-afforeachiterations": "عدد تكرارات #af_foreach",
 	"limitreport-afforeachiterations-value": "التكرارات $1/$2",
 	"limitreport-afrangesize": "حجم أكبر #af_range",
+	"af-error-unknown-format": "التنسيق <b>$1</b> غير موجود.",
 	"af-smw-result-printer-name": "وظائف المصفوفة"
 }
