@@ -1,7 +1,7 @@
 {
 	"name": "ArrayFunctions",
 	"type": "parserhook",
-	"version": "1.16.0",
+	"version": "1.16.1",
 	"author": [
 		"Marijn van Wezel"
 	],
@@ -76,6 +76,7 @@
 		"ParserGetVariableValueSwitch": "Trivial",
 		"GetMagicVariableIDs": "Trivial",
 		"ParserLimitReportPrepare": "ParserLimitReport",
+		"ParserLimitReportFormat": "ParserLimitReport",
 		"ScribuntoExternalLibraries": "\\ArrayFunctions\\LegacyHookHandler::onScribuntoExternalLibraries",
 		"CargoSetFormatClasses": "\\ArrayFunctions\\LegacyHookHandler::onCargoSetFormatClasses"
 	},

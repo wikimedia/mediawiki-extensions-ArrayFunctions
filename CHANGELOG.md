@@ -9,6 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.16.1] - 2025-06-19
+
+### Fixed
+
+- Fix `BadMethodCallException` that was caused by relying on `$wgLang` in the `ParserLimitReportPrepare` hook.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
 ## [v1.16.0] - 2025-06-10
 
 ### Added
@@ -277,7 +287,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...HEAD
+[v1.16.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.0...v1.16.1
 [v1.16.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.15.0...v1.16.0
 [v1.15.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.2...v1.15.0
 [v1.14.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.1...v1.14.2

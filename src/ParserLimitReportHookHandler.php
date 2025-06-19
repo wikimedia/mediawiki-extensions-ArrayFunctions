@@ -5,9 +5,10 @@ namespace ArrayFunctions;
 use ArrayFunctions\ArrayFunctions\AFForeach;
 use ArrayFunctions\ArrayFunctions\AFRange;
 use Config;
+use MediaWiki\Hook\ParserLimitReportFormatHook;
 use MediaWiki\Hook\ParserLimitReportPrepareHook;
 
-class ParserLimitReportHookHandler implements ParserLimitReportPrepareHook {
+class ParserLimitReportHookHandler implements ParserLimitReportFormatHook, ParserLimitReportPrepareHook {
 	/**
 	 * @var Config The current MediaWiki configuration
 	 */
@@ -23,14 +24,32 @@ class ParserLimitReportHookHandler implements ParserLimitReportPrepareHook {
 	/**
 	 * @inheritDoc
 	 */
+	public function onParserLimitReportFormat( $key, &$value, &$report, $isHTML, $localize ) {
+		switch ( $key ) {
+			case 'limitreport-afforeachiterations':
+			case 'limitreport-afrangesize':
+				if ( count( $value ) !== 2 ) {
+					return true;
+				}
+
+				[ $count, $limit ] = $value;
+
+				if ( $limit < 0 ) {
+					$limit = wfMessage( 'af-limitreport-unlimited-upper-bound' )->plain();
+				}
+
+				$value = [ $count, $limit ];
+		}
+
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function onParserLimitReportPrepare( $parser, $output ) {
 		$foreachIterationCount = count( $output->getExtensionData( AFForeach::DATA_KEY_ITERATIONS ) ?? [] );
-
 		$foreachIterationLimit = $this->config->get( AFForeach::CONFIG_FOREACH_ITERATION_LIMIT );
-		$foreachIterationLimit = $foreachIterationLimit >= 0 ?
-			$foreachIterationLimit :
-			wfMessage( 'af-limitreport-unlimited-upper-bound' )->plain();
-
 		$output->setLimitReportData(
 			'limitreport-afforeachiterations',
 			[ $foreachIterationCount, $foreachIterationLimit ]
@@ -44,12 +63,7 @@ class ParserLimitReportHookHandler implements ParserLimitReportPrepareHook {
 			},
 			0
 		);
-
 		$maxRangeSize = $this->config->get( AFRange::CONFIG_MAX_RANGE_SIZE );
-		$maxRangeSize = $maxRangeSize >= 0 ?
-			$maxRangeSize :
-			wfMessage( 'af-limitreport-unlimited-upper-bound' )->plain();
-
 		$output->setLimitReportData(
 			'limitreport-afrangesize',
 			[ $largestRangeSize, $maxRangeSize ]
