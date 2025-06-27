@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions\Exceptions;
 
-use Message;
 use MWException;
 use Throwable;
 
@@ -21,22 +20,22 @@ class ArgumentPropagateException extends MWException {
 	private string $errorId;
 
 	/**
-	 * @var Message The message of the error
+	 * @var array The message array of the error
 	 */
-	private Message $errorMessage;
+	private array $messageArray;
 
 	/**
 	 * @param string|int $argName
 	 * @param string $errorId
-	 * @param Message $errorMessage
+	 * @param array $messageArray
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( $argName, string $errorId, Message $errorMessage, ?Throwable $previous = null ) {
+	public function __construct( $argName, string $errorId, array $messageArray, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
 		$this->argName = $argName;
 		$this->errorId = $errorId;
-		$this->errorMessage = $errorMessage;
+		$this->messageArray = $messageArray;
 	}
 
 	/**
@@ -60,9 +59,9 @@ class ArgumentPropagateException extends MWException {
 	/**
 	 * Return the message of the error.
 	 *
-	 * @return Message
+	 * @return array
 	 */
-	public function getErrorMessage(): Message {
-		return $this->errorMessage;
+	public function getMessageArray(): array {
+		return $this->messageArray;
 	}
 }

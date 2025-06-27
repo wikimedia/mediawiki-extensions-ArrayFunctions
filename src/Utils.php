@@ -4,6 +4,7 @@ namespace ArrayFunctions;
 
 use FormatJson;
 use Message;
+use Parser;
 
 /**
  * Utility class containing functions used by multiple array functions.
@@ -191,18 +192,17 @@ class Utils {
 	}
 
 	/**
-	 * Returns an error.
+	 * Creates an array of the form `{messageKey: string, messageArgs: array}`.
 	 *
-	 * @param string $function The name of the parser function that caused the error
-	 * @param string|Message $message A message key
-	 * @return Message
+	 * @param string $messageKey
+	 * @param array $messageArgs
+	 * @return array
 	 */
-	public static function error( string $function, $message ): Message {
-		if ( !$message instanceof Message ) {
-			$message = wfMessage( $message );
-		}
-
-		return wfMessage( 'af-error', $function, $message );
+	public static function createMessageArray( string $messageKey, array $messageArgs = [] ): array {
+		return [
+			'messageKey' => $messageKey,
+			'messageArgs' => $messageArgs
+		];
 	}
 
 	/**
@@ -223,6 +223,31 @@ class Utils {
 		}
 
 		return $randomID;
+	}
+
+	/**
+	 * Polyfill for MediaWiki's 1.40+ `Parser::msg( string $msg, ...$args )` method.
+	 *
+	 * @param Parser $parser
+	 * @param string $messageKey
+	 * @param array $messageArgs
+	 * @return Message
+	 */
+	public static function msg( Parser $parser, string $messageKey, array $messageArgs ): Message {
+		if ( method_exists( $parser, 'msg' ) ) {
+			return $parser->msg( $messageKey, $messageArgs );
+		}
+
+		$message = wfMessage( $messageKey, ...$messageArgs )
+			->inLanguage( $parser->getTargetLanguage() );
+
+		if ( method_exists( $message, 'page' ) ) {
+			$message->page( $parser->getPage() );
+		} else {
+			$message->title( $parser->getTitle() );
+		}
+
+		return $message;
 	}
 
 	/**

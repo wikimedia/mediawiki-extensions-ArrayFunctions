@@ -68,57 +68,76 @@ class ArrayFunctionInvoker {
 		} catch ( TooFewArgumentsException $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), wfMessage(
-					"af-error-incorrect-argument-count-at-least",
-					$exception->getExpected(),
-					$exception->getActual()
-				) )
+				Utils::createMessageArray( 'af-error', [
+					$instance::getName(),
+					Utils::createMessageArray(
+						'af-error-incorrect-argument-count-at-least',
+						[ $exception->getExpected(), $exception->getActual() ]
+					)
+				] )
 			) ];
 		} catch ( TooManyArgumentsException $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), wfMessage(
-					"af-error-incorrect-argument-count-at-most",
-					$exception->getExpected(),
-					$exception->getActual()
-				) )
+				Utils::createMessageArray( 'af-error', [
+					$instance::getName(),
+					Utils::createMessageArray(
+						'af-error-incorrect-argument-count-at-most',
+						[ $exception->getExpected(), $exception->getActual() ]
+					)
+				] )
 			) ];
 		} catch ( TypeMismatchException $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), wfMessage(
-					"af-error-incorrect-type",
-					$exception->getExpected(),
-					$exception->getActual(),
-					$exception->getName(),
-					$exception->getValue()
-				) )
+				Utils::createMessageArray( 'af-error', [
+					$instance::getName(),
+					Utils::createMessageArray(
+						'af-error-incorrect-type',
+						[
+							$exception->getExpected(),
+							$exception->getActual(),
+							$exception->getName(),
+							$exception->getValue()
+						]
+					)
+				] )
 			) ];
 		} catch ( MissingRequiredKeywordArgumentException $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), wfMessage(
-					"af-error-missing-required-keyword-argument",
-					$exception->getKeyword()
-				) )
+				Utils::createMessageArray( 'af-error', [
+					$instance::getName(),
+					Utils::createMessageArray(
+						'af-error-missing-required-keyword-argument',
+						[ $exception->getKeyword() ]
+					)
+				] )
 			) ];
 		} catch ( UnexpectedKeywordArgument $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), wfMessage(
-					"af-error-unexpected-keyword-argument",
-					$exception->getKeyword()
-				) )
+				Utils::createMessageArray( 'af-error', [
+					$instance::getName(),
+					Utils::createMessageArray(
+						'af-error-unexpected-keyword-argument',
+						[ $exception->getKeyword() ]
+					)
+				] )
 			) ];
 		} catch ( ArgumentPropagateException $exception ) {
-			// We parse the exception first, instead of passing the Message object
-			// to wfMessage(), because it is significantly (orders of magnitude)
-			// faster for some reason.
-			$parsedException = $exception->getErrorMessage()->parse();
+			// We parse the message, because otherwise we would pass the entire message specifier to each nested
+			// error with a complexity of O(n^2) (since each nested error would parse everything below it). By
+			// parsing it here, we only convert the message specifier once for each message, which is O(n).
+			$message = $this->convertMessageArrayToMessage( $exception->getMessageArray() )->parse();
 
 			return [ $this->handleError(
 				$parser,
-				wfMessage( 'af-nested-error', $parsedException, $exception->getArgName(), $instance::getName() )
+				Utils::createMessageArray( 'af-nested-error', [
+					$message,
+					$exception->getArgName(),
+					$instance::getName()
+				] )
 			) ];
 		}
 
@@ -130,7 +149,7 @@ class ArrayFunctionInvoker {
 		} catch ( RuntimeException $exception ) {
 			return [ $this->handleError(
 				$parser,
-				Utils::error( $instance::getName(), $exception->getRuntimeMessage() )
+				Utils::createMessageArray( 'af-error', [ $instance::getName(), $exception->getMessageArray() ] )
 			) ];
 		}
 
@@ -139,10 +158,10 @@ class ArrayFunctionInvoker {
 
 	/**
 	 * @param Parser $parser
-	 * @param string|Message $message A message key
+	 * @param array $messageArray
 	 * @return string
 	 */
-	private function handleError( Parser $parser, $message ): string {
+	private function handleError( Parser $parser, array $messageArray ): string {
 		$parser->addTrackingCategory( 'af-error-category' );
 
 		if ( $this->enableErrorTracking ) {
@@ -150,7 +169,7 @@ class ArrayFunctionInvoker {
 			$errorId = self::DATA_KEY_PREFIX_ERROR . $uuid;
 
 			$parserOutput = $parser->getOutput();
-			$parserOutput->setExtensionData( $errorId, $message );
+			$parserOutput->setExtensionData( $errorId, $messageArray );
 
 			if ( method_exists( $parserOutput, 'appendExtensionData' ) ) {
 				// MediaWiki >= 1.38
@@ -164,25 +183,52 @@ class ArrayFunctionInvoker {
 			$uuid = null;
 		}
 
-		return $this->createErrorString( $message, $uuid );
+		return $this->createErrorString( $parser, $uuid, $messageArray );
 	}
 
 	/**
 	 * Create an error string.
 	 *
-	 * @param Message $message
+	 * @param Parser $parser
 	 * @param string|null $uuid
+	 * @param array $messageArray
 	 * @return string
 	 */
-	private function createErrorString( $message, ?string $uuid ): string {
-		if ( $message instanceof Message ) {
-			$message = $message->parse();
-		}
+	private function createErrorString( Parser $parser, ?string $uuid, array $messageArray ): string {
+		$message = $this->convertMessageArrayToMessage( $parser, $messageArray )->parse();
 
 		if ( $uuid ) {
 			return '<span class="error af-error-' . $uuid . '">' . $message . '</span>';
 		} else {
 			return '<span class="error">' . $message . '</span>';
 		}
+	}
+
+	/**
+	 * Converts an array of the form `{messageKey: string, messageArgs: array}` to a
+	 * Message object.
+	 *
+	 * @param Parser $parser
+	 * @param array $messageArray
+	 * @return Message
+	 */
+	private function convertMessageArrayToMessage( Parser $parser, array $messageArray ): Message {
+		$messageKey = $messageArray['messageKey'];
+		$messageArgs = $messageArray['messageArgs'];
+
+		return Utils::msg(
+			$parser,
+			$messageKey,
+			array_map(
+				function ( $messageArg ) use ( $parser ) {
+					if ( is_array( $messageArg ) ) {
+						return $this->convertMessageArrayToMessage( $parser, $messageArg );
+					}
+
+					return $messageArg;
+				},
+				$messageArgs
+			)
+		);
 	}
 }

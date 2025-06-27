@@ -33,7 +33,7 @@ class AFRange extends ArrayFunction {
 	 */
 	public function execute( int $start, ?int $stop = null, int $step = 1 ): array {
 		if ( $step === 0 ) {
-			throw new RuntimeException( wfMessage( 'af-error-range-zero-step' ) );
+			throw new RuntimeException( Utils::createMessageArray( 'af-error-range-zero-step' ) );
 		}
 
 		if ( $stop === null ) {
@@ -46,7 +46,7 @@ class AFRange extends ArrayFunction {
 		$maxRangeSize = $this->getConfigValue( self::CONFIG_MAX_RANGE_SIZE );
 
 		if ( $maxRangeSize >= 0 && $actualRangeSize > $maxRangeSize ) {
-			throw new RuntimeException( wfMessage( 'af-error-max-range-size-exceeded' ) );
+			throw new RuntimeException( Utils::createMessageArray( 'af-error-max-range-size-exceeded' ) );
 		}
 
 		$parserOutput = $this->getParser()->getOutput();

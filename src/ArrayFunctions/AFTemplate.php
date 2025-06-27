@@ -44,17 +44,23 @@ class AFTemplate extends ArrayFunction {
 
 		if ( $title === null || !$title->canExist() ) {
 			// The given template title is not valid
-			throw new RuntimeException( wfMessage( 'af-error-invalid-template-name', $templateName ) );
+			throw new RuntimeException(
+				Utils::createMessageArray( 'af-error-invalid-template-name', [ $templateName ] )
+			);
 		}
 
 		if ( $frame->depth >= $this->getParser()->getOptions()->getMaxTemplateDepth() ) {
 			// The max template depth has been reached
-			throw new RuntimeException( wfMessage( 'af-error-max-template-depth-reached' ) );
+			throw new RuntimeException(
+				Utils::createMessageArray( 'af-error-max-template-depth-reached' )
+			);
 		}
 
 		if ( $this->getNamespaceInfo()->isNonincludable( $title->getNamespace() ) ) {
 			// Template inclusion is denied
-			throw new RuntimeException( wfMessage( 'af-error-template-inclusion-denied', $templateName ) );
+			throw new RuntimeException(
+				Utils::createMessageArray( 'af-error-template-inclusion-denied', [ $templateName ] )
+			);
 		}
 
 		[ $node, $finalTitle ] = $this->getParser()->getTemplateDom( $title );
@@ -66,7 +72,9 @@ class AFTemplate extends ArrayFunction {
 
 		if ( !$this->getFrame()->loopCheck( $finalTitle ) ) {
 			// Template loop detected
-			throw new RuntimeException( wfMessage( 'af-error-template-loop-detected', $templateName ) );
+			throw new RuntimeException(
+				Utils::createMessageArray( 'af-error-template-loop-detected', [ $templateName ] )
+			);
 		}
 
 		// Export any non-strings in the given data

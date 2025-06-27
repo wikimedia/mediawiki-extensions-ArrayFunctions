@@ -55,7 +55,7 @@ class AFForeach extends ArrayFunction {
 		foreach ( $array as $key => $value ) {
 			$iterations = $this->getParser()->getOutput()->getExtensionData( self::DATA_KEY_ITERATIONS ) ?? [];
 			if ( $maxIterationCount >= 0 && count( $iterations ) >= $maxIterationCount ) {
-				throw new RuntimeException( wfMessage( 'af-error-foreach-iteration-limit-reached' ) );
+				throw new RuntimeException( Utils::createMessageArray( 'af-error-foreach-iteration-limit-reached' ) );
 			}
 
 			$parserOutput = $this->getParser()->getOutput();

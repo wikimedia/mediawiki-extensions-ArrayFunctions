@@ -9,15 +9,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
-## [v1.16.1] - 2025-06-19
-
 ### Fixed
 
-- Fix `BadMethodCallException` that was caused by relying on `$wgLang` in the `ParserLimitReportPrepare` hook.
+- Fix exception caused by storing a `Message` object in the parser's extension data ([T397946](https://phabricator.wikimedia.org/T397946)).
+- Ensure errors are rendered in the page's target language instead of the user's language ([T397951](https://phabricator.wikimedia.org/T397951)).
+
+## [v1.16.1] - 2025-06-19
 
 ### Changed
 
 - Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
+
+### Fixed
+
+- Fix `BadMethodCallException` that was caused by relying on `$wgLang` in the `ParserLimitReportPrepare` hook.
 
 ## [v1.16.0] - 2025-06-10
 

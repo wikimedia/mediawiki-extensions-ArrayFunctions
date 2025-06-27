@@ -53,7 +53,9 @@ class AFShow extends ArrayFunction {
 			}
 		}
 
-		throw new RuntimeException( wfMessage( 'af-error-value-not-showable', Utils::export( $value ) ) );
+		throw new RuntimeException(
+			Utils::createMessageArray( 'af-error-value-not-showable', [ Utils::export( $value ) ] )
+		);
 	}
 
 	/**
@@ -76,7 +78,9 @@ class AFShow extends ArrayFunction {
 			$formatter = $formatterFactory->newFormatter( $formatterName );
 
 			if ( $formatter === null ) {
-				throw new RuntimeException( wfMessage( 'af-error-unknown-format', $formatterName ) );
+				throw new RuntimeException(
+					Utils::createMessageArray( 'af-error-unknown-format', [ $formatterName ] )
+				);
 			}
 
 			$formatters[] = $formatter;

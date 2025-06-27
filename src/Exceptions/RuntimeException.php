@@ -2,7 +2,6 @@
 
 namespace ArrayFunctions\Exceptions;
 
-use Message;
 use MWException;
 use Throwable;
 
@@ -11,26 +10,26 @@ use Throwable;
  */
 class RuntimeException extends MWException {
 	/**
-	 * @var Message Returns a descriptive message of the runtime error.
+	 * @var array A message array describing the runtime error
 	 */
-	private Message $runtimeMessage;
+	private array $messageArray;
 
 	/**
-	 * @param Message $runtimeMessage A descriptive message of the runtime error.
+	 * @param array $messageArray A message array describing the runtime error
 	 * @param Throwable|null $previous
 	 */
-	public function __construct( Message $runtimeMessage, ?Throwable $previous = null ) {
+	public function __construct( array $messageArray, ?Throwable $previous = null ) {
 		parent::__construct( '', 0, $previous );
 
-		$this->runtimeMessage = $runtimeMessage;
+		$this->messageArray = $messageArray;
 	}
 
 	/**
-	 * Returns a descriptive message of the runtime error.
+	 * Returns a message array describing the runtime error.
 	 *
-	 * @return Message
+	 * @return array
 	 */
-	public function getRuntimeMessage(): Message {
-		return $this->runtimeMessage;
+	public function getMessageArray(): array {
+		return $this->messageArray;
 	}
 }
