@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.16.2] - 2025-06-28
+
 ### Fixed
 
 - Fix exception caused by storing a `Message` object in the parser's extension data ([T397946](https://phabricator.wikimedia.org/T397946)).
@@ -292,7 +294,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.2...HEAD
+[v1.16.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...v1.16.2
 [v1.16.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.0...v1.16.1
 [v1.16.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.15.0...v1.16.0
 [v1.15.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.14.2...v1.15.0
