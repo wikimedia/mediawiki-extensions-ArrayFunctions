@@ -8,6 +8,7 @@
 	"af-desc": "{{desc|name=Array Functions|url=https://www.mediawiki.org/wiki/Extension:ArrayFunctions}}",
 	"af-config-foreach-iteration-limit": "Description for the '$wgArrayFunctionsForeachIterationLimit' configuration variable.",
 	"af-config-max-range-size": "Description for the '$wgArrayFunctionsMaxRangeSize' configuration variable.",
+	"af-config-max-pipeline-length": "Description for the '$wgArrayFunctionsMaxPipelineLength' configuration variable.",
 	"af-config-enable-error-tracking": "Description for the '$wgArrayFunctionsEnableErrorTracking' configuration variable.",
 	"af-extensionname": "{{name}}",
 	"af-limitreport-unlimited-upper-bound": "{{optional}}\nThe upper bound shown in the parser limit report if no upper bound is configured.\nSee also:\n* {{msg-mw|limitreport-afforeachiterations-value}}\n* {{msg-mw|limitreport-afrangesize-value}}",
@@ -29,10 +30,13 @@
 	"af-error-range-zero-step": "Error message given when trying to use 0 as the step value in #af_range.",
 	"af-error-max-range-size-exceeded": "Error message given when trying to construct a range larger than $wgArrayFunctionsMaxRangeSize.",
 	"af-error-foreach-iteration-limit-reached": "Error message given when the maximum number of iterations specified by $wgArrayFunctionsForeachIterationLimit is reached.",
+	"af-error-max-pipeline-length-exceeded": "Error message given when trying to construct a pipeline longer than $wgArrayFunctionsMaxPipelineLength.",
 	"limitreport-afforeachiterations": "Label shown in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.",
 	"limitreport-afforeachiterations-value": "{{optional}}\\nValue in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.\\n\\nParameters:\\n* $1 - Number of #af_foreach iterations performed\\n* $2 - Number of #af_foreach iterations that can be performed.",
 	"limitreport-afrangesize": "Label shown in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.",
-	"limitreport-afrangesize-value": "{{optional}}\\nValue in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.\\n\\nParameters:\\n* $1 - The largest #af_range constructed\\n* $2 - The maximum size of #af_range that can be constructed.",
+	"limitreport-afrangesize-value": "{{optional}}\\nValue in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.\\n\\nParameters:\\n* $1 - The size of the largest #af_range constructed\\n* $2 - The maximum size of #af_range that can be constructed.",
+	"limitreport-afpipelinelength": "Label shown in the parser limit report telling the user the length of the longest #af_pipeline constructed during the parse of the current page.",
+	"limitreport-afpipelinelength-value": "{{optional}}\\nValue in the parser limit report telling the user the length of the longest #af_pipeline constructed during the parse of the current page.\\n\\nParameters:\\n* $1 - The length of the longest #af_pipeline constructed\\n* $2 - The maximum length of #af_pipeline that can be constructed.",
 	"af-error-unknown-format": "Error message given when trying to use a formatter that does not exist. Parameters:\n* $1 - the name of the formatter they tried to use",
 	"af-smw-result-printer-name": "{{optional}}\nThe name of the 'arrayfunctions' result format."
 }

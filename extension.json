@@ -28,11 +28,17 @@
 			"descriptionmsg": "af-config-max-range-size",
 			"public": true
 		},
+		"ArrayFunctionsMaxPipelineLength": {
+			"value": -1,
+			"description": "The maximum length of a pipeline.",
+			"descriptionmsg": "af-config-max-pipeline-length",
+			"public": true
+		},
 		"ArrayFunctionsEnableErrorTracking": {
 			"value": true,
 			"description": "Whether to track and propagate errors to parent ArrayFunction parser function invocations.",
 			"descriptionmsg": "af-config-enable-error-tracking",
-			"public": true
+			"public": false
 		}
 	},
 	"MessagesDirs": {

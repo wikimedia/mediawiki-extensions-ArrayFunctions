@@ -42,13 +42,9 @@ class AFRange extends ArrayFunction {
 		}
 
 		$actualRangeSize = $this->computeRangeSize( $start, $stop, $step );
-		$randomID = Utils::newRandomID( 18, self::DATA_KEY_PREFIX_SIZE );
 		$maxRangeSize = $this->getConfigValue( self::CONFIG_MAX_RANGE_SIZE );
 
-		if ( $maxRangeSize >= 0 && $actualRangeSize > $maxRangeSize ) {
-			throw new RuntimeException( Utils::createMessageArray( 'af-error-max-range-size-exceeded' ) );
-		}
-
+		$randomID = Utils::newRandomID( 18, self::DATA_KEY_PREFIX_SIZE );
 		$parserOutput = $this->getParser()->getOutput();
 		$parserOutput->setExtensionData( $randomID, $actualRangeSize );
 
@@ -59,6 +55,10 @@ class AFRange extends ArrayFunction {
 			$sizes = $parserOutput->getExtensionData( self::DATA_KEY_SIZES ) ?? [];
 			$sizes[$randomID] = true;
 			$parserOutput->setExtensionData( self::DATA_KEY_SIZES, $sizes );
+		}
+
+		if ( $maxRangeSize >= 0 && $actualRangeSize > $maxRangeSize ) {
+			throw new RuntimeException( Utils::createMessageArray( 'af-error-max-range-size-exceeded' ) );
 		}
 
 		if ( ( $start < $stop && $step < 0 ) || ( $start > $stop && $step > 0 ) || $start === $stop ) {

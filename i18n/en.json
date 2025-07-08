@@ -7,6 +7,7 @@
 	"af-desc": "Provides a set of pure parser functions that operate on arrays",
 	"af-config-foreach-iteration-limit": "The maximum total number of iterations that can be performed by #af_foreach.",
 	"af-config-max-range-size": "The maximum number of elements that an array constructed using #af_range may contain.",
+	"af-config-max-pipeline-length": "The maximum length of a pipeline.",
 	"af-config-enable-error-tracking": "Whether to track and propagate errors to parent ArrayFunction parser function invocations.",
 	"af-extensionname": "ArrayFunctions",
 	"af-limitreport-unlimited-upper-bound": "-",
@@ -28,10 +29,13 @@
 	"af-error-range-zero-step": "The step size cannot be 0.",
 	"af-error-max-range-size-exceeded": "The maximum range size has been exceeded.",
 	"af-error-foreach-iteration-limit-reached": "The maximum number of iterations has been reached.",
+	"af-error-max-pipeline-length-exceeded": "The maximum pipeline length has been exceeded.",
 	"limitreport-afforeachiterations": "Number of #af_foreach iterations",
 	"limitreport-afforeachiterations-value": "$1/$2 iterations",
 	"limitreport-afrangesize": "Size of largest #af_range",
 	"limitreport-afrangesize-value": "$1/$2",
+	"limitreport-afpipelinelength": "Length of longest #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 steps",
 	"af-error-unknown-format": "The format <b>$1</b> does not exist.",
 	"af-smw-result-printer-name": "ArrayFunctions"
 }
