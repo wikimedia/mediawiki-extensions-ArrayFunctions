@@ -5,6 +5,7 @@
 	"af-desc": "Bietet eine Reihe von reinen Parser-Funktionen, die mit Arrays arbeiten",
 	"af-config-foreach-iteration-limit": "Die maximale Gesamtzahl der Iterationen, die von #af_foreach durchgeführt werden können.",
 	"af-config-max-range-size": "Die maximale Anzahl von Elementen, die ein mit #af_range erstelltes Array enthalten darf.",
+	"af-config-max-pipeline-length": "Die maximale Länge einer Pipeline.",
 	"af-config-enable-error-tracking": "Ob Fehler verfolgt und an übergeordnete Aufrufe der ArrayFunction-Parserfunktion weitergegeben werden sollen.",
 	"af-error-category": "Seiten mit ArrayFunctions-Fehlern",
 	"af-error-category-desc": "Beim Verarbeiten der ArrayFunctions-Parserfunktionen auf der Seite ist ein Fehler aufgetreten.",
@@ -24,9 +25,12 @@
 	"af-error-range-zero-step": "Die Schrittweite kann nicht 0 sein.",
 	"af-error-max-range-size-exceeded": "Die maximale Bereichsgröße wurde überschritten.",
 	"af-error-foreach-iteration-limit-reached": "Die maximale Anzahl an Iterationen wurde erreicht.",
+	"af-error-max-pipeline-length-exceeded": "Die maximale Pipelinelänge wurde überschritten.",
 	"limitreport-afforeachiterations": "Anzahl der #af_foreach-Iterationen",
 	"limitreport-afforeachiterations-value": "$1/$2 Iterationen",
 	"limitreport-afrangesize": "Größe der größten #af_range",
+	"limitreport-afpipelinelength": "Länge der längsten #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 Schritte",
 	"af-error-unknown-format": "Das Format <b>$1</b> existiert nicht.",
 	"af-smw-result-printer-name": "ArrayFunctions"
 }
