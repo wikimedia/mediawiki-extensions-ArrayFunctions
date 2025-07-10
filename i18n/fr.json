@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bananax47",
 			"Derugon",
 			"JLTRY",
 			"Verdy p",
@@ -10,6 +11,7 @@
 	"af-desc": "Fournit un ensemble de fonctions d’analyseur pures qui opèrent sur les tableaux",
 	"af-config-foreach-iteration-limit": "Le nombre total maximal d’itérations pouvant être réalisées par #af_foreach.",
 	"af-config-max-range-size": "Le nombre maximal d’éléments qu’un tableau construit à l’aide de #af_range peut contenir.",
+	"af-config-max-pipeline-length": "Longueur maximale d'un pipeline.",
 	"af-config-enable-error-tracking": "S’il faut suivre et propager les erreurs aux invocations parentes d’une fonction d’analyse ArrayFunction.",
 	"af-extensionname": "FonctionsDeTableau",
 	"af-error-category": "Pages avec des erreurs ArrayFunctions",
@@ -30,9 +32,12 @@
 	"af-error-range-zero-step": "La taille du pas ne peut pas être 0.",
 	"af-error-max-range-size-exceeded": "La taille maximale de la plage a été atteinte.",
 	"af-error-foreach-iteration-limit-reached": "Le nombre maximal d’itérations a été atteint.",
+	"af-error-max-pipeline-length-exceeded": "La longueur maximale de pipeline a été dépassée.",
 	"limitreport-afforeachiterations": "Nombre d'itérations #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 itérations",
 	"limitreport-afrangesize": "Taille du plus grand #af_range",
+	"limitreport-afpipelinelength": "Longueur du plus long #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 étapes",
 	"af-error-unknown-format": "Le format <b>$1</b> n’existe pas.",
 	"af-smw-result-printer-name": "ArrayFonctions"
 }

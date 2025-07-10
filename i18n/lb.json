@@ -4,9 +4,12 @@
 			"Volvox"
 		]
 	},
+	"af-config-max-pipeline-length": "Déi maximal Längt vun enger Pipeline.",
 	"af-error-category": "Säite mat ArrayFunctions-Feeeler",
 	"af-error-category-desc": "Beim Verschaffe vun den ArrayFunctions-Parserfunktioune op dëser Säit ass e Feeler geschitt.",
 	"af-nested-error": "$1<br/>&nbsp;&nbsp;… am Parameter <b>$2</b> vun <b>#$3</b>",
 	"limitreport-afforeachiterations-value": "$1/$2 Iteratiounen",
+	"limitreport-afpipelinelength": "Längt vun der längster #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 Schrëtt",
 	"af-error-unknown-format": "D'Format <b>$1</b> gëtt et net."
 }

@@ -7,6 +7,7 @@
 	"af-desc": "Forni un insimul de functiones pur del analysator syntactic que opera sur matrices",
 	"af-config-foreach-iteration-limit": "Le numero total maxime de iterationes que pote esser realisate per #af_foreach.",
 	"af-config-max-range-size": "Le numero total maxime de elementos que un matrice construite usante #af_range pote continer.",
+	"af-config-max-pipeline-length": "Le longitude maxime de un tubo.",
 	"af-config-enable-error-tracking": "Si le errores debe esser traciate e propagate al invocationes genitor de functiones de matrice.",
 	"af-error-category": "Paginas con errores de ArrayFunctions",
 	"af-error-category-desc": "Un error ha occurrite durante que le analysator syntactic processava le functiones de matrice sur le pagina.",
@@ -26,8 +27,11 @@
 	"af-error-range-zero-step": "Le grandor del passo non pote esser 0.",
 	"af-error-max-range-size-exceeded": "Le dimension maxime del portata ha essite excedite.",
 	"af-error-foreach-iteration-limit-reached": "Le numero maxime de iterationes ha essite attingite.",
+	"af-error-max-pipeline-length-exceeded": "Le longitude maxime del tubo ha essite excedite.",
 	"limitreport-afforeachiterations": "Numero de iterationes #af_foreach",
 	"limitreport-afforeachiterations-value": "$1 de $2 iterationes",
 	"limitreport-afrangesize": "Dimension del #af_range le plus grande",
+	"limitreport-afpipelinelength": "Longitude del #af_pipeline le plus longe",
+	"limitreport-afpipelinelength-value": "$1 de $2 passos",
 	"af-error-unknown-format": "Le formato <b>$1</b> non existe."
 }
