@@ -9,6 +9,7 @@
 	"af-desc": "يوفر مجموعة من وظائف المحلل اللغوي الخالص التي تعمل على المصفوفات",
 	"af-config-foreach-iteration-limit": "الحد الأقصى الإجمالي لعدد التكرارات التي يمكن إجراؤها بواسطة #af_foreach.",
 	"af-config-max-range-size": "الحد الأقصى لعدد العناصر التي يمكن أن تحويها المصفوفة التي أنشأت باستخدام #af_range.",
+	"af-config-max-pipeline-length": "الحد الأقصى لطول خط الأنابيب.",
 	"af-config-enable-error-tracking": "ما إذا كان سيتم تتبع الأخطاء ونشرها إلى استدعاءات وظيفة المحلل ArrayFunction الأصلية.",
 	"af-extensionname": "وظائف المصفوفة",
 	"af-error-category": "صفحات تحوي أخطاء ArrayFunctions",
@@ -29,9 +30,12 @@
 	"af-error-range-zero-step": "لا يمكن أن يكون حجم الخطوة 0.",
 	"af-error-max-range-size-exceeded": "لقد تم تجاوز الحد الأقصى لحجم النطاق.",
 	"af-error-foreach-iteration-limit-reached": "وصل إلى الحد الأقصى لعدد التكرارات.",
+	"af-error-max-pipeline-length-exceeded": "لقد تم تجاوز الحد الأقصى لطول خط الأنابيب.",
 	"limitreport-afforeachiterations": "عدد تكرارات #af_foreach",
 	"limitreport-afforeachiterations-value": "التكرارات $1/$2",
 	"limitreport-afrangesize": "حجم أكبر #af_range",
+	"limitreport-afpipelinelength": "طول أطول #af_pipeline",
+	"limitreport-afpipelinelength-value": "خطوات $1 / $2",
 	"af-error-unknown-format": "التنسيق <b>$1</b> غير موجود.",
 	"af-smw-result-printer-name": "وظائف المصفوفة"
 }

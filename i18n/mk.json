@@ -7,6 +7,7 @@
 	"af-desc": "Дава збир чисти расчленувачки функции кои работат со строеви",
 	"af-config-foreach-iteration-limit": "Максималниот број на итерации што може да се извршат со #af_foreach.",
 	"af-config-max-range-size": "Максималниот број на елементи што може да ги содржи строј изграден со #af_range.",
+	"af-config-max-pipeline-length": "Максимална должина на цевководот.",
 	"af-config-enable-error-tracking": "Дали да се следат и шират грешки во повикувањата на матичната расчленувачка функција на ArrayFunction.",
 	"af-extensionname": "СтроевиФункции",
 	"af-error-category": "Страници со грешки во Стројни функции",
@@ -27,9 +28,12 @@
 	"af-error-range-zero-step": "Големината на чекорот не може да биде 0.",
 	"af-error-max-range-size-exceeded": "Надмината е максималната големина на опсегот.",
 	"af-error-foreach-iteration-limit-reached": "Достигнат е максималниот број на итерации.",
+	"af-error-max-pipeline-length-exceeded": "Надмината е максималната должина на цевководот.",
 	"limitreport-afforeachiterations": "Број на итерации #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 итерации",
 	"limitreport-afrangesize": "Големина на најголемиот #af_range",
+	"limitreport-afpipelinelength": "Должина на најдолгиот #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 чекори",
 	"af-error-unknown-format": "Форматот <b>$1</b> не постои.",
 	"af-smw-result-printer-name": "СтроевиФункции"
 }
