@@ -4,7 +4,7 @@
 			"McDutchie"
 		]
 	},
-	"af-desc": "Forni un insimul de functiones pur del analysator syntactic que opera sur arrays",
+	"af-desc": "Forni un insimul de functiones pur del analysator syntactic que opera sur matrices",
 	"af-error": "<span class=\"error\">FunctionesArray (<b>#$1</b>): $2</span>",
 	"af-error-incorrect-type": "Non poteva facer corresponder le typo expectate <b>$1</b> con le typo real <b>$2</b> pro le parametro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Expectava al minus <b>$1</b> parametro{{PLURAL:$1||s}} positional, <b>$2</b> date.",
