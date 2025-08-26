@@ -129,7 +129,7 @@ class ArrayFunctionInvoker {
 			// We parse the message, because otherwise we would pass the entire message specifier to each nested
 			// error with a complexity of O(n^2) (since each nested error would parse everything below it). By
 			// parsing it here, we only convert the message specifier once for each message, which is O(n).
-			$message = $this->convertMessageArrayToMessage( $exception->getMessageArray() )->parse();
+			$message = $this->convertMessageArrayToMessage( $parser, $exception->getMessageArray() )->parse();
 
 			return [ $this->handleError(
 				$parser,
