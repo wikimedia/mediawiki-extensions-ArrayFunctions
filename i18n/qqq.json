@@ -14,6 +14,8 @@
 	"af-limitreport-unlimited-upper-bound": "{{optional}}\nThe upper bound shown in the parser limit report if no upper bound is configured.\nSee also:\n* {{msg-mw|limitreport-afforeachiterations-value}}\n* {{msg-mw|limitreport-afrangesize-value}}",
 	"af-error-category": "{{tracking category name}}\nTracking category for pages with errors from ArrayFunctions parser functions",
 	"af-error-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|af-error-category}} tracking category.",
+	"af-tracking-category": "{{tracking category name}}\nTracking category for pages using an ArrayFunctions parser function",
+	"af-tracking-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|af-tracking-category}} tracking category.",
 	"af-error": "Used as a wrapper around error messages. Parameters:\n* $1 - the parser function that caused the error\n* $2 - the error",
 	"af-nested-error": "Used as a wrapper around nested error messages. Parameter:\n* $1 - the previous error message\n* $2 - the name of the parameter in which the error occurred\n$3 - the name of the parser function in which the error occurred",
 	"af-error-incorrect-type": "Error message given a given parameter does not have the expected type. Parameters:\n* $1 - the type that was expected\n* $2 - the type of the value that was given\n* $3 - the name or index of the parameter for which the type mismatch occurred\n* $4 - the value of the parameter",

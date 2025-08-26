@@ -60,6 +60,8 @@ class ArrayFunctionInvoker {
 	 * @throws ReflectionException|MWException
 	 */
 	public function invoke( Parser $parser, PPFrame $frame, array $arguments ): array {
+		$parser->addTrackingCategory( "af-tracking-category" );
+
 		$instance = $this->factory->createArrayFunction( $this->function, $parser, $frame );
 		$preprocessor = new ArgumentPreprocessor( $instance, "execute" );
 

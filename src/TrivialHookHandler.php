@@ -21,6 +21,8 @@ class TrivialHookHandler implements GetMagicVariableIDsHook, ParserGetVariableVa
 	 */
 	public function onParserGetVariableValueSwitch( $parser, &$variableCache, $magicWordId, &$ret, $frame ) {
 		if ( $magicWordId === MAG_AF_EMPTY ) {
+			$parser->addTrackingCategory( "af-tracking-category" );
+
 			$ret = Utils::export( [] );
 			$variableCache[$magicWordId] = $ret;
 		}

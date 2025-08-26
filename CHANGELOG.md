@@ -12,12 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Add the `$wgArrayFunctionsMaxPipelineLength` configuration variable to limit the total number of steps in a pipeline.
+- Add the `Pages using the ArrayFunctions extension` (`af-tracking-category`) tracking category.
 
 ### Fixed
 
 - Ranges that exceed `$wgArrayFunctionsMaxRangeSize` are now taken into account when reporting the size of the largest
   constructed range in the parser limit report. Previously, only ranges that did not exceed the limit would be taken
   into account.
+- Fix `TypeError` that occurred when an error was propagated from a nested parser function call.
 
 ## [v1.16.2] - 2025-06-28
 

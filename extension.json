@@ -47,7 +47,8 @@
 		]
 	},
 	"TrackingCategories": [
-		"af-error-category"
+		"af-error-category",
+		"af-tracking-category"
 	],
 	"AutoloadNamespaces": {
 		"ArrayFunctions\\": "src/"

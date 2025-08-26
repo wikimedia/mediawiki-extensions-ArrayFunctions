@@ -13,6 +13,8 @@
 	"af-limitreport-unlimited-upper-bound": "-",
 	"af-error-category": "Pages with ArrayFunctions errors",
 	"af-error-category-desc": "There was an error processing the ArrayFunctions parser functions on the page.",
+	"af-tracking-category": "Pages using the ArrayFunctions extension",
+	"af-tracking-category-desc": "The page includes an ArrayFunctions parser function.",
 	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
 	"af-nested-error": "$1<br/>&nbsp;&nbsp;... in parameter <b>$2</b> of <b>#$3</b>",
 	"af-error-incorrect-type": "Could not match expected type <b>$1</b> with actual type <b>$2</b> for parameter <b>$3</b> (\"$4\").",
