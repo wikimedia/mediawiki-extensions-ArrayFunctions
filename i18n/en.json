@@ -8,7 +8,7 @@
 	"af-config-foreach-iteration-limit": "The maximum total number of iterations that can be performed by #af_foreach.",
 	"af-config-max-range-size": "The maximum number of elements that an array constructed using #af_range may contain.",
 	"af-config-max-pipeline-length": "The maximum length of a pipeline.",
-	"af-config-enable-error-tracking": "Whether to track and propagate errors to parent ArrayFunction parser function invocations.",
+	"af-config-enable-error-tracking": "Whether to track and propagate errors to parent ArrayFunction parser function invocations. For internal use only.",
 	"af-extensionname": "ArrayFunctions",
 	"af-limitreport-unlimited-upper-bound": "-",
 	"af-error-category": "Pages with ArrayFunctions errors",

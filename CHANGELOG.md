@@ -9,10 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v1.17.0] - 2025-08-26
+
 ### Added
 
 - Add the `$wgArrayFunctionsMaxPipelineLength` configuration variable to limit the total number of steps in a pipeline.
 - Add the `Pages using the ArrayFunctions extension` (`af-tracking-category`) tracking category.
+
+### Changed
+
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ### Fixed
 
@@ -48,11 +54,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   constructed using `#af_range` can contain.
 - Add the `#af_zip` parser function.
 - Add the `!` overloaded index to show a value.
-- Add the `simple` format.
-- Add the `table` format.
+- Add the `table` and `simple` formats for `#af_show`.
 - Add the `Pages with ArrayFunctions errors` (`af-error-category`) tracking category.
 - Add error tracking and propagation.
-- Add the `$wgArrayFunctionEnableErrorTracking` to enable or disable error tracking. The default value is `true`.
 
 ### Changed
 
@@ -306,7 +310,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.2...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.17.0...HEAD
+[v1.17.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.2...v1.17.0
 [v1.16.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...v1.16.2
 [v1.16.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.0...v1.16.1
 [v1.16.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.15.0...v1.16.0
