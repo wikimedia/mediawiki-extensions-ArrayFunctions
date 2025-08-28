@@ -6,8 +6,11 @@
 		]
 	},
 	"af-desc": "Dostarcza zestaw funkcji parsera do operacji z tablicami danych",
+	"af-config-enable-error-tracking": "Czy śledzić i propagować błędy do nadrzędnych wywołań funkcji parsera ArrayFunctions. Tylko do użytku wewnętrznego.",
 	"af-error-category": "Strony z błędami ArrayFunctions",
 	"af-error-category-desc": "Na stronie wystąpił błąd przy przetwarzaniu funkcji parsera ArrayFunctions.",
+	"af-tracking-category": "Strony używające rozszerzenia ArrayFunctions",
+	"af-tracking-category-desc": "Strona zawiera funkcję parsera ArrayFunctions.",
 	"af-error": "ArrayFunctions (<b># $1</b>): $2",
 	"af-error-incorrect-type": "Oczekiwany typ <b>$1</b> nie pasuje do rzeczywistego typu <b>$2</b> parametru <b>$3</b> („$4”).",
 	"af-error-incorrect-argument-count-at-least": "Oczekiwano co najmniej <b>$1</b> {{PLURAL:$1|pozycyjnego parametru|pozycyjnych parametrów}}, podano <b>$2</b>.",

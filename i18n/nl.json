@@ -8,7 +8,7 @@
 	"af-config-foreach-iteration-limit": "Het maximale aantal iteraties dat door #af_foreach kan worden uitgevoerd.",
 	"af-config-max-range-size": "Het maximale aantal elementen dat een met #af_range samengestelde array mag bevatten.",
 	"af-config-max-pipeline-length": "De maximale lengte van een pijpleiding.",
-	"af-config-enable-error-tracking": "Of fouten moeten worden bijgehouden en doorgegeven aan bovenliggende aanroepen van ArrayFunction-parserfuncties.",
+	"af-config-enable-error-tracking": "Of fouten moeten worden bijgehouden en doorgegeven aan bovenliggende aanroepen van ArrayFunction-parserfuncties. Alleen voor intern gebruik.",
 	"af-error-category": "Pagina's met ArrayFunctions-fouten",
 	"af-error-category-desc": "Er is een fout opgetreden bij het verwerken van de ArrayFunctions-parserfuncties op de pagina.",
 	"af-error": "ArrayFuncties (<b>#$1</b>): $2",
