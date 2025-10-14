@@ -2,13 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"CrownedWharf566",
+			"GuoPC",
 			"Vikarna",
 			"Westgrass",
 			"Xyb"
 		]
 	},
 	"af-desc": "提供一组对数组进行操作的纯解析器函数",
+	"af-config-foreach-iteration-limit": "#af_foreach可以执行的最大总迭代次数。",
+	"af-config-max-range-size": "使用#af_range构造的数组可以包含的最大元素数。",
+	"af-config-max-pipeline-length": "流水线的最大长度。",
+	"af-config-enable-error-tracking": "是否跟踪错误并将其传播到父级ArrayFunction解析器函数调用。仅供内部使用。",
+	"af-error-category": "包含ArrayFunctions错误的页面",
+	"af-error-category-desc": "处理页面上的ArrayFunctions解析器函数时出错。",
+	"af-tracking-category": "使用ArrayFunctions扩展的页面",
+	"af-tracking-category-desc": "该页面包含一个ArrayFunctions解析器函数。",
 	"af-error": "ArrayFunctions（<b>#$1</b>）：$2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;…在<b>#$3</b>的参数<b>$2</b>中",
 	"af-error-incorrect-type": "参数<b>$3</b>（“$4”）的实际类型<b>$2</b>与其预期类型<b>$1</b>不匹配。",
 	"af-error-incorrect-argument-count-at-least": "预期至少有<b>$1</b>个位置{{PLURAL:$1|参数}}，实际只给出了<b>$2</b>个。",
 	"af-error-incorrect-argument-count-at-most": "预期最多有<b>$1</b>个位置{{PLURAL:$1|参数}}，实际给出了<b>$2</b>个。",
@@ -19,5 +29,15 @@
 	"af-error-template-loop-detected": "展开<b>$1</b>会导致模板循环。",
 	"af-error-max-template-depth-reached": "已达到模板深度限制。",
 	"af-error-template-inclusion-denied": "已拒绝包含模板。",
-	"af-error-value-not-showable": "值<b>$1</b>无法显示。"
+	"af-error-value-not-showable": "值<b>$1</b>无法显示。",
+	"af-error-range-zero-step": "步长不能为0。",
+	"af-error-max-range-size-exceeded": "已超出最大范围。",
+	"af-error-foreach-iteration-limit-reached": "已达到最大迭代次数。",
+	"af-error-max-pipeline-length-exceeded": "已超出最大流水线长度。",
+	"limitreport-afforeachiterations": "#af_foreach迭代次数",
+	"limitreport-afforeachiterations-value": "$1/$2次迭代",
+	"limitreport-afrangesize": "最大#af_range大小",
+	"limitreport-afpipelinelength": "最大#af_pipeline长度",
+	"limitreport-afpipelinelength-value": "$1/$2步",
+	"af-error-unknown-format": "格式<b>$1</b>不存在。"
 }
