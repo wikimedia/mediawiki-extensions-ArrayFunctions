@@ -4,7 +4,8 @@
 			"CrownedWharf566",
 			"Vikarna",
 			"Westgrass",
-			"Xyb"
+			"Xyb",
+			"GuoPC"
 		]
 	},
 	"af-desc": "提供一组对数组进行操作的纯解析器函数",
