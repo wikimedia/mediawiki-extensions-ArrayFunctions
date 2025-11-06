@@ -4,5 +4,21 @@
 			"Mansil alfalb"
 		]
 	},
-	"limitreport-afpipelinelength-value": "$1/$2 passos"
+	"af-desc": "Fornece um conjunto de funções de analisador puro que operam em matrizes",
+	"af-config-foreach-iteration-limit": "O número máximo total de iterações que podem ser realizadas por #af_foreach.",
+	"af-config-max-range-size": "O número máximo de elementos que uma matriz criada utilizando #af_range pode conter.",
+	"af-error-category": "Página com erros de ArrayFunctions",
+	"af-error-category-desc": "Ocorreu um erro ao processar as funções do analisador ArrayFunctions na página.",
+	"af-tracking-category": "Páginas que utilizam a extensão ArrayFunctions",
+	"af-tracking-category-desc": "A página inclui uma função de analisador ArrayFunctions.",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;... no parâmetro <b>$2</b> of <b>#$3</b>",
+	"af-error-missing-required-keyword-argument": "Argumento de palavra-chave obrigatório emfalta: <b>$1</b>.",
+	"af-error-unexpected-keyword-argument": "Recebi um argumento de palavra-chave inesperado: <b>$1</b>.",
+	"af-error-invalid-template-name": "O título fornecido <b>$1</b> é inválido.",
+	"af-error-template-does-not-exist": "O título fornecido <b>$1</b> não existe.",
+	"af-error-range-zero-step": "O tamanho do passo não pode ser 0.",
+	"limitreport-afforeachiterations-value": "$1/$2 iterações",
+	"limitreport-afpipelinelength-value": "$1/$2 passos",
+	"af-error-unknown-format": "O formato <b>$1</b> não existe."
 }
