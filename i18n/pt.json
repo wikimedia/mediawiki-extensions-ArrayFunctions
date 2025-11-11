@@ -3,5 +3,10 @@
 		"authors": [
 			"Mansil alfalb"
 		]
-	}
+	},
+	"af-desc": "Fornece um conjunto de funções de analisador puro que operam em matrizes",
+	"af-error-missing-required-keyword-argument": "Argumento de palavra-chave obrigatório emfalta: <b>$1</b>.",
+	"af-error-unexpected-keyword-argument": "Recebi um argumento de palavra-chave inesperado: <b>$1</b>.",
+	"af-error-invalid-template-name": "O título fornecido <b>$1</b> é inválido.",
+	"af-error-template-does-not-exist": "O título fornecido <b>$1</b> não existe."
 }
