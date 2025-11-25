@@ -9,7 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Changed
+
+- BREAKING: Remove support for MediaWiki 1.39.3 and earlier. The oldest supported version is now MediaWiki 1.39.4.
+
 ## [v1.17.0] - 2025-08-26
+
+> Note: This version is not tagged properly on `Special:Version`, where it still shows as `1.16.2`.
 
 ### Added
 
