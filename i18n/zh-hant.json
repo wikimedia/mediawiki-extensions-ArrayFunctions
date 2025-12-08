@@ -5,7 +5,16 @@
 		]
 	},
 	"af-desc": "提供在陣列進行操作的純解析函式集",
+	"af-config-foreach-iteration-limit": "#af_foreach 可以執行的最大疊代次數",
+	"af-config-max-range-size": "使用 #af_range 建構的陣列可以包含的最大元素數目。",
+	"af-config-max-pipeline-length": "管線最大長度。",
+	"af-config-enable-error-tracking": "是否追蹤錯誤並將其傳播到父層 ArrayFunction 解析函式呼叫。（僅供內部使用）。",
+	"af-error-category": "有 ArrayFunctions 錯誤的頁面",
+	"af-error-category-desc": "處理頁面上的 ArrayFunctions 解析函式時發生錯誤。",
+	"af-tracking-category": "使用 ArrayFunctions 擴充功能的頁面",
+	"af-tracking-category-desc": "包含一個 ArrayFunctions 解析函式的頁面",
 	"af-error": "陣列函式（<b>#$1</b>）：$2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;... 在 <b>#$3</b> 的 <b>$2</b> 參數裡",
 	"af-error-incorrect-type": "參數<b>$3</b>（「$4」）的實際類型<b>$2</b>與預期類型<b>$1</b>不相配。",
 	"af-error-incorrect-argument-count-at-least": "預計至少 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",
 	"af-error-incorrect-argument-count-at-most": "預計最多 <b>$1</b> 個位置{{PLURAL:$1|參數}}，實際上指定了 <b>$2</b> 個。",
@@ -16,5 +25,15 @@
 	"af-error-template-loop-detected": "擴展<b>$1</b>會導致模板迴圈。",
 	"af-error-max-template-depth-reached": "已達模板深度限制。",
 	"af-error-template-inclusion-denied": "已拒絕包含模版。",
-	"af-error-value-not-showable": "值<b>$1</b>無法顯示。"
+	"af-error-value-not-showable": "值<b>$1</b>無法顯示。",
+	"af-error-range-zero-step": "階段大小不可為 0。",
+	"af-error-max-range-size-exceeded": "超出最大範圍",
+	"af-error-foreach-iteration-limit-reached": "已達疊代的最大數目",
+	"af-error-max-pipeline-length-exceeded": "超出最大管線長度",
+	"limitreport-afforeachiterations": "#af_foreach疊代數目",
+	"limitreport-afforeachiterations-value": "$1/$2 疊代",
+	"limitreport-afrangesize": "#af_range最大大小",
+	"limitreport-afpipelinelength": "#af_pipeline最大長度",
+	"limitreport-afpipelinelength-value": "$1/$2 階段",
+	"af-error-unknown-format": "格式<b>$1</b>不存在。"
 }
