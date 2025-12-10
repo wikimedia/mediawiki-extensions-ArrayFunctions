@@ -16,5 +16,6 @@
 	"af-error-template-loop-detected": "擴展<b>$1</b>會導致模板迴圈。",
 	"af-error-max-template-depth-reached": "已達模板深度限制。",
 	"af-error-template-inclusion-denied": "已拒絕包含模版。",
-	"af-error-value-not-showable": "值<b>$1</b>無法顯示。"
+	"af-error-value-not-showable": "值<b>$1</b>無法顯示。",
+	"af-error-range-zero-step": "階段大小不可為 0。"
 }
