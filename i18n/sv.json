@@ -1,11 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"af-desc": "Tillhandahåller en uppsättning rena parserfunktioner som fungerar på arrayer",
+	"af-config-foreach-iteration-limit": "Det maximala totala antalet iterationer som kan utföras av #af_foreach.",
+	"af-config-max-range-size": "Det maximala antalet element som en array konstruerad med #af_range får innehålla.",
+	"af-config-max-pipeline-length": "Den maximala längden på en rörledning.",
+	"af-config-enable-error-tracking": "Huruvida fel ska spåras och spridas till överordnade ArrayFunction-parserfunktionsanrop. Endast för internt bruk.",
+	"af-error-category": "Sidor med ArrayFunctions-fel",
+	"af-error-category-desc": "Det uppstod ett fel vid bearbetning av ArrayFunctions-parserfunktionerna på sidan.",
+	"af-tracking-category": "Sidor som använder ArrayFunctions-tillägget",
+	"af-tracking-category-desc": "Sidan innehåller en ArrayFunctions-parserfunktion.",
 	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;... i parameter <b>$2</b> av <b>#$3</b>",
 	"af-error-incorrect-type": "Kunde inte matcha förväntad typ <b>$1</b> med faktisk typ <b>$2</b> för parameter <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "Förväntat minst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",
 	"af-error-incorrect-argument-count-at-most": "Förväntat högst <b>$1</b> {{PLURAL:$1|positionell parameter|positionella parametrar}}, <b>$2</b> angivna.",
@@ -16,5 +26,15 @@
 	"af-error-template-loop-detected": "Utökning av <b>$1</b> skulle orsaka en malloop.",
 	"af-error-max-template-depth-reached": "Mallens djupgräns har nåtts.",
 	"af-error-template-inclusion-denied": "Mallinkludering nekad.",
-	"af-error-value-not-showable": "Värdet <b>$1</b> kunde inte visas."
+	"af-error-value-not-showable": "Värdet <b>$1</b> kunde inte visas.",
+	"af-error-range-zero-step": "Stegstorleken kan inte vara 0.",
+	"af-error-max-range-size-exceeded": "Den maximala intervallstorleken har överskridits.",
+	"af-error-foreach-iteration-limit-reached": "Det maximala antalet iterationer har nåtts.",
+	"af-error-max-pipeline-length-exceeded": "Den maximala rörledningslängden har överskridits.",
+	"limitreport-afforeachiterations": "Antal #af_foreach-iterationer",
+	"limitreport-afforeachiterations-value": "$1/$2 iterationer",
+	"limitreport-afrangesize": "Storleken på största #af_range",
+	"limitreport-afpipelinelength": "Längden på den längsta #af_pipeline",
+	"limitreport-afpipelinelength-value": "$1/$2 steg",
+	"af-error-unknown-format": "Formatet <b>$1</b> finns inte."
 }
