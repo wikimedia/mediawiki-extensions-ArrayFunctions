@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"af-desc": "Tillhandahåller en uppsättning rena parserfunktioner som fungerar på arrayer",
@@ -16,5 +17,6 @@
 	"af-error-template-loop-detected": "Utökning av <b>$1</b> skulle orsaka en malloop.",
 	"af-error-max-template-depth-reached": "Mallens djupgräns har nåtts.",
 	"af-error-template-inclusion-denied": "Mallinkludering nekad.",
-	"af-error-value-not-showable": "Värdet <b>$1</b> kunde inte visas."
+	"af-error-value-not-showable": "Värdet <b>$1</b> kunde inte visas.",
+	"af-error-range-zero-step": "Stegstorleken kan inte vara 0."
 }
