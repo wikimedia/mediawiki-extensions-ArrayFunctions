@@ -29,7 +29,7 @@ wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_stringmap:a,b,c|,||"{{{x}}}"|,|and}}
 !! html
-<p><span class="error">ArrayFunctions (<b>#af_stringmap</b>): Could not match expected type <b>string</b> with actual type <b>empty</b> for parameter <b>3</b> ("&lt;part&gt;&lt;name index="2"/&gt;&lt;value/&gt;&lt;/part&gt;").</span>
+<p><span class="error">ArrayFunctions (<b>#af_stringmap</b>): Could not match expected type <b>string</b> with actual type <b>empty</b> for parameter <b>3</b> ("").</span>
 </p>
 !! end
 

@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - BREAKING: Remove support for MediaWiki 1.39.3 and earlier. The oldest supported version is now MediaWiki 1.39.4.
+- Ignore the first argument when it is empty for `#af_difference`, `#af_intersect`, `#af_merge`, `#af_object`,
+  `#af_pipeline`, and `#af_zip`.
 
 ## [v1.17.0] - 2025-08-26
 

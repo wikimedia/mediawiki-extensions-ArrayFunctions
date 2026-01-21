@@ -272,6 +272,40 @@ wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_zip: }}
 !! html
+<p><span class="error">ArrayFunctions (<b>#af_zip</b>): Expected at least <b>1</b> positional parameter, <b>0</b> given.</span>
+</p>
+!! end
+
+!! test
+Test empty input 2
+!! config
+wgArrayFunctionsEnableErrorTracking=false
+!! wikitext
+{{#af_zip:
+|
+}}
+!! html
 <p><span class="error">ArrayFunctions (<b>#af_zip</b>): Could not match expected type <b>array</b> with actual type <b>empty</b> for parameter <b>1</b> ("").</span>
 </p>
+!! end
+
+!! test
+Test empty first arg
+!! config
+wgArrayFunctionsEnableErrorTracking=false
+!! wikitext
+{{#af_print: {{#af_zip:
+| {{#af_list: a | b | c }}
+| {{#af_list: d | e | f }} }}
+}}
+!! html
+<ul><li>0
+<ul><li>0: a</li>
+<li>1: d</li></ul></li>
+<li>1
+<ul><li>0: b</li>
+<li>1: e</li></ul></li>
+<li>2
+<ul><li>0: c</li>
+<li>1: f</li></ul></li></ul>
 !! end

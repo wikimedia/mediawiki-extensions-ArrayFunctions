@@ -23,6 +23,13 @@ class AFObject extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
+	public static function skipEmptyFirstArg(): bool {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function execute(): array {
 		return [ $this->getKeywordArgs() ];
 	}

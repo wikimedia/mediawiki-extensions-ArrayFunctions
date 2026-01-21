@@ -9,6 +9,13 @@ class AFIntersect extends ArrayFunction {
 	/**
 	 * @inheritDoc
 	 */
+	public static function skipEmptyFirstArg(): bool {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public static function getName(): string {
 		return 'af_intersect';
 	}

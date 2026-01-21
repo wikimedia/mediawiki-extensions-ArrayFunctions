@@ -8,9 +8,13 @@ af_pipeline
 
 !! test
 Test empty pipeline
+!! config
+wgArrayFunctionsEnableErrorTracking=false
 !! wikitext
 {{#af_pipeline: }}
 !! html
+<p><span class="error">ArrayFunctions (<b>#af_pipeline</b>): Expected at least <b>1</b> positional parameter, <b>0</b> given.</span>
+</p>
 !! end
 
 !! test
@@ -136,6 +140,28 @@ Test nested pipeline no shadow
 Test empty initial value with a step
 !! wikitext
 {{#af_pipeline:
+|
+| {{#af_print: {{{prev}}} }}
+}}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test empty value without steps
+!! wikitext
+{{#af_pipeline:
+|
+}}
+!! html
+!! end
+
+!! test
+Test empty two values with a step
+!! wikitext
+{{#af_pipeline:
+|
 | {{#af_print: {{{prev}}} }}
 }}
 !! html

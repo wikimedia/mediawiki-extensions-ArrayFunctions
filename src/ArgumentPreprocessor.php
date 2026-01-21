@@ -57,8 +57,19 @@ class ArgumentPreprocessor {
 		// Split the given arguments into positional and keyword arguments
 		[ $passedPositionalArgs, $passedKeywordArgs ] = $this->partitionArgs( $passedArgs, $parser, $frame );
 
-		$positionalArgs = $this->preprocessPositionalArgs( $passedPositionalArgs, $parser, $frame );
-		$keywordArgs = $this->preprocessKeywordArgs( $passedKeywordArgs, $instance, $parser, $frame );
+		$positionalArgs = $this->preprocessPositionalArgs(
+			$passedPositionalArgs,
+			$parser,
+			$frame,
+			$instance::skipEmptyFirstArg()
+		);
+
+		$keywordArgs = $this->preprocessKeywordArgs(
+			$passedKeywordArgs,
+			$instance,
+			$parser,
+			$frame
+		);
 
 		return [ $positionalArgs, $keywordArgs ];
 	}
@@ -69,6 +80,7 @@ class ArgumentPreprocessor {
 	 * @param array $passedArgs The positional arguments
 	 * @param Parser $parser The current parser
 	 * @param PPFrame $frame The current frame
+	 * @param bool $skipEmptyFirst Whether to skip the first parameter if it is empty
 	 *
 	 * @return array
 	 *
@@ -78,7 +90,22 @@ class ArgumentPreprocessor {
 	 * @throws TypeMismatchException
 	 * @throws ArgumentPropagateException
 	 */
-	private function preprocessPositionalArgs( array $passedArgs, Parser $parser, PPFrame $frame ): array {
+	private function preprocessPositionalArgs(
+		array $passedArgs,
+		Parser $parser,
+		PPFrame $frame,
+		bool $skipEmptyFirst
+	): array {
+		if ( $skipEmptyFirst && !empty( $passedArgs ) ) {
+			// Only allow an empty first argument if it is *truly* empty, and does not
+			// merely contain some wikitext that evaluates to the empty string.
+			$firstKey = array_key_first( $passedArgs );
+			$origArg = $frame->expand( $passedArgs[$firstKey], PPFrame::RECOVER_ORIG );
+			if ( $origArg === '' ) {
+				array_shift( $passedArgs );
+			}
+		}
+
 		// Keep track of the number of positional arguments that were passed
 		$numArgs = count( $passedArgs );
 		$result = [];
@@ -221,7 +248,7 @@ class ArgumentPreprocessor {
 
 		if ( $expandedArg === '' ) {
 			if ( $required ) {
-				throw new TypeMismatchException( "empty", $this->normalizeType( $type ), $argument, $name );
+				throw new TypeMismatchException( "empty", $this->normalizeType( $type ), $expandedArg, $name );
 			}
 
 			return null;

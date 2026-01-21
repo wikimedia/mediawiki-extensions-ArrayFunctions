@@ -98,6 +98,13 @@ abstract class ArrayFunction {
 	}
 
 	/**
+	 * Whether to skip the first argument if it is empty.
+	 */
+	public static function skipEmptyFirstArg(): bool {
+		return false;
+	}
+
+	/**
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @param array $config
