@@ -441,6 +441,34 @@ Test index show value
 !! end
 
 !! test
+Test index filter
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | | d }} | // }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li>
+<li>3: d</li></ul>
+!! end
+
+!! test
+Test index filter not array
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | | d }} | 0 | // }} }}
+!! html
+<p class="mw-empty-elt">
+</p>
+!! end
+
+!! test
+Test index filter index again
+!! wikitext
+{{#af_print: {{#af_get: {{#af_list: a | b | | d }} | // | 0 }} }}
+!! html
+<p>a
+</p>
+!! end
+
+!! test
 Test index show list
 !! wikitext
 {{#af_get: {{#af_list: a | b | c }} | ! }}

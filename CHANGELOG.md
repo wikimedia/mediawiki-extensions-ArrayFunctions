@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+
+- Add the `#af_filter` parser function.
+- Add the `//` overloaded index to remove empty values.
+
 ### Changed
 
 - BREAKING: Remove support for MediaWiki 1.39.3 and earlier. The oldest supported version is now MediaWiki 1.39.4.

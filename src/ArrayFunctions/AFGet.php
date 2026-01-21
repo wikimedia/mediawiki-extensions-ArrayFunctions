@@ -14,6 +14,7 @@ class AFGet extends ArrayFunction {
 	private const IDX_FLATTEN_RECURSIVE = '>><<';
 	private const IDX_UNIQUE = '#';
 	private const IDX_SHOW = '!';
+	private const IDX_FILTER_EMPTY = '//';
 	private const IDX_SLICE_REGEX = '/^(\d+)\.\.(\d*)$/';
 
 	/**
@@ -74,6 +75,8 @@ class AFGet extends ArrayFunction {
 			return $this->indexSlice( $value, $offset, $length );
 		} elseif ( $index === self::IDX_SHOW ) {
 			return $this->indexShow( $value );
+		} elseif ( $index === self::IDX_FILTER_EMPTY ) {
+			return $this->indexFilterEmpty( $value );
 		} else {
 			return null;
 		}
@@ -197,5 +200,22 @@ class AFGet extends ArrayFunction {
 		$show->setKeywordArgs( [ 'format' => 'table, simple' ] );
 
 		return $show->execute( $value )[0] ?? null;
+	}
+
+	/**
+	 * Apply #af_filter on the given value.
+	 *
+	 * @param mixed $value
+	 * @return array|null
+	 */
+	private function indexFilterEmpty( $value ): ?array {
+		if ( !is_array( $value ) ) {
+			return null;
+		}
+
+		return MediaWikiServices::getInstance()
+			->get( 'ArrayFunctions.ArrayFunctionFactory' )
+			->createArrayFunction( AFFilter::class, $this->getParser(), $this->getFrame() )
+			->execute( $value )[0] ?? null;
 	}
 }

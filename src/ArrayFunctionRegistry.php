@@ -6,6 +6,7 @@ use ArrayFunctions\ArrayFunctions\AFBool;
 use ArrayFunctions\ArrayFunctions\AFCount;
 use ArrayFunctions\ArrayFunctions\AFDifference;
 use ArrayFunctions\ArrayFunctions\AFExists;
+use ArrayFunctions\ArrayFunctions\AFFilter;
 use ArrayFunctions\ArrayFunctions\AFFlatten;
 use ArrayFunctions\ArrayFunctions\AFFloat;
 use ArrayFunctions\ArrayFunctions\AFForeach;
@@ -82,7 +83,7 @@ class ArrayFunctionRegistry {
 			AFCount::class,
 			AFDifference::class,
 			AFExists::class,
-			AFList::class,
+			AFFilter::class,
 			AFFlatten::class,
 			AFFloat::class,
 			AFForeach::class,
@@ -95,6 +96,7 @@ class ArrayFunctionRegistry {
 			AFJoin::class,
 			AFKeysort::class,
 			AFKsort::class,
+			AFList::class,
 			AFMap::class,
 			AFMerge::class,
 			AFObject::class,

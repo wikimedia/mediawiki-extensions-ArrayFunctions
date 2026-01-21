@@ -32,6 +32,7 @@
 	"af-error-max-range-size-exceeded": "The maximum range size has been exceeded.",
 	"af-error-foreach-iteration-limit-reached": "The maximum number of iterations has been reached.",
 	"af-error-max-pipeline-length-exceeded": "The maximum pipeline length has been exceeded.",
+	"af-error-value-name-not-specified": "The name to give to the value in the callback must be specified if a callback is given.",
 	"limitreport-afforeachiterations": "Number of #af_foreach iterations",
 	"limitreport-afforeachiterations-value": "$1/$2 iterations",
 	"limitreport-afrangesize": "Size of largest #af_range",

@@ -33,6 +33,7 @@
 	"af-error-max-range-size-exceeded": "Error message given when trying to construct a range larger than $wgArrayFunctionsMaxRangeSize.",
 	"af-error-foreach-iteration-limit-reached": "Error message given when the maximum number of iterations specified by $wgArrayFunctionsForeachIterationLimit is reached.",
 	"af-error-max-pipeline-length-exceeded": "Error message given when trying to construct a pipeline longer than $wgArrayFunctionsMaxPipelineLength.",
+	"af-error-value-name-not-specified": "Error message given when the user specifies the optional callback in #af_filter, but does not specify a value name.",
 	"limitreport-afforeachiterations": "Label shown in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.",
 	"limitreport-afforeachiterations-value": "{{optional}}\\nValue in the parser limit report telling the user how many #af_foreach iterations were performed during the parse of the current page.\\n\\nParameters:\\n* $1 - Number of #af_foreach iterations performed\\n* $2 - Number of #af_foreach iterations that can be performed.",
 	"limitreport-afrangesize": "Label shown in the parser limit report telling the user the size of the largest #af_range constructed during the parse of the current page.",

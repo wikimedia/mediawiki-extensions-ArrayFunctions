@@ -1,0 +1,186 @@
+!! Version 2
+# Force the test runner to ensure the extension is loaded
+!! functionhooks
+af_filter
+!! endfunctionhooks
+
+# This file tests the #af_filter parser function
+
+!! test
+Test empty list
+!! wikitext
+{{#af_print: {{#af_filter: {{AF_EMPTY}} }} }}
+!! html
+!! end
+
+!! test
+Test singleton string
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a }} }} }}
+!! html
+<ul><li>0: a</li></ul>
+!! end
+
+!! test
+Test empty string is filtered
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: }} }} }}
+!! html
+!! end
+
+!! test
+Test numeric zero is kept
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: 0 | 1 }} }} }}
+!! html
+<ul><li>0: 0</li>
+<li>1: 1</li></ul>
+!! end
+
+!! test
+Test boolean false is kept
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: false | true }} }} }}
+!! html
+<ul><li>0: false</li>
+<li>1: true</li></ul>
+!! end
+
+!! test
+Test empty array is kept
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: {{AF_EMPTY}} }} }} }}
+!! html
+<ul><li>0</li></ul>
+!! end
+
+!! test
+Test mixed strings and non-strings
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: | 0 | false | x }} }} }}
+!! html
+<ul><li>1: 0</li>
+<li>2: false</li>
+<li>3: x</li></ul>
+!! end
+
+!! test
+Test nested arrays always pass default filter
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: {{AF_EMPTY}} | {{#af_list: a }} }} }} }}
+!! html
+<ul><li>0</li>
+<li>1
+<ul><li>0: a</li></ul></li></ul>
+!! end
+
+!! test
+Test callback keeps all values
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | {{#af_bool: true }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test callback returning false removes all
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | {{#af_bool: false }} }} }}
+!! html
+!! end
+
+!! test
+Test callback returning no removes all
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | no }} }}
+!! html
+!! end
+
+!! test
+Test empty callback removes all
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | }} }}
+!! html
+!! end
+
+!! test
+Test with variable
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b | no }} | v | {{{v}}} }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test preserving original keys
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | | b }} }} }}
+!! html
+<ul><li>0: a</li>
+<li>2: b</li></ul>
+!! end
+
+!! test
+Test callback returns true does nothing
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | true }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test callback returns yes does nothing
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | yes }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test callback returns string does nothing
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | foobar }} }}
+!! html
+<ul><li>0: a</li>
+<li>1: b</li></ul>
+!! end
+
+!! test
+Test callback returns 0 removes everything
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | 0 }} }}
+!! html
+!! end
+
+!! test
+Test callback returns off removes everything
+!! wikitext
+{{#af_print: {{#af_filter: {{#af_list: a | b }} | v | off }} }}
+!! html
+!! end
+
+!! test
+Test missing value name with callback
+!! config
+wgArrayFunctionsEnableErrorTracking=false
+!! wikitext
+{{#af_filter: {{#af_list: a }} | | {{#af_bool: true }} }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_filter</b>): The name to give to the value in the callback must be specified if a callback is given.</span>
+</p>
+!! end
+
+!! test
+Test too many arguments
+!! config
+wgArrayFunctionsEnableErrorTracking=false
+!! wikitext
+{{#af_filter: {{#af_list: a }} | v | {{#af_bool: true }} | extra }}
+!! html
+<p><span class="error">ArrayFunctions (<b>#af_filter</b>): Expected at most <b>3</b> positional parameters, <b>4</b> given.</span>
+</p>
+!! end
