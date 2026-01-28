@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+## [v2.0.0] - 2026-01-28
+
 ### Added
 
 - Add the `#af_filter` parser function.
@@ -16,9 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- BREAKING: Remove support for MediaWiki 1.39.3 and earlier. The oldest supported version is now MediaWiki 1.39.4.
+- BREAKING: Remove support for MediaWiki 1.39 and earlier. The oldest supported version is now MediaWiki 1.40.
 - Ignore the first argument when it is empty for `#af_difference`, `#af_intersect`, `#af_merge`, `#af_object`,
   `#af_pipeline`, and `#af_zip`.
+- Localisation updates courtesy of [translatewiki.net](https://translatewiki.net).
 
 ## [v1.17.0] - 2025-08-26
 
@@ -323,7 +326,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.17.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.17.0...v2.0.0
 [v1.17.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.2...v1.17.0
 [v1.16.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...v1.16.2
 [v1.16.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.0...v1.16.1
