@@ -30,6 +30,7 @@
 	"af-error-max-range-size-exceeded": "Le dimension maxime del portata ha essite excedite.",
 	"af-error-foreach-iteration-limit-reached": "Le numero maxime de iterationes ha essite attingite.",
 	"af-error-max-pipeline-length-exceeded": "Le longitude maxime del tubo ha essite excedite.",
+	"af-error-value-name-not-specified": "Le nomine a dar al valor in le appello de retorno debe esser specificate si un appello de retorno es date.",
 	"limitreport-afforeachiterations": "Numero de iterationes #af_foreach",
 	"limitreport-afforeachiterations-value": "$1 de $2 iterationes",
 	"limitreport-afrangesize": "Dimension del #af_range le plus grande",

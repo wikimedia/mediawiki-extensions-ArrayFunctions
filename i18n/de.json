@@ -28,6 +28,7 @@
 	"af-error-max-range-size-exceeded": "Die maximale Bereichsgröße wurde überschritten.",
 	"af-error-foreach-iteration-limit-reached": "Die maximale Anzahl an Iterationen wurde erreicht.",
 	"af-error-max-pipeline-length-exceeded": "Die maximale Pipelinelänge wurde überschritten.",
+	"af-error-value-name-not-specified": "Wenn eine Callback-Funktion angegeben wird, muss der Name für den Wert in der Callback-Funktion angegeben werden.",
 	"limitreport-afforeachiterations": "Anzahl der #af_foreach-Iterationen",
 	"limitreport-afforeachiterations-value": "$1/$2 Iterationen",
 	"limitreport-afrangesize": "Größe der größten #af_range",
