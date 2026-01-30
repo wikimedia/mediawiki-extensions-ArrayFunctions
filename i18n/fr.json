@@ -4,6 +4,7 @@
 			"Bananax47",
 			"Derugon",
 			"JLTRY",
+			"Urhixidur",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -35,6 +36,7 @@
 	"af-error-max-range-size-exceeded": "La taille maximale de la plage a été atteinte.",
 	"af-error-foreach-iteration-limit-reached": "Le nombre maximal d’itérations a été atteint.",
 	"af-error-max-pipeline-length-exceeded": "La longueur maximale de pipeline a été dépassée.",
+	"af-error-value-name-not-specified": "Le nom à donner à la valeur dans la fonction de rappel doit être spécifié si une fonction de rappel est fournie.",
 	"limitreport-afforeachiterations": "Nombre d'itérations #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 itérations",
 	"limitreport-afrangesize": "Taille du plus grand #af_range",

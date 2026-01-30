@@ -30,6 +30,7 @@
 	"af-error-max-range-size-exceeded": "Superouse o tamaño máximo do rango.",
 	"af-error-foreach-iteration-limit-reached": "Alcanzouse o número máximo de iteracións.",
 	"af-error-max-pipeline-length-exceeded": "Superouse a lonxitude máxima da segmentación.",
+	"af-error-value-name-not-specified": "Cómpre especificar o nome que se lle vai dar ao valor na función de chamada de retorno se se indica unha función de chamada de retorno.",
 	"limitreport-afforeachiterations": "Número de iteracións #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 iteracións",
 	"limitreport-afrangesize": "Tamaño do maior #af_range",
