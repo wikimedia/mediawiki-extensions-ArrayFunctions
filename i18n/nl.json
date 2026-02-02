@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"af-desc": "Biedt een set pure parserfuncties die op arrays werken",
@@ -30,6 +31,7 @@
 	"af-error-max-range-size-exceeded": "De maximale bereikgrootte is overschreden.",
 	"af-error-foreach-iteration-limit-reached": "Het maximale aantal iteraties is bereikt.",
 	"af-error-max-pipeline-length-exceeded": "De maximale pijpleidinglengte is overschreden.",
+	"af-error-value-name-not-specified": "Als er een callbackfunctie is, moet de naam die aan de waarde in de callback moet worden gegeven, worden opgegeven.",
 	"limitreport-afforeachiterations": "Aantal #af_foreach-iteraties",
 	"limitreport-afforeachiterations-value": "$1/$2 iteraties",
 	"limitreport-afrangesize": "Grootte van de grootste #af_range",

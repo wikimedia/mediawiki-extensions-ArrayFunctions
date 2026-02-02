@@ -34,6 +34,7 @@
 	"af-error-max-range-size-exceeded": "已超出最大范围。",
 	"af-error-foreach-iteration-limit-reached": "已达到最大迭代次数。",
 	"af-error-max-pipeline-length-exceeded": "已超出最大流水线长度。",
+	"af-error-value-name-not-specified": "如果给定回调，则必须指定回调中的值的名称。",
 	"limitreport-afforeachiterations": "#af_foreach迭代次数",
 	"limitreport-afforeachiterations-value": "$1/$2次迭代",
 	"limitreport-afrangesize": "最大#af_range大小",

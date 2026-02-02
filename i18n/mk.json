@@ -31,6 +31,7 @@
 	"af-error-max-range-size-exceeded": "Надмината е максималната големина на опсегот.",
 	"af-error-foreach-iteration-limit-reached": "Достигнат е максималниот број на итерации.",
 	"af-error-max-pipeline-length-exceeded": "Надмината е максималната должина на цевководот.",
+	"af-error-value-name-not-specified": "Името што ќе се даде на вредноста во повратниот повик мора да се укаже ако е даден повратен повик.",
 	"limitreport-afforeachiterations": "Број на итерации #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 итерации",
 	"limitreport-afrangesize": "Големина на најголемиот #af_range",
