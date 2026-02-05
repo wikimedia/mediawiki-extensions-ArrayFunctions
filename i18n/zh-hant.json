@@ -30,6 +30,7 @@
 	"af-error-max-range-size-exceeded": "超出最大範圍",
 	"af-error-foreach-iteration-limit-reached": "已達疊代的最大數目",
 	"af-error-max-pipeline-length-exceeded": "超出最大管線長度",
+	"af-error-value-name-not-specified": "如果提供了回呼函式，則必須指定回呼函式裡頭值的名稱。",
 	"limitreport-afforeachiterations": "#af_foreach疊代數目",
 	"limitreport-afforeachiterations-value": "$1/$2 疊代",
 	"limitreport-afrangesize": "#af_range最大大小",
