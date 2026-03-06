@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"af-desc": "د سوچه تجزيه‌کوونکو کړنچارو يوه ټولگه چمتو کوي چې په کتارونو کې کار کوي",
+	"af-config-foreach-iteration-limit": "د گرځندو ډېر شمېر چې د #af_foreach له خوا ترسره کېدی شي.",
+	"af-config-max-range-size": "د توکونو ډېر شمېر چې د #af_range په کارولو سره يو کتار پکې رانغاړل کېدای شي.",
+	"af-config-max-pipeline-length": "د نل‌ليکې ډېر اوږدوالی.",
+	"af-config-enable-error-tracking": "ايا د تېروتنو پلنيوی به وشي او د آر کتارچارې تجزيه‌کوونکې چارې غوښتنې ته به ولېږل شي. يوازې د دننه‌نۍ کارونې لپاره.",
+	"af-extensionname": "کتارکړنچارې",
+	"af-error-category": "هغه مخونه چې د کتارکړنچارو تېروتنې لري",
+	"af-error-category-desc": "په مخ کې د کتارکړنچارو د تجزيه‌کوونکو کړنچارو د پروسس پروسس کولو پرمهال تېروتنه رامنځته شوه.",
+	"af-tracking-category": "هغه مخونه چې د کتارکړنچارو شاتاړی کاروي",
+	"af-tracking-category-desc": "مخ د کتارکړنچارو تجزيه‌کوونکې چاره لري.",
+	"af-error": "کتارکړنچارې (<b>#$1</b>): $2",
+	"af-nested-error": "په<b>$2</b> of <b>#$3</b>  پاراميتر  کې $1<br/>&nbsp;&nbsp;...",
+	"af-error-incorrect-type": "د <b>$3</b> (\"$4\") پاراميتر لپاره د تمه‌شوي ډول  <b>$1</b> د رښتيني ډول <b>$2</b> سره سمون نشو کولی.",
+	"af-error-incorrect-argument-count-at-least": "تمه کېږي چې تر <b>$1</b> موقعيتي {{PLURAL:$1|پاراميتر|پاراميترونه}} واوسي، <b>$2</b> ورکړل شوی دی.",
+	"af-error-incorrect-argument-count-at-most": "تمه کېږي چې ډېر تر ډېره <b>$1</b> موقعيتي {{PLURAL:$1|پاراميتر|پاراميترونه}} واوسي، <b>$2</b> ورکړل شوی دی.",
+	"af-error-missing-required-keyword-argument": "د سمغږۍ اړين ويې‌ينه<b>$1</b> ورکه ده.",
+	"af-error-unexpected-keyword-argument": "يو ناڅاپي سمغږۍ ويې‌ينه <b>$1</b> ترلاسه شوه.",
+	"af-error-invalid-template-name": "ورکړل شوی سرليک <b>$1</b> ناباوره دی.",
+	"af-error-template-does-not-exist": "ورکړل شوی سرليک <b>$1</b> شتون نه لري.",
+	"af-error-template-loop-detected": "د <b>$1</b> غځول به د کينډۍ کړۍ کېدو لامل شي.",
+	"af-error-max-template-depth-reached": "د کينډۍ ژوروالي بريد ته ورسېد.",
+	"af-error-template-inclusion-denied": "کينډۍ رانغاړل رد شول.",
+	"af-error-value-not-showable": "<b>$1</b> ارزښت نشي ښودل کېدی.",
+	"af-error-range-zero-step": "گام کچه  کېدای نشي.",
+	"af-error-max-range-size-exceeded": "د ډېر بريد کچه زياته شوې ده.",
+	"af-error-foreach-iteration-limit-reached": "د گرځندو ډېر شمېر ته رسېدلی دی.",
+	"af-error-max-pipeline-length-exceeded": "د نل‌ليکې ډېر اوږدوالی زيات شوی دی.",
+	"af-error-value-name-not-specified": "که چېرې بېرته راستنېده ورکړل شي؛ نو هغه نوم چې په بېرته‌راستنېده کې ارزښت ته ورکول کېږي بايد څرگند شي.",
+	"limitreport-afforeachiterations": "د #af_foreach گرځندو شمېر",
+	"limitreport-afforeachiterations-value": "$1/$2 گرځندې",
+	"limitreport-afrangesize": "د #af_range لويه کچه",
+	"limitreport-afrangesize-value": "$1/$2",
+	"limitreport-afpipelinelength": "د ډېر اوږده #af_pipeline اوږدوالی",
+	"limitreport-afpipelinelength-value": "$1/$2 گامونه",
+	"af-error-unknown-format": "<b>$1</b> بڼه شتون نه لري.",
+	"af-smw-result-printer-name": "کتارکړنچارې"
+}
