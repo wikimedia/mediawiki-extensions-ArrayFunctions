@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"af-desc": "د سوچه تجزيه‌کوونکو کړنچارو يوه ټولگه چمتو کوي چې په کتارونو کې کار کوي",
+	"af-extensionname": "کتارکړنچارې",
+	"af-error-incorrect-type": "د <b>$3</b> (\"$4\") پاراميتر لپاره د تمه‌شوي ډول  <b>$1</b> د رښتيني ډول <b>$2</b> سره سمون نشو کولی.",
+	"af-error-incorrect-argument-count-at-least": "تمه کېږي چې تر <b>$1</b> موقعيتي {{PLURAL:$1|پاراميتر|پاراميترونه}} واوسي، <b>$2</b> ورکړل شوی دی.",
+	"af-error-incorrect-argument-count-at-most": "تمه کېږي چې ډېر تر ډېره <b>$1</b> موقعيتي {{PLURAL:$1|پاراميتر|پاراميترونه}} واوسي، <b>$2</b> ورکړل شوی دی.",
+	"af-error-missing-required-keyword-argument": "د سمغږۍ اړين ويې‌ينه<b>$1</b> ورکه ده.",
+	"af-error-unexpected-keyword-argument": "يو ناڅاپي سمغږۍ ويې‌ينه <b>$1</b> ترلاسه شوه.",
+	"af-error-invalid-template-name": "ورکړل شوی سرليک <b>$1</b> ناباوره دی.",
+	"af-error-template-does-not-exist": "ورکړل شوی سرليک <b>$1</b> شتون نه لري.",
+	"af-error-template-loop-detected": "د <b>$1</b> غځول به د کينډۍ کړۍ کېدو لامل شي.",
+	"af-error-max-template-depth-reached": "د کينډۍ ژوروالي بريد ته ورسېد.",
+	"af-error-template-inclusion-denied": "کينډۍ رانغاړل رد شول.",
+	"af-error-value-not-showable": "<b>$1</b> ارزښت نشي ښودل کېدی."
+}
