@@ -9,7 +9,14 @@
 		]
 	},
 	"af-desc": "Fornece um conjunto de funções puras de analisador que operam em arrays",
+	"af-config-foreach-iteration-limit": "O número máximo total de iterações que podem ser realizadas por #af_foreach.",
+	"af-config-max-range-size": "O número máximo de elementos que uma matriz criada utilizando #af_range pode conter.",
+	"af-error-category": "Página com erros de ArrayFunctions",
+	"af-error-category-desc": "Ocorreu um erro ao processar as funções do analisador ArrayFunctions na página.",
+	"af-tracking-category": "Páginas que usam a extensão ArrayFunctions",
+	"af-tracking-category-desc": "A página inclui uma função de analisador ArrayFunctions.",
 	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
+	"af-nested-error": "$1<br/>&nbsp;&nbsp;... no parâmetro <b>$2</b> of <b>#$3</b>",
 	"af-error-incorrect-type": "O tipo atual <b>$2</b> não corresponde ao tipo esperado <b>$1</b> para o parâmetro <b>$3</b> (\"$4\").",
 	"af-error-incorrect-argument-count-at-least": "É necessário pelo menos <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas somente {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",
 	"af-error-incorrect-argument-count-at-most": "É possível incluir até <b>$1</b> {{PLURAL:$1|parâmetro|parâmetros}} de posição, mas {{PLURAL:$2|foi fornecido|foram fornecidos}} <b>$2</b>.",
@@ -21,5 +28,7 @@
 	"af-error-max-template-depth-reached": "O limite de profundidade para predefinições foi atingido.",
 	"af-error-template-inclusion-denied": "A inclusão da predefinição foi negada.",
 	"af-error-value-not-showable": "Não é possível exibir o valor <b>$1</b>.",
-	"af-error-range-zero-step": "O tamanho da etapa não pode ser 0."
+	"af-error-range-zero-step": "O tamanho da etapa não pode ser 0.",
+	"limitreport-afforeachiterations-value": "$1/$2 iterações",
+	"af-error-unknown-format": "O formato <b>$1</b> não existe."
 }
