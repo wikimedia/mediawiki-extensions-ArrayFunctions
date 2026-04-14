@@ -33,6 +33,7 @@
 	"af-error-max-range-size-exceeded": "لقد تم تجاوز الحد الأقصى لحجم النطاق.",
 	"af-error-foreach-iteration-limit-reached": "وصل إلى الحد الأقصى لعدد التكرارات.",
 	"af-error-max-pipeline-length-exceeded": "لقد تم تجاوز الحد الأقصى لطول خط الأنابيب.",
+	"af-error-value-name-not-specified": "يجب تحديد الاسم الذي سيتم إعطاؤه للقيمة في رد الاتصال إذا تم إعطاء رد اتصال.",
 	"limitreport-afforeachiterations": "عدد تكرارات #af_foreach",
 	"limitreport-afforeachiterations-value": "التكرارات $1/$2",
 	"limitreport-afrangesize": "حجم أكبر #af_range",
