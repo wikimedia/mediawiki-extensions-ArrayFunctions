@@ -29,6 +29,8 @@
 	"af-error-template-inclusion-denied": "A inclusão da predefinição foi negada.",
 	"af-error-value-not-showable": "Não é possível exibir o valor <b>$1</b>.",
 	"af-error-range-zero-step": "O tamanho da etapa não pode ser 0.",
+	"limitreport-afforeachiterations": "Número de iterações do #af_foreach",
 	"limitreport-afforeachiterations-value": "$1/$2 iterações",
+	"limitreport-afpipelinelength-value": "$1/$2 etapas",
 	"af-error-unknown-format": "O formato <b>$1</b> não existe."
 }
