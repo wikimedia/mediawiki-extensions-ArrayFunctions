@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
+	"af-desc": "배열에서 작동하는 순수 파서 함수들의 집합을 제공합니다",
+	"af-error-incorrect-argument-count-at-least": "최소 <b>$1</b>개의 위치 {{PLURAL:$1|변수가|변수들이}} 예상되었지만, <b>$2</b>개가 주어졌습니다.",
+	"af-error-incorrect-argument-count-at-most": "최대 <b>$1</b>개의 위치 {{PLURAL:$1|변수가|변수들이}} 예상되었지만, <b>$2</b>개가 주어졌습니다.",
+	"af-error-missing-required-keyword-argument": "필수 <b>$1</b> 키워드 인수가 누락되었습니다.",
+	"af-error-unexpected-keyword-argument": "예상치 못한 <b>$1</b> 키워드 인수입니다.",
 	"af-error-invalid-template-name": "지정된 <b>$1</b> 제목은 유효하지 않습니다.",
+	"af-error-template-does-not-exist": "지정된 <b>$1</b> 제목은 존재하지 않습니다.",
 	"af-error-max-template-depth-reached": "틀 깊이 제한에 도달했습니다.",
 	"af-error-template-inclusion-denied": "틀 포함이 거부되었습니다.",
 	"af-error-value-not-showable": "<b>$1</b> 값을 표시할 수 없습니다."
