@@ -31,5 +31,6 @@
 	"limitreport-afforeachiterations": "#af_foreach 반복 횟수",
 	"limitreport-afrangesize": "가장 큰 #af_range의 크기",
 	"limitreport-afpipelinelength": "가장 긴 #af_pipeline의 길이",
-	"limitreport-afpipelinelength-value": "$1/$2 단계"
+	"limitreport-afpipelinelength-value": "$1/$2 단계",
+	"af-error-unknown-format": "<b>$1</b> 유형은 존재하지 않습니다."
 }
