@@ -1,12 +1,35 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
+	"af-desc": "배열에서 작동하는 순수 파서 함수들의 집합을 제공합니다",
+	"af-config-foreach-iteration-limit": "#af_foreach가 수행할 수 있는 최대 반복 횟수.",
+	"af-config-max-range-size": "#af_range를 사용하여 생성된 배열이 포함할 수 있는 요소 수의 최대 갯수.",
+	"af-config-max-pipeline-length": "파이프라인의 최대 길이.",
+	"af-config-enable-error-tracking": "오류를 추적하고 상위 ArrayFunction 파서 함수 호출에 전파할지 여부. 내부용으로만 사용하세요.",
+	"af-error-category": "ArrayFunctions 오류가 있는 문서",
+	"af-error-category-desc": "문서의 ArrayFunctions 파서 함수를 처리하는 동안 오류가 발생했습니다.",
+	"af-tracking-category": "ArrayFunctions 확장 기능을 사용하는 문서",
+	"af-tracking-category-desc": "이 문서에는 ArrayFunctions 파서 함수가 포함되어 있습니다.",
+	"af-error": "ArrayFunctions (<b>#$1</b>): $2",
+	"af-error-incorrect-argument-count-at-least": "최소 <b>$1</b>개의 위치 {{PLURAL:$1|변수가|변수들이}} 예상되었지만, <b>$2</b>개가 주어졌습니다.",
+	"af-error-incorrect-argument-count-at-most": "최대 <b>$1</b>개의 위치 {{PLURAL:$1|변수가|변수들이}} 예상되었지만, <b>$2</b>개가 주어졌습니다.",
+	"af-error-missing-required-keyword-argument": "필수 <b>$1</b> 키워드 인수가 누락되었습니다.",
+	"af-error-unexpected-keyword-argument": "예상치 못한 <b>$1</b> 키워드 인수입니다.",
 	"af-error-invalid-template-name": "지정된 <b>$1</b> 제목은 유효하지 않습니다.",
+	"af-error-template-does-not-exist": "지정된 <b>$1</b> 제목은 존재하지 않습니다.",
 	"af-error-max-template-depth-reached": "틀 깊이 제한에 도달했습니다.",
 	"af-error-template-inclusion-denied": "틀 포함이 거부되었습니다.",
 	"af-error-value-not-showable": "<b>$1</b> 값을 표시할 수 없습니다.",
+	"af-error-range-zero-step": "스텝 크기는 0이 될 수 없습니다.",
+	"af-error-max-range-size-exceeded": "최대 범위 크기를 초과했습니다.",
+	"af-error-foreach-iteration-limit-reached": "최대 반복 횟수에 도달했습니다.",
+	"af-error-max-pipeline-length-exceeded": "최대 파이프라인 길이를 초과했습니다.",
+	"limitreport-afforeachiterations": "#af_foreach 반복 횟수",
+	"limitreport-afrangesize": "가장 큰 #af_range의 크기",
+	"limitreport-afpipelinelength": "가장 긴 #af_pipeline의 길이",
 	"limitreport-afpipelinelength-value": "$1/$2 단계"
 }
