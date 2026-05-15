@@ -21,7 +21,7 @@
 	"af-error-incorrect-argument-count-at-most": "Er word{{PLURAL:$1|t|en}} maximaal <b>$1</b> positionele parameter{{PLURAL:$1||s}} verwacht, <b>$2</b> {{PLURAL:$2|is|zijn}} er gegeven.",
 	"af-error-missing-required-keyword-argument": "Vereist sleutelwoordargument <b>$1</b> ontbreekt.",
 	"af-error-unexpected-keyword-argument": "Kreeg een onverwacht sleutelwoordargument <b>$1</b>.",
-	"af-error-invalid-template-name": "De opgegeven titel <b>$1</b> is ongeldig.",
+	"af-error-invalid-template-name": "De opgegeven titel <b>$1</b> is onjuist.",
 	"af-error-template-does-not-exist": "De opgegeven titel <b>$1</b> bestaat niet.",
 	"af-error-template-loop-detected": "Uitbreiding van <b>$1</b> zou een sjabloonlus veroorzaken.",
 	"af-error-max-template-depth-reached": "De sjabloondieptegrens is bereikt.",
