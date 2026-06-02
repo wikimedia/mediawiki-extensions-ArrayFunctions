@@ -88,6 +88,15 @@ Test escape sequence delimiter
 !! end
 
 !! test
+Test literal zero string
+!! wikitext
+{{#af_stringmap:0,1,2|,|x|"{{{x}}}"}}
+!! html
+<p>"0", "1", "2"
+</p>
+!! end
+
+!! test
 Test escape sequence new delimiter
 !! wikitext
 {{#af_stringmap:a, b, c|,|x|"{{{x}}}"|\s}}

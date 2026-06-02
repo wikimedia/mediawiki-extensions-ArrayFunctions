@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+- Make `#af_stringmap` able to create array with "0" as a value.
+
 ## [v2.0.0] - 2026-01-28
 
 ### Added
