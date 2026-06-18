@@ -9,7 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
-- Make `#af_stringmap` able to create array with "0" as a value.
+## [v2.0.1] - 2026-06-18
+
+### Changed
+- Make `#af_stringmap` able to create array with "0" as a value. Previously, "0" would be removed from the array.
 
 ## [v2.0.0] - 2026-01-28
 
@@ -328,7 +331,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add the `#af_unique` parser function.
 - Add the `#af_unset` parser function.
 
-[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v2.0.1...HEAD
+[v2.0.1]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.17.0...v2.0.0
 [v1.17.0]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.2...v1.17.0
 [v1.16.2]: https://github.com/wikimedia/mediawiki-extensions-ArrayFunctions/compare/v1.16.1...v1.16.2
