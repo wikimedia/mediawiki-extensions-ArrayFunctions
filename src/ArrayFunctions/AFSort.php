@@ -40,7 +40,7 @@ class AFSort extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array ): array {
-		usort( $array, [ $this, 'compare' ] );
+		usort( $array, $this->compare( ... ) );
 
 		return [ $array ];
 	}

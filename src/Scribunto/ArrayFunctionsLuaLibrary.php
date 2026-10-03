@@ -11,8 +11,8 @@ class ArrayFunctionsLuaLibrary extends LibraryBase {
 	 */
 	public function register(): void {
 		$interfaceFuncs = [
-			'export' => [ $this, 'export' ],
-			'import' => [ $this, 'import' ]
+			'export' => $this->export( ... ),
+			'import' => $this->import( ... )
 		];
 
 		$this->getEngine()->registerInterface( __DIR__ . '/' . 'mw.af.lua', $interfaceFuncs, [] );

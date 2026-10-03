@@ -40,7 +40,7 @@ class AFKsort extends ArrayFunction {
 	 * @inheritDoc
 	 */
 	public function execute( array $array ): array {
-		uksort( $array, [ $this, 'compare' ] );
+		uksort( $array, $this->compare( ... ) );
 
 		return [ $array ];
 	}
