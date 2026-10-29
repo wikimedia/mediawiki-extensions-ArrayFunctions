@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Ykhwong",
-			"Tensama0415"
+			"Tensama0415",
+			"YeBoy371"
 		]
 	},
 	"af-desc": "배열에서 작동하는 순수 파서 함수들의 집합을 제공합니다",
 	"af-config-foreach-iteration-limit": "#af_foreach가 수행할 수 있는 최대 반복 횟수.",
-	"af-config-max-range-size": "#af_range를 사용하여 생성된 배열이 포함할 수 있는 요소 수의 최대 갯수.",
+	"af-config-max-range-size": "#af_range를 사용하여 생성된 배열이 포함할 수 있는 요소 수의 최대 개수.",
 	"af-config-max-pipeline-length": "파이프라인의 최대 길이.",
 	"af-config-enable-error-tracking": "오류를 추적하고 상위 ArrayFunction 파서 함수 호출에 전파할지 여부. 내부용으로만 사용하세요.",
 	"af-error-category": "ArrayFunctions 오류가 있는 문서",
