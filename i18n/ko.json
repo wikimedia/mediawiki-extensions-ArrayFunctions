@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ykhwong",
-			"Tensama0415"
+			"Tensama0415",
+			"YeBoy371"
 		]
 	},
 	"af-desc": "배열에서 작동하는 순수 파서 함수들의 집합을 제공합니다",
